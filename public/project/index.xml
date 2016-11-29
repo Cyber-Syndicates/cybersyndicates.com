@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Project-rsses on Cyber Syndicates</title>
-    <link>http://dev.cybersydicates.com/project/index.xml</link>
+    <link>http://dev.cybersyndicates.com/project/index.xml</link>
     <description>Recent content in Project-rsses on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Alexander Rymdeko-Harvey</copyright>
     <lastBuildDate>Fri, 18 Nov 2016 02:13:50 +0000</lastBuildDate>
-    <atom:link href="http://dev.cybersydicates.com/project/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dev.cybersyndicates.com/project/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>EmPyre</title>
-      <link>http://dev.cybersydicates.com/project/EmPyre/</link>
+      <link>http://dev.cybersyndicates.com/project/EmPyre/</link>
       <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
       
-      <guid>http://dev.cybersydicates.com/project/EmPyre/</guid>
+      <guid>http://dev.cybersyndicates.com/project/EmPyre/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SimplyEmail</title>
-      <link>http://dev.cybersydicates.com/project/SimplyEmail/</link>
+      <link>http://dev.cybersyndicates.com/project/SimplyEmail/</link>
       <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
       
-      <guid>http://dev.cybersydicates.com/project/SimplyEmail/</guid>
+      <guid>http://dev.cybersyndicates.com/project/SimplyEmail/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;https://travis-ci.org/killswitch-GUI/SimplyEmail&#34;&gt;&lt;img src=&#34;https://travis-ci.org/killswitch-GUI/SimplyEmail.svg?branch=master&#34; alt=&#34;Build Status&#34; /&gt;&lt;/a&gt;
@@ -359,13 +359,13 @@ su@mandiant.com
 
 &lt;h4 id=&#34;email-source&#34;&gt;Email Source:&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dev.cybersydicates.com/bootstrap-3.3.5/Screen Shot 2015-11-11 at 5.27.15 PM.png?raw=true&#34; alt=&#34;Alt text&#34; title=&#34;Report&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/bootstrap-3.3.5/Screen Shot 2015-11-11 at 5.27.15 PM.png?raw=true&#34; alt=&#34;Alt text&#34; title=&#34;Report&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;email-section&#34;&gt;Email Section:&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Html report now shows Alerts for Canary Search Results!
-&lt;img src=&#34;http://dev.cybersydicates.com/bootstrap-3.3.5/Screen Shot 2015-11-11 at 5.27.31 PM.png?raw=true&#34; alt=&#34;Alt text&#34; title=&#34;Report Html&#34; /&gt;&lt;/li&gt;
+&lt;img src=&#34;http://dev.cybersyndicates.com/bootstrap-3.3.5/Screen Shot 2015-11-11 at 5.27.31 PM.png?raw=true&#34; alt=&#34;Alt text&#34; title=&#34;Report Html&#34; /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;current-email-evasion-techniques&#34;&gt;Current Email Evasion Techniques&lt;/h2&gt;

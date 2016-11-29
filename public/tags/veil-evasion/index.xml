@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cyber Syndicates</title>
-    <link>http://dev.cybersydicates.com/tags/veil-evasion/index.xml</link>
+    <link>http://dev.cybersyndicates.com/tags/veil-evasion/index.xml</link>
     <description>Recent content on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Alexander Rymdeko-Harvey</copyright>
-    <atom:link href="http://dev.cybersydicates.com/tags/veil-evasion/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dev.cybersyndicates.com/tags/veil-evasion/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Veil-Evasion AES Encrypted HTTPKEY Request: Sand-Box Evasion</title>
-      <link>http://dev.cybersydicates.com/2015/06/10/2015-06-10-veil-evasion-aes-encrypted-httpkey-request-module/</link>
+      <link>http://dev.cybersyndicates.com/2015/06/10/2015-06-10-veil-evasion-aes-encrypted-httpkey-request-module/</link>
       <pubDate>Wed, 10 Jun 2015 02:10:36 +0000</pubDate>
       
-      <guid>http://dev.cybersydicates.com/2015/06/10/2015-06-10-veil-evasion-aes-encrypted-httpkey-request-module/</guid>
+      <guid>http://dev.cybersyndicates.com/2015/06/10/2015-06-10-veil-evasion-aes-encrypted-httpkey-request-module/</guid>
       <description>&lt;nav&gt;
 &lt;ul&gt;
 &lt;li&gt;

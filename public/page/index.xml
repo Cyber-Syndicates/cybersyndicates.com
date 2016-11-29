@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Page-rsses on Cyber Syndicates</title>
-    <link>http://dev.cybersydicates.com/page/index.xml</link>
+    <link>http://dev.cybersyndicates.com/page/index.xml</link>
     <description>Recent content in Page-rsses on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Alexander Rymdeko-Harvey</copyright>
     <lastBuildDate>Thu, 03 Nov 2016 02:13:50 +0000</lastBuildDate>
-    <atom:link href="http://dev.cybersydicates.com/page/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dev.cybersyndicates.com/page/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Home</title>
-      <link>http://dev.cybersydicates.com/page/home/</link>
+      <link>http://dev.cybersyndicates.com/page/home/</link>
       <pubDate>Thu, 03 Nov 2016 02:13:50 +0000</pubDate>
       
-      <guid>http://dev.cybersydicates.com/page/home/</guid>
+      <guid>http://dev.cybersyndicates.com/page/home/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Alexander Rymdeko-Harvey</title>
-      <link>http://dev.cybersydicates.com/page/alex-rymdeko-harvey/</link>
+      <link>http://dev.cybersyndicates.com/page/alex-rymdeko-harvey/</link>
       <pubDate>Sun, 03 Apr 2016 02:13:50 +0000</pubDate>
       
-      <guid>http://dev.cybersydicates.com/page/alex-rymdeko-harvey/</guid>
+      <guid>http://dev.cybersyndicates.com/page/alex-rymdeko-harvey/</guid>
       <description>
 
 &lt;h3 id=&#34;rat-repurposing-adversarial-tradecraft&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/h3&gt;
@@ -35,10 +35,10 @@
     
     <item>
       <title>The Team</title>
-      <link>http://dev.cybersydicates.com/page/team/</link>
+      <link>http://dev.cybersyndicates.com/page/team/</link>
       <pubDate>Sun, 03 Apr 2016 02:13:50 +0000</pubDate>
       
-      <guid>http://dev.cybersydicates.com/page/team/</guid>
+      <guid>http://dev.cybersyndicates.com/page/team/</guid>
       <description>
 
 &lt;h2 id=&#34;alexander-rymdeko-harvey&#34;&gt;Alexander Rymdeko-Harvey&lt;/h2&gt;
@@ -58,10 +58,10 @@
     
     <item>
       <title>About</title>
-      <link>http://dev.cybersydicates.com/page/about/</link>
+      <link>http://dev.cybersyndicates.com/page/about/</link>
       <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
       
-      <guid>http://dev.cybersydicates.com/page/about/</guid>
+      <guid>http://dev.cybersyndicates.com/page/about/</guid>
       <description>
 
 &lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;
@@ -76,10 +76,10 @@
     
     <item>
       <title>Contact</title>
-      <link>http://dev.cybersydicates.com/page/contact/</link>
+      <link>http://dev.cybersyndicates.com/page/contact/</link>
       <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
       
-      <guid>http://dev.cybersydicates.com/page/contact/</guid>
+      <guid>http://dev.cybersyndicates.com/page/contact/</guid>
       <description>
 
 &lt;h2 id=&#34;contact&#34;&gt;Contact&lt;/h2&gt;
