@@ -1,6 +1,6 @@
 baseurl = "https://cybersydicates.com/"
 title = "Cyber Syndicates"
-theme = "ghostwriter"
+theme = "Ghostwriter"
 languageCode = "en-us"
 copyright = "Alexander Rymdeko-Harvey"
 googleAnalytics = "UA-64026800-1"
@@ -19,12 +19,12 @@ disqusShortname = "cybersyndicates-com"
     intro = true
     headline = "CybeЯ Syйdicдtes"
     description = "Red Team | Hacking | Infosec stuff | Beer | HUNT | Blue Team <3"
-    github = "https://github.com/"
-    gitlab = "https://gitlab.com/XXX"
-    linkedin = "https://linkedin.com/in/XXX/"
-    gplus = "https://google.com/+XXX"
-    twitter = "https://twitter.com/XXX"
-    stackoverflow = "https://stackoverflow.com/users/XXX/YYY"
+    github = "https://github.com/Cyber-Syndicates"
+    gitlab = "https://github.com/Cyber-Syndicates"
+    linkedin = "https://linkedin.com/in/"
+    gplus = "https://google.com/"
+    twitter = "https://twitter.com/cybersyndicates"
+    stackoverflow = "https://stackoverflow.com/users/"
     opengraph = true
 
 

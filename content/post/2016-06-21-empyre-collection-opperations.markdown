@@ -1,15 +1,11 @@
 ---
 author: killswitch
-comments: true
 date: 2016-06-21 20:14:14+00:00
-layout: post
-link: http://cybersyndicates.com/2016/06/empyre-collection-opperations/
-slug: empyre-collection-opperations
 title: EmPyre Collection Operations
-wordpress_id: 991
 categories:
 - Github
-- Red Teaming / Pen Testing
+tags:
+- test
 ---
 
 [![empyre_logo_white](http://cybersyndicates.com/wp-content/uploads/2016/06/empyre_logo_white.png)](http://cybersyndicates.com/wp-content/uploads/2016/06/empyre_logo_white.png)
