@@ -2,42 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cyber Syndicates</title>
-    <link>https://cybersydicates.com/index.xml</link>
+    <link>http://dev.cybersydicates.com/index.xml</link>
     <description>Recent content on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Alexander Rymdeko-Harvey</copyright>
-    <lastBuildDate>Mon, 28 Nov 2016 12:55:48 -0500</lastBuildDate>
-    <atom:link href="https://cybersydicates.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>welcome</title>
-      <link>https://cybersydicates.com/2016/11/28/welcome/</link>
-      <pubDate>Mon, 28 Nov 2016 12:55:48 -0500</pubDate>
-      
-      <guid>https://cybersydicates.com/2016/11/28/welcome/</guid>
-      <description>&lt;p&gt;Loedfsdsf Loedfsdsf Loedfsdsf Loedfsdsf Loedfsdsf
-Loedfsdsfdfdfdf dfd Loedfsdsfdfdfdf dfd Loedfsdsfdfdfdf dfd Loedfsdsfdfdfdf dfd
-Loedfsdsff dfdf Loedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd
-LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
-</description>
-    </item>
+    <lastBuildDate>Fri, 18 Nov 2016 02:13:50 +0000</lastBuildDate>
+    <atom:link href="http://dev.cybersydicates.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>EmPyre</title>
-      <link>https://cybersydicates.com/project/EmPyre/</link>
+      <link>http://dev.cybersydicates.com/project/EmPyre/</link>
       <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/project/EmPyre/</guid>
+      <guid>http://dev.cybersydicates.com/project/EmPyre/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SimplyEmail</title>
-      <link>https://cybersydicates.com/project/SimplyEmail/</link>
+      <link>http://dev.cybersydicates.com/project/SimplyEmail/</link>
       <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/project/SimplyEmail/</guid>
+      <guid>http://dev.cybersydicates.com/project/SimplyEmail/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;https://travis-ci.org/killswitch-GUI/SimplyEmail&#34;&gt;&lt;img src=&#34;https://travis-ci.org/killswitch-GUI/SimplyEmail.svg?branch=master&#34; alt=&#34;Build Status&#34; /&gt;&lt;/a&gt;
@@ -372,13 +359,13 @@ su@mandiant.com
 
 &lt;h4 id=&#34;email-source&#34;&gt;Email Source:&lt;/h4&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://cybersydicates.com/bootstrap-3.3.5/Screen Shot 2015-11-11 at 5.27.15 PM.png?raw=true&#34; alt=&#34;Alt text&#34; title=&#34;Report&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://dev.cybersydicates.com/bootstrap-3.3.5/Screen Shot 2015-11-11 at 5.27.15 PM.png?raw=true&#34; alt=&#34;Alt text&#34; title=&#34;Report&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;email-section&#34;&gt;Email Section:&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Html report now shows Alerts for Canary Search Results!
-&lt;img src=&#34;https://cybersydicates.com/bootstrap-3.3.5/Screen Shot 2015-11-11 at 5.27.31 PM.png?raw=true&#34; alt=&#34;Alt text&#34; title=&#34;Report Html&#34; /&gt;&lt;/li&gt;
+&lt;img src=&#34;http://dev.cybersydicates.com/bootstrap-3.3.5/Screen Shot 2015-11-11 at 5.27.31 PM.png?raw=true&#34; alt=&#34;Alt text&#34; title=&#34;Report Html&#34; /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;current-email-evasion-techniques&#34;&gt;Current Email Evasion Techniques&lt;/h2&gt;
@@ -439,19 +426,19 @@ Current Issues:
     
     <item>
       <title>Home</title>
-      <link>https://cybersydicates.com/page/home/</link>
+      <link>http://dev.cybersydicates.com/page/home/</link>
       <pubDate>Thu, 03 Nov 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/page/home/</guid>
+      <guid>http://dev.cybersydicates.com/page/home/</guid>
       <description></description>
     </item>
     
     <item>
       <title>EmPyre Collection Operations</title>
-      <link>https://cybersydicates.com/2016/06/21/2016-06-21-empyre-collection-opperations/</link>
+      <link>http://dev.cybersydicates.com/2016/06/21/2016-06-21-empyre-collection-opperations/</link>
       <pubDate>Tue, 21 Jun 2016 20:14:14 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/2016/06/21/2016-06-21-empyre-collection-opperations/</guid>
+      <guid>http://dev.cybersydicates.com/2016/06/21/2016-06-21-empyre-collection-opperations/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/empyre_logo_white.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/empyre_logo_white.png&#34; alt=&#34;empyre_logo_white&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -567,11 +554,26 @@ Current Issues:
     </item>
     
     <item>
+      <title>Welcome</title>
+      <link>http://dev.cybersydicates.com/2016/06/21/welcome/</link>
+      <pubDate>Tue, 21 Jun 2016 20:14:14 +0000</pubDate>
+      
+      <guid>http://dev.cybersydicates.com/2016/06/21/welcome/</guid>
+      <description>&lt;p&gt;sdsd&lt;/p&gt;
+
+&lt;p&gt;Loedfsdsf Loedfsdsf Loedfsdsf Loedfsdsf Loedfsdsf
+Loedfsdsfdfdfdf dfd Loedfsdsfdfdfdf dfd Loedfsdsfdfdfdf dfd Loedfsdsfdfdfdf dfd
+Loedfsdsff dfdf Loedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd
+LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Email Reconnaissance and Phishing Template Generation Made Simple</title>
-      <link>https://cybersydicates.com/2016/05/26/2016-05-26-email-reconnaissance-phishing-template-generation-made-simple/</link>
+      <link>http://dev.cybersydicates.com/2016/05/26/2016-05-26-email-reconnaissance-phishing-template-generation-made-simple/</link>
       <pubDate>Thu, 26 May 2016 21:56:58 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/2016/05/26/2016-05-26-email-reconnaissance-phishing-template-generation-made-simple/</guid>
+      <guid>http://dev.cybersydicates.com/2016/05/26/2016-05-26-email-reconnaissance-phishing-template-generation-made-simple/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;Author: Alexander Rymdeko-Harvey, @Killswitch_GUI &lt;/strong&gt;&lt;/p&gt;
@@ -900,10 +902,10 @@ Current Issues:
     
     <item>
       <title>The Return of the EmPyre</title>
-      <link>https://cybersydicates.com/2016/05/24/2016-05-24-return-empyre-series-3/</link>
+      <link>http://dev.cybersydicates.com/2016/05/24/2016-05-24-return-empyre-series-3/</link>
       <pubDate>Tue, 24 May 2016 14:34:01 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/2016/05/24/2016-05-24-return-empyre-series-3/</guid>
+      <guid>http://dev.cybersydicates.com/2016/05/24/2016-05-24-return-empyre-series-3/</guid>
       <description>
 
 &lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/empyre_logo_white_background.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/empyre_logo_white_background.png&#34; alt=&#34;empyre_logo_white_background&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -1115,10 +1117,10 @@ Current Issues:
     
     <item>
       <title>Alexander Rymdeko-Harvey</title>
-      <link>https://cybersydicates.com/page/alex-rymdeko-harvey/</link>
+      <link>http://dev.cybersydicates.com/page/alex-rymdeko-harvey/</link>
       <pubDate>Sun, 03 Apr 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/page/alex-rymdeko-harvey/</guid>
+      <guid>http://dev.cybersydicates.com/page/alex-rymdeko-harvey/</guid>
       <description>
 
 &lt;h3 id=&#34;rat-repurposing-adversarial-tradecraft&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/h3&gt;
@@ -1129,10 +1131,10 @@ Current Issues:
     
     <item>
       <title>The Team</title>
-      <link>https://cybersydicates.com/page/team/</link>
+      <link>http://dev.cybersydicates.com/page/team/</link>
       <pubDate>Sun, 03 Apr 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/page/team/</guid>
+      <guid>http://dev.cybersydicates.com/page/team/</guid>
       <description>
 
 &lt;h2 id=&#34;alexander-rymdeko-harvey&#34;&gt;Alexander Rymdeko-Harvey&lt;/h2&gt;
@@ -1144,15 +1146,18 @@ Current Issues:
 
 &lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;slacker007&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
 &lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;reaperb0t&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Email Verification and Email Name Creation</title>
-      <link>https://cybersydicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</link>
+      <link>http://dev.cybersydicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</link>
       <pubDate>Sun, 14 Feb 2016 14:23:45 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</guid>
+      <guid>http://dev.cybersydicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</guid>
       <description>
 
 &lt;p&gt;Over the past few months we have been rapidly expanding the capability of SimplyEmail. While it is a very simple tool, it has been extremely successful on a few live engagements I have been on. I feel like it is ready for recommendation to say the least. I did however notice a few key features that some of the guys on the team mentioned that would be nice to have integrated. Thanks to &lt;a href=&#34;https://twitter.com/_wald0&#34;&gt;@_wald0&lt;/a&gt; and his suggestions I have implemented a email verification option. Also I learned a trick or so a few months back from &lt;a href=&#34;https://twitter.com/harmj0y&#34;&gt;@harmj0y&lt;/a&gt; on sick site called &amp;ldquo;Connect6&amp;rdquo;, which seems to populate a large name DB of employees for each company. Also a fellow tester and friend (&lt;a href=&#34;https://twitter.com/nagasecurity&#34;&gt;Joshua Crumbaugh&lt;/a&gt;) let me on to a sick tool for grabbing Linkedin names from bing called &lt;a href=&#34;https://github.com/pan0pt1c0n/PhishBait&#34;&gt;PhishBait&lt;/a&gt;. With all this I set out to build some new capabilities for SimplyEmail and learn some new tricks :)&lt;/p&gt;
@@ -1201,10 +1206,10 @@ Current Issues:
     
     <item>
       <title>SYSTEM Context Persistence in GPO Startup Scripts</title>
-      <link>https://cybersydicates.com/2016/01/25/2016-01-25-system-context-persistence-in-gpo-startup/</link>
+      <link>http://dev.cybersydicates.com/2016/01/25/2016-01-25-system-context-persistence-in-gpo-startup/</link>
       <pubDate>Mon, 25 Jan 2016 04:32:51 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/2016/01/25/2016-01-25-system-context-persistence-in-gpo-startup/</guid>
+      <guid>http://dev.cybersydicates.com/2016/01/25/2016-01-25-system-context-persistence-in-gpo-startup/</guid>
       <description>&lt;p&gt;Interesting enough I was recently experimenting on GPO settings to configure my Applocker for testing and came by Scripts under the (Computer Configuration) settings for GPO. This defiantly caught my attention, since persistence is a cat and mouse game of stored locations / methods. &lt;strong&gt;This has been mentioned but I haven&amp;rsquo;t seen it talked about so hey why not share what I did&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-24-at-10.36.07-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-24-at-10.36.07-PM-1024x761.png&#34; alt=&#34;Screen Shot 2016-01-24 at 10.36.07 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -1305,10 +1310,10 @@ gpupdatep /force
     
     <item>
       <title>Scanning Effectively Through a SOCKS Pivot with Nmap and Proxychains</title>
-      <link>https://cybersydicates.com/2015/12/13/2015-12-13-nmap-and-proxychains-scanning-through-a-socks-piviot/</link>
+      <link>http://dev.cybersydicates.com/2015/12/13/2015-12-13-nmap-and-proxychains-scanning-through-a-socks-piviot/</link>
       <pubDate>Sun, 13 Dec 2015 19:14:20 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/2015/12/13/2015-12-13-nmap-and-proxychains-scanning-through-a-socks-piviot/</guid>
+      <guid>http://dev.cybersydicates.com/2015/12/13/2015-12-13-nmap-and-proxychains-scanning-through-a-socks-piviot/</guid>
       <description>
 
 &lt;p&gt;When ever I am on a pen-test and I come across a major problem (Every OP) that requires some creative solution and I love to share it. Not only that I could help someone else one day, but it really helps me retain the knowledge for future use.&lt;/p&gt;
@@ -1485,10 +1490,10 @@ if __name__ == &amp;quot;__main__&amp;quot;:
     
     <item>
       <title>SimplyEmail v0.5: PDFMiner!</title>
-      <link>https://cybersydicates.com/2015/11/21/2015-11-21-simplyemail-v0-5-pdfminer/</link>
+      <link>http://dev.cybersydicates.com/2015/11/21/2015-11-21-simplyemail-v0-5-pdfminer/</link>
       <pubDate>Sat, 21 Nov 2015 18:32:48 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/2015/11/21/2015-11-21-simplyemail-v0-5-pdfminer/</guid>
+      <guid>http://dev.cybersydicates.com/2015/11/21/2015-11-21-simplyemail-v0-5-pdfminer/</guid>
       <description>
 
 &lt;h2 id=&#34;major-addition-to-simplyemail-core&#34;&gt;Major addition to SimplyEmail Core&lt;/h2&gt;
@@ -1555,10 +1560,10 @@ if __name__ == &amp;quot;__main__&amp;quot;:
     
     <item>
       <title>Email Harvesting with SimplyEmail</title>
-      <link>https://cybersydicates.com/2015/11/21/2015-11-21-email-harvesting-with-simplyemail/</link>
+      <link>http://dev.cybersydicates.com/2015/11/21/2015-11-21-email-harvesting-with-simplyemail/</link>
       <pubDate>Sat, 21 Nov 2015 14:58:47 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/2015/11/21/2015-11-21-email-harvesting-with-simplyemail/</guid>
+      <guid>http://dev.cybersydicates.com/2015/11/21/2015-11-21-email-harvesting-with-simplyemail/</guid>
       <description>
 
 &lt;h2 id=&#34;email-recon-made-easy&#34;&gt;Email Recon Made Easy&lt;/h2&gt;
@@ -1664,10 +1669,10 @@ root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
     
     <item>
       <title>A No Bull Guide to Malicious Windows Trouble Shooting Packs and Application whitelist Bypass</title>
-      <link>https://cybersydicates.com/2015/10/16/2015-10-16-a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</link>
+      <link>http://dev.cybersydicates.com/2015/10/16/2015-10-16-a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</link>
       <pubDate>Fri, 16 Oct 2015 13:36:50 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/2015/10/16/2015-10-16-a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</guid>
+      <guid>http://dev.cybersydicates.com/2015/10/16/2015-10-16-a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</guid>
       <description>
 
 &lt;h3 id=&#34;malicious-windows-trouble-shooting-package&#34;&gt;Malicious Windows Trouble Shooting Package&lt;/h3&gt;

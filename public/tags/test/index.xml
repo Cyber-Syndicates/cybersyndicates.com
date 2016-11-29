@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cyber Syndicates</title>
+    <link>http://dev.cybersydicates.com/tags/test/index.xml</link>
+    <description>Recent content on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Alexander Rymdeko-Harvey</copyright>
+    <atom:link href="http://dev.cybersydicates.com/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>EmPyre Collection Operations</title>
+      <link>http://dev.cybersydicates.com/2016/06/21/2016-06-21-empyre-collection-opperations/</link>
+      <pubDate>Tue, 21 Jun 2016 20:14:14 +0000</pubDate>
+      
+      <guid>http://dev.cybersydicates.com/2016/06/21/2016-06-21-empyre-collection-opperations/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/empyre_logo_white.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/empyre_logo_white.png&#34; alt=&#34;empyre_logo_white&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This post is number 4 of the EmPyre series. Thanks to the entire ATD family and dev team of EmPyre:&lt;/p&gt;
+
+&lt;p&gt;@rvrsh3ll — @harmj0y — @xorrior — @CptJesus&lt;/p&gt;
+
+&lt;p&gt;EmPyre can be found here: &lt;a href=&#34;https://github.com/adaptivethreat/EmPyre&#34;&gt;https://github.com/adaptivethreat/EmPyre&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Master list of the seriers: &lt;a href=&#34;http://www.harmj0y.net/blog/empyre/building-an-empyre-with-python/&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;5/12/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;http://www.harmj0y.net/blog/?p=2637&amp;amp;preview=true&#34;&gt;Building an EmPyre with Python&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;5/18/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;http://Operating with EmPyre&#34;&gt;Operating with EmPyre&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;5/24/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;https://www.xorrior.com/the-return-of-the-empyre/&#34;&gt;The Return Of the EmPyre&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;5/31/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;http://www.harmj0y.net/blog/empyre/os-x-office-macros-with-empyre/&#34;&gt;OS X Office Macros with EmPyre&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;empyre-introduction-to-collection-operations&#34;&gt;&lt;strong&gt;EmPyre: Introduction to collection operations&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Information gathering may be one of the most vital actions to execute on a target. When it comes to EmPyre, we have implemented a suite of tools and techniques to accomplish a large subset of our needs. The interesting part about collection is it’s often used at nearly every phase of the attack cycle. This week we will be covering the various pre &amp;amp; post collection modules we have built!&lt;/p&gt;
+
+&lt;h4 id=&#34;pre-escalation-collection-methods&#34;&gt;&lt;strong&gt;Pre-Escalation Collection Methods&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;One of our favorite, and easiest, methods is collecting a large subset of user information in OS X. Due the heavy use of SQL to store user information, it is extremely easy to query this data. For instance: with the “browser_dump” module we can start an operation to obtain browser history, which helps gain situational awareness of the target system. While this can be used in many scenarios, it is especially useful because the module does not require an elevated context; as such, it may give you pointers for the target you&amp;rsquo;re currently on. Once you are up and running in EmPyre you can dump our user’s browser history for Safari and Chrome.&lt;/p&gt;
+
+&lt;p&gt;After quickly generating some history on my test VM we have data!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture1.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture1.png&#34; alt=&#34;Picture1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Next up on SQL data: the iMessage data store! iMessage data store is used by many targets, and is often synced with iCloud (SMS and IMessage data). The interesting thing about the iMessage app is its ability to integrate multiple chat platforms - not just standard iMessaging from Apple. Examples of platforms with this funcionality include: Yahoo, Jabber, Aol, AIM, Google, etc.  Information collection through data mining is sometimes needed for additional escalation, and iMessage makes a great location to search for data like passwords. Using the “imessage_dump” module we can search for specific terms in the users iMessage data store. This will enumerate the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Account – The corresponding account user&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Service – The provider of the message&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Country – Where the message originated&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Number – If a text message, will be the senders telephone number&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ROWID – This is the row the message was stored, can be helpful if you pull the DB back&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Date – Date of the message&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Message – The text enumerated from the selected message&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Type – Secondary field for the type of account used within the app&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture2.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture2.png&#34; alt=&#34;Picture2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The next method of collection requires using osascript (Apples scripting language) we are able to force applications to prompt for credentials potentially gathering a password! Here is the “Prompt” module in action:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture3.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture3.png&#34; alt=&#34;Picture3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once setup we can easily force the App of choice to prompt a dialog box requesting a password. This can be a great method to gather credentials and potentially escalate. This and the next module have been adapted from work from &lt;a href=&#34;https://twitter.com/fuzzynop?lang=en&#34;&gt;@FuzzyNop&lt;/a&gt;, so big shout out the work he puts in.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture4.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture4.png&#34; alt=&#34;Picture4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;One of my fellow friends, @enigma0x3 (&lt;a href=&#34;https://enigma0x3.net/2015/01/21/phishing-for-credentials-if-you-want-it-just-ask/&#34;&gt;https://enigma0x3.net/2015/01/21/phishing-for-credentials-if-you-want-it-just-ask/)&lt;/a&gt;) has an interesting technique to get credentials on engagments using the standard Windows login prompt. The great part is OS X has something similar we are able to implement into our collection strategy. Using the osascript method we can easily weaponize the “ScreenSaverEngine” application to request credentials.  We can force the standard screensaver, request creds, and test them against the current users Apple Key Chain. Using the &lt;strong&gt;security&lt;/strong&gt; command we can lock the users key chain and use the creds supplied to attempt to unlock using the follwing command: **security unlock-keychain –p Test. **This can be easily deployed in a loop to only unlock the screensaver when the user successfully enters the correct credentials. While it may not be extremely OPSEC friendly, it may go unnoticed and sucessfuly result in creds.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture5.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture5.png&#34; alt=&#34;Picture5&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;A user will be prompted repeatedly until successful creds or the exit count is reached.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture6.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture6.png&#34; alt=&#34;Picture6&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;One of the key collection modules we use during an engagment is clipboard collection. The main reason clipboard monitoring is key in our tradecraft is due to the ease of collection when keylogging fails to capture creds. This allows you to gather credentials and target specific times when password vaults are used in conjunction with the screenshot. Allowing for targeted collection of potential passwords and sensitive data. Using native API calls NSPasteboard, NSStringPboardType we can prevent using built in commands and potential signatures that could get us caught.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture7.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture7.png&#34; alt=&#34;Picture7&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;post-exploit-collection-methods&#34;&gt;&lt;strong&gt;Post-Exploit Collection Methods&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Often during operations, we move from a recon &amp;amp; escalation stage to a post exploitation information gathering process. This is truly the heart of end state operations and proper tools can help speed up the process as well as help a tester reach the data / show impact. When EmPyre was being developed we often attempted to explain and relate it to processes and procedures used during a windows environment.&lt;/p&gt;
+
+&lt;p&gt;The first module I want to start with is the screenshot module. Due to testers reliance on this module it may be one of the most important post exploitation modules in our arsenal. While EmPyre currently supports two different techniques of screenshot, the native_screenshot module may be concern if certain AV products are in place. This is due to using the &lt;em&gt;screenshot&lt;/em&gt; command, and potential logging.  While the standard module uses system APIs to capture the screen, parse the image, and drop to disk in a temporary location. During my research I did uncover a few methods to properly parse all the images completely in memory, but currently due to lack of the PIL library standalone 2.7 does not have the ability to parse completely in memory.  So relying on the Quartz API is a current constraint in this method.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture8.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture8.png&#34; alt=&#34;Picture8&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;One feature within the EmPyre code base is different tasking types. This allows for different code paths of execution. For example, the iMessage module used dynamic code execution while the screenshot uses dynamic code execution with saved output. This is done by dropping to disk, opening the file, base64ing the raw file and the EmPyre server, and then saving it to your downloads folder. This makes for easy file management for modules and keeps things organized.&lt;/p&gt;
+
+&lt;p&gt;Once basic situational awareness has been completed on a target, we often transition to reaching end state client goals. This is often referred to as the “Crown Jewels” or high value targets. Generally, it takes a large amount of post exploitation intelligence and the ability to collect on all your endpoints. Keylogging is an amazing technique that has been extremely successful for gathering creds, enumerating users work roles, collecting info, or even understanding the tools they are using to interact with the asset. Bellow you will see this being employed using an adapted ruby keylogger. @ joev  (&lt;a href=&#34;https://github.com/gojhonny/metasploit-framework/blob/master/modules/post/osx/capture/keylog_recorder.r&#34;&gt;https://github.com/gojhonny/metasploit-framework/blob/master/modules/post/osx/capture/keylog_recorder.r)&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture9.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture9.png&#34; alt=&#34;Picture9&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once the key logger is up and running you can easily check it using the built in shell commands or once complete kill the PID, use the built in download, and delete the file from disk.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture10.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture10.png&#34; alt=&#34;Picture10&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once the file has been retrieved from the target you will have something similar (to the below) representing the application, key stroke, and keyboard commands.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture20.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture20.png&#34; alt=&#34;Picture20&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;While operating on OS X you for sure miss the ease of mimikatz for gathering credentials, but while password collection is possible in some cases cracking potential evaluated accounts, admins or service accounts may be extremely useful for lateral movement. Within EmPyre we have built in the ability for hashdump and nicely output these hashes in hashcat ready format!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture11.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture11.png&#34; alt=&#34;Picture11&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It is often thought that due to the out-of-the box setup that lateral movement is just not an option. This is not always the case in the corporate environments. Admins are generally going to administrate, right? They need some method of software, patch, or user management for their end points. This can result in SSH being deployed to most corporate OS X assets, or maybe a custom solution. While this blog does not cover the Kerberos implications, in corporate environments, due to the heavy use of Active Directory it can be an entirely new method of lateral movement. Stay tuned for more on that subject!&lt;/p&gt;
+
+&lt;p&gt;The last module we will be covering is the keychaindump. While this module may result in a large subset of user data and crucial passwords it does have limitations. Currently, this will not work against the latest OS X platform. The latest usable version was Yosemite, due to a vulnerability that allowed for researches to pull the master key candidate from memory once in an elevated state. Due to the new System Integrity Protections (SIP) in El Captain the ability to retrieve this master key has been properly stored in memory protected by SIP.  Not all hope is lost though! I have been extremely successful in using other tools to parse the keychain with the user’s credentials. This can be done with either a memory image or the keychain file itself.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture13.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture13.png&#34; alt=&#34;Picture13&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once the keychain is local we can use a python tool called chainbreaker (&lt;a href=&#34;https://github.com/n0fate/chainbreaker&#34;&gt;https://github.com/n0fate/chainbreaker)&lt;/a&gt;). This allows for the use of the password or the master key and will parse and decrypt the entire keychain offline. While this requires the password, a root context is not needed to download the keychain, allowing for offline attempts against the keychain which can be quite useful.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture14.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture14.png&#34; alt=&#34;Picture14&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Hopefully this has helped clear up different use cases when it comes to EmPyre collection operations and the corresponding modules. As always we plan to release blogs near weekly covering the different use cases of EmPyre, next the team will be covering the injection of Kerberos tickets&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Welcome</title>
+      <link>http://dev.cybersydicates.com/2016/06/21/welcome/</link>
+      <pubDate>Tue, 21 Jun 2016 20:14:14 +0000</pubDate>
+      
+      <guid>http://dev.cybersydicates.com/2016/06/21/welcome/</guid>
+      <description>&lt;p&gt;sdsd&lt;/p&gt;
+
+&lt;p&gt;Loedfsdsf Loedfsdsf Loedfsdsf Loedfsdsf Loedfsdsf
+Loedfsdsfdfdfdf dfd Loedfsdsfdfdfdf dfd Loedfsdsfdfdfdf dfd Loedfsdsfdfdfdf dfd
+Loedfsdsff dfdf Loedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd
+LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

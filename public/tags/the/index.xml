@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cyber Syndicates</title>
-    <link>https://cybersydicates.com/tags/the/index.xml</link>
+    <link>http://dev.cybersydicates.com/tags/the/index.xml</link>
     <description>Recent content on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Alexander Rymdeko-Harvey</copyright>
-    <atom:link href="https://cybersydicates.com/tags/the/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://dev.cybersydicates.com/tags/the/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Email Verification and Email Name Creation</title>
-      <link>https://cybersydicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</link>
+      <link>http://dev.cybersydicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</link>
       <pubDate>Sun, 14 Feb 2016 14:23:45 +0000</pubDate>
       
-      <guid>https://cybersydicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</guid>
+      <guid>http://dev.cybersydicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</guid>
       <description>
 
 &lt;p&gt;Over the past few months we have been rapidly expanding the capability of SimplyEmail. While it is a very simple tool, it has been extremely successful on a few live engagements I have been on. I feel like it is ready for recommendation to say the least. I did however notice a few key features that some of the guys on the team mentioned that would be nice to have integrated. Thanks to &lt;a href=&#34;https://twitter.com/_wald0&#34;&gt;@_wald0&lt;/a&gt; and his suggestions I have implemented a email verification option. Also I learned a trick or so a few months back from &lt;a href=&#34;https://twitter.com/harmj0y&#34;&gt;@harmj0y&lt;/a&gt; on sick site called &amp;ldquo;Connect6&amp;rdquo;, which seems to populate a large name DB of employees for each company. Also a fellow tester and friend (&lt;a href=&#34;https://twitter.com/nagasecurity&#34;&gt;Joshua Crumbaugh&lt;/a&gt;) let me on to a sick tool for grabbing Linkedin names from bing called &lt;a href=&#34;https://github.com/pan0pt1c0n/PhishBait&#34;&gt;PhishBait&lt;/a&gt;. With all this I set out to build some new capabilities for SimplyEmail and learn some new tricks :)&lt;/p&gt;
