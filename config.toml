@@ -1,0 +1,62 @@
+baseurl = "https://cybersydicates.com/"
+title = "Cyber Syndicates"
+theme = "ghostwriter"
+languageCode = "en-us"
+copyright = "Alexander Rymdeko-Harvey"
+googleAnalytics = "UA-64026800-1"
+disqusShortname = "cybersyndicates-com"
+
+
+[Author]
+    name = "Alexander Rymdeko-Harvey"
+    profile = "https://google.com/+XXX"
+
+[Taxonomies]
+    tag = "tags"
+
+[Params]
+	logo2 = "/logo.png"
+    intro = true
+    headline = "CybeЯ Syйdicдtes"
+    description = "Red Team | Hacking | Infosec stuff | Beer | HUNT | Blue Team <3"
+    github = "https://github.com/"
+    gitlab = "https://gitlab.com/XXX"
+    linkedin = "https://linkedin.com/in/XXX/"
+    gplus = "https://google.com/+XXX"
+    twitter = "https://twitter.com/XXX"
+    stackoverflow = "https://stackoverflow.com/users/XXX/YYY"
+    opengraph = true
+
+
+[Permalinks]
+    post = "/:year/:month/:day/:filename/"
+
+[[menu.main]]
+    name = "Blog"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "Home"
+    url = "/page/home/"
+    weight = 2
+
+[[menu.main]]
+    name = "Projects"
+    url = "/project/"
+    weight = 3
+
+[[menu.main]]
+    name = "Contact"
+    url = "/page/contact/"
+    weight = 4
+
+[[menu.main]]
+    name = "About"
+    url = "/page/about/"
+    weight = 5
+
+[[menu.main]]
+    name = "The Team"
+    url = "/page/team/"
+    weight = 5
