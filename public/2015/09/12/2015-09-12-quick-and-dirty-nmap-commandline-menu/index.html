@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Quick and Dirty NMAP Commandline Menu &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network. Works against individual IP&rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs. Outputs into separate files in the local directory. Can be adjusted and scaled. Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post. Check out the code on GIT. https://github.com/slacker007/simpleNMAP
+********************************* Code Below *******************************
+import os import sys import subprocess chances = 4 end_prog = 0">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.17" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Quick and Dirty NMAP Commandline Menu">
+<meta property="og:description" content="Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network. Works against individual IP&rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs. Outputs into separate files in the local directory. Can be adjusted and scaled. Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post. Check out the code on GIT. https://github.com/slacker007/simpleNMAP
+********************************* Code Below *******************************
+import os import sys import subprocess chances = 4 end_prog = 0">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cybersydicates.com/2015/09/12/2015-09-12-quick-and-dirty-nmap-commandline-menu/">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/normalize.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/highlight.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="https://cybersydicates.com/">
+                            <img src="/logo.png" alt="Quick and Dirty NMAP Commandline Menu" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://cybersydicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/XXX">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://gitlab.com/XXX">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/XXX/YYY">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/XXX/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/&#43;XXX">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Home" href="/page/home/">Home</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container">
+        <header class="post-header">
+    <h1 class="post-title">Quick and Dirty NMAP Commandline Menu</h1>
+    
+</header>
+
+        <div class="post-content clearfix">
+    
+
+    <p>Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network.  Works against individual IP&rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs.  Outputs into separate files in the local directory.  Can be adjusted and scaled.  Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post.  Check out the code on GIT.   <a href="https://github.com/slacker007/simpleNMAP">https://github.com/slacker007/simpleNMAP</a></p>
+
+<p>********************************* Code Below *******************************</p>
+
+<p>import os
+import sys
+import subprocess
+chances = 4
+end_prog = 0</p>
+
+<p>def menu2():
+    cidr = raw_input(&ldquo;Please enter the network cider or IP to be scanned EX:192.168.1.0/16 or 10.10.1.4 &ldquo;)
+    return cidr
+def menu1(chances):
+    print &ldquo;\n(1) Host Discovery: &ldquo;
+    print &ldquo;(2) Port &amp; Service Discovery (top ports only): &ldquo;
+    print &ldquo;(3) Port &amp; Service Discovery (All 65536): &ldquo;
+    print &ldquo;(4) OS Discovery: &ldquo;
+    print &ldquo;(5) RUN ALL \n&rdquo;
+    choice1 = raw_input(&ldquo;What type of scan would you like to run? &ldquo;)
+if choice1 == &lsquo;3&rsquo;:
+        print &ldquo;\n******* If you are running this against a network range it will take a while! Best if used agaist a single IP or small range of addresses ****<strong><em>\n&rdquo;
+    if choice1 not in (&ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo;, &ldquo;4&rdquo;, &ldquo;5&rdquo;):
+        if chances &lt;= 1:
+            exit()
+        chances = chances - 1
+        print &ldquo;Error, Please check your answer choice and try again: %d tries remaining: &ldquo; % (chances)
+        menu1(chances)
+    else:
+        print &ldquo;Choice Successful&rdquo;
+        return choice1
+def menu3(chances, end_prog):
+    if chances &gt; 1:
+        choice3 = raw_input(&ldquo;would you like to run another scan? (y or n) &ldquo;)
+        choice3 = choice3.lower()
+        if choice3 not in (&lsquo;y&rsquo;, &lsquo;n&rsquo;):
+            print &ldquo;</em></strong> INPUT ERROR, Please enter either y or n ***&rdquo;
+            chances = chances - 1
+            menu3(chances, end_prog)
+    if str(choice3) == &lsquo;n&rsquo;:
+        exit()
+def scanner(cidr, choice1, chances):
+    if choice1 == &lsquo;1&rsquo;:
+        subprocess.check_call([&lsquo;nmap&rsquo;, &lsquo;-n&rsquo;, &lsquo;-v&rsquo;, &lsquo;-PN&rsquo;, &lsquo;-sn&rsquo;, &lsquo;-PE&rsquo;, &lsquo;-PP&rsquo;, &lsquo;-T4&rsquo;, &lsquo;-ohostlist.UP&rsquo;, cidr])
+    elif choice1 == &lsquo;2&rsquo;:
+        subprocess.check_call([&lsquo;nmap&rsquo;, &lsquo;-n&rsquo;, &lsquo;-v&rsquo;, &lsquo;-PN&rsquo;, &lsquo;-sV&rsquo;,&lsquo;-oservices2&rsquo;,cidr])</p>
+
+<pre><code>elif choice1 == '3':
+    subprocess.check_call(['nmap', '-n', '-v', '-PN', '-sV', '-p 1-65535', '-oservices3', cidr])
+elif choice1 == '4':
+    subprocess.check_call(['nmap', '-n', '-v', '-Pn', '-O', '-oosversions', cidr])
+elif choice1 == '5': 
+    subprocess.check_call(['nmap', '-n', '-v', '-PN', '-sn', '-PE', '-PP', '-T4', '-ohostlist.UP', cidr])
+    subprocess.check_call(['nmap', '-n', '-v', '-PN', '-sV', '-p 1-65535', '-oservices3', cidr])
+    subprocess.check_call(['nmap', '-n', '-v', '-Pn', '-O', '-oosversions', cidr])
+else:
+    return
+</code></pre>
+
+<p>while (1):
+    choice1 = menu1(chances)
+    cidr = menu2()
+    scanner(cidr, choice1, chances)
+    menu3(chances, end_prog)</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+                 <a href="/tags/code/">code</a>
+            
+                 <a href="/tags/commandline/">commandline</a>
+            
+                 <a href="/tags/nmap/">nmap</a>
+            
+                 <a href="/tags/open-source/">open source</a>
+            
+                 <a href="/tags/python/">python</a>
+            
+        </p>
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=Quick%20and%20Dirty%20NMAP%20Commandline%20Menu&url=https%3a%2f%2fcybersydicates.com%2f2015%2f09%2f12%2f2015-09-12-quick-and-dirty-nmap-commandline-menu%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcybersydicates.com%2f2015%2f09%2f12%2f2015-09-12-quick-and-dirty-nmap-commandline-menu%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fcybersydicates.com%2f2015%2f09%2f12%2f2015-09-12-quick-and-dirty-nmap-commandline-menu%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://cybersydicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="https://cybersydicates.com/js/jquery.fitvids.js"></script>
+        <script src="https://cybersydicates.com/js/scripts.js"></script>
+    </body>
+</html>
+

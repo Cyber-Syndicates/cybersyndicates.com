@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Importing Burp Suite CA cert .der into Kali for API testing &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="Importing Burp Suite CA Just recently I had to test some API calls with a custom tool written to work with RestClient, unfortunately RestClient uses OpenSSL to check the SSL against the known root CA. This throws a nice error, like invalid certificate error when trying to point your bash shell at the HTTP proxy like Burp. With tons of headache I really couldn&rsquo;t find any good info on importing the SSL certs to Kali from burps CA export function.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.17" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Importing Burp Suite CA cert .der into Kali for API testing">
+<meta property="og:description" content="Importing Burp Suite CA Just recently I had to test some API calls with a custom tool written to work with RestClient, unfortunately RestClient uses OpenSSL to check the SSL against the known root CA. This throws a nice error, like invalid certificate error when trying to point your bash shell at the HTTP proxy like Burp. With tons of headache I really couldn&rsquo;t find any good info on importing the SSL certs to Kali from burps CA export function.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cybersydicates.com/2015/10/01/2015-10-01-importing-burp-suite-ca-cert-der-into-kali-for-api-testing/">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/normalize.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/highlight.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="https://cybersydicates.com/">
+                            <img src="/logo.png" alt="Importing Burp Suite CA cert .der into Kali for API testing" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://cybersydicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/XXX">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://gitlab.com/XXX">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/XXX/YYY">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/XXX/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/&#43;XXX">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Home" href="/page/home/">Home</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container">
+        <header class="post-header">
+    <h1 class="post-title">Importing Burp Suite CA cert .der into Kali for API testing</h1>
+    
+</header>
+
+        <div class="post-content clearfix">
+    
+
+    
+
+<h2 id="importing-burp-suite-ca">Importing Burp Suite CA</h2>
+
+<p>Just recently I had to test some API calls with a custom tool written to work with RestClient, unfortunately RestClient uses OpenSSL to check the SSL against the known root CA. This throws a nice error, like invalid certificate error when trying to point your bash shell at the HTTP proxy like Burp. With tons of headache I really couldn&rsquo;t find any good info on importing the SSL certs to Kali from burps CA export function.</p>
+
+<p>After a bit of research I did however find a few posts for each step, just no in one easy location. Sometimes I write these posts just for my own repository of headache fixes!</p>
+
+<p><em>Hope this helps some out, it will help me in the future:</em></p>
+
+<h3 id="step-by-step-execution">Step-By-Step Execution</h3>
+
+<hr />
+
+<p>In Burp go-to Proxy -&gt; Options -&gt; Export CA Certificate:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-01-at-10.52.29-AM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-01-at-10.52.29-AM.png" alt="Screen Shot 2015-10-01 at 10.52.29 AM" /></a></p>
+
+<p>Save that cert to your Desktop or anywhere you want really. Now its time convert your cert from a .DER to a .PEM</p>
+
+<pre><code>openssl x509 -inform DER -outform PEM -in burpca.der -out myca.crt.pem
+</code></pre>
+
+<p> Move cert:</p>
+
+<pre><code>cp  myca.crt.pem /etc/ssl/certs/myca.crt.pem
+</code></pre>
+
+<p>Go and run just for fun:</p>
+
+<pre><code>update-ca-certificates
+</code></pre>
+
+<p> Than add your HTTP proxy environmental variable for the RestClient to pick up, most CLI tools do check this for proxy information. This could be helpful for other tools as well.</p>
+
+<pre><code>export http_proxy=http://127.0.0.1:8080/
+</code></pre>
+
+<p> At this point you should be up and running for the use of burp and your API you fuzz.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=Importing%20Burp%20Suite%20CA%20cert%20.der%20into%20Kali%20for%20API%20testing&url=https%3a%2f%2fcybersydicates.com%2f2015%2f10%2f01%2f2015-10-01-importing-burp-suite-ca-cert-der-into-kali-for-api-testing%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcybersydicates.com%2f2015%2f10%2f01%2f2015-10-01-importing-burp-suite-ca-cert-der-into-kali-for-api-testing%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fcybersydicates.com%2f2015%2f10%2f01%2f2015-10-01-importing-burp-suite-ca-cert-der-into-kali-for-api-testing%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://cybersydicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="https://cybersydicates.com/js/jquery.fitvids.js"></script>
+        <script src="https://cybersydicates.com/js/scripts.js"></script>
+    </body>
+</html>
+

@@ -2,13 +2,143 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>/</loc>
+    <loc>https://cybersydicates.com/</loc>
     <lastmod>2016-11-28T12:55:48-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/welcome/</loc>
+    <loc>https://cybersydicates.com/2016/11/28/welcome/</loc>
     <lastmod>2016-11-28T12:55:48-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/project/EmPyre/</loc>
+    <lastmod>2016-11-18T02:13:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/project/SimplyEmail/</loc>
+    <lastmod>2016-11-18T02:13:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/page/home/</loc>
+    <lastmod>2016-11-03T02:13:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2016/06/21/2016-06-21-empyre-collection-opperations/</loc>
+    <lastmod>2016-06-21T20:14:14+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2016/05/26/2016-05-26-email-reconnaissance-phishing-template-generation-made-simple/</loc>
+    <lastmod>2016-05-26T21:56:58+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2016/05/24/2016-05-24-return-empyre-series-3/</loc>
+    <lastmod>2016-05-24T14:34:01+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/page/alex-rymdeko-harvey/</loc>
+    <lastmod>2016-04-03T02:13:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/page/team/</loc>
+    <lastmod>2016-04-03T02:13:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</loc>
+    <lastmod>2016-02-14T14:23:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2016/01/25/2016-01-25-system-context-persistence-in-gpo-startup/</loc>
+    <lastmod>2016-01-25T04:32:51+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/12/13/2015-12-13-nmap-and-proxychains-scanning-through-a-socks-piviot/</loc>
+    <lastmod>2015-12-13T19:14:20+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/11/21/2015-11-21-simplyemail-v0-5-pdfminer/</loc>
+    <lastmod>2015-11-21T18:32:48+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/11/21/2015-11-21-email-harvesting-with-simplyemail/</loc>
+    <lastmod>2015-11-21T14:58:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/10/16/2015-10-16-a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</loc>
+    <lastmod>2015-10-16T13:36:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/10/01/2015-10-01-importing-burp-suite-ca-cert-der-into-kali-for-api-testing/</loc>
+    <lastmod>2015-10-01T15:15:53+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/09/17/2015-09-17-windows-driver-and-service-enumeration-with-python/</loc>
+    <lastmod>2015-09-17T20:13:43+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/09/13/2015-09-13-malvertizing-like-a-pro-bsidesaugusta2015/</loc>
+    <lastmod>2015-09-13T21:38:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/09/12/2015-09-12-quick-and-dirty-nmap-commandline-menu/</loc>
+    <lastmod>2015-09-12T02:34:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/06/20/2015-06-20-advance-active-monitoring-with-ossec/</loc>
+    <lastmod>2015-06-20T01:57:53+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/06/15/2015-06-15-incident-response-time-is-money/</loc>
+    <lastmod>2015-06-15T12:46:07+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/06/14/2015-06-14-email-harvesting-with-html-scraping-module-theharvester/</loc>
+    <lastmod>2015-06-14T01:26:31+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/06/10/2015-06-10-sms-log-alert/</loc>
+    <lastmod>2015-06-10T18:27:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/06/10/2015-06-10-oclhashcat-tutorial/</loc>
+    <lastmod>2015-06-10T18:04:20+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/2015/06/10/2015-06-10-veil-evasion-aes-encrypted-httpkey-request-module/</loc>
+    <lastmod>2015-06-10T02:10:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/page/about/</loc>
+    <lastmod>2015-04-03T02:13:50+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cybersydicates.com/page/contact/</loc>
+    <lastmod>2015-04-03T02:13:50+00:00</lastmod>
   </url>
   
 </urlset>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Scanning Effectively Through a SOCKS Pivot with Nmap and Proxychains &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="When ever I am on a pen-test and I come across a major problem (Every OP) that requires some creative solution and I love to share it. Not only that I could help someone else one day, but it really helps me retain the knowledge for future use.
+This past engagement we where on a very unique network dealing with ICS devices and a ton of Unix backend servers, while still handling our normal pen test methodology on the side (No Time to play).">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.17" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Scanning Effectively Through a SOCKS Pivot with Nmap and Proxychains">
+<meta property="og:description" content="When ever I am on a pen-test and I come across a major problem (Every OP) that requires some creative solution and I love to share it. Not only that I could help someone else one day, but it really helps me retain the knowledge for future use.
+This past engagement we where on a very unique network dealing with ICS devices and a ton of Unix backend servers, while still handling our normal pen test methodology on the side (No Time to play).">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cybersydicates.com/2015/12/13/2015-12-13-nmap-and-proxychains-scanning-through-a-socks-piviot/">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/normalize.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/highlight.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="https://cybersydicates.com/">
+                            <img src="/logo.png" alt="Scanning Effectively Through a SOCKS Pivot with Nmap and Proxychains" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://cybersydicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/XXX">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://gitlab.com/XXX">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/XXX/YYY">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/XXX/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/&#43;XXX">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Home" href="/page/home/">Home</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container">
+        <header class="post-header">
+    <h1 class="post-title">Scanning Effectively Through a SOCKS Pivot with Nmap and Proxychains</h1>
+    
+</header>
+
+        <div class="post-content clearfix">
+    
+
+    
+
+<p>When ever I am on a pen-test and I come across a major problem (Every OP) that requires some creative solution and I love to share it. Not only that I could help someone else one day, but it really helps me retain the knowledge for future use.</p>
+
+<p>This past engagement we where on a very unique network dealing with ICS devices and a ton of Unix backend servers, while still handling our normal pen test methodology on the side (No Time to play). While I feel comfortable operating in most network environments, *NIX based environments generally pose to elevate the difficulty of lateral movement and achieving final end state goals of the OP. In this environment most of the critical assets we where targeting where properly VLAN’ed off and proper network segmentation was in place.</p>
+
+<p>After initial host discovery, we noticed our active host count was low and we figured we needed to gain a foothold on a dual homed box. Gaining a foothold didn’t take long on a lovely Unix jump box. After confirming we could hit multiple VLANs and a known target, it was time to re-scan for our initial host discovery.</p>
+
+<p>In the past I have played around with getting Nmap to scan through Tor, and there are plenty of those tutorials on the web. But this time I had to perform a larger scan of multiple IP’s (/16) for an initial host discovery. I knew I could use the Unix jump box as a SOCKS4/5 proxy to funnel all my scan data through using SSH without dropping anything to disk.</p>
+
+<p>Here is the idea:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-5.42.29-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-5.42.29-PM-1024x380.png" alt="Screen Shot 2015-12-11 at 5.42.29 PM" /></a></p>
+
+<p>The first step is to setup your SSH SOCKS Proxy:</p>
+
+<pre><code>ssh -DnF 8080 user@jump-box
+</code></pre>
+
+<p>After that was setup I had to configure ProxyChains:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-6.47.24-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-6.47.24-PM.png" alt="Screen Shot 2015-12-11 at 6.47.24 PM" /></a></p>
+
+<p>Turn on Quite mode for ProxyChains</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-6.48.36-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-6.48.36-PM.png" alt="Screen Shot 2015-12-11 at 6.48.36 PM" /></a></p>
+
+<p>As we move forward we will discover the timeouts section will have to be tinkered with. This is key to optimizing your performance with Nmap.</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-6.55.59-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-6.55.59-PM.png" alt="Screen Shot 2015-12-11 at 6.55.59 PM" /></a></p>
+
+<p>Lastly set up the strike chain.</p>
+
+<h3 id="heart-aches-with-nmap">Heart Aches with Nmap</h3>
+
+<p>So now we are at the main point of even writing this blog. Before when test scanning through Proxy tunnels I only did one or two address at a time. But in this case I needed to scan a large amount of IP space in a reasonable time table. In the past few months I have greatly optimized my scanning techniques to get the most out of my discovery scans. Working with a team of 3-5 can be tough with coordination and when conducting a internal pen-test I may need to get through generally entire /8 or a few /16’s. In this case I had a potential /16 behind my jump box.</p>
+
+<p>So after following my SOP’s I noticed just firing off Nmap into this SOCKS proxy tunnel wasn’t going to cut it. We experienced large drops in performance and Nmap’s performance and timing parameters weren’t working correctly. Here is my standard Nmap String (Internal scan):</p>
+
+<p>Nmap -Pn -n -sS –p 21-23,25,53,111,137,139,445,80,443,3389,5900,8080,8443 &ndash;min-hostgroup 255 &ndash;min-rtt-timeout 1ms &ndash;max-rtt-timeout 70ms &ndash;max-retries 0 &ndash;max-scan-delay 0 &ndash;min-rate 2000 -oA <customer-#> -vvv &ndash;open -iL <IPLIST></p>
+
+<p>But after 2 minutes of scanning with this I noticed a few things:</p>
+
+<ul>
+<li><p>Parallel scans weren’t taking place</p></li>
+
+<li><p>Timing and performance aspects don’t work</p></li>
+
+<li><p>Nmap cant perform &ndash;defeat-rst-ratelimit with full TCP Connect scans –sT</p></li>
+
+<li><p>It would wait the full 1500ms for a port to time-out (Rmbr the Proxy config)</p></li>
+</ul>
+
+<p>A ton of these problems stem from the fact that we are using a SOCKS proxy, and the nature of the connect scan. When you scan from your Kali system you perform the following Nmap -&gt; Proxy-chains -&gt; SOCKS (Jump Box) -&gt; Target System. I discovered that even though you have all the timing settings setup Nmap is going to interpret that the Half Open connection with the SOCKS proxy as open and will let it hang till ProxyChains literally kills the connection due to a (TCP-Read-Timeout). At first I thought I could solve this issue using the &ldquo;&ndash;host-timeout 80ms&rdquo; flag. But I discovered once that host-timeout was reached it will completely kill the connection (NMAP ADD IN A PORT TIMEOUT!).</p>
+
+<p>Instantly I knew I had to build out a quick script to help reduce the time it would take get through this scan. So I quickly hacked together a multi processed Python script to launch separate Proxychain / Nmap instances. This script sped up the time dramatically, and incase one process was hung the others could continue on rather than coming to a dead stop. I’m sure this could be done way better, but I thought I could atleast post what I did on the fly to speed up my scans. Also my Jump box couldn&rsquo;t handle (Popen and shell=True) for the sub process call, It was going a bit too fast. Right now I used call_check and just escaped that returned data for the moment. In the coming weeks I do plan to clean up the code a bit. All in all it took some time to trouble shoot the problem and thought I would share.</p>
+
+<p>The script can be found here: <a href="https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/Proxychains-Nmap.py">https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/Proxychains-Nmap.py</a></p>
+
+<pre><code>import multiprocessing
+import argparse
+import Queue
+import threading
+import os
+import sys
+import subprocess
+from random import randint
+
+
+
+
+
+def cli_parser():
+ parser = argparse.ArgumentParser(add_help=False, description='''This script Simply routes your nmap scan in a &quot;sort-of&quot; fast way 
+ through a ProcyChain that has been setup.
+ \n\t(1) You will find out that when routing nmap through a Proxychain connection that Timing performace is out the window.
+ \n\t(2) This is do to the nature of a SOCKS proxy and SYN-&gt;SYN/ACK connection is already established in NMAPS Eyes.
+ \n\t(3) It out puts random (#) of .gnmap file for each IP for parsing. (MAKE A FOLDER) :)
+ ''')
+ parser.add_argument(&quot;-i&quot;, metavar=&quot;iplist.txt&quot;, help=&quot;Set Ip List of IPs Delimited by line&quot;)
+ parser.add_argument('-h', '-?', '--h', '-help', '--help', action=&quot;store_true&quot;, help=argparse.SUPPRESS)
+ args = parser.parse_args()
+ if args.h: 
+ parser.print_help()
+ sys.exit()
+ if not args.i:
+ print &quot;[!] I need a list IP's!&quot;
+ sys.exit()
+ return args.i
+
+
+
+
+
+def Execution(Task_queue):
+ while True:
+ Ip = Task_queue.get()
+ # If the queue is emepty exit this proc
+ # Setup a simple output in the folder, For gnmap Parser
+ IpName = str(Ip).replace('.',&quot;-&quot;) + str(&quot;.gnmap&quot;)
+ if Ip is None:
+ break
+ try:
+ print &quot;[*] On Ip: &quot; + Ip
+ test = subprocess.check_output([&quot;proxychains&quot;, &quot;nmap&quot;, &quot;-Pn&quot;, &quot;-n&quot;, &quot;-sT&quot;, &quot;--max-scan-delay&quot;, &quot;0&quot;, &quot;-p111,445,139,21-23,80,443&quot;, &quot;-oG&quot;, IpName, &quot;--open&quot;, Ip])
+ test = &quot;&quot;
+ except:
+ pass
+
+
+
+
+
+def TaskSelector(Task_queue, verbose=False):
+ total_proc = int(8)
+ for i in xrange(total_proc):
+ Task_queue.put(None)
+ procs = []
+ for thread in range(total_proc):
+ procs.append(multiprocessing.Process(target=Execution, args=(Task_queue,)))
+ for p in procs:
+ p.daemon = True
+ p.start()
+ for p in procs:
+ p.join()
+ Task_queue.close()
+
+
+
+
+
+def Ip_List(Task_queue, cli_IpList):
+ items = []
+ cli_IpList = str(cli_IpList)
+ try:
+ with open(cli_IpList, &quot;r&quot;) as myfile:
+ lines = myfile.readlines()
+ for line in lines:
+ line = line.rstrip('\n')
+ items.append(line)
+ for item in items:
+ Task_queue.put(item)
+ return Task_queue
+ except Exception as e:
+ print &quot;[!] Please check your Ip List: &quot; + str(e)
+ sys.exit(0)
+
+
+
+
+
+def main():
+ cli_IpList = cli_parser()
+ Task_queue = multiprocessing.Queue()
+ Task_queue = Ip_List(Task_queue, cli_IpList)
+ TaskSelector(Task_queue)
+
+
+
+
+
+if __name__ == &quot;__main__&quot;:
+ try: 
+ main()
+ except KeyboardInterrupt:
+ print 'Interrupted'
+ try:
+ sys.exit(0)
+ except SystemExit:
+ os._exit(0)
+</code></pre>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=Scanning%20Effectively%20Through%20a%20SOCKS%20Pivot%20with%20Nmap%20and%20Proxychains&url=https%3a%2f%2fcybersydicates.com%2f2015%2f12%2f13%2f2015-12-13-nmap-and-proxychains-scanning-through-a-socks-piviot%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcybersydicates.com%2f2015%2f12%2f13%2f2015-12-13-nmap-and-proxychains-scanning-through-a-socks-piviot%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fcybersydicates.com%2f2015%2f12%2f13%2f2015-12-13-nmap-and-proxychains-scanning-through-a-socks-piviot%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://cybersydicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="https://cybersydicates.com/js/jquery.fitvids.js"></script>
+        <script src="https://cybersydicates.com/js/scripts.js"></script>
+    </body>
+</html>
+

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Email Harvesting with SimplyEmail &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="Email Recon Made Easy More often than not email enumeration is hit or miss, depending on the sources used throttle limits are in place or they just plain don’t index everything. As you may know from my past blog write-up I wrote a HTML scrapper to integrate into theHarvester. After that experience I knew there was for some improvement on 3 major key areas:
+ Speed - It needed to be able to handle way more locations to search">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.17" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Email Harvesting with SimplyEmail">
+<meta property="og:description" content="Email Recon Made Easy More often than not email enumeration is hit or miss, depending on the sources used throttle limits are in place or they just plain don’t index everything. As you may know from my past blog write-up I wrote a HTML scrapper to integrate into theHarvester. After that experience I knew there was for some improvement on 3 major key areas:
+ Speed - It needed to be able to handle way more locations to search">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cybersydicates.com/2015/11/21/2015-11-21-email-harvesting-with-simplyemail/">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/normalize.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/highlight.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="https://cybersydicates.com/">
+                            <img src="/logo.png" alt="Email Harvesting with SimplyEmail" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://cybersydicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/XXX">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://gitlab.com/XXX">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/XXX/YYY">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/XXX/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/&#43;XXX">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Home" href="/page/home/">Home</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container">
+        <header class="post-header">
+    <h1 class="post-title">Email Harvesting with SimplyEmail</h1>
+    
+</header>
+
+        <div class="post-content clearfix">
+    
+
+    
+
+<h2 id="email-recon-made-easy">Email Recon Made Easy</h2>
+
+<hr />
+
+<p>More often than not email enumeration is hit or miss, depending on the sources used throttle limits are in place or they just plain don’t index everything. As you may know from my past blog write-up I wrote a HTML scrapper to integrate into theHarvester. After that experience I knew there was for some improvement on 3 major key areas:</p>
+
+<ul>
+<li><p>Speed - It needed to be able to handle way more locations to search</p></li>
+
+<li><p>Framework – People needed to be able to easily contribute to the project</p></li>
+
+<li><p>Reporting – I wanted it to be elegant and easy to discover the sources</p></li>
+</ul>
+
+<p>With these requirements in hand I started my build on SimplyEmail!</p>
+
+<h3 id="benefits-of-simplyemail">Benefits of SimplyEmail</h3>
+
+<hr />
+
+<p>In the underlying code I built the program to dynamically load the all modules that where placed in the modules folder. The question is why? Well after using other tools and methods, I found that searching just about anywhere you can get your hands on can be beneficial to the results you obtain (Even if duplicates). In certain cases, Google Captcha block would engage and Yahoo Search would come to save the day! The key here was the ability to run multiple modules at the same time, this proved to be quite an improvement for web intense modules. Here is a small snippet of the code that makes this happen:</p>
+
+<ol>
+<li><p>All modules are dynamicaly loaded into a list</p></li>
+
+<li><p>Modules are placed into a Multiprocessing queue</p></li>
+
+<li><p>Execution takes place in a standardized format so that all processing takes place on child process rather than parent</p></li>
+
+<li><p>Results are Parsed with a custom parser that handles about all the raw html and text based parsing you could need.</p></li>
+
+<li><p>These results are placed into a Dictionary with a Key of the source and email address</p></li>
+
+<li><p>Html results are generated on the fly, and raw results are appended to a running list with time stamps.</p></li>
+</ol>
+
+<p><strong>Multiprocessing Controller:</strong></p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-9.36.26-AM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-9.36.26-AM.png" alt="Screen Shot 2015-11-17 at 9.36.26 AM" /></a></p>
+
+<p><strong>How the modules are instantiated:</strong></p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-9.38.55-AM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-9.38.55-AM.png" alt="Screen Shot 2015-11-17 at 9.38.55 AM" /></a></p>
+
+<h3 id="simple-cli-interface">Simple CLI Interface:</h3>
+
+<hr />
+
+<p>To get started always run the Setup script first:</p>
+
+<pre><code>root@kali:~/Desktop/SimplyEmail# sh Setup.sh
+or
+root@kali:~/Desktop/SimplyEmail# ./Setup.sh
+</code></pre>
+
+<p>Next take a look at the help menu:</p>
+
+<pre><code>root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -h
+</code></pre>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-9.50.39-AM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-9.50.39-AM.png" alt="Screen Shot 2015-11-17 at 9.50.39 AM" /></a></p>
+
+<p>Running the tool can be accomplished by either running all modules or one specific module for testing:</p>
+
+<pre><code>root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -all -e enron.com
+
+
+
+
+
+root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
+</code></pre>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-10.03.13-AM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-10.03.13-AM.png" alt="Screen Shot 2015-11-17 at 10.03.13 AM" /></a></p>
+
+<h2 id="understanding-reporting-options">Understanding Reporting Options:</h2>
+
+<p>One of the most frustrating aspects of Pen-testing is the tools&rsquo; ability to report the findings and make those easily readable. This may be for the data provided to a customer or just the ability to report on source of the data.</p>
+
+<p>So I&rsquo;m making it my goal for my tools to take that work off your back and make it as simple as possible! Let&rsquo;s cover the two different reports generated.</p>
+
+<h3 id="https-github-com-killswitch-gui-simplyemail-text-output-text-output">[](<a href="https://github.com/killswitch-GUI/SimplyEmail#text-output)Text">https://github.com/killswitch-GUI/SimplyEmail#text-output)Text</a> Output:</h3>
+
+<p>With this option results are generated and appended to a running text file called Email_List.txt. this makes it easy to find past searches or export to tool of choice. Example:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-10.01.52-AM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-10.01.52-AM.png" alt="Screen Shot 2015-11-21 at 10.01.52 AM" /></a></p>
+
+<h3 id="html-output">HTML Output:</h3>
+
+<p>As I mentioned before a powerful function that I wanted to integrate was the ability to produce a visually appealing and rich report for the user and potentially something that could be part of data provided to a client. Please let me know with suggestions!</p>
+
+<h4 id="https-github-com-killswitch-gui-simplyemail-email-source-email-source-screen-shot-2015-11-11-at-5-27-15-pm-http-cybersyndicates-com-wp-content-uploads-2015-11-screen-shot-2015-11-11-at-5-27-15-pm-1024x530-png-http-cybersyndicates-com-wp-content-uploads-2015-11-screen-shot-2015-11-11-at-5-27-15-pm-png">[](<a href="https://github.com/killswitch-GUI/SimplyEmail#email-source)Email">https://github.com/killswitch-GUI/SimplyEmail#email-source)Email</a> Source:<a href="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-11-at-5.27.15-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-11-at-5.27.15-PM-1024x530.png" alt="Screen Shot 2015-11-11 at 5.27.15 PM" /></a></h4>
+
+<h4 id="email-section">Email Section:</h4>
+
+<ul>
+<li>Html report now shows Alerts for Canary Search Results<img src="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-11-at-5.27.31-PM.png" alt="![Screen Shot 2015-11-11 at 5.27.31 PM](http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-11-at-5.27.31-PM-1024x528.png)" /></li>
+</ul>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=Email%20Harvesting%20with%20SimplyEmail&url=https%3a%2f%2fcybersydicates.com%2f2015%2f11%2f21%2f2015-11-21-email-harvesting-with-simplyemail%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcybersydicates.com%2f2015%2f11%2f21%2f2015-11-21-email-harvesting-with-simplyemail%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fcybersydicates.com%2f2015%2f11%2f21%2f2015-11-21-email-harvesting-with-simplyemail%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://cybersydicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="https://cybersydicates.com/js/jquery.fitvids.js"></script>
+        <script src="https://cybersydicates.com/js/scripts.js"></script>
+    </body>
+</html>
+

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>A No Bull Guide to Malicious Windows Trouble Shooting Packs and Application whitelist Bypass &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="Malicious Windows Trouble Shooting Package Using Nicholas Berthaume Recent work on WTP:
+@nberthaume
+Just some background on this before we deep dive into setup and construction of the package. I was let onto this a few months back from a coworker. I know this was a pretty cool concept and could see the real world benefit of using something like this on a Red Team in a high security environment.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.17" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="A No Bull Guide to Malicious Windows Trouble Shooting Packs and Application whitelist Bypass">
+<meta property="og:description" content="Malicious Windows Trouble Shooting Package Using Nicholas Berthaume Recent work on WTP:
+@nberthaume
+Just some background on this before we deep dive into setup and construction of the package. I was let onto this a few months back from a coworker. I know this was a pretty cool concept and could see the real world benefit of using something like this on a Red Team in a high security environment.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cybersydicates.com/2015/10/16/2015-10-16-a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/normalize.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/highlight.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="https://cybersydicates.com/">
+                            <img src="/logo.png" alt="A No Bull Guide to Malicious Windows Trouble Shooting Packs and Application whitelist Bypass" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://cybersydicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/XXX">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://gitlab.com/XXX">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/XXX/YYY">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/XXX/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/&#43;XXX">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Home" href="/page/home/">Home</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container">
+        <header class="post-header">
+    <h1 class="post-title">A No Bull Guide to Malicious Windows Trouble Shooting Packs and Application whitelist Bypass</h1>
+    
+</header>
+
+        <div class="post-content clearfix">
+    
+
+    
+
+<h3 id="malicious-windows-trouble-shooting-package">Malicious Windows Trouble Shooting Package</h3>
+
+<hr />
+
+<p><strong><em>Using Nicholas Berthaume Recent work on WTP:</em></strong></p>
+
+<p><strong><em><a href="https://twitter.com/nberthaume">@nberthaume</a></em></strong></p>
+
+<p>Just some background on this before we deep dive into setup and construction of the package. I was let onto this a few months back from a coworker. I know this was a pretty cool concept and could see the real world benefit of using something like this on a Red Team in a high security environment. Especially on the phishing side of the house, which I have been doing way more of lately!</p>
+
+<p>But at the time I only knew that this could be done for malicious use, it does turn out that their was a talk explaining just about everything we are going to cover except a few things. The key here is all the information I gathered and the step-by-step execution was done by research on my own and just trial and error to see how things worked. This is an import aspect of anything in the Red Team space, it requires the knowledge of what you are throwing into a customers environment as well as understanding what type effects its has on the endpoint to truly own your tradecraft. Upon entry into this space everyone is challenged at some point, questions like what command are you running; why?; do you know what that does?; what process will be spawned vs injecting.</p>
+
+<p>Thats why I took the approach to doing all the research before reaching out to the team for info on where the idea was generated. It seemed to pay off :)</p>
+
+<h3 id="ligt-functionality-windows-feature">Ligt Functionality  (Windows &ldquo;Feature&rdquo;)</h3>
+
+<hr />
+
+<p>So what are WTP (Windows Trouble Shooting Packs)? The question is simple to answer: its a simple package software developers can check issues, that could be causing issues with their software. This WTP is mainly used by Microsoft and most of us have used them and maybe just didn&rsquo;t think about it (Troubleshooting Network Issues). I&rsquo;m sure we all have seen this before:<a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-09-at-2.36.47-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-09-at-2.36.47-PM-1024x783.png" alt="Screen Shot 2015-10-09 at 2.36.47 PM" /></a></p>
+
+<p>Microsofts <em>Signed</em> Binary Involved (Note this):</p>
+
+<pre><code>msdt &lt;/id &lt;name&gt; | /path &lt;name&gt; | /cab &lt; name&gt;&gt; &lt;&lt;/parameter&gt; [options] … &lt;parameter&gt; [options]&gt;&gt;
+</code></pre>
+
+<p>Some really cool features of msdt:</p>
+
+<ul>
+<li><p>Is a standard windows signed binary and standard with all deployments</p></li>
+
+<li><p>Allows you to specify paths of the package and even use UNC paths!!!</p></li>
+
+<li><p>Allows for you to use the flag &ldquo;/af&rdquo; to produce a Answers file built in XML to automate the WTP and can also run from a UNC path &ldquo;Potential Lateral Movement&rdquo;</p></li>
+
+<li><p>Answer files can be easily built in Power-shell</p></li>
+</ul>
+
+<h3 id="what-does-the-package-consist-of">What does the Package consist of?</h3>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/IC306717.jpg"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/IC306717.jpg" alt="IC306717" /></a></p>
+
+<p>So I stole this image from MSDN and its a great image to understand the basics of a WTP. A few things we need to understand about the package it self. The WTP structure consist of:</p>
+
+<ul>
+<li><p>Id Metadata</p></li>
+
+<li><p>Detection scripts</p></li>
+
+<li><p>Resolution scripts</p></li>
+
+<li><p>Verification scripts</p></li>
+
+<li><p>Localized scripts</p></li>
+</ul>
+
+<p>This format is what builds the &ldquo;Windows Troubleshooting Pack&rdquo; itself , this is what is given to the Runtime Engine and runs through these and display to the user the results of the package. The bottom line is we really don&rsquo;t need all of these scripts unless you will be weaponizing these for a specific phishing campaign that is unique the environment you will be targeting. The cool part is you can basically use this package to deploy just about any code you can dream of, as long as you can some how deploy it with powershell of course.</p>
+
+<h3 id="how-to-setup-to-build-your-first-wtp">How to setup to build your first WTP</h3>
+
+<hr />
+
+<p>Lets now cover what we will need to build your first WTP. This can be tricky so follow this to the exact step so you won&rsquo;t encounter any crazy errors as this wasn&rsquo;t easy to figure out. I did use VMware and a clean windows 7 pro VM, so I can&rsquo;t speak for any other platform. But the trick here is that you can build this packages manually which will take FOREVER or use windows SDK package manger to build them.</p>
+
+<p><strong>Step 1:</strong></p>
+
+<p>Build your VM that is fully patched and latest SP</p>
+
+<p><strong>Step 2:</strong></p>
+
+<p>We need to install windows specific visual studio and C++ distribution</p>
+
+<p>YOU MUST USE 2010 Visual Studio</p>
+
+<p>Download: <a href="http://microsoft-visual-cpp-express.soft32.com/free-download/">Link</a></p>
+
+<p><strong>Step 3:</strong></p>
+
+<p>Use the following selections</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-14-at-9.56.18-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-14-at-9.56.18-PM.png" alt="Screen Shot 2015-10-14 at 9.56.18 PM" /></a></p>
+
+<p>(Important packages you will be installing so we can install the SDK)</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-14-at-9.56.57-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-14-at-9.56.57-PM.png" alt="Screen Shot 2015-10-14 at 9.56.57 PM" /></a></p>
+
+<p><strong>Step 4:</strong></p>
+
+<p>So no matter how hard I tired I couldn&rsquo;t get the latest SDK to work so I jumped back to 7.0</p>
+
+<p>Download: <a href="http://www.microsoft.com/en-us/download/details.aspx?id=3138">link</a></p>
+
+<p><strong>Step 5:</strong></p>
+
+<p>Check the following boxes so you ensure you install the complete package even though it installs .NET 3.5!</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-14-at-10.06.00-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-14-at-10.06.00-PM-1024x722.png" alt="Screen Shot 2015-10-14 at 10.06.00 PM" /></a></p>
+
+<p><strong>Building your first WTP</strong></p>
+
+<hr />
+
+<p>At this point you should be set up to use the TSPDesigner package that comes with windows SDK.  While this isn&rsquo;t currently easily automated, Nicholas Berthaume talked about releasing a toolkit for linux to build these packages. We will cover some of the tradecraft concerns and case use&rsquo;s in this post in a bit.</p>
+
+<p>Lets get started by starting up the designer and build out with the wizzard for a quick start.</p>
+
+<blockquote>Goto All Programs -> Microsoft windows SDK v7.0 -> Tools -> Windows Troubleshooting Pack Designer</blockquote>
+
+<p>Click on create pack  -&gt; name it &ldquo;Really Bad Here&rdquo; and click on create:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-6.34.40-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-6.34.40-PM-1024x336.png" alt="Screen Shot 2015-10-15 at 6.34.40 PM" /></a></p>
+
+<p>Go right ahead and fill out the package fields (*set URL it won&rsquo;t have to match your code signing cert):</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-6.36.59-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-6.36.59-PM-1024x642.png" alt="Screen Shot 2015-10-15 at 6.36.59 PM" /></a></p>
+
+<p>Before we move forward lets take a quick look at an actually trouble shooting pack, so we have it fresh in our minds of how execution takes place. This structure can give us a great amount of information about where you may want inject your payload of choice. Head over to your kali and download this Microsoft signed Troubleshooting package, we will be unarchiving it in Kali 2.0:</p>
+
+<p>Download: <a href="http://download.microsoft.com/download/F/2/2/F22D5FDB-59CD-4275-8C95-1BE17BF70B21/wushowhide.diagcab">Link</a> or <a href="http://download.microsoft.com/download/F/2/2/F22D5FDB-59CD-4275-8C95-1BE17BF70B21/wushowhide.diagcab">http://download.microsoft.com/download/F/2/2/F22D5FDB-59CD-4275-8C95-1BE17BF70B21/wushowhide.diagcab</a> if you don&rsquo;t trust me ;)</p>
+
+<p>Lets take a look at this package of what a potential victim would see if they unpacked it and compared, as you move forward with any tool or technique its important that you understand what right looks like and what your victim could possibly see if they had the right tools.</p>
+
+<blockquote>Right click on the .diagcab and select Open With Archive Manager, you should see:</blockquote>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-7.09.07-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-7.09.07-PM-1024x666.png" alt="Screen Shot 2015-10-15 at 7.09.07 PM" /></a></p>
+
+<p>You can simply open any package you build with a achieve manager, and see all the unique parts of the package that will be built with the WTP designer. The important concept here is to take a look around at the structure and get an idea of how you would like you package to be built. So as you can see we can easily pull out the unique PS scripts, we may want to obfuscated using some simple power-shell techniques (ex. Encoded base64).</p>
+
+<p>Lets move onto finishing the setup, and fill in the following. This data will be displayed when the user checks the advanced results  within the package, so make it interesting:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.26.15-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.26.15-PM-1024x641.png" alt="Screen Shot 2015-10-15 at 8.26.15 PM" /></a></p>
+
+<p>Next we will setup what will happen if we discover the root cause. A interesting discovery is the ability to run the package at a elevated level. This could be interesting, so lets select to run this at a elevated context! (This can Bypass UAC)</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.29.49-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.29.49-PM-1024x639.png" alt="Screen Shot 2015-10-15 at 8.29.49 PM" /></a></p>
+
+<p>Set up the Resolver which won&rsquo;t really do anything in our case so don&rsquo;t set elevated privileges:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.31.48-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.31.48-PM-1024x641.png" alt="Screen Shot 2015-10-15 at 8.31.48 PM" /></a></p>
+
+<p>Using a verifier we can use some simple logic to insure the root cause is fixed.. (Endless possibilities to deploy your initial attack vector.).To keep it simple we won&rsquo;t need to add a Verifier but you will see the logic as we move on:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.39.37-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.39.37-PM-1024x643.png" alt="Screen Shot 2015-10-15 at 8.39.37 PM" /></a></p>
+
+<p>Now lets start by editing your Root Cause PS script to start up notepad.exe as an example. Select &ldquo;Edit TroubleShooter Script&rdquo;:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.40.12-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.40.12-PM-1024x638.png" alt="Screen Shot 2015-10-15 at 8.40.12 PM" /></a></p>
+
+<p>At this point your built in Power-shell IDE will be launched for simple editing of your logic:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.53.55-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.53.55-PM-1024x482.png" alt="Screen Shot 2015-10-15 at 8.53.55 PM" /></a></p>
+
+<p>If you want to test out a payload its very simple to use CobaltStrikes Payload Generator to build a Staged PS script and just place that code in the logic section to gain code execution (Please note that this section does get executed twice for some reason). If you want to use CobaltStrikes DNS Hybrid listener you can build a fully Staged DNS beacon and export it as a PS script and place that code in the logic area as well.</p>
+
+<p>Go ahead and hit the save button, and your package is ready to be tested out. We will be starting out using a self signed package for testing and will sign the package in a bit. Remember that a self signed package won&rsquo;t run on any computer other than the one you built it on. SO don&rsquo;t try sending a self signed one out to a target!</p>
+
+<blockquote>Build -> Build Pack -> Ok -> Yes -> Launch Trouble Shooting Pack</blockquote>
+
+<p>You should imeidently have Notepad pop and you have code execution!</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.04.14-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.04.14-PM-1024x820.png" alt="Screen Shot 2015-10-15 at 9.04.14 PM" /></a>Now lets explore the detailed info that our target may see when they View Detailed information:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.05.30-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.05.30-PM-1024x782.png" alt="Screen Shot 2015-10-15 at 9.05.30 PM" /></a></p>
+
+<h3 id="setup-for-code-signing">Setup for Code Signing</h3>
+
+<hr />
+
+<p>Get a code signing cert: <a href="https://www.digicert.com/code-signing/">Here</a>  ($179 but you can find way cheaper)</p>
+
+<p>In my case I had a DigiCert Code Signing Cert, that was in a .P7B format which cannot be used with the WTP (Must have the secret key re-Attached to the cert to build a .PFX Cert. This can be a tricky step so I will cover how I generated my .PFX cert before we go into signing the package.</p>
+
+<p>Using Kali 2.0 built in OpenSSL package we can convert it to the correct format:</p>
+
+<pre><code>openssl pkcs7 -print_certs -in MyCodeSigningCert.p7b -out certificate.cer
+</code></pre>
+
+<p>Using this new built .Cer we will now generate our .PFX using our privatekey.key.</p>
+
+<pre><code>openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt
+</code></pre>
+
+<blockquote>Return back to windows package designer -> Project -> Options -> Specify a Certificate</blockquote>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.21.46-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.21.46-PM.png" alt="Screen Shot 2015-10-15 at 9.21.46 PM" /></a></p>
+
+<p>You should now be able to Build your package and now have a fully signed package for deployment. In the next image the publisher has been obfuscated so I don&rsquo;t share the world with my cert. At this point its  time to move into testing of our new WTP!</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.24.35-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.24.35-PM-1024x782.png" alt="Screen Shot 2015-10-15 at 9.24.35 PM" /></a></p>
+
+<h3 id="application-whitelisting-and-script-bypass-testing">Application Whitelisting and Script Bypass Testing</h3>
+
+<hr />
+
+<p>Lets now setup a hardened environment on our fresh Windows 7 <em>Pro</em> VM. Using windows Applocker we can easily setup a simulated environment that we can test against.</p>
+
+<p>Using windows Group Policy editor we can make the correct changes needed ( run Gpcedit.msc ):</p>
+
+<p>Navigate to: Computer Configuration \ Windows Settings \ Security Settings \ Application Control Policies \ AppLocker</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.37.47-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.37.47-PM-1024x1014.png" alt="Screen Shot 2015-10-15 at 9.37.47 PM" /></a></p>
+
+<p>Now we need click on &ldquo;Configure rule enforcement&rdquo; and enable Execution Rules and Script Rules:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.39.32-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.39.32-PM-691x1024.png" alt="Screen Shot 2015-10-15 at 9.39.32 PM" /></a></p>
+
+<p>Next right click Executable Rules -&gt; Create New Rule:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.42.25-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.42.25-PM-1024x852.png" alt="Screen Shot 2015-10-15 at 9.42.25 PM" /></a></p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.43.02-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.43.02-PM-1024x851.png" alt="Screen Shot 2015-10-15 at 9.43.02 PM" /></a></p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.43.38-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.43.38-PM.png" alt="Screen Shot 2015-10-15 at 9.43.38 PM" /></a></p>
+
+<blockquote>Click Create -> Yes to Default rules</blockquote>
+
+<p>At this point go ahead delete the Admin rule that allows and admin to execute any executable, your rules should match this:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.47.01-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.47.01-PM-1024x141.png" alt="Screen Shot 2015-10-15 at 9.47.01 PM" /></a></p>
+
+<p>Go ahead and setup the Script Rules and block out the temp dir:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.49.18-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.49.18-PM.png" alt="Screen Shot 2015-10-15 at 9.49.18 PM" /></a></p>
+
+<p>Lets start up the required services needed for Applocker to enforce rules properly:</p>
+
+<pre><code>sc config appIDSvc start= auto
+sc start appIDSvc
+</code></pre>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.55.18-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.55.18-PM-1024x496.png" alt="Screen Shot 2015-10-15 at 9.55.18 PM" /></a></p>
+
+<p>Lastly we need to update our Group Policies. Reboot your box and run this (you may have to reboot first, if its domain auth you must have the DC on in your VM environment):</p>
+
+<pre><code>Gpupdatep /force
+</code></pre>
+
+<p>So lets test out our new setup in Applocker, first I will attempt to run beacon.exe in my restricted environment:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-10.29.07-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-10.29.07-PM-1024x306.png" alt="Screen Shot 2015-10-15 at 10.29.07 PM" /></a></p>
+
+<p>Great this is exactly what we needed to see, now PS in this location:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-10.36.39-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-10.36.39-PM-1024x107.png" alt="Screen Shot 2015-10-15 at 10.36.39 PM" /></a></p>
+
+<p>Now lets test out our new package:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-10.38.10-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-10.38.10-PM-1024x515.png" alt="Screen Shot 2015-10-15 at 10.38.10 PM" /></a></p>
+
+<p>Boom! Now we have our payload and the ability to bypass AppLocker using some of the most restrictive settings. Now Nicholas Berthaume didn&rsquo;t talk about this Applocker bypass (maybe I just missed this but this is a pretty sweet technique and all props go out to him)!</p>
+
+<p>By why does this work? Well we are actually using MSDT.exe to execute our .diagcab package. This is a Microsoft Signed binary which is inherently trusted by Windows! So we can now use this binary to gain code execution just like other App Bypasses using instal-util etc..</p>
+
+<p>If you don&rsquo;t know much about application whitelist bypasses here is a great list of the current ones that SubTee put out:</p>
+
+<p><a href="https://github.com/subTee/ApplicationWhitelistBypassTechniques/blob/master/TheList.txt">https://github.com/subTee/ApplicationWhitelistBypassTechniques/blob/master/TheList.txt</a></p>
+
+<pre><code>1. IEExec
+
+
+
+
+
+This technique may work in certain envirionments. Its relies on the fact that many organizations trust executables signed
+ by Microsoft. We can misuse this trust by launching a specially crafted .NET application.
+ Example Here: http://www.room362.com/blog/2014/01/16/application-whitelist-bypass-using-ieexec-dot-exe/
+
+
+
+
+
+2. Rundll32.exe
+
+
+
+
+
+3. ClickOnce Applications dfsvc.exe dfshim.dll
+
+
+
+
+
+4. XBAP - XML Browser Applications WPF PresentationHost.exe
+
+
+
+
+
+5. MD5 Hash Collision
+ http://www.mathstat.dal.ca/~selinger/md5collision/
+
+
+
+
+
+6. PowerShell
+ Specifically Reflective Execution
+ http://clymb3r.wordpress.com/2013/04/06/reflective-dll-injection-with-powershell/
+ https://www.defcon.org/images/defcon-21/dc-21-presentations/Bialek/DEFCON-21-Bialek-PowerPwning-Post-Exploiting-by-Overpowering-Powershell.pdf
+
+
+
+
+
+7. .HTA Application Invoke PowerShell Scripts
+ Launched by mshta.exe, bypasses IE security settings as well.
+
+
+
+
+
+8. bat, vbs, ps1
+ 1. cmd.exe /k &lt; script.txt
+ 2. cscript.exe //E:vbscript script.txt
+ 3. Get-Content script.txt | iex
+</code></pre>
+
+<p><strong>Tradecraft Concerns:</strong></p>
+
+<ol>
+<li><p>Phishing should work great, the .diagcab probably won&rsquo;t be inspected by boarder protections? (let me know ppl)</p></li>
+
+<li><p>Code signing cert will need to look legit to the target (so keep that in mind)</p></li>
+
+<li><p>Powershell script can easily be pulled from the package, so use something encrypted for stager</p></li>
+</ol>
+
+<p>I really hope you got something out of this! Let me know on twitter @Killswitch_gui what you think or ideas that you have, I love to learn from my peers so let me know what you think or are using this for. All credit for this goes out to:</p>
+
+<p><a href="https://www.youtube.com/watch?v=-E-JTYjk8_Q">https://www.youtube.com/watch?v=-E-JTYjk8_Q</a></p>
+
+<p>Resources:</p>
+
+<p><a href="https://technet.microsoft.com/en-us/library/ee424379.aspx">https://technet.microsoft.com/en-us/library/ee424379.aspx</a></p>
+
+<p>Code Signing Help: <a href="https://support.globalsign.com/customer/portal/articles/1353601-converting-certificates---openssl">https://support.globalsign.com/customer/portal/articles/1353601-converting-certificates---openssl</a></p>
+
+<p><a href="https://msdn.microsoft.com/en-us/library/dd776530.aspxb">https://msdn.microsoft.com/en-us/library/dd776530.aspxb</a></p>
+
+<p>Simple AppLocker Setup: <a href="http://www.howtogeek.com/howto/6317/block-users-from-using-certain-applications-with-applocker/">http://www.howtogeek.com/howto/6317/block-users-from-using-certain-applications-with-applocker/</a></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=A%20No%20Bull%20Guide%20to%20Malicious%20Windows%20Trouble%20Shooting%20Packs%20and%20Application%20whitelist%20Bypass&url=https%3a%2f%2fcybersydicates.com%2f2015%2f10%2f16%2f2015-10-16-a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcybersydicates.com%2f2015%2f10%2f16%2f2015-10-16-a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fcybersydicates.com%2f2015%2f10%2f16%2f2015-10-16-a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://cybersydicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="https://cybersydicates.com/js/jquery.fitvids.js"></script>
+        <script src="https://cybersydicates.com/js/scripts.js"></script>
+    </body>
+</html>
+

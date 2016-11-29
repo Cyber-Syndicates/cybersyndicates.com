@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Advanced Active Monitoring with OSSEC &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="Tools Used For this tutorial.
+##############################################################
+OSSEC 2.8.2 (http://www.ossec.net)
+Ubuntu 14.04 (http://www.ubuntu.com/download/desktop)
+Gmail Account (https://www.gmail.com)
+Postfix (www.postfix.org)
+mailutils (installed from bash )
+##############################################################
+Step (1) Download Ubuntu 14.04 (Update: apt-get update; apt-get upgrade)
+Step (2) Download OSSEC 2.8.2 Software
+Step(2b) OPTIONAL Download Web UI 0.8
+Step(3) Install OSSEC Software
+ Two primary methods for installing OSSEC includes using the default settings (install.sh) or by manually installing it. Manual installation is simply just creating the required directories and copying the files into the OSSEC directory.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.17" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Advanced Active Monitoring with OSSEC">
+<meta property="og:description" content="Tools Used For this tutorial.
+##############################################################
+OSSEC 2.8.2 (http://www.ossec.net)
+Ubuntu 14.04 (http://www.ubuntu.com/download/desktop)
+Gmail Account (https://www.gmail.com)
+Postfix (www.postfix.org)
+mailutils (installed from bash )
+##############################################################
+Step (1) Download Ubuntu 14.04 (Update: apt-get update; apt-get upgrade)
+Step (2) Download OSSEC 2.8.2 Software
+Step(2b) OPTIONAL Download Web UI 0.8
+Step(3) Install OSSEC Software
+ Two primary methods for installing OSSEC includes using the default settings (install.sh) or by manually installing it. Manual installation is simply just creating the required directories and copying the files into the OSSEC directory.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cybersydicates.com/2015/06/20/2015-06-20-advance-active-monitoring-with-ossec/">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/normalize.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/highlight.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="https://cybersydicates.com/">
+                            <img src="/logo.png" alt="Advanced Active Monitoring with OSSEC" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://cybersydicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/XXX">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://gitlab.com/XXX">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/XXX/YYY">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/XXX/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/&#43;XXX">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Home" href="/page/home/">Home</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container">
+        <header class="post-header">
+    <h1 class="post-title">Advanced Active Monitoring with OSSEC</h1>
+    
+</header>
+
+        <div class="post-content clearfix">
+    
+
+    
+
+<p>Tools Used For this tutorial.</p>
+
+<p>##############################################################</p>
+
+<p>OSSEC 2.8.2 (<a href="http://www.ossec.net">http://www.ossec.net</a>)</p>
+
+<p>Ubuntu 14.04 (<a href="http://www.ubuntu.com/download/desktop">http://www.ubuntu.com/download/desktop</a>)</p>
+
+<p>Gmail Account (<a href="https://www.gmail.com">https://www.gmail.com</a>)</p>
+
+<p>Postfix (<a href="http://www.postfix.org">www.postfix.org</a>)</p>
+
+<p>mailutils (installed from bash )</p>
+
+<p>##############################################################</p>
+
+<p>Step (1) Download Ubuntu 14.04 (Update: <strong>apt-get update; apt-get upgrade</strong>)</p>
+
+<p>Step (2) Download OSSEC 2.8.2 Software</p>
+
+<p>Step(2b) OPTIONAL Download Web UI 0.8</p>
+
+<p>Step(3) Install OSSEC Software</p>
+
+<ul>
+<li><p>Two primary methods for installing OSSEC includes using the default settings (install.sh) or by manually installing it. Manual installation is simply just creating the required directories and copying the files into the OSSEC directory. Compiling each of the files and moving them to the appropriate directories. And lastly creating users and providing them with permissions to the files. Editing the install.sh script and/or the binaries can also be done to customize the install process. This is especially useful when configuring OSSEC for an unattended install, in which you will want to automate various aspects of the install to meet your environment needs.</p></li>
+
+<li><p>The method that will be used in this demonstration will be the default install, with additional configurations performed after installing.</p></li>
+
+<li><p>On your Ubuntu system, cd into the directory where you have downloaded the files and unpack them.</p></li>
+
+<li><p><strong>tar –xzf ossec-hids-2.8.2.tar.gz</strong></p></li>
+
+<li><p>Run the install.sh script and answer each of the questions.</p>
+
+<ul>
+<li><p>./install.sh</p></li>
+
+<li><p>You’ll notice that during the question/answer video I selected “Server” as my choice. Although this will be the only system deployed for this post, it will still perform the same way. It just now gives you the option to add clients at a later time.</p></li>
+</ul></li>
+</ul>
+
+<p>[embed]<a href="http://youtu.be/dbKrLRJLpRA[/embed">http://youtu.be/dbKrLRJLpRA[/embed</a>]</p>
+
+<p>[embed]<a href="http://youtu.be/D_b5QI5ABsI[/embed">http://youtu.be/D_b5QI5ABsI[/embed</a>]</p>
+
+<ul>
+<li>Once OSSEC has been installed ensure that you allow the necessary communication for syslog traffic on your firewall. The default port is UDP 1514</li>
+</ul>
+
+<p><strong>Primary Files For OSSEC</strong></p>
+
+<p><strong> </strong></p>
+
+<p>**(path/on/your/system/ossec.conf) – <strong>This file is the primary configuration file for the OSSEC framework. The first section by default is a &lt;global</strong>&gt; **tag that contains the parameters that specify the email notification address and SMTP server that OSSEC will use. Ensure that you have the 5 entries that are included in the screenshot below:</p>
+
+<p><email_notifications> should be “yes”; This tells OSSEC that you want to receive alerts.</p>
+
+<p><Email_to>should be <a href="mailto:yourgmailaddress@gmail.com">yourgmailaddress@gmail.com</a></p>
+
+<p><smtp_server>should be “localhost”;</p>
+
+<ul>
+<li>This setting is critical and it is COMPLETELY based off of your specific environment. For this test environment I am on a private network that is NAT’d, behind a firewall that is allowing outbound SMTP. It is important to fully understand the rules within your environment prior to implanting OSSEC if you wish to receive alerts outside of your network. Also keep in mind that many ISP’s now block SMTP and in that case it is best to use the one they provide for you. A few Google searches should answer that question for you, and if that is the case then wherever you see us use gmail, supplement the SMTP-RELAY-SERVER for your ISP.   For this test we will be using gmail as our (SMTP-RELAY-SERVER) and (localhost(which will be POSTFIX)) as our internal SMTP-SERVER. So basically OSSEC will generate an alert and send it to POSTFIX, which will then send it to whichever SMTP-RELAY-SERVER(gmail for this example), and from there it will be delivered to the email address in the <email_to> tag field. If you’re new to OSSEC, Linux, &amp;/or PostFix you’re probably wondering why not just input gmail’s SMTP-RELAY-ADDRESS in the <smtp_server> tag field and cut out the middleman (PostFix). The reason why Postfix is used is that it is much better suited for handling emails. It handles encryption, transmission, &amp; authentication much better than OSSEC does. Not to say that OSSEC couldn’t provide this functionality because after all it is Open Source, therefore whatever it lacks can always be written into it. Another reason is the separation of duties/functions. Its best practice to separate roles whenever possible and to limit the amount of services that are nested.</li>
+</ul>
+
+<p><email_from> can be whatever email you’d like to appear in the “From” line (<strong>NOW YOU SEE WHY MANY ISP’S BLOCK SMTP)</strong></p>
+
+<p><email_maxperhour> you will have to add this line yourself, but it is important if you are using a free SMTP-RELAY-SERVICE. Many of them have a threshold for the amount of emails that they’ll relay per day. This number is up to you and can be anywhere from **1 – 9999 **messages per hour. Keep in mind that this is only the cap on the amount o f emails that are sent per hour and does not stop OSSEC from generating alerts that remain on the Server itself.</p>
+
+<p> <a href="http://cybersyndicates.com/wp-content/uploads/2015/06/OssecEmailSettings.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/06/OssecEmailSettings-300x203.png" alt="OssecEmailSettings" /></a></p>
+
+<p>The next section of this file is the <include> tag field which is used to include separate files that contain rules for OSSEC</p>
+
+<p>Further down in this file there is a <syscheck> segment that dictates how often the file systems will be checked. The default setting is 79200 seconds (22 hours) You can adjust this time based off your unique environmental needs.</p>
+
+<p>In addition to the frequency of the syscheck, you can also dictate which files to check and which to ignore.</p>
+
+<p>The <rootcheck> tag field is also included in this file. This area should not be altered at this time. There will be another post in the near future in which we will discuss custom configuration for rootkit identification based on current indicators of compromise.</p>
+
+<p>The <alerts> tag field contains two important fields: log_alert_levels (what is the min level of alert you wish to be logged) &amp; email_alert_levels(min level of alerts that you wish to be sent immediately to your monitored email account) These fields are configurable based on your risk versus noise tolerance from **1-10. **</p>
+
+<p><strong> </strong></p>
+
+<p>The last tag field that we will discuss in this file will be the <active-response> tag field. The two fields within this section that will be important for us will be the <level> tag and the <timeout> tag. The           &lt; level&gt; tag will be set based off your unique environment’s risk tolerance and IR response time. The <timeout> tag is critical and should be set carefully. The number by default is 600 (seconds) and will automatically respond to network based alerts by blocking the IP for the length of time you specify. This can be tricky because if your IR response time is slow then you would ideally want to block for a length of time that supports their responsiveness so that they can be effective. What makes this the tricky part is that too short of a lockout gives the attacker more time to compromise a system or exfiltrate data before your IR team has time to react but too long and a legitimate system may be locked out which could degrade production.</p>
+
+<p><strong>decoder.xml</strong></p>
+
+<p>Decoder.xml is probably one of the most important files to understand in order to customize the functionality of this software to your environment. Briefly explained, it is the file which dictates which files are to be monitored by OSSEC. The basic method for adding logs to the file is:</p>
+
+<p><filename to be logged: EX”**<mail>**”&gt;</p>
+
+<p><log_format>syslog</log_format> <strong>(syslog is the default format but “snort-full, snort-fast, squid, iis, eventlog, and eventchannel are also allowed)</strong></p>
+
+<p><location>absolute/path/to/log</location></p>
+
+<p><strong>&lt;/mail</strong>&gt;</p>
+
+<p>The second part of this file includes custom decoders. The default path to this file is /var/ossec/etc. This file is explained thoroughly by OSSEC on their documentation link. <a href="Http://ossec-docs.readthedocs.org">Http://ossec-docs.readthedocs.org</a> According to OSSEC, they are broken into phases, with the first phase performing the pre-decoding. The structure is:</p>
+
+<p><strong><decoder name="ossec-exampled"></strong></p>
+
+<p>** <program_name>ossec-exampled</program_name>**</p>
+
+<p><strong></decoder></strong></p>
+
+<p>Phase 2 now correctly identifies this log message as coming from ossec-exampled. There is still some very important information in the log message that should be decoded, namely the source IP and test-protocol1. To decode these a child decoder will be added. It will set the ossec-exampled decoder as a parent, and use prematch to limit its use to the correct log message.</p>
+
+<p><strong><decoder name="ossec-exampled-test-connection"></strong></p>
+
+<p>** <parent>ossec-exampled</parent>**</p>
+
+<p>** <prematch offset="after_parent">^test connection </prematch> <!-- offset="after_parent" makes OSSEC ignore anything matched by the parent decoder and before -->**</p>
+
+<p>** <regex offset="after_prematch">^from (\S+) via (\S+)$</regex> <!-- offset="after_prematch" makes OSSEC ignore anything matched by the prematch and earlier-->**</p>
+
+<p>** <order>srcip, protocol</order>**</p>
+
+<p><strong></decoder></strong></p>
+
+<p>Breaking this down piece by piece:</p>
+
+<ul>
+<li><p><decoder name="ossec-exampled-test-connection"> - Declaring this to be a decoder and giving it a name.</p></li>
+
+<li><p><parent>ossec-exampled</parent> - This decoder will only be checked if ossec-exampled also matched.</p></li>
+
+<li><p><prematch offset="after_parent">^test connection </prematch> - If a log message does not contain the data in the prematch, it will not use that decoder. Setting the offset tells OSSEC to only look at data after the parent (ossec-exampled[9123]: in this case), in an effort to speed up matches.</p></li>
+
+<li><p><regex offset="after_prematch">^from (\S+) via (\S+)$</regex> - The regex line can be used to pull data out of the log message for use in rules. In this instance the first \S+ matches the IP address, and the second matches the protocol. Anything between the parenthesis will be able to be used in rules.</p></li>
+
+<li><p><order>srcip, protocol</order> - Defines what the entries in the regex line are labeled as. The IP address will be labeled as srcip, and the protocol by proto.</p></li>
+</ul>
+
+<p>The photo below is an actual screenshot of the structure of the decoder.xml file.</p>
+
+<p>** <a href="http://cybersyndicates.com/wp-content/uploads/2015/06/xmlfile.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/06/xmlfile-300x175.png" alt="xmlfile" /></a>
+**</p>
+
+<p>For this post, the decoder.xml file will be the primary focus. Try adding custom entries to capture alerts for log-files for thirdparty software that you’ve added yourself. Remember to restart ossec after you’ve made changes and use the OSSEC documentation link provided above for additional instructions. We will address future customization techniques in future posts.</p>
+
+<p>The final part for this setup will be installing and configuring postfix. Start by entering “<strong>sudo apt-get install postfix and sudo apt-get install mailutils</strong>&rdquo; into your shell.</p>
+
+<h1 id="see-usr-share-postfix-main-cf-dist-for-a-commented-more-complete-version">See /usr/share/postfix/main.cf.dist for a commented, more complete version</h1>
+
+<h1 id="debian-specific-specifying-a-file-name-will-cause-the-first">Debian specific: Specifying a file name will cause the first</h1>
+
+<h1 id="line-of-that-file-to-be-used-as-the-name-the-debian-default">line of that file to be used as the name. The Debian default</h1>
+
+<h1 id="is-etc-mailname">is /etc/mailname.</h1>
+
+<h1 id="myorigin-etc-mailname">myorigin = /etc/mailname</h1>
+
+<p>smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)</p>
+
+<p>biff = no</p>
+
+<p>appending .domain is the MUA&rsquo;s job.</p>
+
+<p>append_dot_mydomain = no</p>
+
+<h1 id="uncomment-the-next-line-to-generate-delayed-mail-warnings">Uncomment the next line to generate &ldquo;delayed mail&rdquo; warnings</h1>
+
+<h1 id="delay-warning-time-4h">delay_warning_time = 4h</h1>
+
+<p>readme_directory = no</p>
+
+<h1 id="tls-parameters">TLS parameters</h1>
+
+<p>smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem</p>
+
+<p>smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key</p>
+
+<p>smtpd_use_tls=yes</p>
+
+<p>smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache</p>
+
+<p>smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache</p>
+
+<h1 id="see-usr-share-doc-postfix-tls-readme-gz-in-the-postfix-doc-package-for">See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for</h1>
+
+<h1 id="information-on-enabling-ssl-in-the-smtp-client">information on enabling SSL in the smtp client.</h1>
+
+<p>smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem</p>
+
+<p>smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key</p>
+
+<p>smtpd_use_tls=yes</p>
+
+<p>smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache</p>
+
+<p>smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache</p>
+
+<h1 id="see-usr-share-doc-postfix-tls-readme-gz-in-the-postfix-doc-package-for-1">See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for</h1>
+
+<h1 id="information-on-enabling-ssl-in-the-smtp-client-1">Information on enabling SSL in the smtp client.</h1>
+
+<p>smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_un$</p>
+
+<p>myhostname = localhost</p>
+
+<p>alias_maps = hash:/etc/aliases</p>
+
+<p>alias_database = hash:/etc/aliases</p>
+
+<p>myorigin = /etc/mailname</p>
+
+<p>mydestination = CyberSyndicates.com, CyberSyndicates-OSSEC, localhost.localdoma$</p>
+
+<p>relayhost =</p>
+
+<p>mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128</p>
+
+<p>mailbox_size_limit = 0</p>
+
+<p>recipient_delimiter = +</p>
+
+<p>inet_interfaces = localhost</p>
+
+<p>inet_protocols = all
+Each of the lines above is in the main.conf file by default. There are a few changes that should be made to fit your particular email address and system information. View the entries that are in bold. These highlighted configs are important, especially the TLS section which contains some of the important information that will facilitate the encrypted connection to gmail.</p>
+
+<p>The lines below are not added by default and should be added manually or copied and changed to fit your custom information. They are to be placed at the bottom of the main.conf file.</p>
+
+<p>##################   Added by Me #######################</p>
+
+<p>smtp_tls_loglevel =1</p>
+
+<p>smtp_tls_security_level=encrypt</p>
+
+<p>smtp_sasl_auth_enable=yes</p>
+
+<p>smtp_sasl_password_maps=hash:/etc/postfix/sasl/passwd</p>
+
+<p>smtp_sasl_security_options = noanonymous</p>
+
+<p>######################## map slacker007@localhost to slacker007.dev@gmail.com #$</p>
+
+<p>smtp_generic_maps=hash:/etc/postfix/generic</p>
+
+<p>relayhost=[smtp.gmail.com]:587</p>
+
+<p>In addition to adding the lines above and making all of the configurations you will also create two files (If they don’t already exist on your system and add the following lines)</p>
+
+<p>Type vi   /etc/postfix/sasl/passwd</p>
+
+<p>Add the following:</p>
+
+<p>[smtp.gmail.com]:587 <a href="mailto:USERNAME@gmail.com:YOUR_PASSWORD">USERNAME@gmail.com:YOUR_PASSWORD</a></p>
+
+<p>Save and exit vi</p>
+
+<p>Run the following two commands:</p>
+
+<p>sudo chmod 400 /etc/postfix/sasl/passwd</p>
+
+<p>sudo postmap /etc/postfix/sasl/passwd</p>
+
+<p>cat  /etc/ssl/certs/Thawt_Premium_Server_CA.pem | sudo tee –a /etc/postfix/cacert.pem</p>
+
+<p>sudo /etc/init.d/postfix reload</p>
+
+<p>finally test your mail by entering the command below:</p>
+
+<p>echo “Test email | mail –s “Test Mail” <a href="mailto:youremail@gmail.com">youremail@gmail.com</a></p>
+
+<p>If you have not seen the email show up in your email’s inbox, check the junk mail folder. If it is not there, check the /var/log/mail.log file on your system go to the bottom of the file and copy and paste the messages that refer to the email attempt to this blog and ask any questions you may have.</p>
+
+<p>This configuration may seem like a small step but the amount of power gained with a properly configured active response setup is enormous. Below are some images of this system and the test email and some alerts that were generated from it. In addition to those images, are some additional images that contain the results of one of my research VPS’s and the types of alerts that it gets HOURLY..!!!!! It is attacked several times per hour by IP addresses from all over the world. The system built during this write-up was constructed in a lab behind a firewall so therefore there were no “attack or scan” alerts generated.</p>
+
+<p> <a href="http://cybersyndicates.com/wp-content/uploads/2015/06/hashnotification.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/06/hashnotification-300x175.png" alt="hashnotification" /></a></p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/06/failedSSHD.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/06/failedSSHD-300x203.png" alt="failedSSHD" /></a></p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/06/ReverseMapping1.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/06/ReverseMapping1-300x174.png" alt="ReverseMapping" /></a></p>
+
+<p>The alerts from the VPS !!!</p>
+
+<p><strong>CHECK OUT WHERE THE IP ADDRESSES ABOVE RESOLVED TO…..!!!!!!!!!!!!!!!!!!!!!</strong></p>
+
+<p> <a href="http://cybersyndicates.com/wp-content/uploads/2015/06/chinaIP.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/06/chinaIP-300x153.png" alt="chinaIP" /></a></p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/06/honkong.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/06/honkong-300x179.png" alt="honkong" /></a></p>
+
+<p>Get additional information from:</p>
+
+<p>**OSSEC. <strong>[</strong><a href="http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html**](http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html">http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html**](http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html</a>)</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+                 <a href="/tags/active-monitoring/">Active Monitoring</a>
+            
+                 <a href="/tags/cyber-defense/">Cyber Defense</a>
+            
+                 <a href="/tags/intrusion-detection/">Intrusion Detection</a>
+            
+                 <a href="/tags/ossec/">OSSEC</a>
+            
+        </p>
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=Advanced%20Active%20Monitoring%20with%20OSSEC&url=https%3a%2f%2fcybersydicates.com%2f2015%2f06%2f20%2f2015-06-20-advance-active-monitoring-with-ossec%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcybersydicates.com%2f2015%2f06%2f20%2f2015-06-20-advance-active-monitoring-with-ossec%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fcybersydicates.com%2f2015%2f06%2f20%2f2015-06-20-advance-active-monitoring-with-ossec%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://cybersydicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="https://cybersydicates.com/js/jquery.fitvids.js"></script>
+        <script src="https://cybersydicates.com/js/scripts.js"></script>
+    </body>
+</html>
+

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cyber Syndicates</title>
+    <link>https://cybersydicates.com/tags/the/index.xml</link>
+    <description>Recent content on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Alexander Rymdeko-Harvey</copyright>
+    <atom:link href="https://cybersydicates.com/tags/the/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Email Verification and Email Name Creation</title>
+      <link>https://cybersydicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</link>
+      <pubDate>Sun, 14 Feb 2016 14:23:45 +0000</pubDate>
+      
+      <guid>https://cybersydicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</guid>
+      <description>
+
+&lt;p&gt;Over the past few months we have been rapidly expanding the capability of SimplyEmail. While it is a very simple tool, it has been extremely successful on a few live engagements I have been on. I feel like it is ready for recommendation to say the least. I did however notice a few key features that some of the guys on the team mentioned that would be nice to have integrated. Thanks to &lt;a href=&#34;https://twitter.com/_wald0&#34;&gt;@_wald0&lt;/a&gt; and his suggestions I have implemented a email verification option. Also I learned a trick or so a few months back from &lt;a href=&#34;https://twitter.com/harmj0y&#34;&gt;@harmj0y&lt;/a&gt; on sick site called &amp;ldquo;Connect6&amp;rdquo;, which seems to populate a large name DB of employees for each company. Also a fellow tester and friend (&lt;a href=&#34;https://twitter.com/nagasecurity&#34;&gt;Joshua Crumbaugh&lt;/a&gt;) let me on to a sick tool for grabbing Linkedin names from bing called &lt;a href=&#34;https://github.com/pan0pt1c0n/PhishBait&#34;&gt;PhishBait&lt;/a&gt;. With all this I set out to build some new capabilities for SimplyEmail and learn some new tricks :)&lt;/p&gt;
+
+&lt;h4 id=&#34;smtp-email-verification&#34;&gt;&lt;em&gt;SMTP Email Verification&lt;/em&gt;&lt;/h4&gt;
+
+&lt;p&gt;This process is actually relatively easy to accomplish. Its a simple heuristic of SMTP return codes when attempting to send a email on the target SMTP server. The process takes place by first Identifying the proper MX record to point to. In many cases larger corporations will have more than one SMTP server with multiple MX records. These are for redundancy of course and are ordered by priority, here is a small snip of the code I built fast:&lt;/p&gt;
+
+&lt;p&gt;[snippet id=&amp;ldquo;29&amp;rdquo;]&lt;/p&gt;
+
+&lt;p&gt;After obtaining all the MX records we can easily sort, pick the lowest value and feed it to the next function needed. So here is the meat of the verification checks. Before we go ahead and send the SMTP server all of the gathered emails we need to check if this SMTP server supports this. We do this via providing the STMP server a known &amp;ldquo;invalid&amp;rdquo; address, and we test for the a return code other than 250 (250 is a valid email code). If we get anything except a 250, we know that the SMTP server isn&amp;rsquo;t just returning a 250 for each address supplied. we can test this pretty simply:&lt;/p&gt;
+
+&lt;p&gt;[snippet id=&amp;ldquo;30&amp;rdquo;]&lt;/p&gt;
+
+&lt;p&gt;So lets say our SMTP server supports this type of check, we can simply build a function to perform the check for our gathered emails. Here is a small small output of it in action:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/02/Screen-Shot-2016-02-14-at-11.10.11-AM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/02/Screen-Shot-2016-02-14-at-11.10.11-AM-1024x590.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.10.11 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Obviously I needed to wrap this in a simple helper class for SimplyEmail, the full code (Class) can be found here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/VerifyEmails.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/VerifyEmails.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;connect6-name-creation&#34;&gt;&lt;em&gt;Connect6 Name Creation&lt;/em&gt;&lt;/h4&gt;
+
+&lt;p&gt;Im always extreamly nervous to add in functionality to SimpleEmail.. hence the name! In some cases name creation can be a pivotal and vital addition to your phishing campaigns. Some times SimplyEmail will only find the standard email addresses or just a few emails. In this case email creation may be your saving grace. On my assessments I with out doubt found Connect6.com is a reliable source to gather names associated with companies.&lt;/p&gt;
+
+&lt;p&gt;Too start I throughly attempted to find  way to get the Connect6 URL using their search engine, with no anvil. This may be do to how they want you to pay for their service / API. So I did build a simple Google Dork function to attempt to resolve the correct URL:&lt;/p&gt;
+
+&lt;p&gt;[snippet id=&amp;ldquo;32&amp;rdquo;]&lt;/p&gt;
+
+&lt;p&gt;Full code can be found here: &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/Connect6.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/Connect6.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is a quick sample of the output that you will given if it cant detect the correct URL:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/02/Screen-Shot-2016-02-14-at-11.20.14-AM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/02/Screen-Shot-2016-02-14-at-11.20.14-AM-1024x605.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.20.14 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;linkedin-name-creation&#34;&gt;_LinkedIn_&lt;em&gt; Name Creation&lt;/em&gt;&lt;/h4&gt;
+
+&lt;p&gt;Linkedin is and has been know as a great source for social engineering, and recently I first hand got to see how effective it is to build a email campaign of it. Using the PhishBait tool mention earlier I was able to add in additional functionality and build in LinkedIn name scraping into SimplyEmail. Here is the really simple code I adapted:&lt;/p&gt;
+
+&lt;p&gt;[snippet id=&amp;ldquo;33&amp;rdquo;]&lt;/p&gt;
+
+&lt;p&gt;Finally the full code can found here: &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/LinkedinNames.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/LinkedinNames.py&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

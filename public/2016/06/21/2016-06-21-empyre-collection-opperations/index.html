@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>EmPyre Collection Operations &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="This post is number 4 of the EmPyre series. Thanks to the entire ATD family and dev team of EmPyre:
+@rvrsh3ll — @harmj0y — @xorrior — @CptJesus
+EmPyre can be found here: https://github.com/adaptivethreat/EmPyre
+Master list of the seriers: Here
+5/12/16 – Building an EmPyre with Python
+5/18/16 – Operating with EmPyre
+5/24/16 – The Return Of the EmPyre
+5/31/16 – OS X Office Macros with EmPyre
+EmPyre: Introduction to collection operations Information gathering may be one of the most vital actions to execute on a target.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.17" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="EmPyre Collection Operations">
+<meta property="og:description" content="This post is number 4 of the EmPyre series. Thanks to the entire ATD family and dev team of EmPyre:
+@rvrsh3ll — @harmj0y — @xorrior — @CptJesus
+EmPyre can be found here: https://github.com/adaptivethreat/EmPyre
+Master list of the seriers: Here
+5/12/16 – Building an EmPyre with Python
+5/18/16 – Operating with EmPyre
+5/24/16 – The Return Of the EmPyre
+5/31/16 – OS X Office Macros with EmPyre
+EmPyre: Introduction to collection operations Information gathering may be one of the most vital actions to execute on a target.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cybersydicates.com/2016/06/21/2016-06-21-empyre-collection-opperations/">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/normalize.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/highlight.css">
+        <link rel="stylesheet" href="https://cybersydicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="https://cybersydicates.com/">
+                            <img src="/logo.png" alt="EmPyre Collection Operations" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://cybersydicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/XXX">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://gitlab.com/XXX">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/XXX/YYY">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/XXX/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/&#43;XXX">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Home" href="/page/home/">Home</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container">
+        <header class="post-header">
+    <h1 class="post-title">EmPyre Collection Operations</h1>
+    
+</header>
+
+        <div class="post-content clearfix">
+    
+
+    
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/empyre_logo_white.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/empyre_logo_white.png" alt="empyre_logo_white" /></a></p>
+
+<p>This post is number 4 of the EmPyre series. Thanks to the entire ATD family and dev team of EmPyre:</p>
+
+<p>@rvrsh3ll — @harmj0y — @xorrior — @CptJesus</p>
+
+<p>EmPyre can be found here: <a href="https://github.com/adaptivethreat/EmPyre">https://github.com/adaptivethreat/EmPyre</a></p>
+
+<p>Master list of the seriers: <a href="http://www.harmj0y.net/blog/empyre/building-an-empyre-with-python/">Here</a></p>
+
+<p>5/12/16 – <em><strong><a href="http://www.harmj0y.net/blog/?p=2637&amp;preview=true">Building an EmPyre with Python</a></strong></em></p>
+
+<p>5/18/16 – <em><strong><a href="http://Operating with EmPyre">Operating with EmPyre</a></strong></em></p>
+
+<p>5/24/16 – <em><strong><a href="https://www.xorrior.com/the-return-of-the-empyre/">The Return Of the EmPyre</a></strong></em></p>
+
+<p>5/31/16 – <em><strong><a href="http://www.harmj0y.net/blog/empyre/os-x-office-macros-with-empyre/">OS X Office Macros with EmPyre</a></strong></em></p>
+
+<h3 id="empyre-introduction-to-collection-operations"><strong>EmPyre: Introduction to collection operations</strong></h3>
+
+<p>Information gathering may be one of the most vital actions to execute on a target. When it comes to EmPyre, we have implemented a suite of tools and techniques to accomplish a large subset of our needs. The interesting part about collection is it’s often used at nearly every phase of the attack cycle. This week we will be covering the various pre &amp; post collection modules we have built!</p>
+
+<h4 id="pre-escalation-collection-methods"><strong>Pre-Escalation Collection Methods</strong></h4>
+
+<p>One of our favorite, and easiest, methods is collecting a large subset of user information in OS X. Due the heavy use of SQL to store user information, it is extremely easy to query this data. For instance: with the “browser_dump” module we can start an operation to obtain browser history, which helps gain situational awareness of the target system. While this can be used in many scenarios, it is especially useful because the module does not require an elevated context; as such, it may give you pointers for the target you&rsquo;re currently on. Once you are up and running in EmPyre you can dump our user’s browser history for Safari and Chrome.</p>
+
+<p>After quickly generating some history on my test VM we have data!</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture1.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture1.png" alt="Picture1" /></a></p>
+
+<p>Next up on SQL data: the iMessage data store! iMessage data store is used by many targets, and is often synced with iCloud (SMS and IMessage data). The interesting thing about the iMessage app is its ability to integrate multiple chat platforms - not just standard iMessaging from Apple. Examples of platforms with this funcionality include: Yahoo, Jabber, Aol, AIM, Google, etc.  Information collection through data mining is sometimes needed for additional escalation, and iMessage makes a great location to search for data like passwords. Using the “imessage_dump” module we can search for specific terms in the users iMessage data store. This will enumerate the following:</p>
+
+<ul>
+<li><p>Account – The corresponding account user</p></li>
+
+<li><p>Service – The provider of the message</p></li>
+
+<li><p>Country – Where the message originated</p></li>
+
+<li><p>Number – If a text message, will be the senders telephone number</p></li>
+
+<li><p>ROWID – This is the row the message was stored, can be helpful if you pull the DB back</p></li>
+
+<li><p>Date – Date of the message</p></li>
+
+<li><p>Message – The text enumerated from the selected message</p></li>
+
+<li><p>Type – Secondary field for the type of account used within the app</p></li>
+</ul>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture2.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture2.png" alt="Picture2" /></a></p>
+
+<p>The next method of collection requires using osascript (Apples scripting language) we are able to force applications to prompt for credentials potentially gathering a password! Here is the “Prompt” module in action:</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture3.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture3.png" alt="Picture3" /></a></p>
+
+<p>Once setup we can easily force the App of choice to prompt a dialog box requesting a password. This can be a great method to gather credentials and potentially escalate. This and the next module have been adapted from work from <a href="https://twitter.com/fuzzynop?lang=en">@FuzzyNop</a>, so big shout out the work he puts in.</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture4.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture4.png" alt="Picture4" /></a></p>
+
+<p>One of my fellow friends, @enigma0x3 (<a href="https://enigma0x3.net/2015/01/21/phishing-for-credentials-if-you-want-it-just-ask/">https://enigma0x3.net/2015/01/21/phishing-for-credentials-if-you-want-it-just-ask/)</a>) has an interesting technique to get credentials on engagments using the standard Windows login prompt. The great part is OS X has something similar we are able to implement into our collection strategy. Using the osascript method we can easily weaponize the “ScreenSaverEngine” application to request credentials.  We can force the standard screensaver, request creds, and test them against the current users Apple Key Chain. Using the <strong>security</strong> command we can lock the users key chain and use the creds supplied to attempt to unlock using the follwing command: **security unlock-keychain –p Test. **This can be easily deployed in a loop to only unlock the screensaver when the user successfully enters the correct credentials. While it may not be extremely OPSEC friendly, it may go unnoticed and sucessfuly result in creds.</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture5.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture5.png" alt="Picture5" /></a></p>
+
+<p>A user will be prompted repeatedly until successful creds or the exit count is reached.</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture6.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture6.png" alt="Picture6" /></a></p>
+
+<p>One of the key collection modules we use during an engagment is clipboard collection. The main reason clipboard monitoring is key in our tradecraft is due to the ease of collection when keylogging fails to capture creds. This allows you to gather credentials and target specific times when password vaults are used in conjunction with the screenshot. Allowing for targeted collection of potential passwords and sensitive data. Using native API calls NSPasteboard, NSStringPboardType we can prevent using built in commands and potential signatures that could get us caught.</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture7.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture7.png" alt="Picture7" /></a></p>
+
+<h3 id="post-exploit-collection-methods"><strong>Post-Exploit Collection Methods</strong></h3>
+
+<p>Often during operations, we move from a recon &amp; escalation stage to a post exploitation information gathering process. This is truly the heart of end state operations and proper tools can help speed up the process as well as help a tester reach the data / show impact. When EmPyre was being developed we often attempted to explain and relate it to processes and procedures used during a windows environment.</p>
+
+<p>The first module I want to start with is the screenshot module. Due to testers reliance on this module it may be one of the most important post exploitation modules in our arsenal. While EmPyre currently supports two different techniques of screenshot, the native_screenshot module may be concern if certain AV products are in place. This is due to using the <em>screenshot</em> command, and potential logging.  While the standard module uses system APIs to capture the screen, parse the image, and drop to disk in a temporary location. During my research I did uncover a few methods to properly parse all the images completely in memory, but currently due to lack of the PIL library standalone 2.7 does not have the ability to parse completely in memory.  So relying on the Quartz API is a current constraint in this method.</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture8.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture8.png" alt="Picture8" /></a></p>
+
+<p>One feature within the EmPyre code base is different tasking types. This allows for different code paths of execution. For example, the iMessage module used dynamic code execution while the screenshot uses dynamic code execution with saved output. This is done by dropping to disk, opening the file, base64ing the raw file and the EmPyre server, and then saving it to your downloads folder. This makes for easy file management for modules and keeps things organized.</p>
+
+<p>Once basic situational awareness has been completed on a target, we often transition to reaching end state client goals. This is often referred to as the “Crown Jewels” or high value targets. Generally, it takes a large amount of post exploitation intelligence and the ability to collect on all your endpoints. Keylogging is an amazing technique that has been extremely successful for gathering creds, enumerating users work roles, collecting info, or even understanding the tools they are using to interact with the asset. Bellow you will see this being employed using an adapted ruby keylogger. @ joev  (<a href="https://github.com/gojhonny/metasploit-framework/blob/master/modules/post/osx/capture/keylog_recorder.r">https://github.com/gojhonny/metasploit-framework/blob/master/modules/post/osx/capture/keylog_recorder.r)</a>)</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture9.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture9.png" alt="Picture9" /></a></p>
+
+<p>Once the key logger is up and running you can easily check it using the built in shell commands or once complete kill the PID, use the built in download, and delete the file from disk.</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture10.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture10.png" alt="Picture10" /></a></p>
+
+<p>Once the file has been retrieved from the target you will have something similar (to the below) representing the application, key stroke, and keyboard commands.</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture20.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture20.png" alt="Picture20" /></a></p>
+
+<p>While operating on OS X you for sure miss the ease of mimikatz for gathering credentials, but while password collection is possible in some cases cracking potential evaluated accounts, admins or service accounts may be extremely useful for lateral movement. Within EmPyre we have built in the ability for hashdump and nicely output these hashes in hashcat ready format!</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture11.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture11.png" alt="Picture11" /></a></p>
+
+<p>It is often thought that due to the out-of-the box setup that lateral movement is just not an option. This is not always the case in the corporate environments. Admins are generally going to administrate, right? They need some method of software, patch, or user management for their end points. This can result in SSH being deployed to most corporate OS X assets, or maybe a custom solution. While this blog does not cover the Kerberos implications, in corporate environments, due to the heavy use of Active Directory it can be an entirely new method of lateral movement. Stay tuned for more on that subject!</p>
+
+<p>The last module we will be covering is the keychaindump. While this module may result in a large subset of user data and crucial passwords it does have limitations. Currently, this will not work against the latest OS X platform. The latest usable version was Yosemite, due to a vulnerability that allowed for researches to pull the master key candidate from memory once in an elevated state. Due to the new System Integrity Protections (SIP) in El Captain the ability to retrieve this master key has been properly stored in memory protected by SIP.  Not all hope is lost though! I have been extremely successful in using other tools to parse the keychain with the user’s credentials. This can be done with either a memory image or the keychain file itself.</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture13.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture13.png" alt="Picture13" /></a></p>
+
+<p>Once the keychain is local we can use a python tool called chainbreaker (<a href="https://github.com/n0fate/chainbreaker">https://github.com/n0fate/chainbreaker)</a>). This allows for the use of the password or the master key and will parse and decrypt the entire keychain offline. While this requires the password, a root context is not needed to download the keychain, allowing for offline attempts against the keychain which can be quite useful.</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture14.png"><img src="http://cybersyndicates.com/wp-content/uploads/2016/06/Picture14.png" alt="Picture14" /></a></p>
+
+<p>Hopefully this has helped clear up different use cases when it comes to EmPyre collection operations and the corresponding modules. As always we plan to release blogs near weekly covering the different use cases of EmPyre, next the team will be covering the injection of Kerberos tickets</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=EmPyre%20Collection%20Operations&url=https%3a%2f%2fcybersydicates.com%2f2016%2f06%2f21%2f2016-06-21-empyre-collection-opperations%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcybersydicates.com%2f2016%2f06%2f21%2f2016-06-21-empyre-collection-opperations%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fcybersydicates.com%2f2016%2f06%2f21%2f2016-06-21-empyre-collection-opperations%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="https://cybersydicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://cybersydicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="https://cybersydicates.com/js/jquery.fitvids.js"></script>
+        <script src="https://cybersydicates.com/js/scripts.js"></script>
+    </body>
+</html>
+

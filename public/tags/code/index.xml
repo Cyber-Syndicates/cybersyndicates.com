@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cyber Syndicates</title>
+    <link>https://cybersydicates.com/tags/code/index.xml</link>
+    <description>Recent content on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Alexander Rymdeko-Harvey</copyright>
+    <atom:link href="https://cybersydicates.com/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Quick and Dirty NMAP Commandline Menu</title>
+      <link>https://cybersydicates.com/2015/09/12/2015-09-12-quick-and-dirty-nmap-commandline-menu/</link>
+      <pubDate>Sat, 12 Sep 2015 02:34:47 +0000</pubDate>
+      
+      <guid>https://cybersydicates.com/2015/09/12/2015-09-12-quick-and-dirty-nmap-commandline-menu/</guid>
+      <description>&lt;p&gt;Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network.  Works against individual IP&amp;rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs.  Outputs into separate files in the local directory.  Can be adjusted and scaled.  Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post.  Check out the code on GIT.   &lt;a href=&#34;https://github.com/slacker007/simpleNMAP&#34;&gt;https://github.com/slacker007/simpleNMAP&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;********************************* Code Below *******************************&lt;/p&gt;
+
+&lt;p&gt;import os
+import sys
+import subprocess
+chances = 4
+end_prog = 0&lt;/p&gt;
+
+&lt;p&gt;def menu2():
+    cidr = raw_input(&amp;ldquo;Please enter the network cider or IP to be scanned EX:192.168.1.0/16 or 10.10.1.4 &amp;ldquo;)
+    return cidr
+def menu1(chances):
+    print &amp;ldquo;\n(1) Host Discovery: &amp;ldquo;
+    print &amp;ldquo;(2) Port &amp;amp; Service Discovery (top ports only): &amp;ldquo;
+    print &amp;ldquo;(3) Port &amp;amp; Service Discovery (All 65536): &amp;ldquo;
+    print &amp;ldquo;(4) OS Discovery: &amp;ldquo;
+    print &amp;ldquo;(5) RUN ALL \n&amp;rdquo;
+    choice1 = raw_input(&amp;ldquo;What type of scan would you like to run? &amp;ldquo;)
+if choice1 == &amp;lsquo;3&amp;rsquo;:
+        print &amp;ldquo;\n******* If you are running this against a network range it will take a while! Best if used agaist a single IP or small range of addresses ****&lt;strong&gt;&lt;em&gt;\n&amp;rdquo;
+    if choice1 not in (&amp;ldquo;1&amp;rdquo;, &amp;ldquo;2&amp;rdquo;, &amp;ldquo;3&amp;rdquo;, &amp;ldquo;4&amp;rdquo;, &amp;ldquo;5&amp;rdquo;):
+        if chances &amp;lt;= 1:
+            exit()
+        chances = chances - 1
+        print &amp;ldquo;Error, Please check your answer choice and try again: %d tries remaining: &amp;ldquo; % (chances)
+        menu1(chances)
+    else:
+        print &amp;ldquo;Choice Successful&amp;rdquo;
+        return choice1
+def menu3(chances, end_prog):
+    if chances &amp;gt; 1:
+        choice3 = raw_input(&amp;ldquo;would you like to run another scan? (y or n) &amp;ldquo;)
+        choice3 = choice3.lower()
+        if choice3 not in (&amp;lsquo;y&amp;rsquo;, &amp;lsquo;n&amp;rsquo;):
+            print &amp;ldquo;&lt;/em&gt;&lt;/strong&gt; INPUT ERROR, Please enter either y or n ***&amp;rdquo;
+            chances = chances - 1
+            menu3(chances, end_prog)
+    if str(choice3) == &amp;lsquo;n&amp;rsquo;:
+        exit()
+def scanner(cidr, choice1, chances):
+    if choice1 == &amp;lsquo;1&amp;rsquo;:
+        subprocess.check_call([&amp;lsquo;nmap&amp;rsquo;, &amp;lsquo;-n&amp;rsquo;, &amp;lsquo;-v&amp;rsquo;, &amp;lsquo;-PN&amp;rsquo;, &amp;lsquo;-sn&amp;rsquo;, &amp;lsquo;-PE&amp;rsquo;, &amp;lsquo;-PP&amp;rsquo;, &amp;lsquo;-T4&amp;rsquo;, &amp;lsquo;-ohostlist.UP&amp;rsquo;, cidr])
+    elif choice1 == &amp;lsquo;2&amp;rsquo;:
+        subprocess.check_call([&amp;lsquo;nmap&amp;rsquo;, &amp;lsquo;-n&amp;rsquo;, &amp;lsquo;-v&amp;rsquo;, &amp;lsquo;-PN&amp;rsquo;, &amp;lsquo;-sV&amp;rsquo;,&amp;lsquo;-oservices2&amp;rsquo;,cidr])&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;elif choice1 == &#39;3&#39;:
+    subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sV&#39;, &#39;-p 1-65535&#39;, &#39;-oservices3&#39;, cidr])
+elif choice1 == &#39;4&#39;:
+    subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-Pn&#39;, &#39;-O&#39;, &#39;-oosversions&#39;, cidr])
+elif choice1 == &#39;5&#39;: 
+    subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sn&#39;, &#39;-PE&#39;, &#39;-PP&#39;, &#39;-T4&#39;, &#39;-ohostlist.UP&#39;, cidr])
+    subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sV&#39;, &#39;-p 1-65535&#39;, &#39;-oservices3&#39;, cidr])
+    subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-Pn&#39;, &#39;-O&#39;, &#39;-oosversions&#39;, cidr])
+else:
+    return
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;while (1):
+    choice1 = menu1(chances)
+    cidr = menu2()
+    scanner(cidr, choice1, chances)
+    menu3(chances, end_prog)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

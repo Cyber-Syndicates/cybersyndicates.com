@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cyber Syndicates</title>
+    <link>https://cybersydicates.com/tags/ossec/index.xml</link>
+    <description>Recent content on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Alexander Rymdeko-Harvey</copyright>
+    <atom:link href="https://cybersydicates.com/tags/ossec/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Advanced Active Monitoring with OSSEC</title>
+      <link>https://cybersydicates.com/2015/06/20/2015-06-20-advance-active-monitoring-with-ossec/</link>
+      <pubDate>Sat, 20 Jun 2015 01:57:53 +0000</pubDate>
+      
+      <guid>https://cybersydicates.com/2015/06/20/2015-06-20-advance-active-monitoring-with-ossec/</guid>
+      <description>
+
+&lt;p&gt;Tools Used For this tutorial.&lt;/p&gt;
+
+&lt;p&gt;##############################################################&lt;/p&gt;
+
+&lt;p&gt;OSSEC 2.8.2 (&lt;a href=&#34;http://www.ossec.net&#34;&gt;http://www.ossec.net&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Ubuntu 14.04 (&lt;a href=&#34;http://www.ubuntu.com/download/desktop&#34;&gt;http://www.ubuntu.com/download/desktop&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Gmail Account (&lt;a href=&#34;https://www.gmail.com&#34;&gt;https://www.gmail.com&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Postfix (&lt;a href=&#34;http://www.postfix.org&#34;&gt;www.postfix.org&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;mailutils (installed from bash )&lt;/p&gt;
+
+&lt;p&gt;##############################################################&lt;/p&gt;
+
+&lt;p&gt;Step (1) Download Ubuntu 14.04 (Update: &lt;strong&gt;apt-get update; apt-get upgrade&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;p&gt;Step (2) Download OSSEC 2.8.2 Software&lt;/p&gt;
+
+&lt;p&gt;Step(2b) OPTIONAL Download Web UI 0.8&lt;/p&gt;
+
+&lt;p&gt;Step(3) Install OSSEC Software&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Two primary methods for installing OSSEC includes using the default settings (install.sh) or by manually installing it. Manual installation is simply just creating the required directories and copying the files into the OSSEC directory. Compiling each of the files and moving them to the appropriate directories. And lastly creating users and providing them with permissions to the files. Editing the install.sh script and/or the binaries can also be done to customize the install process. This is especially useful when configuring OSSEC for an unattended install, in which you will want to automate various aspects of the install to meet your environment needs.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;The method that will be used in this demonstration will be the default install, with additional configurations performed after installing.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;On your Ubuntu system, cd into the directory where you have downloaded the files and unpack them.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;tar –xzf ossec-hids-2.8.2.tar.gz&lt;/strong&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Run the install.sh script and answer each of the questions.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;./install.sh&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You’ll notice that during the question/answer video I selected “Server” as my choice. Although this will be the only system deployed for this post, it will still perform the same way. It just now gives you the option to add clients at a later time.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;[embed]&lt;a href=&#34;http://youtu.be/dbKrLRJLpRA[/embed&#34;&gt;http://youtu.be/dbKrLRJLpRA[/embed&lt;/a&gt;]&lt;/p&gt;
+
+&lt;p&gt;[embed]&lt;a href=&#34;http://youtu.be/D_b5QI5ABsI[/embed&#34;&gt;http://youtu.be/D_b5QI5ABsI[/embed&lt;/a&gt;]&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Once OSSEC has been installed ensure that you allow the necessary communication for syslog traffic on your firewall. The default port is UDP 1514&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Primary Files For OSSEC&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt; &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;**(path/on/your/system/ossec.conf) – &lt;strong&gt;This file is the primary configuration file for the OSSEC framework. The first section by default is a &amp;lt;global&lt;/strong&gt;&amp;gt; **tag that contains the parameters that specify the email notification address and SMTP server that OSSEC will use. Ensure that you have the 5 entries that are included in the screenshot below:&lt;/p&gt;
+
+&lt;p&gt;&lt;email_notifications&gt; should be “yes”; This tells OSSEC that you want to receive alerts.&lt;/p&gt;
+
+&lt;p&gt;&lt;Email_to&gt;should be &lt;a href=&#34;mailto:yourgmailaddress@gmail.com&#34;&gt;yourgmailaddress@gmail.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;smtp_server&gt;should be “localhost”;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;This setting is critical and it is COMPLETELY based off of your specific environment. For this test environment I am on a private network that is NAT’d, behind a firewall that is allowing outbound SMTP. It is important to fully understand the rules within your environment prior to implanting OSSEC if you wish to receive alerts outside of your network. Also keep in mind that many ISP’s now block SMTP and in that case it is best to use the one they provide for you. A few Google searches should answer that question for you, and if that is the case then wherever you see us use gmail, supplement the SMTP-RELAY-SERVER for your ISP.   For this test we will be using gmail as our (SMTP-RELAY-SERVER) and (localhost(which will be POSTFIX)) as our internal SMTP-SERVER. So basically OSSEC will generate an alert and send it to POSTFIX, which will then send it to whichever SMTP-RELAY-SERVER(gmail for this example), and from there it will be delivered to the email address in the &lt;email_to&gt; tag field. If you’re new to OSSEC, Linux, &amp;amp;/or PostFix you’re probably wondering why not just input gmail’s SMTP-RELAY-ADDRESS in the &lt;smtp_server&gt; tag field and cut out the middleman (PostFix). The reason why Postfix is used is that it is much better suited for handling emails. It handles encryption, transmission, &amp;amp; authentication much better than OSSEC does. Not to say that OSSEC couldn’t provide this functionality because after all it is Open Source, therefore whatever it lacks can always be written into it. Another reason is the separation of duties/functions. Its best practice to separate roles whenever possible and to limit the amount of services that are nested.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;email_from&gt; can be whatever email you’d like to appear in the “From” line (&lt;strong&gt;NOW YOU SEE WHY MANY ISP’S BLOCK SMTP)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;email_maxperhour&gt; you will have to add this line yourself, but it is important if you are using a free SMTP-RELAY-SERVICE. Many of them have a threshold for the amount of emails that they’ll relay per day. This number is up to you and can be anywhere from **1 – 9999 **messages per hour. Keep in mind that this is only the cap on the amount o f emails that are sent per hour and does not stop OSSEC from generating alerts that remain on the Server itself.&lt;/p&gt;
+
+&lt;p&gt; &lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/OssecEmailSettings.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/OssecEmailSettings-300x203.png&#34; alt=&#34;OssecEmailSettings&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The next section of this file is the &lt;include&gt; tag field which is used to include separate files that contain rules for OSSEC&lt;/p&gt;
+
+&lt;p&gt;Further down in this file there is a &lt;syscheck&gt; segment that dictates how often the file systems will be checked. The default setting is 79200 seconds (22 hours) You can adjust this time based off your unique environmental needs.&lt;/p&gt;
+
+&lt;p&gt;In addition to the frequency of the syscheck, you can also dictate which files to check and which to ignore.&lt;/p&gt;
+
+&lt;p&gt;The &lt;rootcheck&gt; tag field is also included in this file. This area should not be altered at this time. There will be another post in the near future in which we will discuss custom configuration for rootkit identification based on current indicators of compromise.&lt;/p&gt;
+
+&lt;p&gt;The &lt;alerts&gt; tag field contains two important fields: log_alert_levels (what is the min level of alert you wish to be logged) &amp;amp; email_alert_levels(min level of alerts that you wish to be sent immediately to your monitored email account) These fields are configurable based on your risk versus noise tolerance from **1-10. **&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt; &lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The last tag field that we will discuss in this file will be the &lt;active-response&gt; tag field. The two fields within this section that will be important for us will be the &lt;level&gt; tag and the &lt;timeout&gt; tag. The           &amp;lt; level&amp;gt; tag will be set based off your unique environment’s risk tolerance and IR response time. The &lt;timeout&gt; tag is critical and should be set carefully. The number by default is 600 (seconds) and will automatically respond to network based alerts by blocking the IP for the length of time you specify. This can be tricky because if your IR response time is slow then you would ideally want to block for a length of time that supports their responsiveness so that they can be effective. What makes this the tricky part is that too short of a lockout gives the attacker more time to compromise a system or exfiltrate data before your IR team has time to react but too long and a legitimate system may be locked out which could degrade production.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;decoder.xml&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Decoder.xml is probably one of the most important files to understand in order to customize the functionality of this software to your environment. Briefly explained, it is the file which dictates which files are to be monitored by OSSEC. The basic method for adding logs to the file is:&lt;/p&gt;
+
+&lt;p&gt;&lt;filename to be logged: EX”**&lt;mail&gt;**”&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;log_format&gt;syslog&lt;/log_format&gt; &lt;strong&gt;(syslog is the default format but “snort-full, snort-fast, squid, iis, eventlog, and eventchannel are also allowed)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;location&gt;absolute/path/to/log&lt;/location&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&amp;lt;/mail&lt;/strong&gt;&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;The second part of this file includes custom decoders. The default path to this file is /var/ossec/etc. This file is explained thoroughly by OSSEC on their documentation link. &lt;a href=&#34;Http://ossec-docs.readthedocs.org&#34;&gt;Http://ossec-docs.readthedocs.org&lt;/a&gt; According to OSSEC, they are broken into phases, with the first phase performing the pre-decoding. The structure is:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;decoder name=&#34;ossec-exampled&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;** &lt;program_name&gt;ossec-exampled&lt;/program_name&gt;**&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;/decoder&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Phase 2 now correctly identifies this log message as coming from ossec-exampled. There is still some very important information in the log message that should be decoded, namely the source IP and test-protocol1. To decode these a child decoder will be added. It will set the ossec-exampled decoder as a parent, and use prematch to limit its use to the correct log message.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;decoder name=&#34;ossec-exampled-test-connection&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;** &lt;parent&gt;ossec-exampled&lt;/parent&gt;**&lt;/p&gt;
+
+&lt;p&gt;** &lt;prematch offset=&#34;after_parent&#34;&gt;^test connection &lt;/prematch&gt; &lt;!-- offset=&#34;after_parent&#34; makes OSSEC ignore anything matched by the parent decoder and before --&gt;**&lt;/p&gt;
+
+&lt;p&gt;** &lt;regex offset=&#34;after_prematch&#34;&gt;^from (\S+) via (\S+)$&lt;/regex&gt; &lt;!-- offset=&#34;after_prematch&#34; makes OSSEC ignore anything matched by the prematch and earlier--&gt;**&lt;/p&gt;
+
+&lt;p&gt;** &lt;order&gt;srcip, protocol&lt;/order&gt;**&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;/decoder&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Breaking this down piece by piece:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;decoder name=&#34;ossec-exampled-test-connection&#34;&gt; - Declaring this to be a decoder and giving it a name.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;parent&gt;ossec-exampled&lt;/parent&gt; - This decoder will only be checked if ossec-exampled also matched.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;prematch offset=&#34;after_parent&#34;&gt;^test connection &lt;/prematch&gt; - If a log message does not contain the data in the prematch, it will not use that decoder. Setting the offset tells OSSEC to only look at data after the parent (ossec-exampled[9123]: in this case), in an effort to speed up matches.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;regex offset=&#34;after_prematch&#34;&gt;^from (\S+) via (\S+)$&lt;/regex&gt; - The regex line can be used to pull data out of the log message for use in rules. In this instance the first \S+ matches the IP address, and the second matches the protocol. Anything between the parenthesis will be able to be used in rules.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;order&gt;srcip, protocol&lt;/order&gt; - Defines what the entries in the regex line are labeled as. The IP address will be labeled as srcip, and the protocol by proto.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The photo below is an actual screenshot of the structure of the decoder.xml file.&lt;/p&gt;
+
+&lt;p&gt;** &lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/xmlfile.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/xmlfile-300x175.png&#34; alt=&#34;xmlfile&#34; /&gt;&lt;/a&gt;
+**&lt;/p&gt;
+
+&lt;p&gt;For this post, the decoder.xml file will be the primary focus. Try adding custom entries to capture alerts for log-files for thirdparty software that you’ve added yourself. Remember to restart ossec after you’ve made changes and use the OSSEC documentation link provided above for additional instructions. We will address future customization techniques in future posts.&lt;/p&gt;
+
+&lt;p&gt;The final part for this setup will be installing and configuring postfix. Start by entering “&lt;strong&gt;sudo apt-get install postfix and sudo apt-get install mailutils&lt;/strong&gt;&amp;rdquo; into your shell.&lt;/p&gt;
+
+&lt;h1 id=&#34;see-usr-share-postfix-main-cf-dist-for-a-commented-more-complete-version&#34;&gt;See /usr/share/postfix/main.cf.dist for a commented, more complete version&lt;/h1&gt;
+
+&lt;h1 id=&#34;debian-specific-specifying-a-file-name-will-cause-the-first&#34;&gt;Debian specific: Specifying a file name will cause the first&lt;/h1&gt;
+
+&lt;h1 id=&#34;line-of-that-file-to-be-used-as-the-name-the-debian-default&#34;&gt;line of that file to be used as the name. The Debian default&lt;/h1&gt;
+
+&lt;h1 id=&#34;is-etc-mailname&#34;&gt;is /etc/mailname.&lt;/h1&gt;
+
+&lt;h1 id=&#34;myorigin-etc-mailname&#34;&gt;myorigin = /etc/mailname&lt;/h1&gt;
+
+&lt;p&gt;smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)&lt;/p&gt;
+
+&lt;p&gt;biff = no&lt;/p&gt;
+
+&lt;p&gt;appending .domain is the MUA&amp;rsquo;s job.&lt;/p&gt;
+
+&lt;p&gt;append_dot_mydomain = no&lt;/p&gt;
+
+&lt;h1 id=&#34;uncomment-the-next-line-to-generate-delayed-mail-warnings&#34;&gt;Uncomment the next line to generate &amp;ldquo;delayed mail&amp;rdquo; warnings&lt;/h1&gt;
+
+&lt;h1 id=&#34;delay-warning-time-4h&#34;&gt;delay_warning_time = 4h&lt;/h1&gt;
+
+&lt;p&gt;readme_directory = no&lt;/p&gt;
+
+&lt;h1 id=&#34;tls-parameters&#34;&gt;TLS parameters&lt;/h1&gt;
+
+&lt;p&gt;smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem&lt;/p&gt;
+
+&lt;p&gt;smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key&lt;/p&gt;
+
+&lt;p&gt;smtpd_use_tls=yes&lt;/p&gt;
+
+&lt;p&gt;smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache&lt;/p&gt;
+
+&lt;p&gt;smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache&lt;/p&gt;
+
+&lt;h1 id=&#34;see-usr-share-doc-postfix-tls-readme-gz-in-the-postfix-doc-package-for&#34;&gt;See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for&lt;/h1&gt;
+
+&lt;h1 id=&#34;information-on-enabling-ssl-in-the-smtp-client&#34;&gt;information on enabling SSL in the smtp client.&lt;/h1&gt;
+
+&lt;p&gt;smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem&lt;/p&gt;
+
+&lt;p&gt;smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key&lt;/p&gt;
+
+&lt;p&gt;smtpd_use_tls=yes&lt;/p&gt;
+
+&lt;p&gt;smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache&lt;/p&gt;
+
+&lt;p&gt;smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache&lt;/p&gt;
+
+&lt;h1 id=&#34;see-usr-share-doc-postfix-tls-readme-gz-in-the-postfix-doc-package-for-1&#34;&gt;See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for&lt;/h1&gt;
+
+&lt;h1 id=&#34;information-on-enabling-ssl-in-the-smtp-client-1&#34;&gt;Information on enabling SSL in the smtp client.&lt;/h1&gt;
+
+&lt;p&gt;smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_un$&lt;/p&gt;
+
+&lt;p&gt;myhostname = localhost&lt;/p&gt;
+
+&lt;p&gt;alias_maps = hash:/etc/aliases&lt;/p&gt;
+
+&lt;p&gt;alias_database = hash:/etc/aliases&lt;/p&gt;
+
+&lt;p&gt;myorigin = /etc/mailname&lt;/p&gt;
+
+&lt;p&gt;mydestination = CyberSyndicates.com, CyberSyndicates-OSSEC, localhost.localdoma$&lt;/p&gt;
+
+&lt;p&gt;relayhost =&lt;/p&gt;
+
+&lt;p&gt;mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128&lt;/p&gt;
+
+&lt;p&gt;mailbox_size_limit = 0&lt;/p&gt;
+
+&lt;p&gt;recipient_delimiter = +&lt;/p&gt;
+
+&lt;p&gt;inet_interfaces = localhost&lt;/p&gt;
+
+&lt;p&gt;inet_protocols = all
+Each of the lines above is in the main.conf file by default. There are a few changes that should be made to fit your particular email address and system information. View the entries that are in bold. These highlighted configs are important, especially the TLS section which contains some of the important information that will facilitate the encrypted connection to gmail.&lt;/p&gt;
+
+&lt;p&gt;The lines below are not added by default and should be added manually or copied and changed to fit your custom information. They are to be placed at the bottom of the main.conf file.&lt;/p&gt;
+
+&lt;p&gt;##################   Added by Me #######################&lt;/p&gt;
+
+&lt;p&gt;smtp_tls_loglevel =1&lt;/p&gt;
+
+&lt;p&gt;smtp_tls_security_level=encrypt&lt;/p&gt;
+
+&lt;p&gt;smtp_sasl_auth_enable=yes&lt;/p&gt;
+
+&lt;p&gt;smtp_sasl_password_maps=hash:/etc/postfix/sasl/passwd&lt;/p&gt;
+
+&lt;p&gt;smtp_sasl_security_options = noanonymous&lt;/p&gt;
+
+&lt;p&gt;######################## map slacker007@localhost to slacker007.dev@gmail.com #$&lt;/p&gt;
+
+&lt;p&gt;smtp_generic_maps=hash:/etc/postfix/generic&lt;/p&gt;
+
+&lt;p&gt;relayhost=[smtp.gmail.com]:587&lt;/p&gt;
+
+&lt;p&gt;In addition to adding the lines above and making all of the configurations you will also create two files (If they don’t already exist on your system and add the following lines)&lt;/p&gt;
+
+&lt;p&gt;Type vi   /etc/postfix/sasl/passwd&lt;/p&gt;
+
+&lt;p&gt;Add the following:&lt;/p&gt;
+
+&lt;p&gt;[smtp.gmail.com]:587 &lt;a href=&#34;mailto:USERNAME@gmail.com:YOUR_PASSWORD&#34;&gt;USERNAME@gmail.com:YOUR_PASSWORD&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Save and exit vi&lt;/p&gt;
+
+&lt;p&gt;Run the following two commands:&lt;/p&gt;
+
+&lt;p&gt;sudo chmod 400 /etc/postfix/sasl/passwd&lt;/p&gt;
+
+&lt;p&gt;sudo postmap /etc/postfix/sasl/passwd&lt;/p&gt;
+
+&lt;p&gt;cat  /etc/ssl/certs/Thawt_Premium_Server_CA.pem | sudo tee –a /etc/postfix/cacert.pem&lt;/p&gt;
+
+&lt;p&gt;sudo /etc/init.d/postfix reload&lt;/p&gt;
+
+&lt;p&gt;finally test your mail by entering the command below:&lt;/p&gt;
+
+&lt;p&gt;echo “Test email | mail –s “Test Mail” &lt;a href=&#34;mailto:youremail@gmail.com&#34;&gt;youremail@gmail.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you have not seen the email show up in your email’s inbox, check the junk mail folder. If it is not there, check the /var/log/mail.log file on your system go to the bottom of the file and copy and paste the messages that refer to the email attempt to this blog and ask any questions you may have.&lt;/p&gt;
+
+&lt;p&gt;This configuration may seem like a small step but the amount of power gained with a properly configured active response setup is enormous. Below are some images of this system and the test email and some alerts that were generated from it. In addition to those images, are some additional images that contain the results of one of my research VPS’s and the types of alerts that it gets HOURLY..!!!!! It is attacked several times per hour by IP addresses from all over the world. The system built during this write-up was constructed in a lab behind a firewall so therefore there were no “attack or scan” alerts generated.&lt;/p&gt;
+
+&lt;p&gt; &lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/hashnotification.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/hashnotification-300x175.png&#34; alt=&#34;hashnotification&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/failedSSHD.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/failedSSHD-300x203.png&#34; alt=&#34;failedSSHD&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/ReverseMapping1.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/ReverseMapping1-300x174.png&#34; alt=&#34;ReverseMapping&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The alerts from the VPS !!!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;CHECK OUT WHERE THE IP ADDRESSES ABOVE RESOLVED TO…..!!!!!!!!!!!!!!!!!!!!!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt; &lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/chinaIP.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/chinaIP-300x153.png&#34; alt=&#34;chinaIP&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/honkong.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/honkong-300x179.png&#34; alt=&#34;honkong&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Get additional information from:&lt;/p&gt;
+
+&lt;p&gt;**OSSEC. &lt;strong&gt;[&lt;/strong&gt;&lt;a href=&#34;http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html**](http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html&#34;&gt;http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html**](http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html&lt;/a&gt;)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Active Monitoring with Open Source Tools</title>
+      <link>https://cybersydicates.com/2015/06/15/2015-06-15-incident-response-time-is-money/</link>
+      <pubDate>Mon, 15 Jun 2015 12:46:07 +0000</pubDate>
+      
+      <guid>https://cybersydicates.com/2015/06/15/2015-06-15-incident-response-time-is-money/</guid>
+      <description>&lt;p&gt;The two most important aspects of an incident starts with detection and ends complete eradication and restoration of services.  This has shifted the focus of many organizations away from prevention and more towards active monitoring.  Active monitoring helps organizations detect incidents so that the time between breach and eradication/restoration is minimized.   In order to accomplish this task, there are a number of COTS and Open Source tools that will facilitate this effort.   Open Source tools are often the better option, however the size of the environment and quality of it’s IT staff often the two most deciding factors.  Organizations are faced with difficult decisions when it is time to assess the budget.  Do we spend money on highly skilled and technically experienced employees, or do we purchase higher priced software that simplifies the tasks? Many times organizations elect to go with the latter.  Although this may or may not be the right decision, many times it is the most comprehensible for the decision makers. When we spend “X” amount of dollars, we know “Exactly” what we are getting!  Or do they? The problem with spending more on tools and less on the employee is that the tool is only as effective as the person configuring/operating it!  Welcome to Advanced Active Monitoring with Open Source Tools.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
