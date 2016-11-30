@@ -1,7 +1,7 @@
 
 baseurl = "http://dev.cybersyndicates.com/"
 title = "Cyber Syndicates"
-theme = "Ghostwriter"
+theme = "ghostwriter"
 languageCode = "en-us"
 copyright = "CyberSyndicates"
 googleAnalytics = "UA-64026800-1"

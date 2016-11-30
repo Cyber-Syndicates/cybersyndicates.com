@@ -6,14 +6,50 @@
     <description>Recent content in Presentations-rsses on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Alexander Rymdeko-Harvey</copyright>
-    <lastBuildDate>Fri, 18 Nov 2016 02:13:50 +0000</lastBuildDate>
+    <copyright>CyberSyndicates</copyright>
+    <lastBuildDate>Sun, 18 Sep 2016 02:13:50 +0000</lastBuildDate>
     <atom:link href="http://dev.cybersyndicates.com/presentations/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>RAT - Repurposing Adversarial Tradecraft BSidesAugusta2015</title>
+      <link>http://dev.cybersyndicates.com/presentations/rat/</link>
+      <pubDate>Sun, 18 Sep 2016 02:13:50 +0000</pubDate>
+      
+      <guid>http://dev.cybersyndicates.com/presentations/rat/</guid>
+      <description>
+
+&lt;h3 id=&#34;rat-repurposing-adversarial-tradecraft&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/h3&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/xP4PRrSuJQGOb2&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/AlexanderRymdekoHarv/rat-repurposing-adversarial-tradecraft&#34; title=&#34;RAT - Repurposing Adversarial Tradecraft&#34; target=&#34;_blank&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/AlexanderRymdekoHarv&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/v2jU8EsJMVc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+ &lt;/div&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Building an empyre with python BsidesLV2016</title>
+      <link>http://dev.cybersyndicates.com/presentations/building_a_empyre/</link>
+      <pubDate>Sat, 13 Aug 2016 21:38:17 +0000</pubDate>
+      
+      <guid>http://dev.cybersyndicates.com/presentations/building_a_empyre/</guid>
+      <description>&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/H2yxNzVtshXPxR&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/harmj0y/building-an-empyre-with-python&#34; title=&#34;Building an EmPyre with Python&#34; target=&#34;_blank&#34;&gt;Building an EmPyre with Python&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/harmj0y&#34;&gt;Will Schroeder&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/79qzgVTP3Yc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+ &lt;/div&gt;
+
+</description>
+    </item>
     
     <item>
       <title>Operating in an OSX Heavy Environment</title>
       <link>http://dev.cybersyndicates.com/presentations/osx-way/</link>
-      <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
+      <pubDate>Mon, 18 Apr 2016 02:13:50 +0000</pubDate>
       
       <guid>http://dev.cybersyndicates.com/presentations/osx-way/</guid>
       <description>
@@ -27,20 +63,6 @@
 &lt;h3 id=&#34;slide-share&#34;&gt;Slide Share&lt;/h3&gt;
 
 &lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/7pWN9yEVUvZo4&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/StephanBorosh/external-to-da-the-os-x-way&#34; title=&#34;External to DA, the OS X Way&#34; target=&#34;_blank&#34;&gt;External to DA, the OS X Way&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/StephanBorosh&#34;&gt;Stephan Borosh&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>RAT - Repurposing Adversarial Tradecraft</title>
-      <link>http://dev.cybersyndicates.com/presentations/rat/</link>
-      <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
-      
-      <guid>http://dev.cybersyndicates.com/presentations/rat/</guid>
-      <description>
-
-&lt;h3 id=&#34;rat-repurposing-adversarial-tradecraft&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/h3&gt;
-
-&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/xP4PRrSuJQGOb2&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/AlexanderRymdekoHarv/rat-repurposing-adversarial-tradecraft&#34; title=&#34;RAT - Repurposing Adversarial Tradecraft&#34; target=&#34;_blank&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/AlexanderRymdekoHarv&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
 </description>
     </item>
     
