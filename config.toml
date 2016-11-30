@@ -16,11 +16,11 @@ disqusShortname = "cybersyndicates-com"
     tag = "tags"
 
 [Params]
-    titleheadline = "- Red Team | Infosec | Hacking Blog"
+    titleheadline = "Red Team | Hacking | Infosec | TTPs"
 	logo2 = "/logo.png"
     intro = true
     headline = "CybeЯ Syйdicдtes"
-    description = "Red Team | Hacking | Infosec stuff | Beer | HUNT | Blue Team <3"
+    description = "Red team and hacking blog with a touch of threat emulation of real world TTPs. We focus on Infosec and cover topics from latest toolsets!"
     github = "https://github.com/Cyber-Syndicates"
     gitlab = "https://github.com/Cyber-Syndicates"
     linkedin = "https://linkedin.com/in/"
