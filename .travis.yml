@@ -1,8 +1,5 @@
 language: go
-before_script:
-    - git clone --branch v2 https://github.com/go-yaml/yaml $GOPATH/src/gopkg.in/yaml.v2
-    - go get -u -v github.com/spf13/hugo
-
+install: go get -v github.com/spf13/hugo
 script:
   - git clone https://github.com/Cyber-Syndicates/cybersyndicates.com
   - cd cybersyndicates.com
