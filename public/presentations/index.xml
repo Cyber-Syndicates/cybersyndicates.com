@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Presentations-rsses on Cyber Syndicates</title>
-    <link>http://dev.cybersyndicates.com/presentations/index.xml</link>
+    <link>https://cybersyndicates.com/presentations/index.xml</link>
     <description>Recent content in Presentations-rsses on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
     <lastBuildDate>Sun, 18 Sep 2016 02:13:50 +0000</lastBuildDate>
-    <atom:link href="http://dev.cybersyndicates.com/presentations/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://cybersyndicates.com/presentations/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>RAT - Repurposing Adversarial Tradecraft BSidesAugusta2015</title>
-      <link>http://dev.cybersyndicates.com/presentations/rat/</link>
+      <link>https://cybersyndicates.com/presentations/rat/</link>
       <pubDate>Sun, 18 Sep 2016 02:13:50 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/presentations/rat/</guid>
+      <guid>https://cybersyndicates.com/presentations/rat/</guid>
       <description>
 
 &lt;h3 id=&#34;rat-repurposing-adversarial-tradecraft&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/h3&gt;
@@ -32,10 +32,10 @@
     
     <item>
       <title>Building an empyre with python BsidesLV2016</title>
-      <link>http://dev.cybersyndicates.com/presentations/building_a_empyre/</link>
+      <link>https://cybersyndicates.com/presentations/building_a_empyre/</link>
       <pubDate>Sat, 13 Aug 2016 21:38:17 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/presentations/building_a_empyre/</guid>
+      <guid>https://cybersyndicates.com/presentations/building_a_empyre/</guid>
       <description>&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/H2yxNzVtshXPxR&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/harmj0y/building-an-empyre-with-python&#34; title=&#34;Building an EmPyre with Python&#34; target=&#34;_blank&#34;&gt;Building an EmPyre with Python&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/harmj0y&#34;&gt;Will Schroeder&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
 
 
@@ -48,10 +48,10 @@
     
     <item>
       <title>Operating in an OSX Heavy Environment</title>
-      <link>http://dev.cybersyndicates.com/presentations/osx-way/</link>
+      <link>https://cybersyndicates.com/presentations/osx-way/</link>
       <pubDate>Mon, 18 Apr 2016 02:13:50 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/presentations/osx-way/</guid>
+      <guid>https://cybersyndicates.com/presentations/osx-way/</guid>
       <description>
 
 
@@ -68,10 +68,10 @@
     
     <item>
       <title>Malvertizing Like a Pro BSidesAugusta2015</title>
-      <link>http://dev.cybersyndicates.com/presentations/malvertizing-like-a-pro/</link>
+      <link>https://cybersyndicates.com/presentations/malvertizing-like-a-pro/</link>
       <pubDate>Sun, 13 Sep 2015 21:38:17 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/presentations/malvertizing-like-a-pro/</guid>
+      <guid>https://cybersyndicates.com/presentations/malvertizing-like-a-pro/</guid>
       <description>
 
 &lt;h2 id=&#34;a-jump-into-the-newest-attack-vector&#34;&gt;A Jump Into The Newest Attack Vector&lt;/h2&gt;

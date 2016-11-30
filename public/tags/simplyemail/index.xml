@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cyber Syndicates</title>
-    <link>http://dev.cybersyndicates.com/tags/simplyemail/index.xml</link>
+    <link>https://cybersyndicates.com/tags/simplyemail/index.xml</link>
     <description>Recent content on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <atom:link href="http://dev.cybersyndicates.com/tags/simplyemail/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://cybersyndicates.com/tags/simplyemail/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Email Verification and Email Name Creation</title>
-      <link>http://dev.cybersyndicates.com/2016/02/email-harvesting-and-name-creation/</link>
+      <link>https://cybersyndicates.com/2016/02/email-harvesting-and-name-creation/</link>
       <pubDate>Sun, 14 Feb 2016 14:23:45 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2016/02/email-harvesting-and-name-creation/</guid>
+      <guid>https://cybersyndicates.com/2016/02/email-harvesting-and-name-creation/</guid>
       <description>
 
 &lt;p&gt;Over the past few months we have been rapidly expanding the capability of SimplyEmail. While it is a very simple tool, it has been extremely successful on a few live engagements I have been on. I feel like it is ready for recommendation to say the least. I did however notice a few key features that some of the guys on the team mentioned that would be nice to have integrated. Thanks to &lt;a href=&#34;https://twitter.com/_wald0&#34;&gt;@_wald0&lt;/a&gt; and his suggestions I have implemented a email verification option. Also I learned a trick or so a few months back from &lt;a href=&#34;https://twitter.com/harmj0y&#34;&gt;@harmj0y&lt;/a&gt; on sick site called &amp;ldquo;Connect6&amp;rdquo;, which seems to populate a large name DB of employees for each company. Also a fellow tester and friend (&lt;a href=&#34;https://twitter.com/nagasecurity&#34;&gt;Joshua Crumbaugh&lt;/a&gt;) let me on to a sick tool for grabbing Linkedin names from bing called &lt;a href=&#34;https://github.com/pan0pt1c0n/PhishBait&#34;&gt;PhishBait&lt;/a&gt;. With all this I set out to build some new capabilities for SimplyEmail and learn some new tricks :)&lt;/p&gt;
@@ -76,7 +76,7 @@
 
 &lt;p&gt;So lets say our SMTP server supports this type of check, we can simply build a function to perform the check for our gathered emails. Here is a small small output of it in action:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.10.11-AM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.10.11-AM.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.10.11 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.10.11-AM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.10.11-AM.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.10.11 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Obviously I needed to wrap this in a simple helper class for SimplyEmail, the full code (Class) can be found here:&lt;/p&gt;
 
@@ -119,7 +119,7 @@
 
 &lt;p&gt;Here is a quick sample of the output that you will given if it cant detect the correct URL:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.20.14-AM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.20.14-AM.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.20.14 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.20.14-AM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.20.14-AM.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.20.14 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;linkedin-name-creation&#34;&gt;LinkedIn Name Creation&lt;/h4&gt;
 
@@ -163,10 +163,10 @@
     
     <item>
       <title>SimplyEmail v0.5: PDFMiner!</title>
-      <link>http://dev.cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/</link>
+      <link>https://cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/</link>
       <pubDate>Sat, 21 Nov 2015 18:32:48 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/</guid>
+      <guid>https://cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/</guid>
       <description>
 
 &lt;h2 id=&#34;major-addition-to-simplyemail-core&#34;&gt;Major addition to SimplyEmail Core&lt;/h2&gt;
@@ -190,7 +190,7 @@
 
 &lt;p&gt;I take all the above into account when developing potential targeted emails. Funny enough these documents are a great source for emails as well. As they generally have contact information outside the standard &lt;a href=&#34;mailto:info@company.com&#34;&gt;info@company.com&lt;/a&gt;. This source however can be hard to gather from the HTML scrapping modules already in place. One the documents can take a good amount of time to gather, and for the sake of speed I have always found using googles indexed files always seemed to speed things up.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.13.55-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-21-at-1.13.55-PM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.13.55 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.13.55-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-21-at-1.13.55-PM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.13.55 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;pdfminer&#34;&gt;PDFMiner&lt;/h3&gt;
 
@@ -220,19 +220,19 @@
     
     <item>
       <title>Email Harvesting with HTML Scraping Module: theHarvester</title>
-      <link>http://dev.cybersyndicates.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</link>
+      <link>https://cybersyndicates.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</link>
       <pubDate>Sun, 14 Jun 2015 01:26:31 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</guid>
+      <guid>https://cybersyndicates.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</guid>
       <description>
 
 &lt;p&gt;After a recent Red Team training , I was faced with a issue where I had to conduct a Email phishing campaign to gain initial access using Email Harvesting. This isn&amp;rsquo;t anything necessarily new or a subject that has been touched on a million times. But my goal wasn&amp;rsquo;t to recreate the wheel or create a entirely new tool. I knew from past engagements that there are some great tools like &lt;a href=&#34;http://www.edge-security.com/theharvester.php&#34;&gt;theHarvester&lt;/a&gt; project out there:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-9.32.34-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-9.32.34-PM.png&#34; alt=&#34;Screen Shot 2015-06-11 at 9.32.34 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-9.32.34-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-9.32.34-PM.png&#34; alt=&#34;Screen Shot 2015-06-11 at 9.32.34 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;But I came across a ridiculous issue; I had no access to external net. Only internal web servers for the cyber range we where conducting the training in. This scenario isn&amp;rsquo;t as unrealistic as you may think, you could be on an internal network assessment and may have to gain secondary access through different means if phishing is in scope. In this case with the limited network ability the target surface was limited and quite small, but yet we didn&amp;rsquo;t have access to the normal means of recon. Using the extended set of options of the harvester can yield some great results, but all of its current modules are online dependent. With search options using Google and Bing you can gather tons of data, but these functions wouldn&amp;rsquo;t help me a bit.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-10.51.51-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-10.51.51-PM.png&#34; alt=&#34;Screen Shot 2015-06-11 at 10.51.51 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-10.51.51-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-10.51.51-PM.png&#34; alt=&#34;Screen Shot 2015-06-11 at 10.51.51 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h5 id=&#34;current-search-options-for-theharvester&#34;&gt;(Current Search Options for TheHarvester)&lt;/h5&gt;
 
@@ -283,7 +283,7 @@
 -o == Show only the part of a matching line that matches PATTERN.
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-12-at-2.05.03-PM.png&#34; alt=&#34;Screen Shot 2015-06-12 at 2.05.03 PM&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-12-at-2.05.03-PM.png&#34; alt=&#34;Screen Shot 2015-06-12 at 2.05.03 PM&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;At this point I was able to simply output line by line the email address&amp;rsquo;s I gathered and still had a mirrored site for further recon if needed.&lt;/p&gt;
 
@@ -293,19 +293,19 @@
 
 &lt;p&gt;I knew at this point that I wanted a easy way to do this and at the same time I knew that making some simple script wouldn&amp;rsquo;t help anyone. So I set off to add this function into the harvester so other could use this simple way of gathering email addresses.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-9.10.24-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-9.10.24-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 9.10.24 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-9.10.24-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-9.10.24-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 9.10.24 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;After looking at the code for roughly a few hours I knew that adapting this particular function wasn&amp;rsquo;t going to be hard, but I knew I had to match the coding style of Christian Martorella otherwise it would never get added. So I set off and built a simple way of automating this. I did run into a few problems when it came to recursive mirroring in pythons current modules. With documented issues with proxies and VPN support in Urlib, this was really a turn off for me as I may be using a VPN to conduct work. Well nothing seemed to do it near as good as Wget implemented it. So using pythons &lt;em&gt;sub.process&lt;/em&gt; module was going to be the most effective way of implementation and was supported on almost any nix system.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.43.00-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.43.00-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.43.00 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.43.00-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.43.00-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.43.00 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Some other major issues were using default values in the current command line parser. Currently theHarvester doesn&amp;rsquo;t use &lt;em&gt;argparse&lt;/em&gt; so I had in a few nasty if statements (If anyone knows a better way please let me know bellow!).&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.47.00-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.47.00-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.47.00 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.47.00-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.47.00-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.47.00 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;lastly a simple demo:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.50.04-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.50.04 PM&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.50.04-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.50.04 PM&#34; /&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;python theHarvester.py -d www.puttargethere.com -b html-source
 or more advance options:
@@ -313,7 +313,7 @@ python theHarvester.py -d www.puttargethere.com -b html-source -j 10 -w 3 -r 200
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;As you can see the output format hasn&amp;rsquo;t changed and would simple be another option to add:
-&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.50.30-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.50.30 PM&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.50.30-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.50.30 PM&#34; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;note&#34;&gt;NOTE:&lt;/h3&gt;
 

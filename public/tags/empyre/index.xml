@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cyber Syndicates</title>
-    <link>http://dev.cybersyndicates.com/tags/empyre/index.xml</link>
+    <link>https://cybersyndicates.com/tags/empyre/index.xml</link>
     <description>Recent content on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <atom:link href="http://dev.cybersyndicates.com/tags/empyre/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://cybersyndicates.com/tags/empyre/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>EmPyre Collection Operations</title>
-      <link>http://dev.cybersyndicates.com/2016/06/empyre-collection-opperations/</link>
+      <link>https://cybersyndicates.com/2016/06/empyre-collection-opperations/</link>
       <pubDate>Tue, 21 Jun 2016 20:14:14 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2016/06/empyre-collection-opperations/</guid>
+      <guid>https://cybersyndicates.com/2016/06/empyre-collection-opperations/</guid>
       <description>
 
 &lt;p&gt;
@@ -49,7 +49,7 @@
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 50%; width: 50%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_logo.png&#34; alt=&#34;Empyre Logo&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_logo.png&#34; alt=&#34;Empyre Logo&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -112,7 +112,7 @@ This post is number 4 of the EmPyre series. Thanks to the entire ATD family and 
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/browser_dump_empyre.png&#34; alt=&#34;Empyre Browser Dump&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/browser_dump_empyre.png&#34; alt=&#34;Empyre Browser Dump&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -164,7 +164,7 @@ This post is number 4 of the EmPyre series. Thanks to the entire ATD family and 
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_message_dump.png&#34; alt=&#34;Empyre Message Dump&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_message_dump.png&#34; alt=&#34;Empyre Message Dump&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -204,7 +204,7 @@ The next method of collection requires using osascript (Apples scripting languag
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_prompt_attack.png&#34; alt=&#34;Empyre Message Dump&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_prompt_attack.png&#34; alt=&#34;Empyre Message Dump&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -244,7 +244,7 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_prompt_attack2.png&#34; alt=&#34;Empyre Message Dump 2&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_prompt_attack2.png&#34; alt=&#34;Empyre Message Dump 2&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -285,7 +285,7 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_screensaver_prompt.png&#34; alt=&#34;Empyre Screen Saver Prompt&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_screensaver_prompt.png&#34; alt=&#34;Empyre Screen Saver Prompt&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -326,7 +326,7 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_screensaver_prompt2.png&#34; alt=&#34;Empyre Screen Saver Prompt2&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_screensaver_prompt2.png&#34; alt=&#34;Empyre Screen Saver Prompt2&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -367,7 +367,7 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_clipboard_monitor.png&#34; alt=&#34;Empyre Clipboard monitor&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_clipboard_monitor.png&#34; alt=&#34;Empyre Clipboard monitor&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -412,7 +412,7 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_native_screenshoot.png&#34; alt=&#34;Empyre Native Screenshot&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_native_screenshoot.png&#34; alt=&#34;Empyre Native Screenshot&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -455,7 +455,7 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_keylogger.png&#34; alt=&#34;Empyre Keylogger&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_keylogger.png&#34; alt=&#34;Empyre Keylogger&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -496,7 +496,7 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_keylogger2.png&#34; alt=&#34;Empyre Keylogger&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_keylogger2.png&#34; alt=&#34;Empyre Keylogger&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -537,7 +537,7 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_keylogger3.png&#34; alt=&#34;Empyre Keylogger 3&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_keylogger3.png&#34; alt=&#34;Empyre Keylogger 3&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -578,7 +578,7 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_hashdump.png&#34; alt=&#34;Empyre Hashdump&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_hashdump.png&#34; alt=&#34;Empyre Hashdump&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -621,7 +621,7 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_keychain_dump.png&#34; alt=&#34;Empyre Keychain Dump&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_keychain_dump.png&#34; alt=&#34;Empyre Keychain Dump&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -662,7 +662,7 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
     &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
         &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
             &lt;p&gt;
-                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_keychain_dump2.png&#34; alt=&#34;Empyre Keychain Dump2&#34;/&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_keychain_dump2.png&#34; alt=&#34;Empyre Keychain Dump2&#34;/&gt;
             &lt;/p&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -675,13 +675,13 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
     
     <item>
       <title>The Return of the EmPyre</title>
-      <link>http://dev.cybersyndicates.com/2016/05/return-empyre-series-3/</link>
+      <link>https://cybersyndicates.com/2016/05/return-empyre-series-3/</link>
       <pubDate>Tue, 24 May 2016 14:34:01 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2016/05/return-empyre-series-3/</guid>
+      <guid>https://cybersyndicates.com/2016/05/return-empyre-series-3/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/empyre_logo_white_background.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/empyre_logo_white_background.png&#34; alt=&#34;empyre_logo_white_background&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/empyre_logo_white_background.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/empyre_logo_white_background.png&#34; alt=&#34;empyre_logo_white_background&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;This post is number 3 of the EmPyre series and cross post with a fellow friend and ATD co-worker &lt;a href=&#34;https://twitter.com/xorrior&#34;&gt;@xorrior&lt;/a&gt;. Thanks to the entire ATD family and dev team of EmPyre:&lt;/p&gt;
 
@@ -701,11 +701,11 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
 
 &lt;p&gt;&lt;strong&gt;Figure 1&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture1.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture1.png&#34; alt=&#34;Picture1&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture1.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture1.png&#34; alt=&#34;Picture1&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 2&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture2.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture2.png&#34; alt=&#34;Picture2&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture2.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture2.png&#34; alt=&#34;Picture2&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Figure 1 depicts the load commands for Xcode. Load commands provide the OS loader with instructions on where to find the application&amp;rsquo;s entry point, offsets for the text and data sections, and all of the libraries needed by the application at runtime. The “Name” field in the LC_LOAD_DYLIB load command identifies the file path to the DVTFoundation library. Notice that the path is prepended with @rpath. This signals to the OS loader to examine the LC_RPATH (Figure 2) load commands in order to expand the @rpath variable. Each path is searched in succession by dyld to locate the required library. Once the library is found it is loaded into the application at runtime. The issue is that any library planted in an LC_RPATH that is found before the legitimate dylib, will be loaded first. A slight variation to this attack, which we won’t cover in this post, involves the LC_LOAD_WEAK_DYLIB load command. This indicates that the specified dylib is not required but will be loaded if found. If the specified library is not present on the system, we can plant the dylib in the specified path and it will be loaded by the application at runtime. For more information on Dylib Hijacks for weak dylibs, please read the &lt;a href=&#34;https://www.virusbulletin.com/virusbulletin/2015/03/dylib-hijacking-os-x/&#34;&gt;white paper&lt;/a&gt; on Dylib Hijacks by @patrickwardle. The load commands slightly differ but still offer the same way to conduct this attack. We can abuse dyld’s load order to obtain consistent code execution and/or persistence in OS X.&lt;/p&gt;
 
@@ -715,13 +715,13 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
 
 &lt;p&gt;&lt;strong&gt;Figure 3&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture3.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture3.png&#34; alt=&#34;Picture3&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture3.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture3.png&#34; alt=&#34;Picture3&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;With the default options for the module, every Mach-O binary on the file system will be examined, which can take quite some time. To speed up the scan, set a path or only scan loaded process executables. Once the scan is finished, your output will provide you with the path to the vulnerable binary and the full path to where an EmPyre dylib should be planted. You will also need to locate the legitimate dylib for the next module in this attack.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 4&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture4.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture4.png&#34; alt=&#34;Picture4&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture4.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture4.png&#34; alt=&#34;Picture4&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Here we see that the Xcode application is vulnerable to a dylib hijack with the DVTFoundation library. Instructions are provided after the scan output to gather the information necessary for the next module.&lt;/p&gt;
 
@@ -729,23 +729,23 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
 
 &lt;p&gt;&lt;strong&gt;Figure 5&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture5.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture5.png&#34; alt=&#34;Picture5&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture5.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture5.png&#34; alt=&#34;Picture5&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;The Listener, UserAgent, and Arch options are all used to generate the hijacker dylib. Be sure that the architecture of the dylib matches the architecture of the vulnerable application. The “LegitimateDylibPath” option will define the full path to the legitimate dylib loaded into the application. The “vulnerableRPATH” refers to the rpath value returned from the HijackScanner module. Once we have all of our options set, we can execute the module.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 6&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture6.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture6.png&#34; alt=&#34;Picture6&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture6.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture6.png&#34; alt=&#34;Picture6&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;In Figure 6, we see that once the module is completed, an EmPyre dylib is configured and copied to the vulnerable rpath we specified. When we start the Xcode application, we receive a new EmPyre agent running in that application’s process!&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 7&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture7.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture7.png&#34; alt=&#34;Picture7&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture7.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture7.png&#34; alt=&#34;Picture7&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 8&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture8.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture8.png&#34; alt=&#34;Picture8&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture8.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture8.png&#34; alt=&#34;Picture8&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Important Note: In some cases, killing the agent will close the application. Closing the application will always kill the agent.&lt;/p&gt;
 
@@ -779,19 +779,19 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
 
 &lt;p&gt;&lt;strong&gt;Figure 9&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture9.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture9.png&#34; alt=&#34;Picture9&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture9.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture9.png&#34; alt=&#34;Picture9&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;This will output AppleScript with a simple stager to the current working directory. Next, we will have to upload the script to a directory of the operator’s choice. In this case, I just used the /tmp/ directory store my “evilscript”. To set up the hook is very simple, set the user password, this is for the sudo that takes place to install the hook and creating proper permissions on the script. This can be seen being set up in Figure 9.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 10&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture10.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture10.png&#34; alt=&#34;Picture10&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture10.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture10.png&#34; alt=&#34;Picture10&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Running the defaults read command we covered earlier will result in the output of the LoginHook location, this is to ensure our hook is in place:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 11&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture11.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture11.png&#34; alt=&#34;Picture11&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture11.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture11.png&#34; alt=&#34;Picture11&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;At this point, the LoginHook is properly setup and installed. Anytime the user logs in, the agent will be executed. It should be noted that this method of persistence is widely known and signatured by anti-virus solutions that look for OS X specific persistence.  &lt;/p&gt;
 
@@ -818,13 +818,13 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
 
 &lt;p&gt;&lt;strong&gt;Figure 12&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture12.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture12.png&#34; alt=&#34;Picture12&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture12.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture12.png&#34; alt=&#34;Picture12&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Currently EmPyre supports installing a “SYSTEM” level daemon running as root that is not dependent on a user being active. This can be very important in some cases and gives you an advantage compared to other methods. Now in Figure 11 we mentioned that the launchd service will locate the plist (property list) file, this is the core of the service and passes the required options that are associated with the service. When launchd starts up it will parse this file and decide when to start, pass arguments or listen on SOCKETS for IPC (Inter Process Communication) so it important that we have an idea of what we are installing. Here is the plist file used:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 13&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture13.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture13.png&#34; alt=&#34;Picture13&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture13.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture13.png&#34; alt=&#34;Picture13&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;A few main things should be noted, the Label key string value will be the name of the daemon, in this case the default Is “com.proxy.initialize”. Whereas the array string will be location plus the executable. Finally the key “RunAtLoad” and “KeepAlive” tells launchd to start at system init and stay running rather than a one-time process.&lt;/p&gt;
 
@@ -832,19 +832,19 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
 
 &lt;p&gt;&lt;strong&gt;Figure 14&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture14.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture14.png&#34; alt=&#34;Picture14&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture14.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture14.png&#34; alt=&#34;Picture14&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;After you have an elevated agent we can go ahead and setup the persistence, using the “persistence/osx/launchdaemonexecutable”.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 15&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture15.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture15.png&#34; alt=&#34;Picture15&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture15.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture15.png&#34; alt=&#34;Picture15&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;That’s it, EmPyre does all the nitty-gritty work of creating the executable, writing it to disk, building the plist and registering it to launchd! When testing is complete we can use the “RemoveDaemon” module to properly clean up. (*Remember to take notes on the paths during install!)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 16&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture16.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture16.png&#34; alt=&#34;Picture16&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture16.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture16.png&#34; alt=&#34;Picture16&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Hope this can get you started and maybe give you some ideas of where persistence can also be installed!&lt;/p&gt;
 

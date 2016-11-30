@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cyber Syndicates</title>
-    <link>http://dev.cybersyndicates.com/tags/code/index.xml</link>
+    <link>https://cybersyndicates.com/tags/code/index.xml</link>
     <description>Recent content on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <atom:link href="http://dev.cybersyndicates.com/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://cybersyndicates.com/tags/code/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Quick and Dirty NMAP Commandline Menu</title>
-      <link>http://dev.cybersyndicates.com/2015/09/quick-and-dirty-nmap-commandline-menu/</link>
+      <link>https://cybersyndicates.com/2015/09/quick-and-dirty-nmap-commandline-menu/</link>
       <pubDate>Sat, 12 Sep 2015 02:34:47 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2015/09/quick-and-dirty-nmap-commandline-menu/</guid>
+      <guid>https://cybersyndicates.com/2015/09/quick-and-dirty-nmap-commandline-menu/</guid>
       <description>&lt;p&gt;Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network.  Works against individual IP&amp;rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs.  Outputs into separate files in the local directory.  Can be adjusted and scaled.  Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post.  Check out the code on GIT.   &lt;a href=&#34;https://github.com/slacker007/simpleNMAP&#34;&gt;https://github.com/slacker007/simpleNMAP&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;********************************* Code Below *******************************&lt;/p&gt;

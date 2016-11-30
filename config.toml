@@ -16,6 +16,7 @@ disqusShortname = "cybersyndicates-com"
     tag = "tags"
 
 [Params]
+    titleheadline = "- Red Team | Infosec | Hacking Blog"
 	logo2 = "/logo.png"
     intro = true
     headline = "CybeЯ Syйdicдtes"

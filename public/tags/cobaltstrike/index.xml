@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cyber Syndicates</title>
-    <link>http://dev.cybersyndicates.com/tags/cobaltstrike/index.xml</link>
+    <link>https://cybersyndicates.com/tags/cobaltstrike/index.xml</link>
     <description>Recent content on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <atom:link href="http://dev.cybersyndicates.com/tags/cobaltstrike/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://cybersyndicates.com/tags/cobaltstrike/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>SYSTEM Context Persistence in GPO Startup Scripts</title>
-      <link>http://dev.cybersyndicates.com/2016/01/system-context-persistence-in-gpo-startup/</link>
+      <link>https://cybersyndicates.com/2016/01/system-context-persistence-in-gpo-startup/</link>
       <pubDate>Mon, 25 Jan 2016 04:32:51 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2016/01/system-context-persistence-in-gpo-startup/</guid>
+      <guid>https://cybersyndicates.com/2016/01/system-context-persistence-in-gpo-startup/</guid>
       <description>&lt;p&gt;Interesting enough I was recently experimenting on GPO settings to configure my Applocker for testing and came by Scripts under the (Computer Configuration) settings for GPO. This defiantly caught my attention, since persistence is a cat and mouse game of stored locations / methods. &lt;strong&gt;This has been mentioned but I haven&amp;rsquo;t seen it talked about so hey why not share what I did&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.36.07-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.36.07-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 10.36.07 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.36.07-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.36.07-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 10.36.07 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;I knew I wanted to weaponize it from a pure command line standpoint as the configuration utility is pretty much point and click. Some of the assumptions are:&lt;/p&gt;
 
@@ -27,7 +27,7 @@
 &lt;li&gt;Willing to drop something to disk for persistence&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.41.18-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.41.18-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 10.41.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.41.18-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.41.18-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 10.41.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;While that GUI looks quite simple and easy to use, that would be to dang easy! Lets get started:&lt;/p&gt;
 
@@ -96,7 +96,7 @@ gpupdatep /force
 
 &lt;p&gt;Finally on reboot you should have a callback! :)&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-11.25.47-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-11.25.47-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 11.25.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-11.25.47-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-11.25.47-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 11.25.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;To wrap up this seems like a great SYSTEM level call back and the cool part is you can add in parameters for custom payloads. Ex. if you wanted to only start at certain time you could pass the time or date that would like to restrict or even extend. This method seems extremely strong and has proved to be reliable method. Soon to come is the CS aggressor script and PS script to automate this.&lt;/p&gt;
 </description>

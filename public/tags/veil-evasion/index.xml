@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cyber Syndicates</title>
-    <link>http://dev.cybersyndicates.com/tags/veil-evasion/index.xml</link>
+    <link>https://cybersyndicates.com/tags/veil-evasion/index.xml</link>
     <description>Recent content on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <atom:link href="http://dev.cybersyndicates.com/tags/veil-evasion/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://cybersyndicates.com/tags/veil-evasion/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Veil-Evasion AES Encrypted HTTPKEY Request: Sand-Box Evasion</title>
-      <link>http://dev.cybersyndicates.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/</link>
+      <link>https://cybersyndicates.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/</link>
       <pubDate>Wed, 10 Jun 2015 02:10:36 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/</guid>
+      <guid>https://cybersyndicates.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/</guid>
       <description>
 
 
@@ -25,13 +25,13 @@
 
 &lt;p&gt;My buddy &lt;a href=&#34;https://www.christophertruncer.com/&#34;&gt;@christruncer&lt;/a&gt; set me up on a task to build a module that could be integrated into veil, and I was more than happy to help and contribute to the growing Framework that has been developed. It is becoming apparent that even though binaries are a secondary choice with newer advanced techniques to stay off disk, it’s always great to have a backup in case dropping a binary to disk is the last choice. But when you do have to drop an .exe to disk, you better be sure not to trigger a slew of appliances it has to traverse. That’s where &lt;a href=&#34;https://github.com/Veil-Framework/Veil-Evasion&#34;&gt;Veil-Evasion&lt;/a&gt; makes its money, building payloads that bypass AV.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/PM.png&#34; alt=&#34;PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/PM.png&#34; alt=&#34;PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;above-is-an-image-of-some-of-the-required-options-to-get-started&#34;&gt;(Above is an image of some of the required options to get started)&lt;/h4&gt;
 
 &lt;p&gt;The payload I decided to develop for this month’s V-Day is a bit like the previous modules, but I added in a few extra functions to help get past some of those pesky high security environments. In which your standard binary may just not make it. This payload is AES encrypted using the shell-code inject method. The previous AES encrypted shell-code modules are using a random key and was complied with this random AES key. With this module the core shell-code inject function is the same, but the idea of sending out your payload with its decryption key it not always ideal. This can lead to quick response from the Blue / IR team by either some basic dynamic malware analysis, or simple sandboxing and your burnt! Next thing you know you have FireEye appliances scanning your C2 infrastructure and you’re up a creek.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/ScreenPM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/ScreenPM.png&#34; alt=&#34;ScreenPM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/ScreenPM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/ScreenPM.png&#34; alt=&#34;ScreenPM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;above-is-an-image-of-supplied-sample-wordpress-html-page-genrated&#34;&gt;(Above is an image of supplied sample wordpress.html page genrated)&lt;/h4&gt;
 
@@ -51,11 +51,11 @@
 
 &lt;p&gt;But evading sand boxes aren&amp;rsquo;t just that easy, they fight back by employing a few methods to trick the malware. They can manipulate the time presented in the enviroment by either manipulating the current time to defect time triggers or even trick the malware into thinking more time has elapsed than actually has. If this isn&amp;rsquo;t enough more advanced methods such as Multipath exploration can crawl code and execute or patch sleep functions by jumping them, and running code otherwise not accessible.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-10-at-8.22.47-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-10-at-8.22.47-PM.png&#34; alt=&#34;Screen Shot 2015-06-10 at 8.22.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-10-at-8.22.47-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-10-at-8.22.47-PM.png&#34; alt=&#34;Screen Shot 2015-06-10 at 8.22.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt; In this case we are using staged payloads which allows us to defeat all of the above. The only code visible is a MD5, HTTP Request and the sleep function. We have no need to loop a sleep to defeat extra commands taking place or bring along extra code. The payload will be encrypted and if the sandbox dose execlerate the sleep cycle no extra intelligence will be gained about the binary.    &lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-10-at-8.23.14-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-10-at-8.23.14-PM.png&#34; alt=&#34;Screen Shot 2015-06-10 at 8.23.14 PM&#34; /&gt;&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-10-at-8.23.14-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-10-at-8.23.14-PM.png&#34; alt=&#34;Screen Shot 2015-06-10 at 8.23.14 PM&#34; /&gt;&lt;/a&gt; &lt;/p&gt;
 
 &lt;h3 id=&#34;expanding-on-methodology&#34;&gt;Expanding on Methodology&lt;/h3&gt;
 
@@ -76,12 +76,12 @@
 
 &lt;h5 id=&#34;i-built-a-small-diagram-to-help-depict-some-of-this-functionality-and-suggested-infrastructure&#34;&gt;&lt;strong&gt;&lt;em&gt;I built a small diagram to help depict some of this functionality and suggested infrastructure:&lt;/em&gt;&lt;/strong&gt;&lt;/h5&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-4.12.27-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-4.12.27-PM.png&#34; alt=&#34;Screen Shot 2015-06-11 at 4.12.27 PM&#34; /&gt;&lt;/a&gt;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-4.12.27-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-4.12.27-PM.png&#34; alt=&#34;Screen Shot 2015-06-11 at 4.12.27 PM&#34; /&gt;&lt;/a&gt;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-15-at-8.40.50-AM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-15-at-8.40.50-AM.png&#34; alt=&#34;Screen Shot 2015-06-15 at 8.40.50 AM&#34; /&gt;&lt;/a&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-11.12.51-PM.png&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-15-at-8.40.50-AM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-15-at-8.40.50-AM.png&#34; alt=&#34;Screen Shot 2015-06-15 at 8.40.50 AM&#34; /&gt;&lt;/a&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-11.12.51-PM.png&#34;&gt;
 &lt;/a&gt;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-11.20.05-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-11.20.05-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 11.20.05 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-11.20.05-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-11.20.05-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 11.20.05 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Some Benefits of this Module&lt;/strong&gt;&lt;/p&gt;
 

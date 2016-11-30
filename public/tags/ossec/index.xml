@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cyber Syndicates</title>
-    <link>http://dev.cybersyndicates.com/tags/ossec/index.xml</link>
+    <link>https://cybersyndicates.com/tags/ossec/index.xml</link>
     <description>Recent content on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <atom:link href="http://dev.cybersyndicates.com/tags/ossec/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://cybersyndicates.com/tags/ossec/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Advanced Active Monitoring with OSSEC</title>
-      <link>http://dev.cybersyndicates.com/2015/06/advance-active-monitoring-with-ossec/</link>
+      <link>https://cybersyndicates.com/2015/06/advance-active-monitoring-with-ossec/</link>
       <pubDate>Sat, 20 Jun 2015 01:57:53 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2015/06/advance-active-monitoring-with-ossec/</guid>
+      <guid>https://cybersyndicates.com/2015/06/advance-active-monitoring-with-ossec/</guid>
       <description>
 
 &lt;p&gt;Tools Used For this tutorial.&lt;/p&gt;
@@ -87,7 +87,7 @@
 
 &lt;p&gt;&lt;email_maxperhour&gt; you will have to add this line yourself, but it is important if you are using a free SMTP-RELAY-SERVICE. Many of them have a threshold for the amount of emails that they’ll relay per day. This number is up to you and can be anywhere from **1 – 9999 **messages per hour. Keep in mind that this is only the cap on the amount o f emails that are sent per hour and does not stop OSSEC from generating alerts that remain on the Server itself.&lt;/p&gt;
 
-&lt;p&gt; &lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/OssecEmailSettings.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/OssecEmailSettings-300x203.png&#34; alt=&#34;OssecEmailSettings&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt; &lt;a href=&#34;https://cybersyndicates.com/wp-content/OssecEmailSettings.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/OssecEmailSettings-300x203.png&#34; alt=&#34;OssecEmailSettings&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The next section of this file is the &lt;include&gt; tag field which is used to include separate files that contain rules for OSSEC&lt;/p&gt;
 
@@ -153,7 +153,7 @@
 
 &lt;p&gt;The photo below is an actual screenshot of the structure of the decoder.xml file.&lt;/p&gt;
 
-&lt;p&gt;** &lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/xmlfile.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/xmlfile.png&#34; alt=&#34;xmlfile&#34; /&gt;&lt;/a&gt;
+&lt;p&gt;** &lt;a href=&#34;https://cybersyndicates.com/wp-content/xmlfile.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/xmlfile.png&#34; alt=&#34;xmlfile&#34; /&gt;&lt;/a&gt;
 **&lt;/p&gt;
 
 &lt;p&gt;For this post, the decoder.xml file will be the primary focus. Try adding custom entries to capture alerts for log-files for thirdparty software that you’ve added yourself. Remember to restart ossec after you’ve made changes and use the OSSEC documentation link provided above for additional instructions. We will address future customization techniques in future posts.&lt;/p&gt;
@@ -287,19 +287,19 @@ Each of the lines above is in the main.conf file by default. There are a few cha
 
 &lt;p&gt;This configuration may seem like a small step but the amount of power gained with a properly configured active response setup is enormous. Below are some images of this system and the test email and some alerts that were generated from it. In addition to those images, are some additional images that contain the results of one of my research VPS’s and the types of alerts that it gets HOURLY..!!!!! It is attacked several times per hour by IP addresses from all over the world. The system built during this write-up was constructed in a lab behind a firewall so therefore there were no “attack or scan” alerts generated.&lt;/p&gt;
 
-&lt;p&gt; &lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/hashnotification.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/hashnotification-300x175.png&#34; alt=&#34;hashnotification&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt; &lt;a href=&#34;https://cybersyndicates.com/wp-content/hashnotification.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/hashnotification-300x175.png&#34; alt=&#34;hashnotification&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/failedSSHD.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/failedSSHD.png&#34; alt=&#34;failedSSHD&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/failedSSHD.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/failedSSHD.png&#34; alt=&#34;failedSSHD&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/ReverseMapping1.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/ReverseMapping1.png&#34; alt=&#34;ReverseMapping&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/ReverseMapping1.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/ReverseMapping1.png&#34; alt=&#34;ReverseMapping&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The alerts from the VPS !!!&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;CHECK OUT WHERE THE IP ADDRESSES ABOVE RESOLVED TO…..!!!!!!!!!!!!!!!!!!!!!&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt; &lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/chinaIP.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/chinaIP-300x153.png&#34; alt=&#34;chinaIP&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt; &lt;a href=&#34;https://cybersyndicates.com/wp-content/chinaIP.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/chinaIP-300x153.png&#34; alt=&#34;chinaIP&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/honkong.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/honkong.png&#34; alt=&#34;honkong&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/honkong.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/honkong.png&#34; alt=&#34;honkong&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Get additional information from:&lt;/p&gt;
 
