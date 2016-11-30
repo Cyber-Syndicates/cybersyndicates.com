@@ -29,7 +29,7 @@ disqusShortname = "cybersyndicates-com"
 
 
 [Permalinks]
-    post = "/:year/:month/:day/:filename/"
+    post = "/:year/:month/:filename/"
 
 [[menu.main]]
     name = "Blog"
@@ -37,8 +37,8 @@ disqusShortname = "cybersyndicates-com"
     weight = 1
 
 [[menu.main]]
-    name = "Home"
-    url = "/page/home/"
+    name = "Presentations"
+    url = "/presentations/"
     weight = 2
 
 [[menu.main]]
@@ -59,4 +59,5 @@ disqusShortname = "cybersyndicates-com"
 [[menu.main]]
     name = "The Team"
     url = "/page/team/"
-    weight = 5
+    weight = 6
+

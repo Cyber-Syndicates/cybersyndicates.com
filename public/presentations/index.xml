@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Presentations-rsses on Cyber Syndicates</title>
+    <link>http://dev.cybersyndicates.com/presentations/index.xml</link>
+    <description>Recent content in Presentations-rsses on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Alexander Rymdeko-Harvey</copyright>
+    <lastBuildDate>Fri, 18 Nov 2016 02:13:50 +0000</lastBuildDate>
+    <atom:link href="http://dev.cybersyndicates.com/presentations/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Operating in an OSX Heavy Environment</title>
+      <link>http://dev.cybersyndicates.com/presentations/osx-way/</link>
+      <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
+      
+      <guid>http://dev.cybersyndicates.com/presentations/osx-way/</guid>
+      <description>
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/5y18oKW27KE&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+ &lt;/div&gt;
+
+
+&lt;h3 id=&#34;slide-share&#34;&gt;Slide Share&lt;/h3&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/7pWN9yEVUvZo4&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/StephanBorosh/external-to-da-the-os-x-way&#34; title=&#34;External to DA, the OS X Way&#34; target=&#34;_blank&#34;&gt;External to DA, the OS X Way&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/StephanBorosh&#34;&gt;Stephan Borosh&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RAT - Repurposing Adversarial Tradecraft</title>
+      <link>http://dev.cybersyndicates.com/presentations/rat/</link>
+      <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
+      
+      <guid>http://dev.cybersyndicates.com/presentations/rat/</guid>
+      <description>
+
+&lt;h3 id=&#34;rat-repurposing-adversarial-tradecraft&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/h3&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/xP4PRrSuJQGOb2&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/AlexanderRymdekoHarv/rat-repurposing-adversarial-tradecraft&#34; title=&#34;RAT - Repurposing Adversarial Tradecraft&#34; target=&#34;_blank&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/AlexanderRymdekoHarv&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Malvertizing Like a Pro BSidesAugusta2015</title>
+      <link>http://dev.cybersyndicates.com/presentations/malvertizing-like-a-pro/</link>
+      <pubDate>Sun, 13 Sep 2015 21:38:17 +0000</pubDate>
+      
+      <guid>http://dev.cybersyndicates.com/presentations/malvertizing-like-a-pro/</guid>
+      <description>
+
+&lt;h2 id=&#34;a-jump-into-the-newest-attack-vector&#34;&gt;A Jump Into The Newest Attack Vector&lt;/h2&gt;
+
+&lt;p&gt;Recently at @BSidesAugusta I had the privilege to present my talk on Malvertizing and how I set out to verify my hypothesis. After some heavy research, time gathering as much possible information I decided it was time to take matters into my hands and bring some light to this major issue. Really trying to get people to talk about something that you rarely hear about in the info sec community. So enjoy my speech or just check out the slide deck.&lt;/p&gt;
+
+&lt;p&gt;Mostly I hope you share this content or give me some feedback, I would love to hear what you have to say!&lt;/p&gt;
+
+&lt;h4 id=&#34;speech-from-bsidesaugusta2015-ga&#34;&gt;Speech From BSidesAugusta2015 GA:&lt;/h4&gt;
+
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/7rep28EXjvE&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+
+&lt;h4 id=&#34;slide-deck-from-bsidesaugusta2015-ga&#34;&gt;Slide Deck From BSidesAugusta2015 GA:&lt;/h4&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/xMowhMz1JG9EY8&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/AlexanderRymdekoHarv/malvertizing-like-a-pro-65910846&#34; title=&#34;Malvertizing Like a Pro&#34; target=&#34;_blank&#34;&gt;Malvertizing Like a Pro&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/AlexanderRymdekoHarv&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

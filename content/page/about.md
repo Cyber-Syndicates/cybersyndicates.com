@@ -7,8 +7,5 @@ description = "Things about this blog.."
 
 ## About
 
-Cyber Syndicates was built a place to share ideas and hacking methodolgy. This was the core idea of this site, and moving forward we plan to bring more or the core aspect. 
-
-## Why?
-
-Sed quis pulvinar nisi, sed dapibus lacus. Mauris tempus ex ut ipsum facilisis interdum. Integer feugiat urna sed feugiat tempor. Quisque dictum vestibulum feugiat. Nunc nec est volutpat lorem imperdiet egestas sit amet ut orci. Aliquam venenatis neque ipsum, a placerat lectus cursus at. Donec pellentesque tellus hendrerit faucibus posuere. Etiam gravida consequat lectus, volutpat consectetur velit convallis nec. Praesent sagittis luctus dignissim.
+Cyber Syndicates is a (Cyber Blog) group of guys who love to try the latest Red Team, Blue Team and Hunt TTPs. We blog and drink a few beers along the way. We love pythin, C, C++ :)
+ 

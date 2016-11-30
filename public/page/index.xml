@@ -7,17 +7,8 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Alexander Rymdeko-Harvey</copyright>
-    <lastBuildDate>Thu, 03 Nov 2016 02:13:50 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Apr 2016 02:13:50 +0000</lastBuildDate>
     <atom:link href="http://dev.cybersyndicates.com/page/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>Home</title>
-      <link>http://dev.cybersyndicates.com/page/home/</link>
-      <pubDate>Thu, 03 Nov 2016 02:13:50 +0000</pubDate>
-      
-      <guid>http://dev.cybersyndicates.com/page/home/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Alexander Rymdeko-Harvey</title>
@@ -51,6 +42,8 @@
 &lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;slacker007&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
 &lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
+&lt;h2 id=&#34;west&#34;&gt;West&lt;/h2&gt;
+
 &lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;reaperb0t&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
 &lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
@@ -66,11 +59,7 @@
 
 &lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;
 
-&lt;p&gt;Cyber Syndicates was built a place to share ideas and hacking methodolgy. This was the core idea of this site, and moving forward we plan to bring more or the core aspect.&lt;/p&gt;
-
-&lt;h2 id=&#34;why&#34;&gt;Why?&lt;/h2&gt;
-
-&lt;p&gt;Sed quis pulvinar nisi, sed dapibus lacus. Mauris tempus ex ut ipsum facilisis interdum. Integer feugiat urna sed feugiat tempor. Quisque dictum vestibulum feugiat. Nunc nec est volutpat lorem imperdiet egestas sit amet ut orci. Aliquam venenatis neque ipsum, a placerat lectus cursus at. Donec pellentesque tellus hendrerit faucibus posuere. Etiam gravida consequat lectus, volutpat consectetur velit convallis nec. Praesent sagittis luctus dignissim.&lt;/p&gt;
+&lt;p&gt;Cyber Syndicates is a (Cyber Blog) group of guys who love to try the latest Red Team, Blue Team and Hunt TTPs. We blog and drink a few beers along the way. We love pythin, C, C++ :)&lt;/p&gt;
 </description>
     </item>
     
@@ -82,9 +71,17 @@
       <guid>http://dev.cybersyndicates.com/page/contact/</guid>
       <description>
 
-&lt;h2 id=&#34;contact&#34;&gt;Contact&lt;/h2&gt;
+&lt;h2 id=&#34;contact&#34;&gt;Contact:&lt;/h2&gt;
 
-&lt;p&gt;Aenean ipsum justo, semper eu nisl ut, pretium tincidunt sem. Praesent et diam sit amet lacus lobortis dictum a id lacus. Quisque hendrerit sit amet turpis eu varius. Ut id lorem ac felis ultrices tincidunt. Pellentesque consequat arcu ac fringilla imperdiet. Phasellus pellentesque, sapien non pulvinar blandit, sapien ante aliquet felis, vel porttitor sapien ante in lacus. Fusce non urna aliquet, malesuada nibh vel, luctus urna. Phasellus ut lacus molestie, varius purus quis, malesuada lorem.&lt;/p&gt;
+&lt;p&gt;@Killswitch-GUI&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Email: GTFO lol&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/killswitch_gui&#34;&gt;https://twitter.com/killswitch_gui&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/killswitch-GUI&#34;&gt;https://github.com/killswitch-GUI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://keybase.io/killswitchgui&#34;&gt;https://keybase.io/killswitchgui&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/alexrymdekoharvey&#34;&gt;https://www.linkedin.com/in/alexrymdekoharvey&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

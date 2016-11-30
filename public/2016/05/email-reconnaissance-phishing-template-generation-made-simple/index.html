@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Email Reconnaissance and Phishing Template Generation Made Simple &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="Author: Alexander Rymdeko-Harvey, @Killswitch_GUI 
+First a big thanks to the entire ATD (Adaptive Threat Divsion) team which contributed ideas, support and templates! https://verisgroup.com/blog/category/adaptive-threat-division/ Follow @cptjesus Follow @sixdub Follow @xorrior Follow @424f424f Follow @enigma0x3 Follow @mattifestation Follow @_wald0 Follow @bluscreenofjeff
+Email Reconnaissance and Phishing Template Generation Made Simple As a red-teamer or pen-tester, the need for tools that speed up the process is absolutely critical. While tools are not everything, they sure do help when it comes to performing an engagement within a short timeframe that a threat actor would have months to execute.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.17" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Email Reconnaissance and Phishing Template Generation Made Simple">
+<meta property="og:description" content="Author: Alexander Rymdeko-Harvey, @Killswitch_GUI 
+First a big thanks to the entire ATD (Adaptive Threat Divsion) team which contributed ideas, support and templates! https://verisgroup.com/blog/category/adaptive-threat-division/ Follow @cptjesus Follow @sixdub Follow @xorrior Follow @424f424f Follow @enigma0x3 Follow @mattifestation Follow @_wald0 Follow @bluscreenofjeff
+Email Reconnaissance and Phishing Template Generation Made Simple As a red-teamer or pen-tester, the need for tools that speed up the process is absolutely critical. While tools are not everything, they sure do help when it comes to performing an engagement within a short timeframe that a threat actor would have months to execute.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://dev.cybersyndicates.com/2016/05/email-reconnaissance-phishing-template-generation-made-simple/">
+        <link rel="stylesheet" href="http://dev.cybersyndicates.com/css/normalize.css">
+        <link rel="stylesheet" href="http://dev.cybersyndicates.com/css/highlight.css">
+        <link rel="stylesheet" href="http://dev.cybersyndicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="http://dev.cybersyndicates.com/">
+                            <img src="/logo.png" alt="Email Reconnaissance and Phishing Template Generation Made Simple" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="http://dev.cybersyndicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="http://dev.cybersyndicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/cybersyndicates">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Presentations" href="/presentations/">Presentations</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container">
+        <header class="post-header">
+    <h1 class="post-title">Email Reconnaissance and Phishing Template Generation Made Simple</h1>
+    
+</header>
+
+        <div class="post-content clearfix">
+    
+
+    
+
+<p><strong>Author: Alexander Rymdeko-Harvey, @Killswitch_GUI </strong></p>
+
+<p>First a big thanks to the entire ATD (Adaptive Threat Divsion) team which contributed ideas, support and templates! <a href="https://www.verisgroup.com/blog/category/adaptive-threat-division/">https://verisgroup.com/blog/category/adaptive-threat-division/</a> </p>
+
+<p><a href="https://twitter.com/cptjesus" class="twitter-follow-button" data-show-count="false">Follow @cptjesus</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/sixdub" class="twitter-follow-button" data-show-count="false">Follow @sixdub</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/xorrior" class="twitter-follow-button" data-show-count="false">Follow @xorrior</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/424f424f" class="twitter-follow-button" data-show-count="false">Follow @424f424f</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/enigma0x3" class="twitter-follow-button" data-show-count="false">Follow @enigma0x3</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/mattifestation" class="twitter-follow-button" data-show-count="false">Follow @mattifestation</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/_wald0" class="twitter-follow-button" data-show-count="false">Follow @_wald0</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/bluscreenofjeff" class="twitter-follow-button" data-show-count="false">Follow @bluscreenofjeff</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<h4 id="email-reconnaissance-and-phishing-template-generation-made-simple">Email Reconnaissance and Phishing Template Generation Made Simple</h4>
+
+<p>As a red-teamer or pen-tester, the need for tools that speed up the process is absolutely critical. While tools are not everything, they sure do help when it comes to performing an engagement within a short timeframe that a threat actor would have months to execute. With limited time and the need for effective methodologies, phishing can be a tester’s worst nightmare but also the best path to success. I found that proper reconnaissance and preparation are extremely important when it comes to phishing. I set out to speed up the process while still employing effective methodologies for upcoming and future engagements.</p>
+
+<p><strong>Email Recon Methodology and name creation:</strong></p>
+
+<p>Over the past few months, I put quite a bit of time into research and current methods that are being used to perform email harvesting. While every tester has a few different methods to get the most out of their recon, most rely upon search indexing and searching for documents. Using this methodology is generally slow and takes up valuable time. One of the major concerns was the ability to cover as much content as possible, with so many documents and locations to search I often missed email data I should have caught.  I knew right away there was room for improvement.</p>
+
+<p>Using tools like theHarvester has been a great resource for myself and other testers. This tool uses Google and Bing to automatically scrape emails by parsing raw HTML. This tool is used often on engagements and was a huge inspiration to building out a few more features. Here are a few of the sources I knew would be gold mines:</p>
+
+<ul>
+<li>PasteBin<br /></li>
+<li>Past data dumps</li>
+<li>Raw HTML of target site</li>
+<li>EmailHunter – <a href="http://emailhunter.co">http://emailhunter.co</a></li>
+</ul>
+
+<p>I discovered that using HTML parsing over more traditional API searches allows a user to search content that may not yet supply an API. This was the case for a ton of the resources that I wanted to target moving forward with my research. While API based searches have their place, I focused on free and easily accessible data for my gathering techniques. Using advanced Google search operators you can retrieve a list of all .xlsx files currently indexed on Google. Parsing the results was all done manually and finding them took some time.  “Google dorks” that I often employed during my recon phase:</p>
+
+<ul>
+<li>Site:verisgroup.com filetype:doc &ndash; Site: verisgroup.com filetype:docx</li>
+<li>Site: verisgroup.com filetype:xls &ndash; Site: verisgroup.com filetype:doc</li>
+<li>Site: verisgroup.com filetype:pdf</li>
+<li>site:pastebin.com &ldquo;@target.com&rdquo;</li>
+<li>“@target.com”</li>
+</ul>
+
+<p>When searching the web for emails, you have to get creative. An issue I found out early on was the reliability of indexed data, which has to do with indexing and other factors. But I found this out time and time again when it came to searching for new and interesting sources, such as Yahoo, Reddit, Ask, Whois Data, or even PGP keys. These queries may only find 1 or 2 more emails but in the long run, but they add up and you can show your client the visibility they have on the web.</p>
+
+<p>While email recon can get you a good start or initial vector of attack, covering a larger set of data or targets requires secondary techniques, in particular, inferring email addresses from names. This has been used and talked about pretty thoroughly. One tool that implements this technique is PhishBait (<a href="https://github.com/pan0pt1c0n/PhishBait">https://github.com/pan0pt1c0n/PhishBait)</a>), which scrapes LinkedIn names from Bing to build out a potential email using predictable formats. Will Schroeder (@harmj0y) produced a to scrape names from Connect6 - a sourcing database of employees and their companies. Between these two sites, recent phishing campaigns have seen significantly more success. An example “Google dork” for Connect6:</p>
+
+<ul>
+<li>site:connect6.com target.com</li>
+</ul>
+
+<p>During a standard test it can be useful to attempt to verify the emails gathered. Using the target’s mail server, we can test for SMTP return codes that could potentially support the verify behavior. This simply opens up a connection to the target SMTP server, starts to create a message for an internal recipient and checks for the return codes (250 or 550). By providing the SMTP server a known invalid address, the tester can test if it returns with a 250 code. If this is the case, the server is known as a “catch all”. If anything other than a 250 is returned, we are in luck and can verify the emails gathered and built from name generation!</p>
+
+<p><strong>The Birth of SimplyEmail:</strong></p>
+
+<p>After months of performing the above methodology, consuming roughly a half day of a test time with inaccuracy, I knew there was room within the industry to build a tool that was focused on simplifying the process and improving the accuracy of the information gathered. Many tools built in the security industry have many facets and are generally Swiss army knives in their realm. I knew from the start that SimplyEmail had to do only (simply) email, backed by a framework that would allow other members on the team or industry contribute with ease. Thus, the concept of SimplyEmail was born, and has evolved in accuracy and capability in the email reconnaissance realm.</p>
+
+<p>Currently, SimplyEmail has 25 modules ranging in capabilities and fidelity. Major sources searched are:</p>
+
+<ol>
+<li>HTML scrape of the targets web site</li>
+<li>PasteBin</li>
+<li>Exalead search – PDF –XLSX – DOCX –PDF</li>
+<li>Google Search – PDF XLS/XLSX –DOC/DOCX –PDF</li>
+<li>PGP keys</li>
+<li>Instagram</li>
+<li>Reddit</li>
+<li>Ask Search</li>
+<li>Yahoo Search</li>
+<li>Whois Search</li>
+<li>GitHub user – Code – Gist</li>
+<li>Flickr</li>
+<li>Cannary Bin – API</li>
+</ol>
+
+<p>The SimplyEmail framework uses a Task controller and a Producer Consumer model that allows testers to easily write modules, while the framework handles parsing, process creation and formatting. To get started with SimplyEmail you simply:</p>
+
+<pre><code>    
+  1. git clone &lt;a href=&quot;http://github.com/killswitch-GUI/SimplyEmail.git&quot;&gt;http://github.com/killswitch-GUI/SimplyEmail.git&lt;/a&gt;
+  2. ./sh install.sh(Kali 2 or Debian Currently Supported) 
+  3. ./SimplyEmail –l or ./SimplyEmail –h
+
+</code></pre>
+
+<p>After the installation of SimplyEmail, it’s time to give it a go:</p>
+
+<pre><code>  1. ./SimplyEmail –all –e YOURTARGET.com –n –verify
+    –all = Use all modules
+    –e = Your target domain
+    –n = Names generation
+    –Verify = Attempt to verify your discovered emails Address
+</code></pre>
+
+<p><a href="/2016/05/pic1.png"><img src="/wp-content/pic1.png" alt="pic1" /></a></p>
+
+<p>After the initial email scrape is complete name generation is conducted. Using the built-in LinkedIn Bing scraper, SimplyEmail will start building names using LinkedIn &amp; Connect6:</p>
+
+<p><a href="/wp-content/pic2.png"><img src="/wp-content/pic2.png" alt="pic2" /></a></p>
+
+<p><a href="/wp-content/pic3.png"><img src="/wp-content/pic3.png" alt="pic3" /></a></p>
+
+<p>Next, name generation will be completed. SimplyEmail has two methods to determine the email format. First, it attempts to use EmailHunter’s JSON API to detect the format of the emails. If that fails, SimplyEmail has a built-in class designed to detect the following supported formats:</p>
+
+<ul>
+<li>{first}.{last} = <a href="mailto:alex.alex@domain.com">alex@domain.com</a></li>
+<li>{first}{last} = <a href="mailto:jamesharvey@domain.com">jamesharvey@domain.com</a></li>
+<li>{f}{last} = <a href="mailto:ajames@domain.com">ajames@domain.com</a></li>
+<li>{f}.{last} = <a href="mailto:a.james@domain.com">james@domain.com</a></li>
+<li>{first}{l} = <a href="mailto:jamesh@domain.com">jamesh@domain.com</a></li>
+<li>{first}.{l} = <a href="mailto:j.amesh@domain.com">amesh@domain.com</a></li>
+<li>{first}_{last} = <a href="mailto:james_amesh@domain.com">james_amesh@domain.com</a></li>
+<li>{first} = <a href="mailto:james@domain.com">james@domain.com</a></li>
+</ul>
+
+<p><a href="/wp-content/pic4.png"><img src="/wp-content/pic4.png" alt="pic4" /></a></p>
+
+<p>Lastly, as testers, we all know the importance of reporting and the ability to digest the data we just captured. SimplyEmail has a few great reporting options that are built into the tool. The standard text report and HTML file that will show all non-unique emails with the corresponding sources where SimplyEmail found those emails.</p>
+
+<p><a href="/wp-content/pic5.png"><img src="/wp-content/pic5.png" alt="pic5" /></a></p>
+
+<p>This generates a clean report on the sources queried and an ordered list of all emails gathered. This also allows for your report to show duplicate email address gathered, which is specifically handy in the case that you need to correlate an email to multiple sources. This helps clients and testers distinguish where trouble areas are and helps make recommendations based on external OSINT presence.  Of course, a standard text file with raw emails is also built.<strong> <a href="/wp-content/pic6.png"><img src="/wp-content/pic6.png" alt="pic6" /></a></strong><strong> </strong></p>
+
+<p>**Phishing Template Generation is an art: **</p>
+
+<p>Email template generation often takes a lot of time and effort to get right. This is largely due to ROE restrictions and stipulations put in place by different clients. Some clients say send the best you have, others want to pre-approve the template and even the payload in certain cases. Depending on the client they may even want to pick from a subset of templates. To make sure they have options, testers will generally develop multiple templates with varying degrees of sophistication. This can be a major, but necessary, pain for a tester.</p>
+
+<p>Current methodology for template generation is pretty standard and is highly variable per target organization type (government vs. civilian, service vs product based etc.). This complicates template generation for the following reasons:</p>
+
+<ul>
+<li>Templates must have relevance to the client</li>
+<li>Templates must entice the target to act promptly</li>
+<li>Template payload must be supported by template subject/body</li>
+<li>Templates must be formatted correctly</li>
+<li>Templates should have unique text values build the legitimacy of the message body</li>
+<li>Multiple templates should be generated for failed phishing attempts</li>
+</ul>
+
+<p>While this is quite an extensive list, this is merely the bare minimum to be successful at the initial stage of generating the template, let alone template theme or OSINT that is put into making the proper decisions to support the theme. Here is what my current model looks like from an operational prospective:</p>
+
+<ol>
+<li>Conduct quick OSINT overview of the company</li>
+<li>Pick a template theme based on current news or info retrieved from OSINT</li>
+<li>Conduct research on the correct person/position to emulate in email if necessary</li>
+<li>Create a message body that supports either a link or attachment based payload</li>
+<li>Develop HTML by hand for the message body
+
+<ol>
+<li>If necessary, use outlook to build out .EML for rich HTML messages</li>
+<li>If using an old template, replace/insert necessary data inside of HTML which contains CSS</li>
+</ol></li>
+<li>Use Cobalt Strike’s spear phish option to view the email</li>
+<li>Send test phish and make corrections</li>
+</ol>
+
+<p>This whole process is extremely time consuming to get correct and changes are often necessary to get the template 100%. If one thing is off it can affect the outcome of statistics as well as payload execution, and in many cases you only get one chance at this. I’ve found that when done correctly it was a solid 4-5 hours from start to finish. This is mainly due to reusing advanced templates and making necessary adjustments as needed. I set out to automate this process as much as possible with SimplyTemplate.</p>
+
+<p><strong>SimplyTemplate</strong></p>
+
+<p><strong> </strong>Getting started with SimplyTemplate is extremely easy and can be a great supplement for the above methodology to cut down on template generation time, reduce errors, and generate rich HTML sophisticated emails with ease. This tool aims to automate 80% of the template generation process, with the 20% you perform on your own hopefully resulting in a pull request!  To get started perform the following:
+```<br />
+  1. git clone <a href="https://github.com/killswitch-GUI/SimplyTemplate.git">https://github.com/killswitch-GUI/SimplyTemplate.git</a>
+  2. ./Setup.sh (Kali 2 or Debian currently supported)
+  3. install the required plugin when prompted into Ice Weasel<br />
+  4. ./SimplyTemplate.py –l</p>
+
+<p>To start, it helps to have an understanding of the module types so we can make accurate choices on template selection. All templates will provide you with a small meta tag. This tag will help you quickly identify the capabilities of the module, also what the &ldquo;content&rdquo; supports.</p>
+
+<ul>
+<li>High - Requires proper OSINT / Social Engineering to build and effectively deploy the template. These are generally internal based templates with specific themes.</li>
+<li>Medium - Requires a decent amount of modifications or settings, and are more general of a template external based template.</li>
+<li>Low - Requires little to no modifications of the template and are generally not effective.</li>
+</ul>
+
+<p>Each template will support one or all of the following core options:</p>
+
+<ul>
+<li>Text - Text based option or output.<br /></li>
+<li>Html - Rich Html Supported for output (generally multipart Email Html/Text).</li>
+<li>Link - Template supports a major link for stats or potential web download of document/Drive-by.</li>
+<li>Attachment - Can support text that tells users to open or use the supplied attachment.</li>
+</ul>
+
+<p>Seeing how these templates are actually rendered is extremely important. This was an issue I’ve had with the current process for templates with anything other than basic HTML tags. Some phishing platforms have issues with rendering certain formats of email templates. I highly advise using a service like Litmus (<a href="https://litmus.com">https://litmus.com)</a>) or  Mail-Tester (<a href="https://www.mail-tester.com">https://www.mail-tester.com)</a>) to see how the email renders on multiple applications.</p>
+
+<ul>
+<li>HTML - This was used by some to view the HTML markup but CSS does not render correctly in some cases. (basic templates)<br /></li>
+<li>eml - Files can be outputted via .EML to open them directly in Icedove or Outlook</li>
+<li>mht - MHTML is the Mail Html Markup used and can directly rendered in Word/IE or Iceweasel via plugin</li>
+</ul>
+
+<p>Let’s get started with building our first template and rendering these templates.</p>
+
+<p><a href="/wp-content/pic7.png"><img src="/wp-content/pic7.png" alt="pic7" /></a></p>
+
+<p>Currently the templates are broken up by the phishing category they support based on the following:</p>
+
+<ul>
+<li>External – Templates that would most likely come from external sources
+
+<ul>
+<li>News</li>
+<li>Agency</li>
+<li>Storage</li>
+<li>Social</li>
+</ul></li>
+<li>Internal – Templates that would come from internal departments or employees
+
+<ul>
+<li>Marketing</li>
+<li>IT</li>
+<li>HR</li>
+<li>Agency</li>
+<li>Facilities</li>
+<li>Leadership</li>
+</ul></li>
+</ul>
+
+<p>As you can see this is easily displayed with the (<em>list)</em> command within.  We can also use the (<em>search</em>) command to search for modules by sophistication or core options of the templates.</p>
+
+<p><a href="/wp-content/pic8.png"><img src="/wp-content/pic8.png" alt="pic8" /></a></p>
+
+<p>Execute the (<em>use</em>) command with the corresponding number and you will be dropped into the relevant template menu. If more information is required, the <em>(info)</em> command can be used to template variables and a more in-depth explanation.</p>
+
+<p><a href="/wp-content/pic9.png"><img src="/wp-content/pic9.png" alt="pic9" /></a></p>
+
+<p>Once in the template menu you have a few core commands. The first is the <em>(set)</em> command, which allows you to set specific variables within the template. There are a set of default values that can be used, or you can provide your own. Each template will require a mix of different required values that must be set. You will also observe that higher the sophistication needed, the more OSINT is required and in turn the more settings that will need to be populated. Once all options are set, SimplyTemplate can generate the template on the fly and display the final outcome within a browser. This allows the tester to quickly make changes to settings to ensure the final result will look good on the targets end. Running the <em>(info)</em> command will show the following changes:</p>
+
+<p><a href="/wp-content/pic10.png"><img src="/wp-content/pic10.png" alt="pic10" /></a></p>
+
+<p>As mentioned before the (<em>render</em>) command can be extremely informative to the tester:</p>
+
+<p><a href="/wp-content/pic11.png"><img src="/wp-content/pic11.png" alt="pic11" /></a></p>
+
+<p>Even the more advanced templates render nicely in the. mht format:</p>
+
+<p><a href="/wp-content/pic12.png"><img src="/wp-content/pic12.png" alt="pic12" /></a></p>
+
+<p>Depending on the template and the corresponding sophistication level the (<em>edit)</em> function may be available. This will eventually be used in a majority of the modules to give testers greater freedom in generating templates. When using this function, you can edit the raw paragraphs of the template before rending or template generation takes place. This is a more advanced feature but allows you to quickly add small changes with out digging through hundred lines of template code to make a spelling or grammar change. This will spawn a custom Text Editor which you can make and save the changes.</p>
+
+<p><a href="/wp-content/pic13.png"><img src="/wp-content/pic13.png" alt="pic13" /></a></p>
+
+<p>Finally use the (<em>gen</em>) command to quickly export the final product!</p>
+
+<p>As always I’m looking for improvements or suggestions on both SimplyEmail or SimplyTemplate, every bit helps produce a more useful platform!</p>
+
+<p>Here are the links:</p>
+
+<p><a href="https://github.com/killswitch-GUI/SimplyEmail">https://github.com/killswitch-GUI/SimplyEmail</a></p>
+
+<p><a href="https://github.com/killswitch-GUI/SimplyTemplate">https://github.com/killswitch-GUI/SimplyTemplate</a></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=Email%20Reconnaissance%20and%20Phishing%20Template%20Generation%20Made%20Simple&url=http%3a%2f%2fdev.cybersyndicates.com%2f2016%2f05%2femail-reconnaissance-phishing-template-generation-made-simple%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fdev.cybersyndicates.com%2f2016%2f05%2femail-reconnaissance-phishing-template-generation-made-simple%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http%3a%2f%2fdev.cybersyndicates.com%2f2016%2f05%2femail-reconnaissance-phishing-template-generation-made-simple%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="http://dev.cybersyndicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="http://dev.cybersyndicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="http://dev.cybersyndicates.com/js/jquery.fitvids.js"></script>
+        <script src="http://dev.cybersyndicates.com/js/scripts.js"></script>
+    </body>
+</html>
+

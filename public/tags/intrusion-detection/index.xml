@@ -11,10 +11,10 @@
     
     <item>
       <title>Advanced Active Monitoring with OSSEC</title>
-      <link>http://dev.cybersyndicates.com/2015/06/20/2015-06-20-advance-active-monitoring-with-ossec/</link>
+      <link>http://dev.cybersyndicates.com/2015/06/advance-active-monitoring-with-ossec/</link>
       <pubDate>Sat, 20 Jun 2015 01:57:53 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2015/06/20/2015-06-20-advance-active-monitoring-with-ossec/</guid>
+      <guid>http://dev.cybersyndicates.com/2015/06/advance-active-monitoring-with-ossec/</guid>
       <description>
 
 &lt;p&gt;Tools Used For this tutorial.&lt;/p&gt;
@@ -87,7 +87,7 @@
 
 &lt;p&gt;&lt;email_maxperhour&gt; you will have to add this line yourself, but it is important if you are using a free SMTP-RELAY-SERVICE. Many of them have a threshold for the amount of emails that they’ll relay per day. This number is up to you and can be anywhere from **1 – 9999 **messages per hour. Keep in mind that this is only the cap on the amount o f emails that are sent per hour and does not stop OSSEC from generating alerts that remain on the Server itself.&lt;/p&gt;
 
-&lt;p&gt; &lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/OssecEmailSettings.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/OssecEmailSettings-300x203.png&#34; alt=&#34;OssecEmailSettings&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt; &lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/OssecEmailSettings.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/OssecEmailSettings-300x203.png&#34; alt=&#34;OssecEmailSettings&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The next section of this file is the &lt;include&gt; tag field which is used to include separate files that contain rules for OSSEC&lt;/p&gt;
 
@@ -153,7 +153,7 @@
 
 &lt;p&gt;The photo below is an actual screenshot of the structure of the decoder.xml file.&lt;/p&gt;
 
-&lt;p&gt;** &lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/xmlfile.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/xmlfile-300x175.png&#34; alt=&#34;xmlfile&#34; /&gt;&lt;/a&gt;
+&lt;p&gt;** &lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/xmlfile.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/xmlfile.png&#34; alt=&#34;xmlfile&#34; /&gt;&lt;/a&gt;
 **&lt;/p&gt;
 
 &lt;p&gt;For this post, the decoder.xml file will be the primary focus. Try adding custom entries to capture alerts for log-files for thirdparty software that you’ve added yourself. Remember to restart ossec after you’ve made changes and use the OSSEC documentation link provided above for additional instructions. We will address future customization techniques in future posts.&lt;/p&gt;
@@ -287,33 +287,23 @@ Each of the lines above is in the main.conf file by default. There are a few cha
 
 &lt;p&gt;This configuration may seem like a small step but the amount of power gained with a properly configured active response setup is enormous. Below are some images of this system and the test email and some alerts that were generated from it. In addition to those images, are some additional images that contain the results of one of my research VPS’s and the types of alerts that it gets HOURLY..!!!!! It is attacked several times per hour by IP addresses from all over the world. The system built during this write-up was constructed in a lab behind a firewall so therefore there were no “attack or scan” alerts generated.&lt;/p&gt;
 
-&lt;p&gt; &lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/hashnotification.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/hashnotification-300x175.png&#34; alt=&#34;hashnotification&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt; &lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/hashnotification.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/hashnotification-300x175.png&#34; alt=&#34;hashnotification&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/failedSSHD.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/failedSSHD-300x203.png&#34; alt=&#34;failedSSHD&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/failedSSHD.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/failedSSHD.png&#34; alt=&#34;failedSSHD&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/ReverseMapping1.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/ReverseMapping1-300x174.png&#34; alt=&#34;ReverseMapping&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/ReverseMapping1.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/ReverseMapping1.png&#34; alt=&#34;ReverseMapping&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The alerts from the VPS !!!&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;CHECK OUT WHERE THE IP ADDRESSES ABOVE RESOLVED TO…..!!!!!!!!!!!!!!!!!!!!!&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt; &lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/chinaIP.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/chinaIP-300x153.png&#34; alt=&#34;chinaIP&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt; &lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/chinaIP.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/chinaIP-300x153.png&#34; alt=&#34;chinaIP&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/honkong.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/06/honkong-300x179.png&#34; alt=&#34;honkong&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/honkong.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/honkong.png&#34; alt=&#34;honkong&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Get additional information from:&lt;/p&gt;
 
 &lt;p&gt;**OSSEC. &lt;strong&gt;[&lt;/strong&gt;&lt;a href=&#34;http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html**](http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html&#34;&gt;http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html**](http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html&lt;/a&gt;)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Active Monitoring with Open Source Tools</title>
-      <link>http://dev.cybersyndicates.com/2015/06/15/2015-06-15-incident-response-time-is-money/</link>
-      <pubDate>Mon, 15 Jun 2015 12:46:07 +0000</pubDate>
-      
-      <guid>http://dev.cybersyndicates.com/2015/06/15/2015-06-15-incident-response-time-is-money/</guid>
-      <description>&lt;p&gt;The two most important aspects of an incident starts with detection and ends complete eradication and restoration of services.  This has shifted the focus of many organizations away from prevention and more towards active monitoring.  Active monitoring helps organizations detect incidents so that the time between breach and eradication/restoration is minimized.   In order to accomplish this task, there are a number of COTS and Open Source tools that will facilitate this effort.   Open Source tools are often the better option, however the size of the environment and quality of it’s IT staff often the two most deciding factors.  Organizations are faced with difficult decisions when it is time to assess the budget.  Do we spend money on highly skilled and technically experienced employees, or do we purchase higher priced software that simplifies the tasks? Many times organizations elect to go with the latter.  Although this may or may not be the right decision, many times it is the most comprehensible for the decision makers. When we spend “X” amount of dollars, we know “Exactly” what we are getting!  Or do they? The problem with spending more on tools and less on the employee is that the tool is only as effective as the person configuring/operating it!  Welcome to Advanced Active Monitoring with Open Source Tools.&lt;/p&gt;
 </description>
     </item>
     

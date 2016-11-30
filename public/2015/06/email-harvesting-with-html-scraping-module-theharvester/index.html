@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Email Harvesting with HTML Scraping Module: theHarvester &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="After a recent Red Team training , I was faced with a issue where I had to conduct a Email phishing campaign to gain initial access using Email Harvesting. This isn&rsquo;t anything necessarily new or a subject that has been touched on a million times. But my goal wasn&rsquo;t to recreate the wheel or create a entirely new tool. I knew from past engagements that there are some great tools like theHarvester project out there:">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.17" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Email Harvesting with HTML Scraping Module: theHarvester">
+<meta property="og:description" content="After a recent Red Team training , I was faced with a issue where I had to conduct a Email phishing campaign to gain initial access using Email Harvesting. This isn&rsquo;t anything necessarily new or a subject that has been touched on a million times. But my goal wasn&rsquo;t to recreate the wheel or create a entirely new tool. I knew from past engagements that there are some great tools like theHarvester project out there:">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://dev.cybersyndicates.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/">
+        <link rel="stylesheet" href="http://dev.cybersyndicates.com/css/normalize.css">
+        <link rel="stylesheet" href="http://dev.cybersyndicates.com/css/highlight.css">
+        <link rel="stylesheet" href="http://dev.cybersyndicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="http://dev.cybersyndicates.com/">
+                            <img src="/logo.png" alt="Email Harvesting with HTML Scraping Module: theHarvester" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="http://dev.cybersyndicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="http://dev.cybersyndicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/cybersyndicates">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Presentations" href="/presentations/">Presentations</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container">
+        <header class="post-header">
+    <h1 class="post-title">Email Harvesting with HTML Scraping Module: theHarvester</h1>
+    
+</header>
+
+        <div class="post-content clearfix">
+    
+
+    
+
+<p>After a recent Red Team training , I was faced with a issue where I had to conduct a Email phishing campaign to gain initial access using Email Harvesting. This isn&rsquo;t anything necessarily new or a subject that has been touched on a million times. But my goal wasn&rsquo;t to recreate the wheel or create a entirely new tool. I knew from past engagements that there are some great tools like <a href="http://www.edge-security.com/theharvester.php">theHarvester</a> project out there:</p>
+
+<p><a href="/wp-content/Screen-Shot-2015-06-11-at-9.32.34-PM.png"><img src="/wp-content/Screen-Shot-2015-06-11-at-9.32.34-PM.png" alt="Screen Shot 2015-06-11 at 9.32.34 PM" /></a></p>
+
+<p>But I came across a ridiculous issue; I had no access to external net. Only internal web servers for the cyber range we where conducting the training in. This scenario isn&rsquo;t as unrealistic as you may think, you could be on an internal network assessment and may have to gain secondary access through different means if phishing is in scope. In this case with the limited network ability the target surface was limited and quite small, but yet we didn&rsquo;t have access to the normal means of recon. Using the extended set of options of the harvester can yield some great results, but all of its current modules are online dependent. With search options using Google and Bing you can gather tons of data, but these functions wouldn&rsquo;t help me a bit.</p>
+
+<p><a href="/wp-content/Screen-Shot-2015-06-11-at-10.51.51-PM.png"><img src="/wp-content/Screen-Shot-2015-06-11-at-10.51.51-PM.png" alt="Screen Shot 2015-06-11 at 10.51.51 PM" /></a></p>
+
+<h5 id="current-search-options-for-theharvester">(Current Search Options for TheHarvester)</h5>
+
+<p>So I knew I wasn&rsquo;t going to search a page head-to-toe when time counts. The obvious email address&rsquo;s on the home page is a start, but I needed something fast and that would yield a 100 percent insurance that I had all the emails required to conduct the lab. Of course it was time for some simple command line kung-fu!</p>
+
+<h3 id="step-by-step-execution">Step-By-Step Execution</h3>
+
+<p>Here are the preliminary steps I took to begin searching a domain for Email addresses:**_</p>
+
+<ol>
+<li>First I started off knowing that I needed to clone the website for the ability to search and browse the site for other info I may need down the road. I knew theHarvester had no offline ability so I moved to Wget. This command bellow will allow you to reclusively mirror a site:</li>
+</ol>
+
+<pre><code>wget --directory-prefix=/root/Desktop/ --domains target.com --recursive --no-clobber --page-requisites --html-extension --convert-links --restrict-file-names=windows www.target.com
+
+
+
+--directory-prefix=/root/Desktop/   ==  Allows you to specify the output location of the cloned site (wget outputs a dir)
+
+--recursive == Follows links and directory structure, by default has a depth of 5
+
+--level=1500 == The depth (directory structure) you want the recursive search to go. **You may want to add this**
+
+--wait=5 == Sets the time to wait between request, helps to not get blocked by pesky admins **You may want to add this**
+
+--limit-rate=10K == sets max bandwidth for wget to consume, helps to not get blocked by pesky admins **May want to add this**
+
+--read-timeout=15 == Sets max time spent attempting to download file before it moves on **You may want to add this**
+
+--no-clobber == Incase you have to restart it won't overwrite what has been saved
+
+--page-requisites == Download all the files that are necessary to properly display a given HTML page
+
+--html-extension == download CSS files as well
+
+--convert-links  == Convert the links in the document to make them suitable for local viewing
+
+--domains target.com == Sets you scope so you don't follow links outside the target domain
+</code></pre>
+
+<p>The next step is to parse this data and grep for any email addresses within the HTML source code. This is relativity easy to accomplish when recessively searching for the data.</p>
+
+<pre><code>    grep -r &quot;@&quot; | grep -i -o '[A-Z0-9._%+-]\+@[A-Z0-9.-]\+\.[A-Z]\{2,4\}'
+</code></pre>
+
+<pre><code>-r &quot;@&quot; == Using the -r will recursively search the directory
+-i == Perform case insensitive matching sources
+-o == Show only the part of a matching line that matches PATTERN.
+</code></pre>
+
+<p><img src="/wp-content/Screen-Shot-2015-06-12-at-2.05.03-PM.png" alt="Screen Shot 2015-06-12 at 2.05.03 PM" /></p>
+
+<p>At this point I was able to simply output line by line the email address&rsquo;s I gathered and still had a mirrored site for further recon if needed.</p>
+
+<h3 id="automation">Automation</h3>
+
+<hr />
+
+<p>I knew at this point that I wanted a easy way to do this and at the same time I knew that making some simple script wouldn&rsquo;t help anyone. So I set off to add this function into the harvester so other could use this simple way of gathering email addresses.</p>
+
+<p><a href="/wp-content/Screen-Shot-2015-06-13-at-9.10.24-PM.png"><img src="/wp-content/Screen-Shot-2015-06-13-at-9.10.24-PM.png" alt="Screen Shot 2015-06-13 at 9.10.24 PM" /></a></p>
+
+<p>After looking at the code for roughly a few hours I knew that adapting this particular function wasn&rsquo;t going to be hard, but I knew I had to match the coding style of Christian Martorella otherwise it would never get added. So I set off and built a simple way of automating this. I did run into a few problems when it came to recursive mirroring in pythons current modules. With documented issues with proxies and VPN support in Urlib, this was really a turn off for me as I may be using a VPN to conduct work. Well nothing seemed to do it near as good as Wget implemented it. So using pythons <em>sub.process</em> module was going to be the most effective way of implementation and was supported on almost any nix system.</p>
+
+<p><a href="/wp-content/Screen-Shot-2015-06-13-at-8.43.00-PM.png"><img src="/wp-content/Screen-Shot-2015-06-13-at-8.43.00-PM.png" alt="Screen Shot 2015-06-13 at 8.43.00 PM" /></a></p>
+
+<p>Some other major issues were using default values in the current command line parser. Currently theHarvester doesn&rsquo;t use <em>argparse</em> so I had in a few nasty if statements (If anyone knows a better way please let me know bellow!).</p>
+
+<p><a href="/wp-content/Screen-Shot-2015-06-13-at-8.47.00-PM.png"><img src="/wp-content/Screen-Shot-2015-06-13-at-8.47.00-PM.png" alt="Screen Shot 2015-06-13 at 8.47.00 PM" /></a></p>
+
+<p>lastly a simple demo:</p>
+
+<p><img src="/wp-content/Screen-Shot-2015-06-13-at-8.50.04-PM.png" alt="Screen Shot 2015-06-13 at 8.50.04 PM" /></p>
+
+<pre><code>python theHarvester.py -d www.puttargethere.com -b html-source
+or more advance options:
+python theHarvester.py -d www.puttargethere.com -b html-source -j 10 -w 3 -r 200k -i 3 -o /foo/bar/
+</code></pre>
+
+<p>As you can see the output format hasn&rsquo;t changed and would simple be another option to add:
+<img src="/wp-content/Screen-Shot-2015-06-13-at-8.50.30-PM.png" alt="Screen Shot 2015-06-13 at 8.50.30 PM" /></p>
+
+<h3 id="note">NOTE:</h3>
+
+<p><strong>As of today I will be forking, and creating a branch for a pull request. Hopefully he would add in the module I built! If not it won&rsquo;t hurt my feelings.. You can always come download <a href="https://github.com/killswitch-GUI/theHarvester/tree/Html_source">my forked version on Git</a>.</strong></p>
+
+<p>Sources:</p>
+
+<p>[*] <a href="http://www.linuxjournal.com/content/downloading-entire-web-site-wget">http://www.linuxjournal.com/content/downloading-entire-web-site-wget</a></p>
+
+<p>[*] <a href="https://github.com/laramies/theHarvester">https://github.com/laramies/theHarvester</a></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+                 <a href="/tags/simplyemail/">simplyemail</a>
+            
+        </p>
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=Email%20Harvesting%20with%20HTML%20Scraping%20Module%3a%20theHarvester&url=http%3a%2f%2fdev.cybersyndicates.com%2f2015%2f06%2femail-harvesting-with-html-scraping-module-theharvester%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fdev.cybersyndicates.com%2f2015%2f06%2femail-harvesting-with-html-scraping-module-theharvester%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http%3a%2f%2fdev.cybersyndicates.com%2f2015%2f06%2femail-harvesting-with-html-scraping-module-theharvester%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="http://dev.cybersyndicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="http://dev.cybersyndicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="http://dev.cybersyndicates.com/js/jquery.fitvids.js"></script>
+        <script src="http://dev.cybersyndicates.com/js/scripts.js"></script>
+    </body>
+</html>
+

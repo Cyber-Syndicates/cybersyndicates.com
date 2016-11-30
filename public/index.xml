@@ -20,6 +20,40 @@
     </item>
     
     <item>
+      <title>Operating in an OSX Heavy Environment</title>
+      <link>http://dev.cybersyndicates.com/presentations/osx-way/</link>
+      <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
+      
+      <guid>http://dev.cybersyndicates.com/presentations/osx-way/</guid>
+      <description>
+
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/5y18oKW27KE&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+ &lt;/div&gt;
+
+
+&lt;h3 id=&#34;slide-share&#34;&gt;Slide Share&lt;/h3&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/7pWN9yEVUvZo4&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/StephanBorosh/external-to-da-the-os-x-way&#34; title=&#34;External to DA, the OS X Way&#34; target=&#34;_blank&#34;&gt;External to DA, the OS X Way&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/StephanBorosh&#34;&gt;Stephan Borosh&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>RAT - Repurposing Adversarial Tradecraft</title>
+      <link>http://dev.cybersyndicates.com/presentations/rat/</link>
+      <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
+      
+      <guid>http://dev.cybersyndicates.com/presentations/rat/</guid>
+      <description>
+
+&lt;h3 id=&#34;rat-repurposing-adversarial-tradecraft&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/h3&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/xP4PRrSuJQGOb2&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/AlexanderRymdekoHarv/rat-repurposing-adversarial-tradecraft&#34; title=&#34;RAT - Repurposing Adversarial Tradecraft&#34; target=&#34;_blank&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/AlexanderRymdekoHarv&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>SimplyEmail</title>
       <link>http://dev.cybersyndicates.com/project/SimplyEmail/</link>
       <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
@@ -425,39 +459,65 @@ Current Issues:
     </item>
     
     <item>
-      <title>Home</title>
-      <link>http://dev.cybersyndicates.com/page/home/</link>
-      <pubDate>Thu, 03 Nov 2016 02:13:50 +0000</pubDate>
-      
-      <guid>http://dev.cybersyndicates.com/page/home/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>EmPyre Collection Operations</title>
-      <link>http://dev.cybersyndicates.com/2016/06/21/2016-06-21-empyre-collection-opperations/</link>
+      <link>http://dev.cybersyndicates.com/2016/06/empyre-collection-opperations/</link>
       <pubDate>Tue, 21 Jun 2016 20:14:14 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2016/06/21/2016-06-21-empyre-collection-opperations/</guid>
+      <guid>http://dev.cybersyndicates.com/2016/06/empyre-collection-opperations/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/empyre_logo_white.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/empyre_logo_white.png&#34; alt=&#34;empyre_logo_white&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
 
-&lt;p&gt;This post is number 4 of the EmPyre series. Thanks to the entire ATD family and dev team of EmPyre:&lt;/p&gt;
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 50%; width: 50%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_logo.png&#34; alt=&#34;Empyre Logo&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
+This post is number 4 of the EmPyre series. Thanks to the entire ATD family and dev team of EmPyre:&lt;/p&gt;
 
 &lt;p&gt;@rvrsh3ll — @harmj0y — @xorrior — @CptJesus&lt;/p&gt;
 
 &lt;p&gt;EmPyre can be found here: &lt;a href=&#34;https://github.com/adaptivethreat/EmPyre&#34;&gt;https://github.com/adaptivethreat/EmPyre&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Master list of the seriers: &lt;a href=&#34;http://www.harmj0y.net/blog/empyre/building-an-empyre-with-python/&#34;&gt;Here&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;master-list-of-the-seriers-here-http-www-harmj0y-net-blog-empyre-building-an-empyre-with-python&#34;&gt;Master list of the seriers: &lt;a href=&#34;http://www.harmj0y.net/blog/empyre/building-an-empyre-with-python/&#34;&gt;Here&lt;/a&gt;&lt;/h4&gt;
 
-&lt;p&gt;5/12/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;http://www.harmj0y.net/blog/?p=2637&amp;amp;preview=true&#34;&gt;Building an EmPyre with Python&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;5/18/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;http://Operating with EmPyre&#34;&gt;Operating with EmPyre&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;5/24/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;https://www.xorrior.com/the-return-of-the-empyre/&#34;&gt;The Return Of the EmPyre&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;5/31/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;http://www.harmj0y.net/blog/empyre/os-x-office-macros-with-empyre/&#34;&gt;OS X Office Macros with EmPyre&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;5/12/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;http://www.harmj0y.net/blog/?p=2637&amp;amp;preview=true&#34;&gt;Building an EmPyre with Python&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;5/18/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;http://Operating with EmPyre&#34;&gt;Operating with EmPyre&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;5/24/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;https://www.xorrior.com/the-return-of-the-empyre/&#34;&gt;The Return Of the EmPyre&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;5/31/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;http://www.harmj0y.net/blog/empyre/os-x-office-macros-with-empyre/&#34;&gt;OS X Office Macros with EmPyre&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&#34;empyre-introduction-to-collection-operations&#34;&gt;&lt;strong&gt;EmPyre: Introduction to collection operations&lt;/strong&gt;&lt;/h3&gt;
 
@@ -469,49 +529,299 @@ Current Issues:
 
 &lt;p&gt;After quickly generating some history on my test VM we have data!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture1.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture1.png&#34; alt=&#34;Picture1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/browser_dump_empyre.png&#34; alt=&#34;Empyre Browser Dump&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
 
 &lt;p&gt;Next up on SQL data: the iMessage data store! iMessage data store is used by many targets, and is often synced with iCloud (SMS and IMessage data). The interesting thing about the iMessage app is its ability to integrate multiple chat platforms - not just standard iMessaging from Apple. Examples of platforms with this funcionality include: Yahoo, Jabber, Aol, AIM, Google, etc.  Information collection through data mining is sometimes needed for additional escalation, and iMessage makes a great location to search for data like passwords. Using the “imessage_dump” module we can search for specific terms in the users iMessage data store. This will enumerate the following:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Account – The corresponding account user&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Service – The provider of the message&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Country – Where the message originated&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Number – If a text message, will be the senders telephone number&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;ROWID – This is the row the message was stored, can be helpful if you pull the DB back&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Date – Date of the message&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Message – The text enumerated from the selected message&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Type – Secondary field for the type of account used within the app&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Account – The corresponding account user&lt;/li&gt;
+&lt;li&gt;Service – The provider of the message&lt;/li&gt;
+&lt;li&gt;Country – Where the message originated&lt;/li&gt;
+&lt;li&gt;Number – If a text message, will be the senders telephone number&lt;/li&gt;
+&lt;li&gt;ROWID – This is the row the message was stored, can be helpful if you pull the DB back&lt;/li&gt;
+&lt;li&gt;Date – Date of the message&lt;/li&gt;
+&lt;li&gt;Message – The text enumerated from the selected message&lt;/li&gt;
+&lt;li&gt;Type – Secondary field for the type of account used within the app&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture2.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture2.png&#34; alt=&#34;Picture2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
 
-&lt;p&gt;The next method of collection requires using osascript (Apples scripting language) we are able to force applications to prompt for credentials potentially gathering a password! Here is the “Prompt” module in action:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture3.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture3.png&#34; alt=&#34;Picture3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Once setup we can easily force the App of choice to prompt a dialog box requesting a password. This can be a great method to gather credentials and potentially escalate. This and the next module have been adapted from work from &lt;a href=&#34;https://twitter.com/fuzzynop?lang=en&#34;&gt;@FuzzyNop&lt;/a&gt;, so big shout out the work he puts in.&lt;/p&gt;
+    
+    
+        
+        
+        
+        
+        
+    
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture4.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture4.png&#34; alt=&#34;Picture4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_message_dump.png&#34; alt=&#34;Empyre Message Dump&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
+The next method of collection requires using osascript (Apples scripting language) we are able to force applications to prompt for credentials potentially gathering a password! Here is the “Prompt” module in action:&lt;/p&gt;
+
+&lt;p&gt;
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_prompt_attack.png&#34; alt=&#34;Empyre Message Dump&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
+Once setup we can easily force the App of choice to prompt a dialog box requesting a password. This can be a great method to gather credentials and potentially escalate. This and the next module have been adapted from work from &lt;a href=&#34;https://twitter.com/fuzzynop?lang=en&#34;&gt;@FuzzyNop&lt;/a&gt;, so big shout out the work he puts in.&lt;/p&gt;
+
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_prompt_attack2.png&#34; alt=&#34;Empyre Message Dump 2&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
 
 &lt;p&gt;One of my fellow friends, @enigma0x3 (&lt;a href=&#34;https://enigma0x3.net/2015/01/21/phishing-for-credentials-if-you-want-it-just-ask/&#34;&gt;https://enigma0x3.net/2015/01/21/phishing-for-credentials-if-you-want-it-just-ask/)&lt;/a&gt;) has an interesting technique to get credentials on engagments using the standard Windows login prompt. The great part is OS X has something similar we are able to implement into our collection strategy. Using the osascript method we can easily weaponize the “ScreenSaverEngine” application to request credentials.  We can force the standard screensaver, request creds, and test them against the current users Apple Key Chain. Using the &lt;strong&gt;security&lt;/strong&gt; command we can lock the users key chain and use the creds supplied to attempt to unlock using the follwing command: **security unlock-keychain –p Test. **This can be easily deployed in a loop to only unlock the screensaver when the user successfully enters the correct credentials. While it may not be extremely OPSEC friendly, it may go unnoticed and sucessfuly result in creds.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture5.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture5.png&#34; alt=&#34;Picture5&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_screensaver_prompt.png&#34; alt=&#34;Empyre Screen Saver Prompt&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
 
 &lt;p&gt;A user will be prompted repeatedly until successful creds or the exit count is reached.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture6.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture6.png&#34; alt=&#34;Picture6&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_screensaver_prompt2.png&#34; alt=&#34;Empyre Screen Saver Prompt2&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
 
 &lt;p&gt;One of the key collection modules we use during an engagment is clipboard collection. The main reason clipboard monitoring is key in our tradecraft is due to the ease of collection when keylogging fails to capture creds. This allows you to gather credentials and target specific times when password vaults are used in conjunction with the screenshot. Allowing for targeted collection of potential passwords and sensitive data. Using native API calls NSPasteboard, NSStringPboardType we can prevent using built in commands and potential signatures that could get us caught.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture7.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture7.png&#34; alt=&#34;Picture7&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_clipboard_monitor.png&#34; alt=&#34;Empyre Clipboard monitor&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
 
 &lt;h3 id=&#34;post-exploit-collection-methods&#34;&gt;&lt;strong&gt;Post-Exploit Collection Methods&lt;/strong&gt;&lt;/h3&gt;
 
@@ -519,82 +829,319 @@ Current Issues:
 
 &lt;p&gt;The first module I want to start with is the screenshot module. Due to testers reliance on this module it may be one of the most important post exploitation modules in our arsenal. While EmPyre currently supports two different techniques of screenshot, the native_screenshot module may be concern if certain AV products are in place. This is due to using the &lt;em&gt;screenshot&lt;/em&gt; command, and potential logging.  While the standard module uses system APIs to capture the screen, parse the image, and drop to disk in a temporary location. During my research I did uncover a few methods to properly parse all the images completely in memory, but currently due to lack of the PIL library standalone 2.7 does not have the ability to parse completely in memory.  So relying on the Quartz API is a current constraint in this method.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture8.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture8.png&#34; alt=&#34;Picture8&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_native_screenshoot.png&#34; alt=&#34;Empyre Native Screenshot&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
 
 &lt;p&gt;One feature within the EmPyre code base is different tasking types. This allows for different code paths of execution. For example, the iMessage module used dynamic code execution while the screenshot uses dynamic code execution with saved output. This is done by dropping to disk, opening the file, base64ing the raw file and the EmPyre server, and then saving it to your downloads folder. This makes for easy file management for modules and keeps things organized.&lt;/p&gt;
 
 &lt;p&gt;Once basic situational awareness has been completed on a target, we often transition to reaching end state client goals. This is often referred to as the “Crown Jewels” or high value targets. Generally, it takes a large amount of post exploitation intelligence and the ability to collect on all your endpoints. Keylogging is an amazing technique that has been extremely successful for gathering creds, enumerating users work roles, collecting info, or even understanding the tools they are using to interact with the asset. Bellow you will see this being employed using an adapted ruby keylogger. @ joev  (&lt;a href=&#34;https://github.com/gojhonny/metasploit-framework/blob/master/modules/post/osx/capture/keylog_recorder.r&#34;&gt;https://github.com/gojhonny/metasploit-framework/blob/master/modules/post/osx/capture/keylog_recorder.r)&lt;/a&gt;)&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture9.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture9.png&#34; alt=&#34;Picture9&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_keylogger.png&#34; alt=&#34;Empyre Keylogger&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
 
 &lt;p&gt;Once the key logger is up and running you can easily check it using the built in shell commands or once complete kill the PID, use the built in download, and delete the file from disk.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture10.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture10.png&#34; alt=&#34;Picture10&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_keylogger2.png&#34; alt=&#34;Empyre Keylogger&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
 
 &lt;p&gt;Once the file has been retrieved from the target you will have something similar (to the below) representing the application, key stroke, and keyboard commands.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture20.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture20.png&#34; alt=&#34;Picture20&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_keylogger3.png&#34; alt=&#34;Empyre Keylogger 3&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
 
 &lt;p&gt;While operating on OS X you for sure miss the ease of mimikatz for gathering credentials, but while password collection is possible in some cases cracking potential evaluated accounts, admins or service accounts may be extremely useful for lateral movement. Within EmPyre we have built in the ability for hashdump and nicely output these hashes in hashcat ready format!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture11.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture11.png&#34; alt=&#34;Picture11&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_hashdump.png&#34; alt=&#34;Empyre Hashdump&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
 
 &lt;p&gt;It is often thought that due to the out-of-the box setup that lateral movement is just not an option. This is not always the case in the corporate environments. Admins are generally going to administrate, right? They need some method of software, patch, or user management for their end points. This can result in SSH being deployed to most corporate OS X assets, or maybe a custom solution. While this blog does not cover the Kerberos implications, in corporate environments, due to the heavy use of Active Directory it can be an entirely new method of lateral movement. Stay tuned for more on that subject!&lt;/p&gt;
 
 &lt;p&gt;The last module we will be covering is the keychaindump. While this module may result in a large subset of user data and crucial passwords it does have limitations. Currently, this will not work against the latest OS X platform. The latest usable version was Yosemite, due to a vulnerability that allowed for researches to pull the master key candidate from memory once in an elevated state. Due to the new System Integrity Protections (SIP) in El Captain the ability to retrieve this master key has been properly stored in memory protected by SIP.  Not all hope is lost though! I have been extremely successful in using other tools to parse the keychain with the user’s credentials. This can be done with either a memory image or the keychain file itself.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture13.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture13.png&#34; alt=&#34;Picture13&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_keychain_dump.png&#34; alt=&#34;Empyre Keychain Dump&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
 
 &lt;p&gt;Once the keychain is local we can use a python tool called chainbreaker (&lt;a href=&#34;https://github.com/n0fate/chainbreaker&#34;&gt;https://github.com/n0fate/chainbreaker)&lt;/a&gt;). This allows for the use of the password or the master key and will parse and decrypt the entire keychain offline. While this requires the password, a root context is not needed to download the keychain, allowing for offline attempts against the keychain which can be quite useful.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture14.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/06/Picture14.png&#34; alt=&#34;Picture14&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;http://dev.cybersyndicates.com/image/empyre_keychain_dump2.png&#34; alt=&#34;Empyre Keychain Dump2&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
 
 &lt;p&gt;Hopefully this has helped clear up different use cases when it comes to EmPyre collection operations and the corresponding modules. As always we plan to release blogs near weekly covering the different use cases of EmPyre, next the team will be covering the injection of Kerberos tickets&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Welcome</title>
-      <link>http://dev.cybersyndicates.com/2016/06/21/welcome/</link>
-      <pubDate>Tue, 21 Jun 2016 20:14:14 +0000</pubDate>
-      
-      <guid>http://dev.cybersyndicates.com/2016/06/21/welcome/</guid>
-      <description>&lt;p&gt;sdsd&lt;/p&gt;
-
-&lt;p&gt;Loedfsdsf Loedfsdsf Loedfsdsf Loedfsdsf Loedfsdsf
-Loedfsdsfdfdfdf dfd Loedfsdsfdfdfdf dfd Loedfsdsfdfdfdf dfd Loedfsdsfdfdfdf dfd
-Loedfsdsff dfdf Loedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd
-LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Email Reconnaissance and Phishing Template Generation Made Simple</title>
-      <link>http://dev.cybersyndicates.com/2016/05/26/2016-05-26-email-reconnaissance-phishing-template-generation-made-simple/</link>
+      <link>http://dev.cybersyndicates.com/2016/05/email-reconnaissance-phishing-template-generation-made-simple/</link>
       <pubDate>Thu, 26 May 2016 21:56:58 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2016/05/26/2016-05-26-email-reconnaissance-phishing-template-generation-made-simple/</guid>
+      <guid>http://dev.cybersyndicates.com/2016/05/email-reconnaissance-phishing-template-generation-made-simple/</guid>
       <description>
 
 &lt;p&gt;&lt;strong&gt;Author: Alexander Rymdeko-Harvey, @Killswitch_GUI &lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;First a big thanks to the entire ATD (Adaptive Threat Divsion) team which contributed ideas, support and templates! &lt;a href=&#34;https://www.verisgroup.com/blog/category/adaptive-threat-division/&#34;&gt;https://verisgroup.com/blog/category/adaptive-threat-division/&lt;/a&gt; &lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/CptJesus&#34;&gt;https://twitter.com/CptJesus&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/sixdub&#34;&gt;https://twitter.com/sixdub&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/xorrior&#34;&gt;https://twitter.com/xorrior&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/424f424f&#34;&gt;https://twitter.com/424f424f&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/enigma0x3&#34;&gt;https://twitter.com/enigma0x3&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/mattifestation&#34;&gt;https://twitter.com/mattifestation&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/_wald0&#34;&gt;https://twitter.com/_wald0&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/bluscreenofjeff&#34;&gt;https://twitter.com/bluscreenofjeff&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/cptjesus&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @cptjesus&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;a href=&#34;https://twitter.com/sixdub&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @sixdub&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;a href=&#34;https://twitter.com/xorrior&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @xorrior&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;a href=&#34;https://twitter.com/424f424f&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @424f424f&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;a href=&#34;https://twitter.com/enigma0x3&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @enigma0x3&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;a href=&#34;https://twitter.com/mattifestation&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @mattifestation&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;a href=&#34;https://twitter.com/_wald0&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @_wald0&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;a href=&#34;https://twitter.com/bluscreenofjeff&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @bluscreenofjeff&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;email-reconnaissance-and-phishing-template-generation-made-simple&#34;&gt;Email Reconnaissance and Phishing Template Generation Made Simple&lt;/h4&gt;
 
@@ -607,27 +1154,20 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
 &lt;p&gt;Using tools like theHarvester has been a great resource for myself and other testers. This tool uses Google and Bing to automatically scrape emails by parsing raw HTML. This tool is used often on engagements and was a huge inspiration to building out a few more features. Here are a few of the sources I knew would be gold mines:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;PasteBin&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Past data dumps&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Raw HTML of target site&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;EmailHunter – &lt;a href=&#34;http://emailhunter.co&#34;&gt;http://emailhunter.co&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;PasteBin&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Past data dumps&lt;/li&gt;
+&lt;li&gt;Raw HTML of target site&lt;/li&gt;
+&lt;li&gt;EmailHunter – &lt;a href=&#34;http://emailhunter.co&#34;&gt;http://emailhunter.co&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;I discovered that using HTML parsing over more traditional API searches allows a user to search content that may not yet supply an API. This was the case for a ton of the resources that I wanted to target moving forward with my research. While API based searches have their place, I focused on free and easily accessible data for my gathering techniques. Using advanced Google search operators you can retrieve a list of all .xlsx files currently indexed on Google. Parsing the results was all done manually and finding them took some time.  “Google dorks” that I often employed during my recon phase:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Site:verisgroup.com filetype:doc &amp;ndash; Site: verisgroup.com filetype:docx&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Site: verisgroup.com filetype:xls &amp;ndash; Site: verisgroup.com filetype:doc&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Site: verisgroup.com filetype:pdf&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;site:pastebin.com &amp;ldquo;@target.com&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;“@target.com”&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Site:verisgroup.com filetype:doc &amp;ndash; Site: verisgroup.com filetype:docx&lt;/li&gt;
+&lt;li&gt;Site: verisgroup.com filetype:xls &amp;ndash; Site: verisgroup.com filetype:doc&lt;/li&gt;
+&lt;li&gt;Site: verisgroup.com filetype:pdf&lt;/li&gt;
+&lt;li&gt;site:pastebin.com &amp;ldquo;@target.com&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;“@target.com”&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;When searching the web for emails, you have to get creative. An issue I found out early on was the reliability of indexed data, which has to do with indexing and other factors. But I found this out time and time again when it came to searching for new and interesting sources, such as Yahoo, Reddit, Ask, Whois Data, or even PGP keys. These queries may only find 1 or 2 more emails but in the long run, but they add up and you can show your client the visibility they have on the web.&lt;/p&gt;
@@ -647,94 +1187,67 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
 &lt;p&gt;Currently, SimplyEmail has 25 modules ranging in capabilities and fidelity. Major sources searched are:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;HTML scrape of the targets web site&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;PasteBin&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Exalead search – PDF –XLSX – DOCX –PDF&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Google Search – PDF XLS/XLSX –DOC/DOCX –PDF&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;PGP keys&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Instagram&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Reddit&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Ask Search&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Yahoo Search&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Whois Search&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;GitHub user – Code – Gist&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Flickr&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Cannary Bin – API&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;HTML scrape of the targets web site&lt;/li&gt;
+&lt;li&gt;PasteBin&lt;/li&gt;
+&lt;li&gt;Exalead search – PDF –XLSX – DOCX –PDF&lt;/li&gt;
+&lt;li&gt;Google Search – PDF XLS/XLSX –DOC/DOCX –PDF&lt;/li&gt;
+&lt;li&gt;PGP keys&lt;/li&gt;
+&lt;li&gt;Instagram&lt;/li&gt;
+&lt;li&gt;Reddit&lt;/li&gt;
+&lt;li&gt;Ask Search&lt;/li&gt;
+&lt;li&gt;Yahoo Search&lt;/li&gt;
+&lt;li&gt;Whois Search&lt;/li&gt;
+&lt;li&gt;GitHub user – Code – Gist&lt;/li&gt;
+&lt;li&gt;Flickr&lt;/li&gt;
+&lt;li&gt;Cannary Bin – API&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;The SimplyEmail framework uses a Task controller and a Producer Consumer model that allows testers to easily write modules, while the framework handles parsing, process creation and formatting. To get started with SimplyEmail you simply:&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;git clone &lt;a href=&#34;http://github.com/killswitch-GUI/SimplyEmail.git&#34;&gt;http://github.com/killswitch-GUI/SimplyEmail.git&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;    
+  1. git clone &amp;lt;a href=&amp;quot;http://github.com/killswitch-GUI/SimplyEmail.git&amp;quot;&amp;gt;http://github.com/killswitch-GUI/SimplyEmail.git&amp;lt;/a&amp;gt;
+  2. ./sh install.sh(Kali 2 or Debian Currently Supported) 
+  3. ./SimplyEmail –l or ./SimplyEmail –h
 
-&lt;li&gt;&lt;p&gt;./sh install.sh(Kali 2 or Debian Currently Supported)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;./SimplyEmail –l or ./SimplyEmail –h&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;After the installation of SimplyEmail, it’s time to give it a go:&lt;/p&gt;
 
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;./SimplyEmail –all –e YOURTARGET.com –n –verify&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  1. ./SimplyEmail –all –e YOURTARGET.com –n –verify
+    –all = Use all modules
+    –e = Your target domain
+    –n = Names generation
+    –Verify = Attempt to verify your discovered emails Address
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;–all = Use all modules&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;–e = Your target domain&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;–n = Names generation&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;–Verify = Attempt to verify your discovered emails Address&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic1.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic1-923x1024.png&#34; alt=&#34;pic1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/2016/05/pic1.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic1.png&#34; alt=&#34;pic1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;After the initial email scrape is complete name generation is conducted. Using the built-in LinkedIn Bing scraper, SimplyEmail will start building names using LinkedIn &amp;amp; Connect6:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic2.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic2.png&#34; alt=&#34;pic2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/pic2.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic2.png&#34; alt=&#34;pic2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic3.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic3.png&#34; alt=&#34;pic3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/pic3.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic3.png&#34; alt=&#34;pic3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Next, name generation will be completed. SimplyEmail has two methods to determine the email format. First, it attempts to use EmailHunter’s JSON API to detect the format of the emails. If that fails, SimplyEmail has a built-in class designed to detect the following supported formats:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;{first}.{last} = &lt;a href=&#34;mailto:alex.alex@domain.com&#34;&gt;alex@domain.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;{first}{last} = &lt;a href=&#34;mailto:jamesharvey@domain.com&#34;&gt;jamesharvey@domain.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;{f}{last} = &lt;a href=&#34;mailto:ajames@domain.com&#34;&gt;ajames@domain.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;{f}.{last} = &lt;a href=&#34;mailto:a.james@domain.com&#34;&gt;james@domain.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;{first}{l} = &lt;a href=&#34;mailto:jamesh@domain.com&#34;&gt;jamesh@domain.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;{first}.{l} = &lt;a href=&#34;mailto:j.amesh@domain.com&#34;&gt;amesh@domain.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;{first}_{last} = &lt;a href=&#34;mailto:james_amesh@domain.com&#34;&gt;james_amesh@domain.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;{first} = &lt;a href=&#34;mailto:james@domain.com&#34;&gt;james@domain.com&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;{first}.{last} = &lt;a href=&#34;mailto:alex.alex@domain.com&#34;&gt;alex@domain.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;{first}{last} = &lt;a href=&#34;mailto:jamesharvey@domain.com&#34;&gt;jamesharvey@domain.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;{f}{last} = &lt;a href=&#34;mailto:ajames@domain.com&#34;&gt;ajames@domain.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;{f}.{last} = &lt;a href=&#34;mailto:a.james@domain.com&#34;&gt;james@domain.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;{first}{l} = &lt;a href=&#34;mailto:jamesh@domain.com&#34;&gt;jamesh@domain.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;{first}.{l} = &lt;a href=&#34;mailto:j.amesh@domain.com&#34;&gt;amesh@domain.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;{first}_{last} = &lt;a href=&#34;mailto:james_amesh@domain.com&#34;&gt;james_amesh@domain.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;{first} = &lt;a href=&#34;mailto:james@domain.com&#34;&gt;james@domain.com&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic4.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic4.png&#34; alt=&#34;pic4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/pic4.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic4.png&#34; alt=&#34;pic4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Lastly, as testers, we all know the importance of reporting and the ability to digest the data we just captured. SimplyEmail has a few great reporting options that are built into the tool. The standard text report and HTML file that will show all non-unique emails with the corresponding sources where SimplyEmail found those emails.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic5.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic5.png&#34; alt=&#34;pic5&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/pic5.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic5.png&#34; alt=&#34;pic5&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;This generates a clean report on the sources queried and an ordered list of all emails gathered. This also allows for your report to show duplicate email address gathered, which is specifically handy in the case that you need to correlate an email to multiple sources. This helps clients and testers distinguish where trouble areas are and helps make recommendations based on external OSINT presence.  Of course, a standard text file with raw emails is also built.&lt;strong&gt; &lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic6.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic6.png&#34; alt=&#34;pic6&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;strong&gt; &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This generates a clean report on the sources queried and an ordered list of all emails gathered. This also allows for your report to show duplicate email address gathered, which is specifically handy in the case that you need to correlate an email to multiple sources. This helps clients and testers distinguish where trouble areas are and helps make recommendations based on external OSINT presence.  Of course, a standard text file with raw emails is also built.&lt;strong&gt; &lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/pic6.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic6.png&#34; alt=&#34;pic6&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;strong&gt; &lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;**Phishing Template Generation is an art: **&lt;/p&gt;
 
@@ -743,150 +1256,117 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
 &lt;p&gt;Current methodology for template generation is pretty standard and is highly variable per target organization type (government vs. civilian, service vs product based etc.). This complicates template generation for the following reasons:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Templates must have relevance to the client&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Templates must entice the target to act promptly&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Template payload must be supported by template subject/body&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Templates must be formatted correctly&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Templates should have unique text values build the legitimacy of the message body&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Multiple templates should be generated for failed phishing attempts&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Templates must have relevance to the client&lt;/li&gt;
+&lt;li&gt;Templates must entice the target to act promptly&lt;/li&gt;
+&lt;li&gt;Template payload must be supported by template subject/body&lt;/li&gt;
+&lt;li&gt;Templates must be formatted correctly&lt;/li&gt;
+&lt;li&gt;Templates should have unique text values build the legitimacy of the message body&lt;/li&gt;
+&lt;li&gt;Multiple templates should be generated for failed phishing attempts&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;While this is quite an extensive list, this is merely the bare minimum to be successful at the initial stage of generating the template, let alone template theme or OSINT that is put into making the proper decisions to support the theme. Here is what my current model looks like from an operational prospective:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Conduct quick OSINT overview of the company&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Pick a template theme based on current news or info retrieved from OSINT&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Conduct research on the correct person/position to emulate in email if necessary&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Create a message body that supports either a link or attachment based payload&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Develop HTML by hand for the message body&lt;/p&gt;
+&lt;li&gt;Conduct quick OSINT overview of the company&lt;/li&gt;
+&lt;li&gt;Pick a template theme based on current news or info retrieved from OSINT&lt;/li&gt;
+&lt;li&gt;Conduct research on the correct person/position to emulate in email if necessary&lt;/li&gt;
+&lt;li&gt;Create a message body that supports either a link or attachment based payload&lt;/li&gt;
+&lt;li&gt;Develop HTML by hand for the message body
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;If necessary, use outlook to build out .EML for rich HTML messages&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;If using an old template, replace/insert necessary data inside of HTML which contains CSS&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;If necessary, use outlook to build out .EML for rich HTML messages&lt;/li&gt;
+&lt;li&gt;If using an old template, replace/insert necessary data inside of HTML which contains CSS&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Use Cobalt Strike’s spear phish option to view the email&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Send test phish and make corrections&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Use Cobalt Strike’s spear phish option to view the email&lt;/li&gt;
+&lt;li&gt;Send test phish and make corrections&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;This whole process is extremely time consuming to get correct and changes are often necessary to get the template 100%. If one thing is off it can affect the outcome of statistics as well as payload execution, and in many cases you only get one chance at this. I’ve found that when done correctly it was a solid 4-5 hours from start to finish. This is mainly due to reusing advanced templates and making necessary adjustments as needed. I set out to automate this process as much as possible with SimplyTemplate.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;SimplyTemplate&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt; &lt;/strong&gt;Getting started with SimplyTemplate is extremely easy and can be a great supplement for the above methodology to cut down on template generation time, reduce errors, and generate rich HTML sophisticated emails with ease. This tool aims to automate 80% of the template generation process, with the 20% you perform on your own hopefully resulting in a pull request!  To get started perform the following:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;git clone &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyTemplate.git&#34;&gt;https://github.com/killswitch-GUI/SimplyTemplate.git&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;./Setup.sh (Kali 2 or Debian currently supported)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;install the required plugin when prompted into Ice Weasel&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;./SimplyTemplate.py –l&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt; &lt;/strong&gt;Getting started with SimplyTemplate is extremely easy and can be a great supplement for the above methodology to cut down on template generation time, reduce errors, and generate rich HTML sophisticated emails with ease. This tool aims to automate 80% of the template generation process, with the 20% you perform on your own hopefully resulting in a pull request!  To get started perform the following:
+```&lt;br /&gt;
+  1. git clone &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyTemplate.git&#34;&gt;https://github.com/killswitch-GUI/SimplyTemplate.git&lt;/a&gt;
+  2. ./Setup.sh (Kali 2 or Debian currently supported)
+  3. install the required plugin when prompted into Ice Weasel&lt;br /&gt;
+  4. ./SimplyTemplate.py –l&lt;/p&gt;
 
 &lt;p&gt;To start, it helps to have an understanding of the module types so we can make accurate choices on template selection. All templates will provide you with a small meta tag. This tag will help you quickly identify the capabilities of the module, also what the &amp;ldquo;content&amp;rdquo; supports.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;High - Requires proper OSINT / Social Engineering to build and effectively deploy the template. These are generally internal based templates with specific themes.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Medium - Requires a decent amount of modifications or settings, and are more general of a template external based template.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Low - Requires little to no modifications of the template and are generally not effective.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;High - Requires proper OSINT / Social Engineering to build and effectively deploy the template. These are generally internal based templates with specific themes.&lt;/li&gt;
+&lt;li&gt;Medium - Requires a decent amount of modifications or settings, and are more general of a template external based template.&lt;/li&gt;
+&lt;li&gt;Low - Requires little to no modifications of the template and are generally not effective.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Each template will support one or all of the following core options:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Text - Text based option or output.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Html - Rich Html Supported for output (generally multipart Email Html/Text).&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Link - Template supports a major link for stats or potential web download of document/Drive-by.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Attachment - Can support text that tells users to open or use the supplied attachment.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Text - Text based option or output.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Html - Rich Html Supported for output (generally multipart Email Html/Text).&lt;/li&gt;
+&lt;li&gt;Link - Template supports a major link for stats or potential web download of document/Drive-by.&lt;/li&gt;
+&lt;li&gt;Attachment - Can support text that tells users to open or use the supplied attachment.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Seeing how these templates are actually rendered is extremely important. This was an issue I’ve had with the current process for templates with anything other than basic HTML tags. Some phishing platforms have issues with rendering certain formats of email templates. I highly advise using a service like Litmus (&lt;a href=&#34;https://litmus.com&#34;&gt;https://litmus.com)&lt;/a&gt;) or  Mail-Tester (&lt;a href=&#34;https://www.mail-tester.com&#34;&gt;https://www.mail-tester.com)&lt;/a&gt;) to see how the email renders on multiple applications.&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;HTML - This was used by some to view the HTML markup but CSS does not render correctly in some cases. (basic templates)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;eml - Files can be outputted via .EML to open them directly in Icedove or Outlook&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;mht - MHTML is the Mail Html Markup used and can directly rendered in Word/IE or Iceweasel via plugin&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;HTML - This was used by some to view the HTML markup but CSS does not render correctly in some cases. (basic templates)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;eml - Files can be outputted via .EML to open them directly in Icedove or Outlook&lt;/li&gt;
+&lt;li&gt;mht - MHTML is the Mail Html Markup used and can directly rendered in Word/IE or Iceweasel via plugin&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Let’s get started with building our first template and rendering these templates.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic7.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic7.png&#34; alt=&#34;pic7&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/pic7.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic7.png&#34; alt=&#34;pic7&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Currently the templates are broken up by the phishing category they support based on the following:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;External – Templates that would most likely come from external sources&lt;/p&gt;
+&lt;li&gt;External – Templates that would most likely come from external sources
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;News&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Agency&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Storage&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Social&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;News&lt;/li&gt;
+&lt;li&gt;Agency&lt;/li&gt;
+&lt;li&gt;Storage&lt;/li&gt;
+&lt;li&gt;Social&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Internal – Templates that would come from internal departments or employees&lt;/p&gt;
+&lt;li&gt;Internal – Templates that would come from internal departments or employees
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Marketing&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;IT&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;HR&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Agency&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Facilities&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Leadership&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Marketing&lt;/li&gt;
+&lt;li&gt;IT&lt;/li&gt;
+&lt;li&gt;HR&lt;/li&gt;
+&lt;li&gt;Agency&lt;/li&gt;
+&lt;li&gt;Facilities&lt;/li&gt;
+&lt;li&gt;Leadership&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;As you can see this is easily displayed with the (&lt;em&gt;list)&lt;/em&gt; command within.  We can also use the (&lt;em&gt;search&lt;/em&gt;) command to search for modules by sophistication or core options of the templates.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic8.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic8.png&#34; alt=&#34;pic8&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/pic8.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic8.png&#34; alt=&#34;pic8&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Execute the (&lt;em&gt;use&lt;/em&gt;) command with the corresponding number and you will be dropped into the relevant template menu. If more information is required, the &lt;em&gt;(info)&lt;/em&gt; command can be used to template variables and a more in-depth explanation.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic9.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic9.png&#34; alt=&#34;pic9&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/pic9.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic9.png&#34; alt=&#34;pic9&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Once in the template menu you have a few core commands. The first is the &lt;em&gt;(set)&lt;/em&gt; command, which allows you to set specific variables within the template. There are a set of default values that can be used, or you can provide your own. Each template will require a mix of different required values that must be set. You will also observe that higher the sophistication needed, the more OSINT is required and in turn the more settings that will need to be populated. Once all options are set, SimplyTemplate can generate the template on the fly and display the final outcome within a browser. This allows the tester to quickly make changes to settings to ensure the final result will look good on the targets end. Running the &lt;em&gt;(info)&lt;/em&gt; command will show the following changes:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic10.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic10.png&#34; alt=&#34;pic10&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/pic10.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic10.png&#34; alt=&#34;pic10&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;As mentioned before the (&lt;em&gt;render&lt;/em&gt;) command can be extremely informative to the tester:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic11.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic11.png&#34; alt=&#34;pic11&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/pic11.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic11.png&#34; alt=&#34;pic11&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Even the more advanced templates render nicely in the. mht format:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic12.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic12.png&#34; alt=&#34;pic12&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/pic12.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic12.png&#34; alt=&#34;pic12&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Depending on the template and the corresponding sophistication level the (&lt;em&gt;edit)&lt;/em&gt; function may be available. This will eventually be used in a majority of the modules to give testers greater freedom in generating templates. When using this function, you can edit the raw paragraphs of the template before rending or template generation takes place. This is a more advanced feature but allows you to quickly add small changes with out digging through hundred lines of template code to make a spelling or grammar change. This will spawn a custom Text Editor which you can make and save the changes.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic13.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/pic13.png&#34; alt=&#34;pic13&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/pic13.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/pic13.png&#34; alt=&#34;pic13&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Finally use the (&lt;em&gt;gen&lt;/em&gt;) command to quickly export the final product!&lt;/p&gt;
 
@@ -902,13 +1382,13 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
     
     <item>
       <title>The Return of the EmPyre</title>
-      <link>http://dev.cybersyndicates.com/2016/05/24/2016-05-24-return-empyre-series-3/</link>
+      <link>http://dev.cybersyndicates.com/2016/05/return-empyre-series-3/</link>
       <pubDate>Tue, 24 May 2016 14:34:01 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2016/05/24/2016-05-24-return-empyre-series-3/</guid>
+      <guid>http://dev.cybersyndicates.com/2016/05/return-empyre-series-3/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/empyre_logo_white_background.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/empyre_logo_white_background.png&#34; alt=&#34;empyre_logo_white_background&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/empyre_logo_white_background.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/empyre_logo_white_background.png&#34; alt=&#34;empyre_logo_white_background&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;This post is number 3 of the EmPyre series and cross post with a fellow friend and ATD co-worker &lt;a href=&#34;https://twitter.com/xorrior&#34;&gt;@xorrior&lt;/a&gt;. Thanks to the entire ATD family and dev team of EmPyre:&lt;/p&gt;
 
@@ -928,11 +1408,11 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 1&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture1.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture1.png&#34; alt=&#34;Picture1&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture1.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture1.png&#34; alt=&#34;Picture1&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 2&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture2.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture2.png&#34; alt=&#34;Picture2&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture2.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture2.png&#34; alt=&#34;Picture2&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Figure 1 depicts the load commands for Xcode. Load commands provide the OS loader with instructions on where to find the application&amp;rsquo;s entry point, offsets for the text and data sections, and all of the libraries needed by the application at runtime. The “Name” field in the LC_LOAD_DYLIB load command identifies the file path to the DVTFoundation library. Notice that the path is prepended with @rpath. This signals to the OS loader to examine the LC_RPATH (Figure 2) load commands in order to expand the @rpath variable. Each path is searched in succession by dyld to locate the required library. Once the library is found it is loaded into the application at runtime. The issue is that any library planted in an LC_RPATH that is found before the legitimate dylib, will be loaded first. A slight variation to this attack, which we won’t cover in this post, involves the LC_LOAD_WEAK_DYLIB load command. This indicates that the specified dylib is not required but will be loaded if found. If the specified library is not present on the system, we can plant the dylib in the specified path and it will be loaded by the application at runtime. For more information on Dylib Hijacks for weak dylibs, please read the &lt;a href=&#34;https://www.virusbulletin.com/virusbulletin/2015/03/dylib-hijacking-os-x/&#34;&gt;white paper&lt;/a&gt; on Dylib Hijacks by @patrickwardle. The load commands slightly differ but still offer the same way to conduct this attack. We can abuse dyld’s load order to obtain consistent code execution and/or persistence in OS X.&lt;/p&gt;
 
@@ -942,13 +1422,13 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 3&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture3.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture3.png&#34; alt=&#34;Picture3&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture3.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture3.png&#34; alt=&#34;Picture3&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;With the default options for the module, every Mach-O binary on the file system will be examined, which can take quite some time. To speed up the scan, set a path or only scan loaded process executables. Once the scan is finished, your output will provide you with the path to the vulnerable binary and the full path to where an EmPyre dylib should be planted. You will also need to locate the legitimate dylib for the next module in this attack.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 4&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture4.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture4.png&#34; alt=&#34;Picture4&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture4.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture4.png&#34; alt=&#34;Picture4&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Here we see that the Xcode application is vulnerable to a dylib hijack with the DVTFoundation library. Instructions are provided after the scan output to gather the information necessary for the next module.&lt;/p&gt;
 
@@ -956,23 +1436,23 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 5&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture5.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture5.png&#34; alt=&#34;Picture5&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture5.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture5.png&#34; alt=&#34;Picture5&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;The Listener, UserAgent, and Arch options are all used to generate the hijacker dylib. Be sure that the architecture of the dylib matches the architecture of the vulnerable application. The “LegitimateDylibPath” option will define the full path to the legitimate dylib loaded into the application. The “vulnerableRPATH” refers to the rpath value returned from the HijackScanner module. Once we have all of our options set, we can execute the module.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 6&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture6.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture6.png&#34; alt=&#34;Picture6&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture6.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture6.png&#34; alt=&#34;Picture6&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;In Figure 6, we see that once the module is completed, an EmPyre dylib is configured and copied to the vulnerable rpath we specified. When we start the Xcode application, we receive a new EmPyre agent running in that application’s process!&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 7&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture7.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture7.png&#34; alt=&#34;Picture7&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture7.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture7.png&#34; alt=&#34;Picture7&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 8&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture8.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture8.png&#34; alt=&#34;Picture8&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture8.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture8.png&#34; alt=&#34;Picture8&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Important Note: In some cases, killing the agent will close the application. Closing the application will always kill the agent.&lt;/p&gt;
 
@@ -981,15 +1461,11 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
 &lt;p&gt;Just like the many supported startup locations and run keys within Windows, OS X offers a few which are deprecated but still functional (&lt;a href=&#34;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i-SW1-SW1&#34;&gt;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i-SW1-SW1&lt;/a&gt;). On the newest version of OS X, El Capitan,  “LoginHooks” seem to be an extremely reliable method of persistence and can be removed with ease. Here are a few things to note about “LoginHooks” and how they can be used:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;     Permissions for your script file should include execute privileges for the appropriate users.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;     The payload will execute for any user that logs in.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;     Only one copyof each script can be installed at a time and root privileges are needed!&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;     If a user variable is required for login logic the $1 is passed your script.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;     Other login actions wait until your hook finishes executing&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;     Permissions for your script file should include execute privileges for the appropriate users.&lt;/li&gt;
+&lt;li&gt;     The payload will execute for any user that logs in.&lt;/li&gt;
+&lt;li&gt;     Only one copyof each script can be installed at a time and root privileges are needed!&lt;/li&gt;
+&lt;li&gt;     If a user variable is required for login logic the $1 is passed your script.&lt;/li&gt;
+&lt;li&gt;     Other login actions wait until your hook finishes executing&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;A benefit to using LoginHooks is the ease of installation, and target system info enumeration using the “defaults” tool. This tool also allows you to write settings to multiple sub system settings. Here is manual process to  setup a Hook:&lt;/p&gt;
@@ -1010,19 +1486,19 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 9&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture9.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture9.png&#34; alt=&#34;Picture9&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture9.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture9.png&#34; alt=&#34;Picture9&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;This will output AppleScript with a simple stager to the current working directory. Next, we will have to upload the script to a directory of the operator’s choice. In this case, I just used the /tmp/ directory store my “evilscript”. To set up the hook is very simple, set the user password, this is for the sudo that takes place to install the hook and creating proper permissions on the script. This can be seen being set up in Figure 9.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 10&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture10.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture10.png&#34; alt=&#34;Picture10&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture10.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture10.png&#34; alt=&#34;Picture10&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Running the defaults read command we covered earlier will result in the output of the LoginHook location, this is to ensure our hook is in place:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 11&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture11.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture11.png&#34; alt=&#34;Picture11&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture11.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture11.png&#34; alt=&#34;Picture11&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;At this point, the LoginHook is properly setup and installed. Anytime the user logs in, the agent will be executed. It should be noted that this method of persistence is widely known and signatured by anti-virus solutions that look for OS X specific persistence.  &lt;/p&gt;
 
@@ -1031,43 +1507,31 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
 &lt;p&gt;As we talked about earlier, Apple does not approve of the many methods used to stay persistent or they are purely outdated according to the Apple development references (&lt;a href=&#34;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i-SW1-SW1&#34;&gt;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i-SW1-SW1&lt;/a&gt;). But when it comes to launching custom daemons, using ‘launchd’ is the preferred method according to Apple&amp;rsquo;s development documentation. One of the major concerns with LoginHooks are the blocking nature during execution. LoginHooks are executed during the start of a logon session, which is an inline execution of the script. If at anytime this hangs or does not launch correctly it will deadlock the user from logging in. Using launchdaemons allows you live outside of user context, giving it an amazing benefit of how execution takes place. Here are few benefits of using a daemon:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Supports inetd-style daemons&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;launchd runs as root ( Keeps it easy to run )&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Daemons launch on demand, communication requests do not fail if the daemon is not launched ( Just in case you mess up )&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;If taxed they are simply delayed until the daemon can launch and process them. ( important as they are not blocking on login etc)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Supports inetd-style daemons&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;launchd runs as root ( Keeps it easy to run )&lt;/li&gt;
+&lt;li&gt;Daemons launch on demand, communication requests do not fail if the daemon is not launched ( Just in case you mess up )&lt;/li&gt;
+&lt;li&gt;If taxed they are simply delayed until the daemon can launch and process them. ( important as they are not blocking on login etc)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;If these reasons are not enough for an operator, I don’t know what is. It’s an extremely clean and safe method of staying persistent on your target; however few downsides do exist:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Many defensive tools look here for persistence (as it’s a limited attack surface)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;KnockKnock  - &lt;a href=&#34;https://objective-see.com/products/knockknock.html&#34;&gt;https://objective-see.com/products/knockknock.html&lt;/a&gt;
-
-
-
-
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Uninstallation is a few extra steps.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Many defensive tools look here for persistence (as it’s a limited attack surface)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;KnockKnock  - &lt;a href=&#34;https://objective-see.com/products/knockknock.html&#34;&gt;https://objective-see.com/products/knockknock.html&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Uninstallation is a few extra steps.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;We should first cover how the OS boot process works at high level to understand where your persistence will be living. When starting to work in the persistence realm, it&amp;rsquo;s extremely important to understand the small nuances such as system daemons and user agent daemons. Here is a chart I put together to quickly understand how daemons are executed upon boot and login.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 12&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture12.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture12.png&#34; alt=&#34;Picture12&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture12.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture12.png&#34; alt=&#34;Picture12&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Currently EmPyre supports installing a “SYSTEM” level daemon running as root that is not dependent on a user being active. This can be very important in some cases and gives you an advantage compared to other methods. Now in Figure 11 we mentioned that the launchd service will locate the plist (property list) file, this is the core of the service and passes the required options that are associated with the service. When launchd starts up it will parse this file and decide when to start, pass arguments or listen on SOCKETS for IPC (Inter Process Communication) so it important that we have an idea of what we are installing. Here is the plist file used:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 13&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture13.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture13.png&#34; alt=&#34;Picture13&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture13.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture13.png&#34; alt=&#34;Picture13&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;A few main things should be noted, the Label key string value will be the name of the daemon, in this case the default Is “com.proxy.initialize”. Whereas the array string will be location plus the executable. Finally the key “RunAtLoad” and “KeepAlive” tells launchd to start at system init and stay running rather than a one-time process.&lt;/p&gt;
 
@@ -1075,19 +1539,19 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 14&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture14.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture14.png&#34; alt=&#34;Picture14&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture14.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture14.png&#34; alt=&#34;Picture14&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;After you have an elevated agent we can go ahead and setup the persistence, using the “persistence/osx/launchdaemonexecutable”.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 15&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture15.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture15.png&#34; alt=&#34;Picture15&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture15.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture15.png&#34; alt=&#34;Picture15&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;That’s it, EmPyre does all the nitty-gritty work of creating the executable, writing it to disk, building the plist and registering it to launchd! When testing is complete we can use the “RemoveDaemon” module to properly clean up. (*Remember to take notes on the paths during install!)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Figure 16&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture16.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/05/Picture16.png&#34; alt=&#34;Picture16&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Picture16.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Picture16.png&#34; alt=&#34;Picture16&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Hope this can get you started and maybe give you some ideas of where persistence can also be installed!&lt;/p&gt;
 
@@ -1147,6 +1611,8 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;slacker007&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
 &lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
+&lt;h2 id=&#34;west&#34;&gt;West&lt;/h2&gt;
+
 &lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;reaperb0t&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
 &lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 </description>
@@ -1154,51 +1620,151 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
     
     <item>
       <title>Email Verification and Email Name Creation</title>
-      <link>http://dev.cybersyndicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</link>
+      <link>http://dev.cybersyndicates.com/2016/02/email-harvesting-and-name-creation/</link>
       <pubDate>Sun, 14 Feb 2016 14:23:45 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2016/02/14/2016-02-14-email-harvesting-and-name-creation/</guid>
+      <guid>http://dev.cybersyndicates.com/2016/02/email-harvesting-and-name-creation/</guid>
       <description>
 
 &lt;p&gt;Over the past few months we have been rapidly expanding the capability of SimplyEmail. While it is a very simple tool, it has been extremely successful on a few live engagements I have been on. I feel like it is ready for recommendation to say the least. I did however notice a few key features that some of the guys on the team mentioned that would be nice to have integrated. Thanks to &lt;a href=&#34;https://twitter.com/_wald0&#34;&gt;@_wald0&lt;/a&gt; and his suggestions I have implemented a email verification option. Also I learned a trick or so a few months back from &lt;a href=&#34;https://twitter.com/harmj0y&#34;&gt;@harmj0y&lt;/a&gt; on sick site called &amp;ldquo;Connect6&amp;rdquo;, which seems to populate a large name DB of employees for each company. Also a fellow tester and friend (&lt;a href=&#34;https://twitter.com/nagasecurity&#34;&gt;Joshua Crumbaugh&lt;/a&gt;) let me on to a sick tool for grabbing Linkedin names from bing called &lt;a href=&#34;https://github.com/pan0pt1c0n/PhishBait&#34;&gt;PhishBait&lt;/a&gt;. With all this I set out to build some new capabilities for SimplyEmail and learn some new tricks :)&lt;/p&gt;
 
-&lt;h4 id=&#34;smtp-email-verification&#34;&gt;&lt;em&gt;SMTP Email Verification&lt;/em&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;smtp-email-verification&#34;&gt;SMTP Email Verification&lt;/h4&gt;
 
 &lt;p&gt;This process is actually relatively easy to accomplish. Its a simple heuristic of SMTP return codes when attempting to send a email on the target SMTP server. The process takes place by first Identifying the proper MX record to point to. In many cases larger corporations will have more than one SMTP server with multiple MX records. These are for redundancy of course and are ordered by priority, here is a small snip of the code I built fast:&lt;/p&gt;
 
-&lt;p&gt;[snippet id=&amp;ldquo;29&amp;rdquo;]&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    def GetMX(self):
+      MXRecord = [] 
+      try:
+        if self.verbose:
+          print helpers.color(&#39; [*] Attempting to resolve MX records!&#39;, firewall=True)
+        answers = dns.resolver.query(self.domain, &#39;MX&#39;)
+        for rdata in answers:
+          data = {
+            &amp;quot;Host&amp;quot;: str(rdata.exchange),
+            &amp;quot;Pref&amp;quot;: int(rdata.preference),
+          }
+          MXRecord.append(data)
+        # Now find the lowest value in the pref
+        Newlist = sorted(MXRecord, key=lambda k: k[&#39;Pref&#39;]) 
+        # Set the MX record
+        self.mxhost = Newlist[0]
+        if self.verbose:
+          val = &#39; [*] MX Host: &#39; + str(self.mxhost[&#39;Host&#39;])
+          print helpers.color(val, firewall=True)
+      except Exception as e:
+        error = &#39; [!] Failed to get MX record: &#39; + str(e)
+        print helpers.color(error, warning=True)
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;After obtaining all the MX records we can easily sort, pick the lowest value and feed it to the next function needed. So here is the meat of the verification checks. Before we go ahead and send the SMTP server all of the gathered emails we need to check if this SMTP server supports this. We do this via providing the STMP server a known &amp;ldquo;invalid&amp;rdquo; address, and we test for the a return code other than 250 (250 is a valid email code). If we get anything except a 250, we know that the SMTP server isn&amp;rsquo;t just returning a 250 for each address supplied. we can test this pretty simply:&lt;/p&gt;
 
-&lt;p&gt;[snippet id=&amp;ldquo;30&amp;rdquo;]&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; def VerifySMTPServer(self):
+      &#39;&#39;&#39;
+      Checks for code other than 250 for crap email.
+      &#39;&#39;&#39;
+      # Idea from:
+      # https://www.scottbrady91.com/Email-Verification/Python-Email-Verification-Script
+      hostname = socket.gethostname()
+      socket.setdefaulttimeout(10)
+      server = smtplib.SMTP(timeout=10)
+      server.set_debuglevel(0)
+      addressToVerify = &amp;quot;There.Is.Knowwaythiswillwork1234567@&amp;quot; + str(self.domain)
+      try:
+        server.connect(self.mxhost[&#39;Host&#39;])
+        server.helo(hostname)
+        server.mail(&#39;email@gmail.com&#39;)
+        code, message = server.rcpt(str(addressToVerify))
+        server.quit()
+        if code == 250:
+          return False
+        else: 
+          return True
+      except Exception as e:
+        print e
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;So lets say our SMTP server supports this type of check, we can simply build a function to perform the check for our gathered emails. Here is a small small output of it in action:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/02/Screen-Shot-2016-02-14-at-11.10.11-AM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/02/Screen-Shot-2016-02-14-at-11.10.11-AM-1024x590.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.10.11 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.10.11-AM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.10.11-AM.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.10.11 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Obviously I needed to wrap this in a simple helper class for SimplyEmail, the full code (Class) can be found here:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/VerifyEmails.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/VerifyEmails.py&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;connect6-name-creation&#34;&gt;&lt;em&gt;Connect6 Name Creation&lt;/em&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;connect6-name-creation&#34;&gt;Connect6 Name Creation&lt;/h4&gt;
 
 &lt;p&gt;Im always extreamly nervous to add in functionality to SimpleEmail.. hence the name! In some cases name creation can be a pivotal and vital addition to your phishing campaigns. Some times SimplyEmail will only find the standard email addresses or just a few emails. In this case email creation may be your saving grace. On my assessments I with out doubt found Connect6.com is a reliable source to gather names associated with companies.&lt;/p&gt;
 
 &lt;p&gt;Too start I throughly attempted to find  way to get the Connect6 URL using their search engine, with no anvil. This may be do to how they want you to pay for their service / API. So I did build a simple Google Dork function to attempt to resolve the correct URL:&lt;/p&gt;
 
-&lt;p&gt;[snippet id=&amp;ldquo;32&amp;rdquo;]&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    def Connect6AutoUrl(self):
+      # Using startpage to attempt to get the URL
+      # https://www.google.com/search?q=site:connect6.com+domain.com
+      try:
+        # This returns a JSON object
+        urllist = []
+        url = &amp;quot;https://www.google.com/search?q=site:connect6.com+%22&amp;quot; + self.domain + &#39;%22&#39;
+        r = requests.get(url, headers=self.UserAgent)
+      except Exception as e:
+        error = &amp;quot;[!] Major issue with Google Search: for Connect6 URL&amp;quot; + str(e)
+        print helpers.color(error, warning=True)
+      try:
+        RawHtml = r.content
+        soup = BeautifulSoup(RawHtml)
+        for a in soup.findAll(&#39;a&#39;, href=True):
+          try:
+            l = urlparse.parse_qs(urlparse.urlparse(a[&#39;href&#39;]).query)[&#39;q&#39;]
+            if &#39;site:connect6.com&#39; not in l[0]:
+              l = l[0].split(&amp;quot;:&amp;quot;)
+              urllist.append(l[2])
+          except:
+            pass
+        return urllist
+      except Exception as e:
+        print e
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Full code can be found here: &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/Connect6.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/Connect6.py&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Here is a quick sample of the output that you will given if it cant detect the correct URL:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/02/Screen-Shot-2016-02-14-at-11.20.14-AM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/02/Screen-Shot-2016-02-14-at-11.20.14-AM-1024x605.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.20.14 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.20.14-AM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.20.14-AM.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.20.14 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;linkedin-name-creation&#34;&gt;_LinkedIn_&lt;em&gt; Name Creation&lt;/em&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;linkedin-name-creation&#34;&gt;LinkedIn Name Creation&lt;/h4&gt;
 
 &lt;p&gt;Linkedin is and has been know as a great source for social engineering, and recently I first hand got to see how effective it is to build a email campaign of it. Using the PhishBait tool mention earlier I was able to add in additional functionality and build in LinkedIn name scraping into SimplyEmail. Here is the really simple code I adapted:&lt;/p&gt;
 
-&lt;p&gt;[snippet id=&amp;ldquo;33&amp;rdquo;]&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def LinkedInNames(self):
+      &#39;&#39;&#39;
+      This function simply uses
+      Bing to scrape for names and
+      returns a list of list names.
+      &#39;&#39;&#39;
+      try:
+        br = mechanize.Browser()
+        br.set_handle_robots(False)
+        self.domain = self.domain.split(&#39;.&#39;)
+        self.domain = self.domain[0]
+        r = br.open(&#39;http://www.bing.com/search?q=(site%3A%22www.linkedin.com%2Fin%2F%22%20OR%20site%3A%22www.linkedin.com%2Fpub%2F%22)%20%26%26%20(NOT%20site%3A%22www.linkedin.com%2Fpub%2Fdir%2F%22)%20%26%26%20%22&#39;+self.domain+&#39;%22&amp;amp;qs=n&amp;amp;form=QBRE&amp;amp;pq=(site%3A%22www.linkedin.com%2Fin%2F%22%20or%20site%3A%22www.linkedin.com%2Fpub%2F%22)%20%26%26%20(not%20site%3A%22www.linkedin.com%2Fpub%2Fdir%2F%22)%20%26%26%20%22&#39;+self.domain+&#39;%22&#39;)
+        soup = BeautifulSoup(r)
+        if soup:
+          link_list = []
+          NameList = []
+          more_records = True
+          Round = False
+          while more_records:
+            if Round:
+              response = br.follow_link(text=&amp;quot;Next&amp;quot;)
+              soup = BeautifulSoup(response)
+            # enter this loop to parse all results
+            # also follow any seondary links
+            for definition in soup.findAll(&#39;h2&#39;):
+              definition = definition.renderContents()
+              if &amp;quot;LinkedIn&amp;quot; in definition:
+                name = (((((definition.replace(&#39;&amp;lt;strong&amp;gt;&#39;,&#39;&#39;)).replace(&#39;&amp;lt;/strong&amp;gt;&#39;,&#39;&#39;)).split(&#39;&amp;gt;&#39;)[1]).split(&#39;|&#39;)[0]).rstrip()).split(&#39;,&#39;)[0]
+                name = name.split(&#39; &#39;)
+                if self.verbose:
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Finally the full code can found here: &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/LinkedinNames.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/LinkedinNames.py&lt;/a&gt;&lt;/p&gt;
 </description>
@@ -1206,42 +1772,35 @@ LoedfsdsfLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfdLoedfsdsfdfdfdf dfd&lt;/p&gt;
     
     <item>
       <title>SYSTEM Context Persistence in GPO Startup Scripts</title>
-      <link>http://dev.cybersyndicates.com/2016/01/25/2016-01-25-system-context-persistence-in-gpo-startup/</link>
+      <link>http://dev.cybersyndicates.com/2016/01/system-context-persistence-in-gpo-startup/</link>
       <pubDate>Mon, 25 Jan 2016 04:32:51 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2016/01/25/2016-01-25-system-context-persistence-in-gpo-startup/</guid>
+      <guid>http://dev.cybersyndicates.com/2016/01/system-context-persistence-in-gpo-startup/</guid>
       <description>&lt;p&gt;Interesting enough I was recently experimenting on GPO settings to configure my Applocker for testing and came by Scripts under the (Computer Configuration) settings for GPO. This defiantly caught my attention, since persistence is a cat and mouse game of stored locations / methods. &lt;strong&gt;This has been mentioned but I haven&amp;rsquo;t seen it talked about so hey why not share what I did&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-24-at-10.36.07-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-24-at-10.36.07-PM-1024x761.png&#34; alt=&#34;Screen Shot 2016-01-24 at 10.36.07 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.36.07-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.36.07-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 10.36.07 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;I knew I wanted to weaponize it from a pure command line standpoint as the configuration utility is pretty much point and click. Some of the assumptions are:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;You have already elevated or have Local Admin context on the box&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Have the ability to upload a file in your agent (CobaltStike) / Have a Deployable .BAT/PS script&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Willing to drop something to disk for persistence&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;You have already elevated or have Local Admin context on the box&lt;/li&gt;
+&lt;li&gt;Have the ability to upload a file in your agent (CobaltStike) / Have a Deployable .BAT/PS script&lt;/li&gt;
+&lt;li&gt;Willing to drop something to disk for persistence&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-24-at-10.41.18-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-24-at-10.41.18-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 10.41.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.41.18-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-10.41.18-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 10.41.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;While that GUI looks quite simple and easy to use, that would be to dang easy! Lets get started:&lt;/p&gt;
 
 &lt;p&gt;The current process I use to deploy a CS Fully Staged Beacon:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Enumerate current GPO scripts&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Remove the psscripts.ini&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Upload a new psscripts.ini&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Upload the Beacon.ps1 scripts&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;conduct a Gpupdate&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;On restart you should get a beacon!&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Enumerate current GPO scripts&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Remove the psscripts.ini&lt;/li&gt;
+&lt;li&gt;Upload a new psscripts.ini&lt;/li&gt;
+&lt;li&gt;Upload the Beacon.ps1 scripts&lt;/li&gt;
+&lt;li&gt;conduct a Gpupdate&lt;/li&gt;
+&lt;li&gt;On restart you should get a beacon!&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;The location of interest (while this seems trivial, do to the permissions on this directory you will have to force all commands):&lt;/p&gt;
@@ -1293,16 +1852,12 @@ StartExecutePSFirst=true
 
 &lt;pre&gt;&lt;code&gt;powershell Move-Item -force -path C:\beacon2.ps1 -destination C:\Windows\System32\GroupPolicy\Machine\Scripts\Startup
 
-
-
-
-
 gpupdatep /force
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Finally on reboot you should have a callback! :)&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-24-at-11.25.47-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2016/01/Screen-Shot-2016-01-24-at-11.25.47-PM-1024x151.png&#34; alt=&#34;Screen Shot 2016-01-24 at 11.25.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-11.25.47-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-11.25.47-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 11.25.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;To wrap up this seems like a great SYSTEM level call back and the cool part is you can add in parameters for custom payloads. Ex. if you wanted to only start at certain time you could pass the time or date that would like to restrict or even extend. This method seems extremely strong and has proved to be reliable method. Soon to come is the CS aggressor script and PS script to automate this.&lt;/p&gt;
 </description>
@@ -1310,10 +1865,10 @@ gpupdatep /force
     
     <item>
       <title>Scanning Effectively Through a SOCKS Pivot with Nmap and Proxychains</title>
-      <link>http://dev.cybersyndicates.com/2015/12/13/2015-12-13-nmap-and-proxychains-scanning-through-a-socks-piviot/</link>
+      <link>http://dev.cybersyndicates.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</link>
       <pubDate>Sun, 13 Dec 2015 19:14:20 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2015/12/13/2015-12-13-nmap-and-proxychains-scanning-through-a-socks-piviot/</guid>
+      <guid>http://dev.cybersyndicates.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</guid>
       <description>
 
 &lt;p&gt;When ever I am on a pen-test and I come across a major problem (Every OP) that requires some creative solution and I love to share it. Not only that I could help someone else one day, but it really helps me retain the knowledge for future use.&lt;/p&gt;
@@ -1326,7 +1881,7 @@ gpupdatep /force
 
 &lt;p&gt;Here is the idea:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-5.42.29-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-5.42.29-PM-1024x380.png&#34; alt=&#34;Screen Shot 2015-12-11 at 5.42.29 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-5.42.29-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-5.42.29-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 5.42.29 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;The first step is to setup your SSH SOCKS Proxy:&lt;/p&gt;
 
@@ -1335,15 +1890,15 @@ gpupdatep /force
 
 &lt;p&gt;After that was setup I had to configure ProxyChains:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-6.47.24-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-6.47.24-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 6.47.24 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.47.24-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.47.24-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 6.47.24 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Turn on Quite mode for ProxyChains&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-6.48.36-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-6.48.36-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 6.48.36 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.48.36-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.48.36-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 6.48.36 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;As we move forward we will discover the timeouts section will have to be tinkered with. This is key to optimizing your performance with Nmap.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-6.55.59-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/12/Screen-Shot-2015-12-11-at-6.55.59-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 6.55.59 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.55.59-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.55.59-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 6.55.59 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Lastly set up the strike chain.&lt;/p&gt;
 
@@ -1353,18 +1908,16 @@ gpupdatep /force
 
 &lt;p&gt;So after following my SOP’s I noticed just firing off Nmap into this SOCKS proxy tunnel wasn’t going to cut it. We experienced large drops in performance and Nmap’s performance and timing parameters weren’t working correctly. Here is my standard Nmap String (Internal scan):&lt;/p&gt;
 
-&lt;p&gt;Nmap -Pn -n -sS –p 21-23,25,53,111,137,139,445,80,443,3389,5900,8080,8443 &amp;ndash;min-hostgroup 255 &amp;ndash;min-rtt-timeout 1ms &amp;ndash;max-rtt-timeout 70ms &amp;ndash;max-retries 0 &amp;ndash;max-scan-delay 0 &amp;ndash;min-rate 2000 -oA &lt;customer-#&gt; -vvv &amp;ndash;open -iL &lt;IPLIST&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Nmap -Pn -n -sS –p 21-23,25,53,111,137,139,445,80,443,3389,5900,8080,8443 --min-hostgroup 255 --min-rtt-timeout 1ms --max-rtt-timeout 70ms --max-retries 0 --max-scan-delay 0 --min-rate 2000 -oA &amp;lt;customer-#&amp;gt; -vvv --open -iL &amp;lt;IPLIST&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;But after 2 minutes of scanning with this I noticed a few things:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Parallel scans weren’t taking place&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Timing and performance aspects don’t work&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Nmap cant perform &amp;ndash;defeat-rst-ratelimit with full TCP Connect scans –sT&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;It would wait the full 1500ms for a port to time-out (Rmbr the Proxy config)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Parallel scans weren’t taking place&lt;/li&gt;
+&lt;li&gt;Timing and performance aspects don’t work&lt;/li&gt;
+&lt;li&gt;Nmap cant perform &amp;ndash;defeat-rst-ratelimit with full TCP Connect scans –sT&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;It would wait the full 1500ms for a port to time-out (Rmbr the Proxy config)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;A ton of these problems stem from the fact that we are using a SOCKS proxy, and the nature of the connect scan. When you scan from your Kali system you perform the following Nmap -&amp;gt; Proxy-chains -&amp;gt; SOCKS (Jump Box) -&amp;gt; Target System. I discovered that even though you have all the timing settings setup Nmap is going to interpret that the Half Open connection with the SOCKS proxy as open and will let it hang till ProxyChains literally kills the connection due to a (TCP-Read-Timeout). At first I thought I could solve this issue using the &amp;ldquo;&amp;ndash;host-timeout 80ms&amp;rdquo; flag. But I discovered once that host-timeout was reached it will completely kill the connection (NMAP ADD IN A PORT TIMEOUT!).&lt;/p&gt;
@@ -1373,145 +1926,135 @@ gpupdatep /force
 
 &lt;p&gt;The script can be found here: &lt;a href=&#34;https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/Proxychains-Nmap.py&#34;&gt;https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/Proxychains-Nmap.py&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;import multiprocessing
-import argparse
-import Queue
-import threading
-import os
-import sys
-import subprocess
-from random import randint
+&lt;pre&gt;&lt;code&gt;    import multiprocessing
+    import argparse
+    import Queue
+    import threading
+    import os
+    import sys
+    import subprocess
+    from random import randint
 
 
 
 
-
-def cli_parser():
- parser = argparse.ArgumentParser(add_help=False, description=&#39;&#39;&#39;This script Simply routes your nmap scan in a &amp;quot;sort-of&amp;quot; fast way 
- through a ProcyChain that has been setup.
- \n\t(1) You will find out that when routing nmap through a Proxychain connection that Timing performace is out the window.
- \n\t(2) This is do to the nature of a SOCKS proxy and SYN-&amp;gt;SYN/ACK connection is already established in NMAPS Eyes.
- \n\t(3) It out puts random (#) of .gnmap file for each IP for parsing. (MAKE A FOLDER) :)
- &#39;&#39;&#39;)
- parser.add_argument(&amp;quot;-i&amp;quot;, metavar=&amp;quot;iplist.txt&amp;quot;, help=&amp;quot;Set Ip List of IPs Delimited by line&amp;quot;)
- parser.add_argument(&#39;-h&#39;, &#39;-?&#39;, &#39;--h&#39;, &#39;-help&#39;, &#39;--help&#39;, action=&amp;quot;store_true&amp;quot;, help=argparse.SUPPRESS)
- args = parser.parse_args()
- if args.h: 
- parser.print_help()
- sys.exit()
- if not args.i:
- print &amp;quot;[!] I need a list IP&#39;s!&amp;quot;
- sys.exit()
- return args.i
-
-
-
-
-
-def Execution(Task_queue):
- while True:
- Ip = Task_queue.get()
- # If the queue is emepty exit this proc
- # Setup a simple output in the folder, For gnmap Parser
- IpName = str(Ip).replace(&#39;.&#39;,&amp;quot;-&amp;quot;) + str(&amp;quot;.gnmap&amp;quot;)
- if Ip is None:
- break
- try:
- print &amp;quot;[*] On Ip: &amp;quot; + Ip
- test = subprocess.check_output([&amp;quot;proxychains&amp;quot;, &amp;quot;nmap&amp;quot;, &amp;quot;-Pn&amp;quot;, &amp;quot;-n&amp;quot;, &amp;quot;-sT&amp;quot;, &amp;quot;--max-scan-delay&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;-p111,445,139,21-23,80,443&amp;quot;, &amp;quot;-oG&amp;quot;, IpName, &amp;quot;--open&amp;quot;, Ip])
- test = &amp;quot;&amp;quot;
- except:
- pass
+    
+    def cli_parser():
+     parser = argparse.ArgumentParser(add_help=False, description=&#39;&#39;&#39;This script Simply routes your nmap scan in a &amp;quot;sort-of&amp;quot; fast way 
+     through a ProcyChain that has been setup.
+     \n\t(1) You will find out that when routing nmap through a Proxychain connection that Timing performace is out the window.
+     \n\t(2) This is do to the nature of a SOCKS proxy and SYN-&amp;gt;SYN/ACK connection is already established in NMAPS Eyes.
+     \n\t(3) It out puts random (#) of .gnmap file for each IP for parsing. (MAKE A FOLDER) :)
+     &#39;&#39;&#39;)
+     parser.add_argument(&amp;quot;-i&amp;quot;, metavar=&amp;quot;iplist.txt&amp;quot;, help=&amp;quot;Set Ip List of IPs Delimited by line&amp;quot;)
+     parser.add_argument(&#39;-h&#39;, &#39;-?&#39;, &#39;--h&#39;, &#39;-help&#39;, &#39;--help&#39;, action=&amp;quot;store_true&amp;quot;, help=argparse.SUPPRESS)
+     args = parser.parse_args()
+     if args.h: 
+     parser.print_help()
+     sys.exit()
+     if not args.i:
+     print &amp;quot;[!] I need a list IP&#39;s!&amp;quot;
+     sys.exit()
+     return args.i
 
 
 
 
-
-def TaskSelector(Task_queue, verbose=False):
- total_proc = int(8)
- for i in xrange(total_proc):
- Task_queue.put(None)
- procs = []
- for thread in range(total_proc):
- procs.append(multiprocessing.Process(target=Execution, args=(Task_queue,)))
- for p in procs:
- p.daemon = True
- p.start()
- for p in procs:
- p.join()
- Task_queue.close()
-
-
-
-
-
-def Ip_List(Task_queue, cli_IpList):
- items = []
- cli_IpList = str(cli_IpList)
- try:
- with open(cli_IpList, &amp;quot;r&amp;quot;) as myfile:
- lines = myfile.readlines()
- for line in lines:
- line = line.rstrip(&#39;\n&#39;)
- items.append(line)
- for item in items:
- Task_queue.put(item)
- return Task_queue
- except Exception as e:
- print &amp;quot;[!] Please check your Ip List: &amp;quot; + str(e)
- sys.exit(0)
+    
+    def Execution(Task_queue):
+     while True:
+     Ip = Task_queue.get()
+     # If the queue is emepty exit this proc
+     # Setup a simple output in the folder, For gnmap Parser
+     IpName = str(Ip).replace(&#39;.&#39;,&amp;quot;-&amp;quot;) + str(&amp;quot;.gnmap&amp;quot;)
+     if Ip is None:
+     break
+     try:
+     print &amp;quot;[*] On Ip: &amp;quot; + Ip
+     test = subprocess.check_output([&amp;quot;proxychains&amp;quot;, &amp;quot;nmap&amp;quot;, &amp;quot;-Pn&amp;quot;, &amp;quot;-n&amp;quot;, &amp;quot;-sT&amp;quot;, &amp;quot;--max-scan-delay&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;-p111,445,139,21-23,80,443&amp;quot;, &amp;quot;-oG&amp;quot;, IpName, &amp;quot;--open&amp;quot;, Ip])
+     test = &amp;quot;&amp;quot;
+     except:
+     pass
 
 
 
 
+    
+    def TaskSelector(Task_queue, verbose=False):
+     total_proc = int(8)
+     for i in xrange(total_proc):
+     Task_queue.put(None)
+     procs = []
+     for thread in range(total_proc):
+     procs.append(multiprocessing.Process(target=Execution, args=(Task_queue,)))
+     for p in procs:
+     p.daemon = True
+     p.start()
+     for p in procs:
+     p.join()
+     Task_queue.close()
 
-def main():
- cli_IpList = cli_parser()
- Task_queue = multiprocessing.Queue()
- Task_queue = Ip_List(Task_queue, cli_IpList)
- TaskSelector(Task_queue)
+
+
+
+    
+    def Ip_List(Task_queue, cli_IpList):
+     items = []
+     cli_IpList = str(cli_IpList)
+     try:
+     with open(cli_IpList, &amp;quot;r&amp;quot;) as myfile:
+     lines = myfile.readlines()
+     for line in lines:
+     line = line.rstrip(&#39;\n&#39;)
+     items.append(line)
+     for item in items:
+     Task_queue.put(item)
+     return Task_queue
+     except Exception as e:
+     print &amp;quot;[!] Please check your Ip List: &amp;quot; + str(e)
+     sys.exit(0)
 
 
 
 
+    
+    def main():
+     cli_IpList = cli_parser()
+     Task_queue = multiprocessing.Queue()
+     Task_queue = Ip_List(Task_queue, cli_IpList)
+     TaskSelector(Task_queue)
 
-if __name__ == &amp;quot;__main__&amp;quot;:
- try: 
- main()
- except KeyboardInterrupt:
- print &#39;Interrupted&#39;
- try:
- sys.exit(0)
- except SystemExit:
- os._exit(0)
+
+
+
+    
+    if __name__ == &amp;quot;__main__&amp;quot;:
+     try: 
+     main()
+     except KeyboardInterrupt:
+     print &#39;Interrupted&#39;
+     try:
+     sys.exit(0)
+     except SystemExit:
+     os._exit(0)
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
     <item>
       <title>SimplyEmail v0.5: PDFMiner!</title>
-      <link>http://dev.cybersyndicates.com/2015/11/21/2015-11-21-simplyemail-v0-5-pdfminer/</link>
+      <link>http://dev.cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/</link>
       <pubDate>Sat, 21 Nov 2015 18:32:48 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2015/11/21/2015-11-21-simplyemail-v0-5-pdfminer/</guid>
+      <guid>http://dev.cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/</guid>
       <description>
 
 &lt;h2 id=&#34;major-addition-to-simplyemail-core&#34;&gt;Major addition to SimplyEmail Core&lt;/h2&gt;
 
 &lt;p&gt;When I first started this project I published a pretty in-depth “path” of progression. I told my self I would be following this to help build a tool that would actually enhance and build off what is already open source. I knew I had to have unique methods and content. One thing that I use quite often is google dorking for multiple Intel gathering techniques for a OP, so I knew this had to be added!&lt;/p&gt;
 
-&lt;blockquote&gt;
-
-&gt; 
-&gt; SimplyEmail v0.5: PDFMiner just added! Email recon with PDF scraping. [https://t.co/awX3eoRGNK](https://t.co/awX3eoRGNK) (or on GitHub) [https://t.co/JVsc7yrflE](https://t.co/JVsc7yrflE)
-&gt; 
-&gt; 
-
-&gt; 
-&gt; — Alex Rymdeko-harvey (@Killswitch_GUI) [November 21, 2015](https://twitter.com/Killswitch_GUI/status/668137062055452673)
-&gt; 
-&gt; 
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;SimplyEmail v0.5: PDFMiner just added! Email recon with PDF scraping. &lt;a href=&#34;https://t.co/awX3eoRGNK&#34;&gt;https://t.co/awX3eoRGNK&lt;/a&gt; (or on GitHub) &lt;a href=&#34;https://t.co/JVsc7yrflE&#34;&gt;https://t.co/JVsc7yrflE&lt;/a&gt;&lt;/p&gt;&amp;mdash; Alex Rymdeko-harvey (@Killswitch_GUI) &lt;a href=&#34;https://twitter.com/Killswitch_GUI/status/668137062055452673&#34;&gt;November 21, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;intel-gathering-stage&#34;&gt;Intel Gathering Stage&lt;/h3&gt;
 
@@ -1520,99 +2063,83 @@ if __name__ == &amp;quot;__main__&amp;quot;:
 &lt;p&gt;This generally encompasses the ability to generate a custom phishing template that is somewhat unique to the target. I can sometimes locate sensitive information using the &lt;strong&gt;(site:target.com file:pdf) &lt;/strong&gt;method to gather documents they may have published. We generally gather the following information:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;CEO and main leadership&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Current issues or press releases that are related to the target&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;What the company sells&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;CEO and main leadership&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Current issues or press releases that are related to the target&lt;/li&gt;
+&lt;li&gt;What the company sells&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;I take all the above into account when developing potential targeted emails. Funny enough these documents are a great source for emails as well. As they generally have contact information outside the standard &lt;a href=&#34;mailto:info@company.com&#34;&gt;info@company.com&lt;/a&gt;. This source however can be hard to gather from the HTML scrapping modules already in place. One the documents can take a good amount of time to gather, and for the sake of speed I have always found using googles indexed files always seemed to speed things up.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.13.55-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.13.55-PM-1024x742.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.13.55 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.13.55-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-21-at-1.13.55-PM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.13.55 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;pdfminer&#34;&gt;PDFMiner&lt;/h3&gt;
 
 &lt;p&gt;With some basic requirements in hand I knew I could use the previous built module to handle most of the google search requirements. I just need a few small tweaks and I could start parsing the raw HTML of google for PDF files. Using PDFMiner I was able to convert a bulk of them to Text for parsing.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.14.06-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.14.06-PM-1024x361.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.14.06 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.14.06-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.14.06-PM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.14.06 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Suppersingly enough this wasn’t as hard as I thought it was going to be! Mainly since the method I use to handle all the background work has been handled for me!&lt;/p&gt;
 
 &lt;p&gt;Expect to see upcoming this month:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Excel Parsing&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Doc / Docx Parsing&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Excel Parsing&lt;/li&gt;
+&lt;li&gt;Doc / Docx Parsing&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;As always you can check out the code here: &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Modules/GooglePDFSearch.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Modules/GooglePDFSearch.py&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Sample Output and test using the new Verbose options:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;root@vapt-kali:~/Desktop/SimplyEmail# ./SimplyEmail.py -t GooglePDF -e mandiant.com -v
+&lt;pre&gt;&lt;code&gt;    root@vapt-kali:~/Desktop/SimplyEmail# ./SimplyEmail.py -t GooglePDF -e mandiant.com -v
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.22.37-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.22.37-PM-996x1024.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.22.37 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.22.37-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.22.37-PM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.22.37 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Email Harvesting with SimplyEmail</title>
-      <link>http://dev.cybersyndicates.com/2015/11/21/2015-11-21-email-harvesting-with-simplyemail/</link>
+      <link>http://dev.cybersyndicates.com/2015/11/email-harvesting-with-simplyemail/</link>
       <pubDate>Sat, 21 Nov 2015 14:58:47 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2015/11/21/2015-11-21-email-harvesting-with-simplyemail/</guid>
+      <guid>http://dev.cybersyndicates.com/2015/11/email-harvesting-with-simplyemail/</guid>
       <description>
 
 &lt;h2 id=&#34;email-recon-made-easy&#34;&gt;Email Recon Made Easy&lt;/h2&gt;
 
-&lt;hr /&gt;
-
 &lt;p&gt;More often than not email enumeration is hit or miss, depending on the sources used throttle limits are in place or they just plain don’t index everything. As you may know from my past blog write-up I wrote a HTML scrapper to integrate into theHarvester. After that experience I knew there was for some improvement on 3 major key areas:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Speed - It needed to be able to handle way more locations to search&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Framework – People needed to be able to easily contribute to the project&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Reporting – I wanted it to be elegant and easy to discover the sources&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Speed - It needed to be able to handle way more locations to search&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Framework – People needed to be able to easily contribute to the project&lt;/li&gt;
+&lt;li&gt;Reporting – I wanted it to be elegant and easy to discover the sources&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;With these requirements in hand I started my build on SimplyEmail!&lt;/p&gt;
 
 &lt;h3 id=&#34;benefits-of-simplyemail&#34;&gt;Benefits of SimplyEmail&lt;/h3&gt;
 
-&lt;hr /&gt;
-
 &lt;p&gt;In the underlying code I built the program to dynamically load the all modules that where placed in the modules folder. The question is why? Well after using other tools and methods, I found that searching just about anywhere you can get your hands on can be beneficial to the results you obtain (Even if duplicates). In certain cases, Google Captcha block would engage and Yahoo Search would come to save the day! The key here was the ability to run multiple modules at the same time, this proved to be quite an improvement for web intense modules. Here is a small snippet of the code that makes this happen:&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;All modules are dynamicaly loaded into a list&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Modules are placed into a Multiprocessing queue&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Execution takes place in a standardized format so that all processing takes place on child process rather than parent&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Results are Parsed with a custom parser that handles about all the raw html and text based parsing you could need.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;These results are placed into a Dictionary with a Key of the source and email address&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Html results are generated on the fly, and raw results are appended to a running list with time stamps.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;All modules are dynamicaly loaded into a list&lt;/li&gt;
+&lt;li&gt;Modules are placed into a Multiprocessing queue&lt;/li&gt;
+&lt;li&gt;Execution takes place in a standardized format so that all processing takes place on child process rather than parent&lt;/li&gt;
+&lt;li&gt;Results are Parsed with a custom parser that handles about all the raw html and text based parsing you could need.&lt;/li&gt;
+&lt;li&gt;These results are placed into a Dictionary with a Key of the source and email address&lt;/li&gt;
+&lt;li&gt;Html results are generated on the fly, and raw results are appended to a running list with time stamps.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;&lt;strong&gt;Multiprocessing Controller:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-9.36.26-AM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-9.36.26-AM.png&#34; alt=&#34;Screen Shot 2015-11-17 at 9.36.26 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-9.36.26-AM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-9.36.26-AM.png&#34; alt=&#34;Screen Shot 2015-11-17 at 9.36.26 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;How the modules are instantiated:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-9.38.55-AM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-9.38.55-AM.png&#34; alt=&#34;Screen Shot 2015-11-17 at 9.38.55 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-9.38.55-AM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-9.38.55-AM.png&#34; alt=&#34;Screen Shot 2015-11-17 at 9.38.55 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;simple-cli-interface&#34;&gt;Simple CLI Interface:&lt;/h3&gt;
-
-&lt;hr /&gt;
 
 &lt;p&gt;To get started always run the Setup script first:&lt;/p&gt;
 
@@ -1626,20 +2153,16 @@ root@kali:~/Desktop/SimplyEmail# ./Setup.sh
 &lt;pre&gt;&lt;code&gt;root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -h
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-9.50.39-AM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-9.50.39-AM.png&#34; alt=&#34;Screen Shot 2015-11-17 at 9.50.39 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-9.50.39-AM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-9.50.39-AM.png&#34; alt=&#34;Screen Shot 2015-11-17 at 9.50.39 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Running the tool can be accomplished by either running all modules or one specific module for testing:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -all -e enron.com
 
-
-
-
-
 root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-10.03.13-AM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-17-at-10.03.13-AM.png&#34; alt=&#34;Screen Shot 2015-11-17 at 10.03.13 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-10.03.13-AM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-10.03.13-AM.png&#34; alt=&#34;Screen Shot 2015-11-17 at 10.03.13 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;understanding-reporting-options&#34;&gt;Understanding Reporting Options:&lt;/h2&gt;
 
@@ -1647,37 +2170,37 @@ root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
 
 &lt;p&gt;So I&amp;rsquo;m making it my goal for my tools to take that work off your back and make it as simple as possible! Let&amp;rsquo;s cover the two different reports generated.&lt;/p&gt;
 
-&lt;h3 id=&#34;https-github-com-killswitch-gui-simplyemail-text-output-text-output&#34;&gt;[](&lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail#text-output)Text&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail#text-output)Text&lt;/a&gt; Output:&lt;/h3&gt;
+&lt;h3 id=&#34;text-output&#34;&gt;Text Output:&lt;/h3&gt;
 
 &lt;p&gt;With this option results are generated and appended to a running text file called Email_List.txt. this makes it easy to find past searches or export to tool of choice. Example:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-10.01.52-AM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-10.01.52-AM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 10.01.52 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-21-at-10.01.52-AM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-21-at-10.01.52-AM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 10.01.52 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;html-output&#34;&gt;HTML Output:&lt;/h3&gt;
 
 &lt;p&gt;As I mentioned before a powerful function that I wanted to integrate was the ability to produce a visually appealing and rich report for the user and potentially something that could be part of data provided to a client. Please let me know with suggestions!&lt;/p&gt;
 
-&lt;h4 id=&#34;https-github-com-killswitch-gui-simplyemail-email-source-email-source-screen-shot-2015-11-11-at-5-27-15-pm-http-cybersyndicates-com-wp-content-uploads-2015-11-screen-shot-2015-11-11-at-5-27-15-pm-1024x530-png-http-cybersyndicates-com-wp-content-uploads-2015-11-screen-shot-2015-11-11-at-5-27-15-pm-png&#34;&gt;[](&lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail#email-source)Email&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail#email-source)Email&lt;/a&gt; Source:&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-11-at-5.27.15-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-11-at-5.27.15-PM-1024x530.png&#34; alt=&#34;Screen Shot 2015-11-11 at 5.27.15 PM&#34; /&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;email-source&#34;&gt;Email Source:&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-11-at-5.27.15-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-11-at-5.27.15-PM.png&#34; alt=&#34;Screen Shot 2015-11-11 at 5.27.15 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;email-section&#34;&gt;Email Section:&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Html report now shows Alerts for Canary Search Results&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-11-at-5.27.31-PM.png&#34; alt=&#34;![Screen Shot 2015-11-11 at 5.27.31 PM](http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-11-at-5.27.31-PM-1024x528.png)&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;Html report now shows Alerts for Canary Search Results&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-11-at-5.27.31-PM.png&#34; alt=&#34;![Screen Shot 2015-11-11 at 5.27.31 PM](/wp-content/Screen-Shot-2015-11-11-at-5.27.31-PM-1024x528.png)&#34; /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>A No Bull Guide to Malicious Windows Trouble Shooting Packs and Application whitelist Bypass</title>
-      <link>http://dev.cybersyndicates.com/2015/10/16/2015-10-16-a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</link>
+      <link>http://dev.cybersyndicates.com/2015/10/a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</link>
       <pubDate>Fri, 16 Oct 2015 13:36:50 +0000</pubDate>
       
-      <guid>http://dev.cybersyndicates.com/2015/10/16/2015-10-16-a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</guid>
+      <guid>http://dev.cybersyndicates.com/2015/10/a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</guid>
       <description>
 
 &lt;h3 id=&#34;malicious-windows-trouble-shooting-package&#34;&gt;Malicious Windows Trouble Shooting Package&lt;/h3&gt;
-
-&lt;hr /&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;em&gt;Using Nicholas Berthaume Recent work on WTP:&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
 
@@ -1691,9 +2214,7 @@ root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
 
 &lt;h3 id=&#34;ligt-functionality-windows-feature&#34;&gt;Ligt Functionality  (Windows &amp;ldquo;Feature&amp;rdquo;)&lt;/h3&gt;
 
-&lt;hr /&gt;
-
-&lt;p&gt;So what are WTP (Windows Trouble Shooting Packs)? The question is simple to answer: its a simple package software developers can check issues, that could be causing issues with their software. This WTP is mainly used by Microsoft and most of us have used them and maybe just didn&amp;rsquo;t think about it (Troubleshooting Network Issues). I&amp;rsquo;m sure we all have seen this before:&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-09-at-2.36.47-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-09-at-2.36.47-PM-1024x783.png&#34; alt=&#34;Screen Shot 2015-10-09 at 2.36.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;So what are WTP (Windows Trouble Shooting Packs)? The question is simple to answer: its a simple package software developers can check issues, that could be causing issues with their software. This WTP is mainly used by Microsoft and most of us have used them and maybe just didn&amp;rsquo;t think about it (Troubleshooting Network Issues). I&amp;rsquo;m sure we all have seen this before:&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-09-at-2.36.47-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-09-at-2.36.47-PM.png&#34; alt=&#34;Screen Shot 2015-10-09 at 2.36.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Microsofts &lt;em&gt;Signed&lt;/em&gt; Binary Involved (Note this):&lt;/p&gt;
 
@@ -1703,38 +2224,29 @@ root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
 &lt;p&gt;Some really cool features of msdt:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Is a standard windows signed binary and standard with all deployments&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Allows you to specify paths of the package and even use UNC paths!!!&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Allows for you to use the flag &amp;ldquo;/af&amp;rdquo; to produce a Answers file built in XML to automate the WTP and can also run from a UNC path &amp;ldquo;Potential Lateral Movement&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Answer files can be easily built in Power-shell&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Is a standard windows signed binary and standard with all deployments&lt;/li&gt;
+&lt;li&gt;Allows you to specify paths of the package and even use UNC paths!!!&lt;/li&gt;
+&lt;li&gt;Allows for you to use the flag &amp;ldquo;/af&amp;rdquo; to produce a Answers file built in XML to automate the WTP and can also run from a UNC path &amp;ldquo;Potential Lateral Movement&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Answer files can be easily built in Power-shell&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;what-does-the-package-consist-of&#34;&gt;What does the Package consist of?&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/IC306717.jpg&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/IC306717.jpg&#34; alt=&#34;IC306717&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/IC306717.jpg&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/IC306717.jpg&#34; alt=&#34;IC306717&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;So I stole this image from MSDN and its a great image to understand the basics of a WTP. A few things we need to understand about the package it self. The WTP structure consist of:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Id Metadata&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Detection scripts&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Resolution scripts&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Verification scripts&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Localized scripts&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Id Metadata&lt;/li&gt;
+&lt;li&gt;Detection scripts&lt;/li&gt;
+&lt;li&gt;Resolution scripts&lt;/li&gt;
+&lt;li&gt;Verification scripts&lt;/li&gt;
+&lt;li&gt;Localized scripts&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;This format is what builds the &amp;ldquo;Windows Troubleshooting Pack&amp;rdquo; itself , this is what is given to the Runtime Engine and runs through these and display to the user the results of the package. The bottom line is we really don&amp;rsquo;t need all of these scripts unless you will be weaponizing these for a specific phishing campaign that is unique the environment you will be targeting. The cool part is you can basically use this package to deploy just about any code you can dream of, as long as you can some how deploy it with powershell of course.&lt;/p&gt;
 
 &lt;h3 id=&#34;how-to-setup-to-build-your-first-wtp&#34;&gt;How to setup to build your first WTP&lt;/h3&gt;
-
-&lt;hr /&gt;
 
 &lt;p&gt;Lets now cover what we will need to build your first WTP. This can be tricky so follow this to the exact step so you won&amp;rsquo;t encounter any crazy errors as this wasn&amp;rsquo;t easy to figure out. I did use VMware and a clean windows 7 pro VM, so I can&amp;rsquo;t speak for any other platform. But the trick here is that you can build this packages manually which will take FOREVER or use windows SDK package manger to build them.&lt;/p&gt;
 
@@ -1754,15 +2266,14 @@ root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
 
 &lt;p&gt;Use the following selections&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-14-at-9.56.18-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-14-at-9.56.18-PM.png&#34; alt=&#34;Screen Shot 2015-10-14 at 9.56.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-14-at-9.56.18-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-14-at-9.56.18-PM.png&#34; alt=&#34;Screen Shot 2015-10-14 at 9.56.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;(Important packages you will be installing so we can install the SDK)&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-14-at-9.56.57-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-14-at-9.56.57-PM.png&#34; alt=&#34;Screen Shot 2015-10-14 at 9.56.57 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-14-at-9.56.57-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-14-at-9.56.57-PM.png&#34; alt=&#34;Screen Shot 2015-10-14 at 9.56.57 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Step 4:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;So no matter how hard I tired I couldn&amp;rsquo;t get the latest SDK to work so I jumped back to 7.0&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 4:&lt;/strong&gt;
+So no matter how hard I tired I couldn&amp;rsquo;t get the latest SDK to work so I jumped back to 7.0&lt;/p&gt;
 
 &lt;p&gt;Download: &lt;a href=&#34;http://www.microsoft.com/en-us/download/details.aspx?id=3138&#34;&gt;link&lt;/a&gt;&lt;/p&gt;
 
@@ -1770,11 +2281,9 @@ root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
 
 &lt;p&gt;Check the following boxes so you ensure you install the complete package even though it installs .NET 3.5!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-14-at-10.06.00-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-14-at-10.06.00-PM-1024x722.png&#34; alt=&#34;Screen Shot 2015-10-14 at 10.06.00 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-14-at-10.06.00-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-14-at-10.06.00-PM.png&#34; alt=&#34;Screen Shot 2015-10-14 at 10.06.00 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Building your first WTP&lt;/strong&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
 
 &lt;p&gt;At this point you should be set up to use the TSPDesigner package that comes with windows SDK.  While this isn&amp;rsquo;t currently easily automated, Nicholas Berthaume talked about releasing a toolkit for linux to build these packages. We will cover some of the tradecraft concerns and case use&amp;rsquo;s in this post in a bit.&lt;/p&gt;
 
@@ -1784,11 +2293,11 @@ root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
 
 &lt;p&gt;Click on create pack  -&amp;gt; name it &amp;ldquo;Really Bad Here&amp;rdquo; and click on create:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-6.34.40-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-6.34.40-PM-1024x336.png&#34; alt=&#34;Screen Shot 2015-10-15 at 6.34.40 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-6.34.40-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-6.34.40-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 6.34.40 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Go right ahead and fill out the package fields (*set URL it won&amp;rsquo;t have to match your code signing cert):&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-6.36.59-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-6.36.59-PM-1024x642.png&#34; alt=&#34;Screen Shot 2015-10-15 at 6.36.59 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-6.36.59-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-6.36.59-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 6.36.59 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Before we move forward lets take a quick look at an actually trouble shooting pack, so we have it fresh in our minds of how execution takes place. This structure can give us a great amount of information about where you may want inject your payload of choice. Head over to your kali and download this Microsoft signed Troubleshooting package, we will be unarchiving it in Kali 2.0:&lt;/p&gt;
 
@@ -1798,33 +2307,33 @@ root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
 
 &lt;blockquote&gt;Right click on the .diagcab and select Open With Archive Manager, you should see:&lt;/blockquote&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-7.09.07-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-7.09.07-PM-1024x666.png&#34; alt=&#34;Screen Shot 2015-10-15 at 7.09.07 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-7.09.07-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-7.09.07-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 7.09.07 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;You can simply open any package you build with a achieve manager, and see all the unique parts of the package that will be built with the WTP designer. The important concept here is to take a look around at the structure and get an idea of how you would like you package to be built. So as you can see we can easily pull out the unique PS scripts, we may want to obfuscated using some simple power-shell techniques (ex. Encoded base64).&lt;/p&gt;
 
 &lt;p&gt;Lets move onto finishing the setup, and fill in the following. This data will be displayed when the user checks the advanced results  within the package, so make it interesting:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.26.15-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.26.15-PM-1024x641.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.26.15 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.26.15-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.26.15-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.26.15 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Next we will setup what will happen if we discover the root cause. A interesting discovery is the ability to run the package at a elevated level. This could be interesting, so lets select to run this at a elevated context! (This can Bypass UAC)&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.29.49-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.29.49-PM-1024x639.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.29.49 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.29.49-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.29.49-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.29.49 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Set up the Resolver which won&amp;rsquo;t really do anything in our case so don&amp;rsquo;t set elevated privileges:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.31.48-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.31.48-PM-1024x641.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.31.48 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.31.48-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.31.48-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.31.48 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Using a verifier we can use some simple logic to insure the root cause is fixed.. (Endless possibilities to deploy your initial attack vector.).To keep it simple we won&amp;rsquo;t need to add a Verifier but you will see the logic as we move on:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.39.37-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.39.37-PM-1024x643.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.39.37 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.39.37-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.39.37-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.39.37 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Now lets start by editing your Root Cause PS script to start up notepad.exe as an example. Select &amp;ldquo;Edit TroubleShooter Script&amp;rdquo;:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.40.12-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.40.12-PM-1024x638.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.40.12 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.40.12-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.40.12-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.40.12 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;At this point your built in Power-shell IDE will be launched for simple editing of your logic:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.53.55-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-8.53.55-PM-1024x482.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.53.55 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.53.55-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.53.55-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.53.55 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;If you want to test out a payload its very simple to use CobaltStrikes Payload Generator to build a Staged PS script and just place that code in the logic section to gain code execution (Please note that this section does get executed twice for some reason). If you want to use CobaltStrikes DNS Hybrid listener you can build a fully Staged DNS beacon and export it as a PS script and place that code in the logic area as well.&lt;/p&gt;
 
@@ -1834,13 +2343,11 @@ root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
 
 &lt;p&gt;You should imeidently have Notepad pop and you have code execution!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.04.14-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.04.14-PM-1024x820.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.04.14 PM&#34; /&gt;&lt;/a&gt;Now lets explore the detailed info that our target may see when they View Detailed information:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.04.14-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.04.14-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.04.14 PM&#34; /&gt;&lt;/a&gt;Now lets explore the detailed info that our target may see when they View Detailed information:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.05.30-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.05.30-PM-1024x782.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.05.30 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.05.30-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.05.30-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.05.30 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;setup-for-code-signing&#34;&gt;Setup for Code Signing&lt;/h3&gt;
-
-&lt;hr /&gt;
 
 &lt;p&gt;Get a code signing cert: &lt;a href=&#34;https://www.digicert.com/code-signing/&#34;&gt;Here&lt;/a&gt;  ($179 but you can find way cheaper)&lt;/p&gt;
 
@@ -1858,15 +2365,13 @@ root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
 
 &lt;blockquote&gt;Return back to windows package designer -&gt; Project -&gt; Options -&gt; Specify a Certificate&lt;/blockquote&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.21.46-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.21.46-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.21.46 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.21.46-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.21.46-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.21.46 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;You should now be able to Build your package and now have a fully signed package for deployment. In the next image the publisher has been obfuscated so I don&amp;rsquo;t share the world with my cert. At this point its  time to move into testing of our new WTP!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.24.35-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.24.35-PM-1024x782.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.24.35 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.24.35-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.24.35-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.24.35 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;application-whitelisting-and-script-bypass-testing&#34;&gt;Application Whitelisting and Script Bypass Testing&lt;/h3&gt;
-
-&lt;hr /&gt;
 
 &lt;p&gt;Lets now setup a hardened environment on our fresh Windows 7 &lt;em&gt;Pro&lt;/em&gt; VM. Using windows Applocker we can easily setup a simulated environment that we can test against.&lt;/p&gt;
 
@@ -1874,37 +2379,35 @@ root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
 
 &lt;p&gt;Navigate to: Computer Configuration \ Windows Settings \ Security Settings \ Application Control Policies \ AppLocker&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.37.47-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.37.47-PM-1024x1014.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.37.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.37.47-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.37.47-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.37.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Now we need click on &amp;ldquo;Configure rule enforcement&amp;rdquo; and enable Execution Rules and Script Rules:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.39.32-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.39.32-PM-691x1024.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.39.32 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.39.32-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.39.32-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.39.32 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Next right click Executable Rules -&amp;gt; Create New Rule:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.42.25-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.42.25-PM-1024x852.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.42.25 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.42.25-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.42.25-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.42.25 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.43.02-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.43.02-PM-1024x851.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.43.02 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.43.02-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.43.02-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.43.02 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.43.38-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.43.38-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.43.38 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.43.38-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.43.38-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.43.38 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;Click Create -&gt; Yes to Default rules&lt;/blockquote&gt;
 
 &lt;p&gt;At this point go ahead delete the Admin rule that allows and admin to execute any executable, your rules should match this:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.47.01-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.47.01-PM-1024x141.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.47.01 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.47.01-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.47.01-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.47.01 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Go ahead and setup the Script Rules and block out the temp dir:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.49.18-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.49.18-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.49.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.49.18-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.49.18-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.49.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Lets start up the required services needed for Applocker to enforce rules properly:&lt;/p&gt;
+&lt;p&gt;Lets start up the required services needed for Applocker to enforce rules properly:
+    sc config appIDSvc start= auto
+    sc start appIDSvc&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;sc config appIDSvc start= auto
-sc start appIDSvc
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.55.18-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-9.55.18-PM-1024x496.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.55.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.55.18-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.55.18-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.55.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Lastly we need to update our Group Policies. Reboot your box and run this (you may have to reboot first, if its domain auth you must have the DC on in your VM environment):&lt;/p&gt;
 
@@ -1913,15 +2416,15 @@ sc start appIDSvc
 
 &lt;p&gt;So lets test out our new setup in Applocker, first I will attempt to run beacon.exe in my restricted environment:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-10.29.07-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-10.29.07-PM-1024x306.png&#34; alt=&#34;Screen Shot 2015-10-15 at 10.29.07 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-10.29.07-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-10.29.07-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 10.29.07 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Great this is exactly what we needed to see, now PS in this location:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-10.36.39-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-10.36.39-PM-1024x107.png&#34; alt=&#34;Screen Shot 2015-10-15 at 10.36.39 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-10.36.39-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-10.36.39-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 10.36.39 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Now lets test out our new package:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-10.38.10-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-15-at-10.38.10-PM-1024x515.png&#34; alt=&#34;Screen Shot 2015-10-15 at 10.38.10 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-10.38.10-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-10.38.10-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 10.38.10 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Boom! Now we have our payload and the ability to bypass AppLocker using some of the most restrictive settings. Now Nicholas Berthaume didn&amp;rsquo;t talk about this Applocker bypass (maybe I just missed this but this is a pretty sweet technique and all props go out to him)!&lt;/p&gt;
 
@@ -1931,61 +2434,18 @@ sc start appIDSvc
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/subTee/ApplicationWhitelistBypassTechniques/blob/master/TheList.txt&#34;&gt;https://github.com/subTee/ApplicationWhitelistBypassTechniques/blob/master/TheList.txt&lt;/a&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;1. IEExec
-
-
-
-
-
-This technique may work in certain envirionments. Its relies on the fact that many organizations trust executables signed
- by Microsoft. We can misuse this trust by launching a specially crafted .NET application.
- Example Here: http://www.room362.com/blog/2014/01/16/application-whitelist-bypass-using-ieexec-dot-exe/
-
-
-
-
-
+&lt;pre&gt;&lt;code&gt;1. IEExec -This technique may work in certain envirionments. Its relies on the fact that many organizations trust executables signed by Microsoft. We can misuse this trust by launching a specially crafted .NET application. Example Here: http://www.room362.com/blog/2014/01/16/application-whitelist-bypass-using-ieexec-dot-exe/
 2. Rundll32.exe
-
-
-
-
-
 3. ClickOnce Applications dfsvc.exe dfshim.dll
-
-
-
-
-
-4. XBAP - XML Browser Applications WPF PresentationHost.exe
-
-
-
-
-
+4. XBAP - XML Browser Applications WPF PresentationHost.exe    
 5. MD5 Hash Collision
  http://www.mathstat.dal.ca/~selinger/md5collision/
-
-
-
-
-
 6. PowerShell
  Specifically Reflective Execution
  http://clymb3r.wordpress.com/2013/04/06/reflective-dll-injection-with-powershell/
  https://www.defcon.org/images/defcon-21/dc-21-presentations/Bialek/DEFCON-21-Bialek-PowerPwning-Post-Exploiting-by-Overpowering-Powershell.pdf
-
-
-
-
-
 7. .HTA Application Invoke PowerShell Scripts
  Launched by mshta.exe, bypasses IE security settings as well.
-
-
-
-
-
 8. bat, vbs, ps1
  1. cmd.exe /k &amp;lt; script.txt
  2. cscript.exe //E:vbscript script.txt
@@ -1995,11 +2455,9 @@ This technique may work in certain envirionments. Its relies on the fact that ma
 &lt;p&gt;&lt;strong&gt;Tradecraft Concerns:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Phishing should work great, the .diagcab probably won&amp;rsquo;t be inspected by boarder protections? (let me know ppl)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Code signing cert will need to look legit to the target (so keep that in mind)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Powershell script can easily be pulled from the package, so use something encrypted for stager&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Phishing should work great, the .diagcab probably won&amp;rsquo;t be inspected by boarder protections? (let me know ppl)&lt;/li&gt;
+&lt;li&gt;Code signing cert will need to look legit to the target (so keep that in mind)&lt;/li&gt;
+&lt;li&gt;Powershell script can easily be pulled from the package, so use something encrypted for stager&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;I really hope you got something out of this! Let me know on twitter @Killswitch_gui what you think or ideas that you have, I love to learn from my peers so let me know what you think or are using this for. All credit for this goes out to:&lt;/p&gt;

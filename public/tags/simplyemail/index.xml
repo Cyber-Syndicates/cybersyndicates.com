@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cyber Syndicates</title>
+    <link>http://dev.cybersyndicates.com/tags/simplyemail/index.xml</link>
+    <description>Recent content on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Alexander Rymdeko-Harvey</copyright>
+    <atom:link href="http://dev.cybersyndicates.com/tags/simplyemail/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Email Verification and Email Name Creation</title>
+      <link>http://dev.cybersyndicates.com/2016/02/email-harvesting-and-name-creation/</link>
+      <pubDate>Sun, 14 Feb 2016 14:23:45 +0000</pubDate>
+      
+      <guid>http://dev.cybersyndicates.com/2016/02/email-harvesting-and-name-creation/</guid>
+      <description>
+
+&lt;p&gt;Over the past few months we have been rapidly expanding the capability of SimplyEmail. While it is a very simple tool, it has been extremely successful on a few live engagements I have been on. I feel like it is ready for recommendation to say the least. I did however notice a few key features that some of the guys on the team mentioned that would be nice to have integrated. Thanks to &lt;a href=&#34;https://twitter.com/_wald0&#34;&gt;@_wald0&lt;/a&gt; and his suggestions I have implemented a email verification option. Also I learned a trick or so a few months back from &lt;a href=&#34;https://twitter.com/harmj0y&#34;&gt;@harmj0y&lt;/a&gt; on sick site called &amp;ldquo;Connect6&amp;rdquo;, which seems to populate a large name DB of employees for each company. Also a fellow tester and friend (&lt;a href=&#34;https://twitter.com/nagasecurity&#34;&gt;Joshua Crumbaugh&lt;/a&gt;) let me on to a sick tool for grabbing Linkedin names from bing called &lt;a href=&#34;https://github.com/pan0pt1c0n/PhishBait&#34;&gt;PhishBait&lt;/a&gt;. With all this I set out to build some new capabilities for SimplyEmail and learn some new tricks :)&lt;/p&gt;
+
+&lt;h4 id=&#34;smtp-email-verification&#34;&gt;SMTP Email Verification&lt;/h4&gt;
+
+&lt;p&gt;This process is actually relatively easy to accomplish. Its a simple heuristic of SMTP return codes when attempting to send a email on the target SMTP server. The process takes place by first Identifying the proper MX record to point to. In many cases larger corporations will have more than one SMTP server with multiple MX records. These are for redundancy of course and are ordered by priority, here is a small snip of the code I built fast:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    def GetMX(self):
+      MXRecord = [] 
+      try:
+        if self.verbose:
+          print helpers.color(&#39; [*] Attempting to resolve MX records!&#39;, firewall=True)
+        answers = dns.resolver.query(self.domain, &#39;MX&#39;)
+        for rdata in answers:
+          data = {
+            &amp;quot;Host&amp;quot;: str(rdata.exchange),
+            &amp;quot;Pref&amp;quot;: int(rdata.preference),
+          }
+          MXRecord.append(data)
+        # Now find the lowest value in the pref
+        Newlist = sorted(MXRecord, key=lambda k: k[&#39;Pref&#39;]) 
+        # Set the MX record
+        self.mxhost = Newlist[0]
+        if self.verbose:
+          val = &#39; [*] MX Host: &#39; + str(self.mxhost[&#39;Host&#39;])
+          print helpers.color(val, firewall=True)
+      except Exception as e:
+        error = &#39; [!] Failed to get MX record: &#39; + str(e)
+        print helpers.color(error, warning=True)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After obtaining all the MX records we can easily sort, pick the lowest value and feed it to the next function needed. So here is the meat of the verification checks. Before we go ahead and send the SMTP server all of the gathered emails we need to check if this SMTP server supports this. We do this via providing the STMP server a known &amp;ldquo;invalid&amp;rdquo; address, and we test for the a return code other than 250 (250 is a valid email code). If we get anything except a 250, we know that the SMTP server isn&amp;rsquo;t just returning a 250 for each address supplied. we can test this pretty simply:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; def VerifySMTPServer(self):
+      &#39;&#39;&#39;
+      Checks for code other than 250 for crap email.
+      &#39;&#39;&#39;
+      # Idea from:
+      # https://www.scottbrady91.com/Email-Verification/Python-Email-Verification-Script
+      hostname = socket.gethostname()
+      socket.setdefaulttimeout(10)
+      server = smtplib.SMTP(timeout=10)
+      server.set_debuglevel(0)
+      addressToVerify = &amp;quot;There.Is.Knowwaythiswillwork1234567@&amp;quot; + str(self.domain)
+      try:
+        server.connect(self.mxhost[&#39;Host&#39;])
+        server.helo(hostname)
+        server.mail(&#39;email@gmail.com&#39;)
+        code, message = server.rcpt(str(addressToVerify))
+        server.quit()
+        if code == 250:
+          return False
+        else: 
+          return True
+      except Exception as e:
+        print e
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So lets say our SMTP server supports this type of check, we can simply build a function to perform the check for our gathered emails. Here is a small small output of it in action:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.10.11-AM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.10.11-AM.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.10.11 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Obviously I needed to wrap this in a simple helper class for SimplyEmail, the full code (Class) can be found here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/VerifyEmails.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/VerifyEmails.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;connect6-name-creation&#34;&gt;Connect6 Name Creation&lt;/h4&gt;
+
+&lt;p&gt;Im always extreamly nervous to add in functionality to SimpleEmail.. hence the name! In some cases name creation can be a pivotal and vital addition to your phishing campaigns. Some times SimplyEmail will only find the standard email addresses or just a few emails. In this case email creation may be your saving grace. On my assessments I with out doubt found Connect6.com is a reliable source to gather names associated with companies.&lt;/p&gt;
+
+&lt;p&gt;Too start I throughly attempted to find  way to get the Connect6 URL using their search engine, with no anvil. This may be do to how they want you to pay for their service / API. So I did build a simple Google Dork function to attempt to resolve the correct URL:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    def Connect6AutoUrl(self):
+      # Using startpage to attempt to get the URL
+      # https://www.google.com/search?q=site:connect6.com+domain.com
+      try:
+        # This returns a JSON object
+        urllist = []
+        url = &amp;quot;https://www.google.com/search?q=site:connect6.com+%22&amp;quot; + self.domain + &#39;%22&#39;
+        r = requests.get(url, headers=self.UserAgent)
+      except Exception as e:
+        error = &amp;quot;[!] Major issue with Google Search: for Connect6 URL&amp;quot; + str(e)
+        print helpers.color(error, warning=True)
+      try:
+        RawHtml = r.content
+        soup = BeautifulSoup(RawHtml)
+        for a in soup.findAll(&#39;a&#39;, href=True):
+          try:
+            l = urlparse.parse_qs(urlparse.urlparse(a[&#39;href&#39;]).query)[&#39;q&#39;]
+            if &#39;site:connect6.com&#39; not in l[0]:
+              l = l[0].split(&amp;quot;:&amp;quot;)
+              urllist.append(l[2])
+          except:
+            pass
+        return urllist
+      except Exception as e:
+        print e
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Full code can be found here: &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/Connect6.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/Connect6.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is a quick sample of the output that you will given if it cant detect the correct URL:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.20.14-AM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.20.14-AM.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.20.14 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;linkedin-name-creation&#34;&gt;LinkedIn Name Creation&lt;/h4&gt;
+
+&lt;p&gt;Linkedin is and has been know as a great source for social engineering, and recently I first hand got to see how effective it is to build a email campaign of it. Using the PhishBait tool mention earlier I was able to add in additional functionality and build in LinkedIn name scraping into SimplyEmail. Here is the really simple code I adapted:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def LinkedInNames(self):
+      &#39;&#39;&#39;
+      This function simply uses
+      Bing to scrape for names and
+      returns a list of list names.
+      &#39;&#39;&#39;
+      try:
+        br = mechanize.Browser()
+        br.set_handle_robots(False)
+        self.domain = self.domain.split(&#39;.&#39;)
+        self.domain = self.domain[0]
+        r = br.open(&#39;http://www.bing.com/search?q=(site%3A%22www.linkedin.com%2Fin%2F%22%20OR%20site%3A%22www.linkedin.com%2Fpub%2F%22)%20%26%26%20(NOT%20site%3A%22www.linkedin.com%2Fpub%2Fdir%2F%22)%20%26%26%20%22&#39;+self.domain+&#39;%22&amp;amp;qs=n&amp;amp;form=QBRE&amp;amp;pq=(site%3A%22www.linkedin.com%2Fin%2F%22%20or%20site%3A%22www.linkedin.com%2Fpub%2F%22)%20%26%26%20(not%20site%3A%22www.linkedin.com%2Fpub%2Fdir%2F%22)%20%26%26%20%22&#39;+self.domain+&#39;%22&#39;)
+        soup = BeautifulSoup(r)
+        if soup:
+          link_list = []
+          NameList = []
+          more_records = True
+          Round = False
+          while more_records:
+            if Round:
+              response = br.follow_link(text=&amp;quot;Next&amp;quot;)
+              soup = BeautifulSoup(response)
+            # enter this loop to parse all results
+            # also follow any seondary links
+            for definition in soup.findAll(&#39;h2&#39;):
+              definition = definition.renderContents()
+              if &amp;quot;LinkedIn&amp;quot; in definition:
+                name = (((((definition.replace(&#39;&amp;lt;strong&amp;gt;&#39;,&#39;&#39;)).replace(&#39;&amp;lt;/strong&amp;gt;&#39;,&#39;&#39;)).split(&#39;&amp;gt;&#39;)[1]).split(&#39;|&#39;)[0]).rstrip()).split(&#39;,&#39;)[0]
+                name = name.split(&#39; &#39;)
+                if self.verbose:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally the full code can found here: &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/LinkedinNames.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/LinkedinNames.py&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SimplyEmail v0.5: PDFMiner!</title>
+      <link>http://dev.cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/</link>
+      <pubDate>Sat, 21 Nov 2015 18:32:48 +0000</pubDate>
+      
+      <guid>http://dev.cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/</guid>
+      <description>
+
+&lt;h2 id=&#34;major-addition-to-simplyemail-core&#34;&gt;Major addition to SimplyEmail Core&lt;/h2&gt;
+
+&lt;p&gt;When I first started this project I published a pretty in-depth “path” of progression. I told my self I would be following this to help build a tool that would actually enhance and build off what is already open source. I knew I had to have unique methods and content. One thing that I use quite often is google dorking for multiple Intel gathering techniques for a OP, so I knew this had to be added!&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;SimplyEmail v0.5: PDFMiner just added! Email recon with PDF scraping. &lt;a href=&#34;https://t.co/awX3eoRGNK&#34;&gt;https://t.co/awX3eoRGNK&lt;/a&gt; (or on GitHub) &lt;a href=&#34;https://t.co/JVsc7yrflE&#34;&gt;https://t.co/JVsc7yrflE&lt;/a&gt;&lt;/p&gt;&amp;mdash; Alex Rymdeko-harvey (@Killswitch_GUI) &lt;a href=&#34;https://twitter.com/Killswitch_GUI/status/668137062055452673&#34;&gt;November 21, 2015&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;intel-gathering-stage&#34;&gt;Intel Gathering Stage&lt;/h3&gt;
+
+&lt;p&gt;During my tests I weigh heavy on open source information  to help me paint a picture of the culture and potential target rich opportunities once internal. During this stage we are often tasked to Phish external for statistics or payloads to simulate and external threat.&lt;/p&gt;
+
+&lt;p&gt;This generally encompasses the ability to generate a custom phishing template that is somewhat unique to the target. I can sometimes locate sensitive information using the &lt;strong&gt;(site:target.com file:pdf) &lt;/strong&gt;method to gather documents they may have published. We generally gather the following information:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CEO and main leadership&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Current issues or press releases that are related to the target&lt;/li&gt;
+&lt;li&gt;What the company sells&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I take all the above into account when developing potential targeted emails. Funny enough these documents are a great source for emails as well. As they generally have contact information outside the standard &lt;a href=&#34;mailto:info@company.com&#34;&gt;info@company.com&lt;/a&gt;. This source however can be hard to gather from the HTML scrapping modules already in place. One the documents can take a good amount of time to gather, and for the sake of speed I have always found using googles indexed files always seemed to speed things up.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.13.55-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-11-21-at-1.13.55-PM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.13.55 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;pdfminer&#34;&gt;PDFMiner&lt;/h3&gt;
+
+&lt;p&gt;With some basic requirements in hand I knew I could use the previous built module to handle most of the google search requirements. I just need a few small tweaks and I could start parsing the raw HTML of google for PDF files. Using PDFMiner I was able to convert a bulk of them to Text for parsing.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.14.06-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.14.06-PM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.14.06 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Suppersingly enough this wasn’t as hard as I thought it was going to be! Mainly since the method I use to handle all the background work has been handled for me!&lt;/p&gt;
+
+&lt;p&gt;Expect to see upcoming this month:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Excel Parsing&lt;/li&gt;
+&lt;li&gt;Doc / Docx Parsing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As always you can check out the code here: &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Modules/GooglePDFSearch.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Modules/GooglePDFSearch.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Sample Output and test using the new Verbose options:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    root@vapt-kali:~/Desktop/SimplyEmail# ./SimplyEmail.py -t GooglePDF -e mandiant.com -v
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.22.37-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.22.37-PM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.22.37 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Email Harvesting with HTML Scraping Module: theHarvester</title>
+      <link>http://dev.cybersyndicates.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</link>
+      <pubDate>Sun, 14 Jun 2015 01:26:31 +0000</pubDate>
+      
+      <guid>http://dev.cybersyndicates.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</guid>
+      <description>
+
+&lt;p&gt;After a recent Red Team training , I was faced with a issue where I had to conduct a Email phishing campaign to gain initial access using Email Harvesting. This isn&amp;rsquo;t anything necessarily new or a subject that has been touched on a million times. But my goal wasn&amp;rsquo;t to recreate the wheel or create a entirely new tool. I knew from past engagements that there are some great tools like &lt;a href=&#34;http://www.edge-security.com/theharvester.php&#34;&gt;theHarvester&lt;/a&gt; project out there:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-9.32.34-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-9.32.34-PM.png&#34; alt=&#34;Screen Shot 2015-06-11 at 9.32.34 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;But I came across a ridiculous issue; I had no access to external net. Only internal web servers for the cyber range we where conducting the training in. This scenario isn&amp;rsquo;t as unrealistic as you may think, you could be on an internal network assessment and may have to gain secondary access through different means if phishing is in scope. In this case with the limited network ability the target surface was limited and quite small, but yet we didn&amp;rsquo;t have access to the normal means of recon. Using the extended set of options of the harvester can yield some great results, but all of its current modules are online dependent. With search options using Google and Bing you can gather tons of data, but these functions wouldn&amp;rsquo;t help me a bit.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-10.51.51-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-10.51.51-PM.png&#34; alt=&#34;Screen Shot 2015-06-11 at 10.51.51 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;current-search-options-for-theharvester&#34;&gt;(Current Search Options for TheHarvester)&lt;/h5&gt;
+
+&lt;p&gt;So I knew I wasn&amp;rsquo;t going to search a page head-to-toe when time counts. The obvious email address&amp;rsquo;s on the home page is a start, but I needed something fast and that would yield a 100 percent insurance that I had all the emails required to conduct the lab. Of course it was time for some simple command line kung-fu!&lt;/p&gt;
+
+&lt;h3 id=&#34;step-by-step-execution&#34;&gt;Step-By-Step Execution&lt;/h3&gt;
+
+&lt;p&gt;Here are the preliminary steps I took to begin searching a domain for Email addresses:**_&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;First I started off knowing that I needed to clone the website for the ability to search and browse the site for other info I may need down the road. I knew theHarvester had no offline ability so I moved to Wget. This command bellow will allow you to reclusively mirror a site:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;wget --directory-prefix=/root/Desktop/ --domains target.com --recursive --no-clobber --page-requisites --html-extension --convert-links --restrict-file-names=windows www.target.com
+
+
+
+--directory-prefix=/root/Desktop/   ==  Allows you to specify the output location of the cloned site (wget outputs a dir)
+
+--recursive == Follows links and directory structure, by default has a depth of 5
+
+--level=1500 == The depth (directory structure) you want the recursive search to go. **You may want to add this**
+
+--wait=5 == Sets the time to wait between request, helps to not get blocked by pesky admins **You may want to add this**
+
+--limit-rate=10K == sets max bandwidth for wget to consume, helps to not get blocked by pesky admins **May want to add this**
+
+--read-timeout=15 == Sets max time spent attempting to download file before it moves on **You may want to add this**
+
+--no-clobber == Incase you have to restart it won&#39;t overwrite what has been saved
+
+--page-requisites == Download all the files that are necessary to properly display a given HTML page
+
+--html-extension == download CSS files as well
+
+--convert-links  == Convert the links in the document to make them suitable for local viewing
+
+--domains target.com == Sets you scope so you don&#39;t follow links outside the target domain
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The next step is to parse this data and grep for any email addresses within the HTML source code. This is relativity easy to accomplish when recessively searching for the data.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    grep -r &amp;quot;@&amp;quot; | grep -i -o &#39;[A-Z0-9._%+-]\+@[A-Z0-9.-]\+\.[A-Z]\{2,4\}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;-r &amp;quot;@&amp;quot; == Using the -r will recursively search the directory
+-i == Perform case insensitive matching sources
+-o == Show only the part of a matching line that matches PATTERN.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-12-at-2.05.03-PM.png&#34; alt=&#34;Screen Shot 2015-06-12 at 2.05.03 PM&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;At this point I was able to simply output line by line the email address&amp;rsquo;s I gathered and still had a mirrored site for further recon if needed.&lt;/p&gt;
+
+&lt;h3 id=&#34;automation&#34;&gt;Automation&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;I knew at this point that I wanted a easy way to do this and at the same time I knew that making some simple script wouldn&amp;rsquo;t help anyone. So I set off to add this function into the harvester so other could use this simple way of gathering email addresses.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-9.10.24-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-9.10.24-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 9.10.24 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;After looking at the code for roughly a few hours I knew that adapting this particular function wasn&amp;rsquo;t going to be hard, but I knew I had to match the coding style of Christian Martorella otherwise it would never get added. So I set off and built a simple way of automating this. I did run into a few problems when it came to recursive mirroring in pythons current modules. With documented issues with proxies and VPN support in Urlib, this was really a turn off for me as I may be using a VPN to conduct work. Well nothing seemed to do it near as good as Wget implemented it. So using pythons &lt;em&gt;sub.process&lt;/em&gt; module was going to be the most effective way of implementation and was supported on almost any nix system.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.43.00-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.43.00-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.43.00 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Some other major issues were using default values in the current command line parser. Currently theHarvester doesn&amp;rsquo;t use &lt;em&gt;argparse&lt;/em&gt; so I had in a few nasty if statements (If anyone knows a better way please let me know bellow!).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.47.00-PM.png&#34;&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.47.00-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.47.00 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;lastly a simple demo:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.50.04-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.50.04 PM&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;python theHarvester.py -d www.puttargethere.com -b html-source
+or more advance options:
+python theHarvester.py -d www.puttargethere.com -b html-source -j 10 -w 3 -r 200k -i 3 -o /foo/bar/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see the output format hasn&amp;rsquo;t changed and would simple be another option to add:
+&lt;img src=&#34;http://dev.cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.50.30-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.50.30 PM&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;note&#34;&gt;NOTE:&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;As of today I will be forking, and creating a branch for a pull request. Hopefully he would add in the module I built! If not it won&amp;rsquo;t hurt my feelings.. You can always come download &lt;a href=&#34;https://github.com/killswitch-GUI/theHarvester/tree/Html_source&#34;&gt;my forked version on Git&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Sources:&lt;/p&gt;
+
+&lt;p&gt;[*] &lt;a href=&#34;http://www.linuxjournal.com/content/downloading-entire-web-site-wget&#34;&gt;http://www.linuxjournal.com/content/downloading-entire-web-site-wget&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[*] &lt;a href=&#34;https://github.com/laramies/theHarvester&#34;&gt;https://github.com/laramies/theHarvester&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

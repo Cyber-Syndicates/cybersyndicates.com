@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Return of the EmPyre &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="This post is number 3 of the EmPyre series and cross post with a fellow friend and ATD co-worker @xorrior. Thanks to the entire ATD family and dev team of EmPyre:
+@rvrsh3ll &ndash; @harmj0y &ndash; @xorrior &ndash; @CptJesus
+EmPyre can be found here: https://github.com/adaptivethreat/EmPyre
+5/12/16 – Building an EmPyre with Python
+5/18/16 – Operating with EmPyre
+ EmPyre Persistence Mac OS X offers several methods to abuse system functionality and obtain persistence through reboots.">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.17" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="The Return of the EmPyre">
+<meta property="og:description" content="This post is number 3 of the EmPyre series and cross post with a fellow friend and ATD co-worker @xorrior. Thanks to the entire ATD family and dev team of EmPyre:
+@rvrsh3ll &ndash; @harmj0y &ndash; @xorrior &ndash; @CptJesus
+EmPyre can be found here: https://github.com/adaptivethreat/EmPyre
+5/12/16 – Building an EmPyre with Python
+5/18/16 – Operating with EmPyre
+ EmPyre Persistence Mac OS X offers several methods to abuse system functionality and obtain persistence through reboots.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://dev.cybersyndicates.com/2016/05/return-empyre-series-3/">
+        <link rel="stylesheet" href="http://dev.cybersyndicates.com/css/normalize.css">
+        <link rel="stylesheet" href="http://dev.cybersyndicates.com/css/highlight.css">
+        <link rel="stylesheet" href="http://dev.cybersyndicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="http://dev.cybersyndicates.com/">
+                            <img src="/logo.png" alt="The Return of the EmPyre" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="http://dev.cybersyndicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="http://dev.cybersyndicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/cybersyndicates">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Presentations" href="/presentations/">Presentations</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container">
+        <header class="post-header">
+    <h1 class="post-title">The Return of the EmPyre</h1>
+    
+</header>
+
+        <div class="post-content clearfix">
+    
+
+    
+
+<p><a href="/wp-content/empyre_logo_white_background.png"><img src="/wp-content/empyre_logo_white_background.png" alt="empyre_logo_white_background" /></a></p>
+
+<p>This post is number 3 of the EmPyre series and cross post with a fellow friend and ATD co-worker <a href="https://twitter.com/xorrior">@xorrior</a>. Thanks to the entire ATD family and dev team of EmPyre:</p>
+
+<p><a href="https://twitter.com/424f424f">@rvrsh3ll</a>  &ndash; <a href="https://twitter.com/harmj0y">@harmj0y</a> &ndash; <a href="https://twitter.com/xorrior">@xorrior</a> &ndash; <a href="https://twitter.com/CptJesus">@CptJesus</a></p>
+
+<p>EmPyre can be found here: <a href="https://github.com/adaptivethreat/EmPyre">https://github.com/adaptivethreat/EmPyre</a></p>
+
+<p>5/12/16 – <a href="http://www.harmj0y.net/blog/?p=2637&amp;preview=true"><strong>Building an EmPyre with Python</strong></a></p>
+
+<p>5/18/16 – <a href="http://www.rvrsh3ll.net/blog/empyre/operating-with-empyre/"><strong>Operating with EmPyre</strong></a></p>
+
+<p>  </p>
+
+<h2 id="empyre-persistence">EmPyre Persistence</h2>
+
+<p>Mac OS X offers several methods to abuse system functionality and obtain persistence through reboots. One of the most effective methods is <a href="https://www.virusbulletin.com/virusbulletin/2015/03/dylib-hijacking-os-x/">Dylib Hijacking</a>. Dylibs are comparable to DLLs in that they contain code executed by applications at runtime. Dylib Hijacking exists because of how “dyld”, the system dynamic linker, searches and loads these libraries. Let’s briefly examine the Mach-O header to understand why this vulnerability exists.</p>
+
+<p><strong>Figure 1</strong></p>
+
+<p><strong><a href="/wp-content/Picture1.png"><img src="/wp-content/Picture1.png" alt="Picture1" /></a></strong></p>
+
+<p><strong>Figure 2</strong></p>
+
+<p><strong><a href="/wp-content/Picture2.png"><img src="/wp-content/Picture2.png" alt="Picture2" /></a></strong></p>
+
+<p>Figure 1 depicts the load commands for Xcode. Load commands provide the OS loader with instructions on where to find the application&rsquo;s entry point, offsets for the text and data sections, and all of the libraries needed by the application at runtime. The “Name” field in the LC_LOAD_DYLIB load command identifies the file path to the DVTFoundation library. Notice that the path is prepended with @rpath. This signals to the OS loader to examine the LC_RPATH (Figure 2) load commands in order to expand the @rpath variable. Each path is searched in succession by dyld to locate the required library. Once the library is found it is loaded into the application at runtime. The issue is that any library planted in an LC_RPATH that is found before the legitimate dylib, will be loaded first. A slight variation to this attack, which we won’t cover in this post, involves the LC_LOAD_WEAK_DYLIB load command. This indicates that the specified dylib is not required but will be loaded if found. If the specified library is not present on the system, we can plant the dylib in the specified path and it will be loaded by the application at runtime. For more information on Dylib Hijacks for weak dylibs, please read the <a href="https://www.virusbulletin.com/virusbulletin/2015/03/dylib-hijacking-os-x/">white paper</a> on Dylib Hijacks by @patrickwardle. The load commands slightly differ but still offer the same way to conduct this attack. We can abuse dyld’s load order to obtain consistent code execution and/or persistence in OS X.</p>
+
+<p>Before we can weaponize Dylib Hijacks, there is a small problem to address. When an application normally loads a library, the os loader will try to resolve symbols for functions required by the application. If those functions are not found, the application will crash. To remedy this, the hijacking dylib will need to have a LC_REEXPORT_DYLIB load command that provides the path to the legitimate dylib. When the application starts, it will load the attacking dylib first and then load the legitimate dylib.</p>
+
+<p>To carry out this attack in EmPyre, you will need to first run the HijackScanner module in situational_awareness/host/osx/. This is simply an adaption to @patrickwardle’s <a href="https://github.com/synack/DylibHijack/blob/master/scan.py">python script</a> to scan the system for Mach-O binaries, load each and examine the load commands to determine if the application is vulnerable.</p>
+
+<p><strong>Figure 3</strong></p>
+
+<p><strong><a href="/wp-content/Picture3.png"><img src="/wp-content/Picture3.png" alt="Picture3" /></a></strong></p>
+
+<p>With the default options for the module, every Mach-O binary on the file system will be examined, which can take quite some time. To speed up the scan, set a path or only scan loaded process executables. Once the scan is finished, your output will provide you with the path to the vulnerable binary and the full path to where an EmPyre dylib should be planted. You will also need to locate the legitimate dylib for the next module in this attack.</p>
+
+<p><strong>Figure 4</strong></p>
+
+<p><strong><a href="/wp-content/Picture4.png"><img src="/wp-content/Picture4.png" alt="Picture4" /></a></strong></p>
+
+<p>Here we see that the Xcode application is vulnerable to a dylib hijack with the DVTFoundation library. Instructions are provided after the scan output to gather the information necessary for the next module.</p>
+
+<p>The CreateHijacker module in persistence/osx/ configures an EmPyre dylib to be used in a Dylib Hijack. This is yet another slightly <a href="https://github.com/synack/DylibHijack/blob/master/createHijacker.py">modified script</a> written by @patrickwardle. This module does all the heavy lifting for configuring the EmPyre dylib and patching in the path to the legitimate dylib.</p>
+
+<p><strong>Figure 5</strong></p>
+
+<p><strong><a href="/wp-content/Picture5.png"><img src="/wp-content/Picture5.png" alt="Picture5" /></a></strong></p>
+
+<p>The Listener, UserAgent, and Arch options are all used to generate the hijacker dylib. Be sure that the architecture of the dylib matches the architecture of the vulnerable application. The “LegitimateDylibPath” option will define the full path to the legitimate dylib loaded into the application. The “vulnerableRPATH” refers to the rpath value returned from the HijackScanner module. Once we have all of our options set, we can execute the module.</p>
+
+<p><strong>Figure 6</strong></p>
+
+<p><strong><a href="/wp-content/Picture6.png"><img src="/wp-content/Picture6.png" alt="Picture6" /></a></strong></p>
+
+<p>In Figure 6, we see that once the module is completed, an EmPyre dylib is configured and copied to the vulnerable rpath we specified. When we start the Xcode application, we receive a new EmPyre agent running in that application’s process!</p>
+
+<p><strong>Figure 7</strong></p>
+
+<p><strong><a href="/wp-content/Picture7.png"><img src="/wp-content/Picture7.png" alt="Picture7" /></a></strong></p>
+
+<p><strong>Figure 8</strong></p>
+
+<p><strong><a href="/wp-content/Picture8.png"><img src="/wp-content/Picture8.png" alt="Picture8" /></a></strong></p>
+
+<p>Important Note: In some cases, killing the agent will close the application. Closing the application will always kill the agent.</p>
+
+<h2 id="loginhooks">LoginHooks</h2>
+
+<p>Just like the many supported startup locations and run keys within Windows, OS X offers a few which are deprecated but still functional (<a href="https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i-SW1-SW1">https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i-SW1-SW1</a>). On the newest version of OS X, El Capitan,  “LoginHooks” seem to be an extremely reliable method of persistence and can be removed with ease. Here are a few things to note about “LoginHooks” and how they can be used:</p>
+
+<ul>
+<li>     Permissions for your script file should include execute privileges for the appropriate users.</li>
+<li>     The payload will execute for any user that logs in.</li>
+<li>     Only one copyof each script can be installed at a time and root privileges are needed!</li>
+<li>     If a user variable is required for login logic the $1 is passed your script.</li>
+<li>     Other login actions wait until your hook finishes executing</li>
+</ul>
+
+<p>A benefit to using LoginHooks is the ease of installation, and target system info enumeration using the “defaults” tool. This tool also allows you to write settings to multiple sub system settings. Here is manual process to  setup a Hook:</p>
+
+<p>[snippet id=&ldquo;37&rdquo;]</p>
+
+<p>To remove this hook all you would need to do is use the defaults tool to delete it:</p>
+
+<pre><code>[snippet id=&quot;35&quot;]
+</code></pre>
+
+<p>Lastly to read the hook settings you setup:</p>
+
+<pre><code>[snippet id=&quot;36&quot;]
+</code></pre>
+
+<p>Here is a small demo I setup to show the install process of the LoginHook. First start out by setting up EmPyre, creating a listener, and getting your launcher executed in your test VM. Once the C2 is set up we will need to build out AppleScript that will be used for the persistence execution.</p>
+
+<p><strong>Figure 9</strong></p>
+
+<p><strong><a href="/wp-content/Picture9.png"><img src="/wp-content/Picture9.png" alt="Picture9" /></a></strong></p>
+
+<p>This will output AppleScript with a simple stager to the current working directory. Next, we will have to upload the script to a directory of the operator’s choice. In this case, I just used the /tmp/ directory store my “evilscript”. To set up the hook is very simple, set the user password, this is for the sudo that takes place to install the hook and creating proper permissions on the script. This can be seen being set up in Figure 9.</p>
+
+<p><strong>Figure 10</strong></p>
+
+<p><strong><a href="/wp-content/Picture10.png"><img src="/wp-content/Picture10.png" alt="Picture10" /></a></strong></p>
+
+<p>Running the defaults read command we covered earlier will result in the output of the LoginHook location, this is to ensure our hook is in place:</p>
+
+<p><strong>Figure 11</strong></p>
+
+<p><strong><a href="/wp-content/Picture11.png"><img src="/wp-content/Picture11.png" alt="Picture11" /></a></strong></p>
+
+<p>At this point, the LoginHook is properly setup and installed. Anytime the user logs in, the agent will be executed. It should be noted that this method of persistence is widely known and signatured by anti-virus solutions that look for OS X specific persistence.  </p>
+
+<h2 id="launchdaemon-s">LaunchDaemon’s</h2>
+
+<p>As we talked about earlier, Apple does not approve of the many methods used to stay persistent or they are purely outdated according to the Apple development references (<a href="https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i-SW1-SW1">https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i-SW1-SW1</a>). But when it comes to launching custom daemons, using ‘launchd’ is the preferred method according to Apple&rsquo;s development documentation. One of the major concerns with LoginHooks are the blocking nature during execution. LoginHooks are executed during the start of a logon session, which is an inline execution of the script. If at anytime this hangs or does not launch correctly it will deadlock the user from logging in. Using launchdaemons allows you live outside of user context, giving it an amazing benefit of how execution takes place. Here are few benefits of using a daemon:</p>
+
+<ul>
+<li>Supports inetd-style daemons<br /></li>
+<li>launchd runs as root ( Keeps it easy to run )</li>
+<li>Daemons launch on demand, communication requests do not fail if the daemon is not launched ( Just in case you mess up )</li>
+<li>If taxed they are simply delayed until the daemon can launch and process them. ( important as they are not blocking on login etc)</li>
+</ul>
+
+<p>If these reasons are not enough for an operator, I don’t know what is. It’s an extremely clean and safe method of staying persistent on your target; however few downsides do exist:</p>
+
+<ul>
+<li>Many defensive tools look here for persistence (as it’s a limited attack surface)<br /></li>
+<li>KnockKnock  - <a href="https://objective-see.com/products/knockknock.html">https://objective-see.com/products/knockknock.html</a><br /></li>
+<li>Uninstallation is a few extra steps.</li>
+</ul>
+
+<p>We should first cover how the OS boot process works at high level to understand where your persistence will be living. When starting to work in the persistence realm, it&rsquo;s extremely important to understand the small nuances such as system daemons and user agent daemons. Here is a chart I put together to quickly understand how daemons are executed upon boot and login.</p>
+
+<p><strong>Figure 12</strong></p>
+
+<p><strong><a href="/wp-content/Picture12.png"><img src="/wp-content/Picture12.png" alt="Picture12" /></a></strong></p>
+
+<p>Currently EmPyre supports installing a “SYSTEM” level daemon running as root that is not dependent on a user being active. This can be very important in some cases and gives you an advantage compared to other methods. Now in Figure 11 we mentioned that the launchd service will locate the plist (property list) file, this is the core of the service and passes the required options that are associated with the service. When launchd starts up it will parse this file and decide when to start, pass arguments or listen on SOCKETS for IPC (Inter Process Communication) so it important that we have an idea of what we are installing. Here is the plist file used:</p>
+
+<p><strong>Figure 13</strong></p>
+
+<p><strong><a href="/wp-content/Picture13.png"><img src="/wp-content/Picture13.png" alt="Picture13" /></a></strong></p>
+
+<p>A few main things should be noted, the Label key string value will be the name of the daemon, in this case the default Is “com.proxy.initialize”. Whereas the array string will be location plus the executable. Finally the key “RunAtLoad” and “KeepAlive” tells launchd to start at system init and stay running rather than a one-time process.</p>
+
+<p>To install the daemon you perform the following. Start by elevating your context to root.</p>
+
+<p><strong>Figure 14</strong></p>
+
+<p><strong><a href="/wp-content/Picture14.png"><img src="/wp-content/Picture14.png" alt="Picture14" /></a></strong></p>
+
+<p>After you have an elevated agent we can go ahead and setup the persistence, using the “persistence/osx/launchdaemonexecutable”.</p>
+
+<p><strong>Figure 15</strong></p>
+
+<p><strong><a href="/wp-content/Picture15.png"><img src="/wp-content/Picture15.png" alt="Picture15" /></a></strong></p>
+
+<p>That’s it, EmPyre does all the nitty-gritty work of creating the executable, writing it to disk, building the plist and registering it to launchd! When testing is complete we can use the “RemoveDaemon” module to properly clean up. (*Remember to take notes on the paths during install!)</p>
+
+<p><strong>Figure 16</strong></p>
+
+<p><strong><a href="/wp-content/Picture16.png"><img src="/wp-content/Picture16.png" alt="Picture16" /></a></strong></p>
+
+<p>Hope this can get you started and maybe give you some ideas of where persistence can also be installed!</p>
+
+<p>References :</p>
+
+<p>OS X Persistence-</p>
+
+<p><a href="https://www.blackhat.com/docs/us-15/materials/us-15-Wardle-Writing-Bad-A-Malware-For-OS-X.pdf">https://www.blackhat.com/docs/us-15/materials/us-15-Wardle-Writing-Bad-A-Malware-For-OS-X.pdf</a></p>
+
+<p>OS X boot Process-</p>
+
+<p><a href="https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html">https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html</a></p>
+
+<p>LoginHooks- <a href="https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CustomLogin.html">https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CustomLogin.html</a></p>
+
+<p>Launchd-</p>
+
+<p><a href="https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html">https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html</a></p>
+
+<p><a href="https://www.virusbulletin.com/uploads/pdf/conference/vb2014/VB2014-Wardle.pdf">https://www.virusbulletin.com/uploads/pdf/conference/vb2014/VB2014-Wardle.pdf</a></p>
+
+<p>Dylib Hijacks-</p>
+
+<p><a href="https://www.virusbulletin.com/virusbulletin/2015/03/dylib-hijacking-os-x/">https://www.virusbulletin.com/virusbulletin/2015/03/dylib-hijacking-os-x/</a></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=The%20Return%20of%20the%20EmPyre&url=http%3a%2f%2fdev.cybersyndicates.com%2f2016%2f05%2freturn-empyre-series-3%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fdev.cybersyndicates.com%2f2016%2f05%2freturn-empyre-series-3%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http%3a%2f%2fdev.cybersyndicates.com%2f2016%2f05%2freturn-empyre-series-3%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="http://dev.cybersyndicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="http://dev.cybersyndicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="http://dev.cybersyndicates.com/js/jquery.fitvids.js"></script>
+        <script src="http://dev.cybersyndicates.com/js/scripts.js"></script>
+    </body>
+</html>
+

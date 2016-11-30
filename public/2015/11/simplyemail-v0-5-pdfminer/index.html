@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>SimplyEmail v0.5: PDFMiner! &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="Major addition to SimplyEmail Core When I first started this project I published a pretty in-depth “path” of progression. I told my self I would be following this to help build a tool that would actually enhance and build off what is already open source. I knew I had to have unique methods and content. One thing that I use quite often is google dorking for multiple Intel gathering techniques for a OP, so I knew this had to be added!">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.17" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="SimplyEmail v0.5: PDFMiner!">
+<meta property="og:description" content="Major addition to SimplyEmail Core When I first started this project I published a pretty in-depth “path” of progression. I told my self I would be following this to help build a tool that would actually enhance and build off what is already open source. I knew I had to have unique methods and content. One thing that I use quite often is google dorking for multiple Intel gathering techniques for a OP, so I knew this had to be added!">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://dev.cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/">
+        <link rel="stylesheet" href="http://dev.cybersyndicates.com/css/normalize.css">
+        <link rel="stylesheet" href="http://dev.cybersyndicates.com/css/highlight.css">
+        <link rel="stylesheet" href="http://dev.cybersyndicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="http://dev.cybersyndicates.com/">
+                            <img src="/logo.png" alt="SimplyEmail v0.5: PDFMiner!" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="http://dev.cybersyndicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="http://dev.cybersyndicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/cybersyndicates">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Presentations" href="/presentations/">Presentations</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container">
+        <header class="post-header">
+    <h1 class="post-title">SimplyEmail v0.5: PDFMiner!</h1>
+    
+</header>
+
+        <div class="post-content clearfix">
+    
+
+    
+
+<h2 id="major-addition-to-simplyemail-core">Major addition to SimplyEmail Core</h2>
+
+<p>When I first started this project I published a pretty in-depth “path” of progression. I told my self I would be following this to help build a tool that would actually enhance and build off what is already open source. I knew I had to have unique methods and content. One thing that I use quite often is google dorking for multiple Intel gathering techniques for a OP, so I knew this had to be added!</p>
+
+<p><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">SimplyEmail v0.5: PDFMiner just added! Email recon with PDF scraping. <a href="https://t.co/awX3eoRGNK">https://t.co/awX3eoRGNK</a> (or on GitHub) <a href="https://t.co/JVsc7yrflE">https://t.co/JVsc7yrflE</a></p>&mdash; Alex Rymdeko-harvey (@Killswitch_GUI) <a href="https://twitter.com/Killswitch_GUI/status/668137062055452673">November 21, 2015</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<h3 id="intel-gathering-stage">Intel Gathering Stage</h3>
+
+<p>During my tests I weigh heavy on open source information  to help me paint a picture of the culture and potential target rich opportunities once internal. During this stage we are often tasked to Phish external for statistics or payloads to simulate and external threat.</p>
+
+<p>This generally encompasses the ability to generate a custom phishing template that is somewhat unique to the target. I can sometimes locate sensitive information using the <strong>(site:target.com file:pdf) </strong>method to gather documents they may have published. We generally gather the following information:</p>
+
+<ul>
+<li>CEO and main leadership<br /></li>
+<li>Current issues or press releases that are related to the target</li>
+<li>What the company sells</li>
+</ul>
+
+<p>I take all the above into account when developing potential targeted emails. Funny enough these documents are a great source for emails as well. As they generally have contact information outside the standard <a href="mailto:info@company.com">info@company.com</a>. This source however can be hard to gather from the HTML scrapping modules already in place. One the documents can take a good amount of time to gather, and for the sake of speed I have always found using googles indexed files always seemed to speed things up.</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.13.55-PM.png"><img src="/wp-content/Screen-Shot-2015-11-21-at-1.13.55-PM.png" alt="Screen Shot 2015-11-21 at 1.13.55 PM" /></a></p>
+
+<h3 id="pdfminer">PDFMiner</h3>
+
+<p>With some basic requirements in hand I knew I could use the previous built module to handle most of the google search requirements. I just need a few small tweaks and I could start parsing the raw HTML of google for PDF files. Using PDFMiner I was able to convert a bulk of them to Text for parsing.</p>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.14.06-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.14.06-PM.png" alt="Screen Shot 2015-11-21 at 1.14.06 PM" /></a></p>
+
+<p>Suppersingly enough this wasn’t as hard as I thought it was going to be! Mainly since the method I use to handle all the background work has been handled for me!</p>
+
+<p>Expect to see upcoming this month:</p>
+
+<ul>
+<li>Excel Parsing</li>
+<li>Doc / Docx Parsing</li>
+</ul>
+
+<p>As always you can check out the code here: <a href="https://github.com/killswitch-GUI/SimplyEmail/blob/master/Modules/GooglePDFSearch.py">https://github.com/killswitch-GUI/SimplyEmail/blob/master/Modules/GooglePDFSearch.py</a></p>
+
+<p>Sample Output and test using the new Verbose options:</p>
+
+<pre><code>    root@vapt-kali:~/Desktop/SimplyEmail# ./SimplyEmail.py -t GooglePDF -e mandiant.com -v
+</code></pre>
+
+<p><a href="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.22.37-PM.png"><img src="http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.22.37-PM.png" alt="Screen Shot 2015-11-21 at 1.22.37 PM" /></a></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+                 <a href="/tags/simplyemail/">simplyemail</a>
+            
+        </p>
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=SimplyEmail%20v0.5%3a%20PDFMiner%21&url=http%3a%2f%2fdev.cybersyndicates.com%2f2015%2f11%2fsimplyemail-v0-5-pdfminer%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fdev.cybersyndicates.com%2f2015%2f11%2fsimplyemail-v0-5-pdfminer%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http%3a%2f%2fdev.cybersyndicates.com%2f2015%2f11%2fsimplyemail-v0-5-pdfminer%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="http://dev.cybersyndicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="http://dev.cybersyndicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="http://dev.cybersyndicates.com/js/jquery.fitvids.js"></script>
+        <script src="http://dev.cybersyndicates.com/js/scripts.js"></script>
+    </body>
+</html>
+
