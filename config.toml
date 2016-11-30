@@ -1,8 +1,9 @@
+
 baseurl = "http://dev.cybersyndicates.com/"
 title = "Cyber Syndicates"
 theme = "Ghostwriter"
 languageCode = "en-us"
-copyright = "Alexander Rymdeko-Harvey"
+copyright = "CyberSyndicates"
 googleAnalytics = "UA-64026800-1"
 disqusShortname = "cybersyndicates-com"
 
