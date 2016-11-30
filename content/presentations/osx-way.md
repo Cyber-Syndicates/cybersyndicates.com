@@ -1,7 +1,7 @@
 +++
 title = "Operating in an OSX Heavy Environment"
 description = "- @Killswitch-GUI / Alexander Rymdeko-Harvey & Steve Borosh"
-date = 2016-11-18T02:13:50Z
+date = 2016-04-18T02:13:50Z
 author = "Alexander Rymdeko-Harvey"
 +++
 

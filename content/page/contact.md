@@ -9,7 +9,6 @@ description = "How to contact us."
 
 @Killswitch-GUI
 
-- Email: GTFO lol
 - https://twitter.com/killswitch_gui
 - https://github.com/killswitch-GUI
 - https://keybase.io/killswitchgui

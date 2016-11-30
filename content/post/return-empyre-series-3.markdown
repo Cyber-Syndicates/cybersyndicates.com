@@ -7,9 +7,8 @@ link: http://cybersyndicates.com/2016/05/return-empyre-series-3/
 slug: return-empyre-series-3
 title: The Return of the EmPyre
 wordpress_id: 815
-categories:
-- Github
-- Red Teaming / Pen Testing
+tags:
+- EmPyre
 ---
 
 [![empyre_logo_white_background](/wp-content/empyre_logo_white_background.png)](/wp-content/empyre_logo_white_background.png)
