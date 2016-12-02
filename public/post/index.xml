@@ -7,8 +7,209 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <lastBuildDate>Tue, 21 Jun 2016 20:14:14 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 30 Nov 2016 16:08:28 -0500</lastBuildDate>
     <atom:link href="https://cybersyndicates.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>6 Red Team Infrastructure Tips</title>
+      <link>https://cybersyndicates.com/2016/11/top-red-team-tips/</link>
+      <pubDate>Wed, 30 Nov 2016 16:08:28 -0500</pubDate>
+      
+      <guid>https://cybersyndicates.com/2016/11/top-red-team-tips/</guid>
+      <description>
+
+&lt;h2 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;CLI Logging of All Operator Terminal&lt;/li&gt;
+&lt;li&gt;Restricted Payload Delivery&lt;/li&gt;
+&lt;li&gt;Separate Servers / C2 Phases for all Stages of an Engagement&lt;/li&gt;
+&lt;li&gt;Always Use Redirectors in Front of Core C2&lt;/li&gt;
+&lt;li&gt;Full Session / Metadata Network Capture on Redirectors and C2&lt;/li&gt;
+&lt;li&gt;Never Share C2 IOC’s&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;As some of you may know I made a huge transition recently from my former team ATD (Adaptive Threat Division) at Veris Group to Sony’s internal Red Team. This was of course a major move, but the opportunity to help develop and stand up that capability was hard to pass up. This was a dream for me and to do it with some extremely dedicated and talented coworkers is always a bonus.&lt;/p&gt;
+
+&lt;p&gt;This brings me to our subject, recently I had put a ton of time into thinking out red team architecture and wanted to share. This will cover security and tips for a successful engagement. While some of this may seem “excessive”, you have to take this type of work very serious as you will be holding the keys to kingdom of your company or target! With data dumps like shadow brokers apparently owning the equation group (Not here to say that’s true or valid data) nothing is safe and we must reduce our risk and only expose limited attack surface just as we help our clients.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;1. CLI Logging of All Operator Terminals:&lt;/strong&gt;
+You may be thinking why in world would I need this level of fidelity and data? Well a really good buddy of mine &lt;a href=&#34;https://www.sixdub.net/&#34;&gt;@sixdub&lt;/a&gt; let me on to this a year or so ago for a potential integrity and data preservation method for potential discrepancies or de-conflictions. I’m taking this opportunity to push this forward on some of our first OP’s. Bellow is a tool built for just the right solution:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Find the setup here:&lt;/em&gt;
+&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/lterm&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Here is a small example of global terminal logging:&lt;/em&gt;
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/3rbCTW_IBrk&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Restricted Payload Delivery :&lt;/strong&gt;
+This is something I have not done in a bit and generally only required during specific circumstances. I’m here to tell you that we may be doing it all wrong, after an incident where a payload was spread via a secondary source and made its way out of scope you will want to take this advice. Ensure that not only are there clearly defined scoping and external IP space, but take the time to setup your C2 to only allow communication to your payload stagger to trusted sources. A couple ways you can go about this which is some really cool work from @bluescreenofjeff is using Apache mod_rewrite rules. In combination of the mod rewrite edits you can raise the sophistication level of uncovering your C2.   &lt;a href=&#34;https://bluescreenofjeff.com/tags#mod_rewrite&#34;&gt;bluescreenofjeff mod_rewrite series&lt;/a&gt; has some great ways we can get supper paranoid during setup. Using rules for OS, mobile hits (how you want to handle these), browser based (using a HTA like this for IE:  &lt;a href=&#34;https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/ProxyAware-ps-Stager.hta&#34;&gt;HTA-Example&lt;/a&gt;) and even handling user redirection not matching our C2 Profile we use. One of the main concerns is we want to ensure that our payload just does not stage to external IP space that me out of scope or even a IR toolset, this will increase the duration and sophistication to a long living C2 architecture.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Separate Servers / C2 Phases for all Stages of an Engagement:&lt;/strong&gt;
+This tip is crucial during the construction of your engagements infrastructure. Splitting up your C2 will provide you flexibility, stealth and ability to roll C2 on the unfortunate day you get burnt. So, what do I mean by “splitting” up the Infrastructure? Well in some cases you may be conducting a OP with one team server, but during a red team all phases of the OP should be separated.
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/4w7krkqxRck&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+This is a bit of safeguard against burning all of your C2 at one time as well as providing redundancy, and a separate team server for coworkers. I have found splitting this up into three core components as seems to be quite effective! Bellow is a basic layout and beginig of what our team arch should look like:
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/seprate_vps.jpg&#34; alt=&#34;seprate vps red team&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Always Use Redirectors in Front of Core C2:&lt;/strong&gt;
+This is not always enforced depending on engagement and type of operation you are conducting. Heck I have broken this rule in all types of scenarios, for phishing or other quick testing. The reality of the matter your core C2 servers or “Team Servers” if you are a CS user are HVA (High Value Assets) and need to be secured like one. This mean full scale firewall to only allow the ports used for an engagement (80,443,8080) and IPTable rules for allowed IP space for ssh and inbound connections from our redirectors. While our redirectors will come and go we need to trust our core C2 servers, and if they are exposed at any given time all it takes is a patient attacker to gain access. Lastly never re-use a redirector. NEVER CROSS STREAMS!
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/vps_redirectors.jpg&#34; alt=&#34;red team redirctors&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;5. Full Session / Metadata Network Capture on Redirectors and C2:&lt;/strong&gt;
+I know you going to question this! Well its necessary after recent events with cobalt strike and metasploit our tools are being targeted! I know asking for full PCAP on our redirectors will not be possible for most, while ill be shooting for a certain retention time on core architecture we need at least PCAP metadata (IP SRC/DST, PORT SRC/DST). This can be a simple text file, but this will give you something to go back over god forbid you have multiple redirectors and need to find a originating point of a callback. Somthing as simple as this can give you a ton of insight if a incident dies happen. But in todays age maybe we should be shooting for full pcap? What do you think? It could be as simple as this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo tcpdump -n &amp;gt; test.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;6. Never Share C2 IOC’s!&lt;/strong&gt; Let’s be honest we have gone far out of our way to stand up and build solid and secure architecture, let’s not get its all burnt with one mistake. When we hear IOC we think malware etc, in this case we mean IOC’s that would link or unravel our C2 easily without a full blown investigation.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Do not share domain names by using sub-domains across any part of the seprate core C2 servers.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Register all domain with different POCs or only use private registration. With new tools like Whoisology.com doing reverse register name lookups takes seconds. Within minutes the blue team will be able to use hard indicators to destroy your foot hold.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;We setup three servers for Phishing, Active OP’s, and Long Term and we put them all in the same geographical region and /24 ip-space. Well that was easy win for the blue team! Please use separate geographical regions and IP-space for redirectors and core C2 servers.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;I have seen this done often and its generally not a issue, but if you use the same C2 transport for all three separate servers you may have just burnt it all. Let’s say I use CS-HTTP stagers and the blue team catches my phishing server. That team is going to write custom signatures to ID that sort of traffic. Take the time use DNS/HTTP/HTTPS at all stages to give them a treat&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Following the last recommendation CS supports malleable C2 profiles, use them they work trust me! With that you need to be careful, if your target is Government related think twice with using streaming services. Use this in good taste or write custom ones that your target will most likely use, and think about what they may block.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Going to host a payload? Take the time and stand up a custom droplet and web server to host payloads that will be used for phishing or lateral movement. This way your not opening your core C2 to more potential attack surface. Go ahead and look at my baseline apache server, you’re not going to get far.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/vps_full_setup.jpg&#34; alt=&#34;red team redirctors&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
+
+&lt;hr /&gt;
+
+&lt;p&gt;Any questions or concerns do not hastate to ask, as always hope I was able to share some basic tips for your next engagement.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>EmPyre Collection Operations</title>
@@ -2643,95 +2844,6 @@ python theHarvester.py -d www.puttargethere.com -b html-source -j 10 -w 3 -r 200
 &lt;p&gt;[*] &lt;a href=&#34;http://www.linuxjournal.com/content/downloading-entire-web-site-wget&#34;&gt;http://www.linuxjournal.com/content/downloading-entire-web-site-wget&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;[*] &lt;a href=&#34;https://github.com/laramies/theHarvester&#34;&gt;https://github.com/laramies/theHarvester&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>SMS-LogAlert.py - Alerting TeamServer Infrastructure</title>
-      <link>https://cybersyndicates.com/2015/06/sms-log-alert/</link>
-      <pubDate>Wed, 10 Jun 2015 18:27:50 +0000</pubDate>
-      
-      <guid>https://cybersyndicates.com/2015/06/sms-log-alert/</guid>
-      <description>
-
-&lt;p&gt;Recently on a red team engagement we where faced with a major issue during our initial access attempts while email phishing. We kept getting our Cobalt Strike (CS) beacon call backs to our team server at weird hours of the night, inherently missing the beacon and we were out of luck. The worst part was this was just about all we had to work with and we needed initial access bad!&lt;/p&gt;
-
-&lt;p&gt;With this came a problem, with any problem comes a great idea and some simple code to automate it. After some thought we knew we needed a easy way to alert the team when this payload beaconed home, and alert us that it was time to jump online and get started. Now beacons in CS are memory only, unless some method of persistence is employed. This means upon restart or power cycle access needs to be re-phished if you lose access to the target. But in this case the user was most likely &amp;ldquo;sleeping&amp;rdquo; his computer and thats where the random beacons hitting home where coming from.&lt;/p&gt;
-
-&lt;p&gt;With issue in hand we knew we needed some way to alert the team using &amp;ldquo;out of band&amp;rdquo; communication from the VPS infrastructure we had in place. With this came the idea of sending text messages (SMS) using the SMTP (Email) library in Python. This would easily alert us when he came back up online. We simply set up a IP-Tables rule to handle the work of logging when we had a call back to the server.  After we initiated SMS-LogAlert to tail the file, catch the ip Address, clear the log file, and send out an alert to the team with the IP that hit us. From there we where able to effectively manage our call back and we had a jackpot!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-10-at-3.36.51-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-10-at-3.36.51-PM.png&#34; alt=&#34;Screen Shot 2015-06-10 at 3.36.51 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;get-here-on-github&#34;&gt;Get here on GitHub:&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/killswitch-GUI/SMS-LogAlert
-    
-Python SMS-LogAlert.py -t 10 -s 1oo -e alex@gmail.com -p 1233 -log /var/log/iptables.log
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;here-is-the-simple-logic&#34;&gt;Here is the simple Logic:&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Performs simple check on supplied pass and user&lt;/li&gt;
-&lt;li&gt;Opens up log and checks for keyword and strips out Source IP&lt;/li&gt;
-&lt;li&gt;Sends SMS and clears log file&lt;/li&gt;
-&lt;li&gt;Places the IP in a list so multiple SMS arnt sent on previous IP&amp;rsquo;s&lt;/li&gt;
-&lt;li&gt;Insures max SMS count has not been reached&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;features&#34;&gt;Features:&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Time to prevent log thrashing&lt;/li&gt;
-&lt;li&gt;Allows for custom log alerting&lt;/li&gt;
-&lt;li&gt;Supports MIME / or even HTML based alerting&lt;/li&gt;
-&lt;li&gt;Supports max SMS count&lt;/li&gt;
-&lt;li&gt;Sets specfic log file and time between checks&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;limitations&#34;&gt;Limitations:&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;T-Mobile Sucks and doesn&amp;rsquo;t allow SMTP to SMS&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Road Map:&lt;/li&gt;
-&lt;li&gt;Script is only allowing gmail as its SMTP server currently (will add in support)&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Need to add in IP range Support&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;options&#34;&gt;OPTIONS:&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;-t = Will tell how long between log checks in Secs, defaults to 10 Secs.
-
--s = Max SMS texts that can recived before it shuts down, default is 100.
-
--e = Set required email addr user, ex [ale@email.com](mailto:ale@email.com)
-
--p = Set required email password
-
--log = Set a log to parse
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;helpful-data&#34;&gt;Helpful Data:&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;AT&amp;amp;T: number@txt.att.net&lt;/li&gt;
-&lt;li&gt;T-Mobile: number@tmomail.net&lt;/li&gt;
-&lt;li&gt;Verizon: number@vtext.com&lt;/li&gt;
-&lt;li&gt;Sprint: number@messaging.sprintpcs.com or number@pm.sprint.com&lt;/li&gt;
-&lt;li&gt;Virgin Mobile: number@vmobl.com&lt;/li&gt;
-&lt;li&gt;Tracfone: number@mmst5.tracfone.com&lt;/li&gt;
-&lt;li&gt;Metro PCS: number@mymetropcs.com&lt;/li&gt;
-&lt;li&gt;Boost Mobile: number@myboostmobile.com&lt;/li&gt;
-&lt;li&gt;Cricket: number@sms.mycricket.com&lt;/li&gt;
-&lt;li&gt;Nextel: number@messaging.nextel.com&lt;/li&gt;
-&lt;li&gt;Alltel: number@message.alltel.com&lt;/li&gt;
-&lt;li&gt;Ptel: number@ptel.com&lt;/li&gt;
-&lt;li&gt;Suncom: number@tms.suncom.com&lt;/li&gt;
-&lt;li&gt;Qwest: number@qwestmp.com&lt;/li&gt;
-&lt;li&gt;U.S. Cellular: number@email.uscc.net&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Source : &lt;a href=&#34;http://20somethingfinance.com/how-to-send-text-messages-sms-via-email-for-free/&#34;&gt;http://20somethingfinance.com/how-to-send-text-messages-sms-via-email-for-free/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

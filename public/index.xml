@@ -7,8 +7,209 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <lastBuildDate>Fri, 18 Nov 2016 02:13:50 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 30 Nov 2016 16:08:28 -0500</lastBuildDate>
     <atom:link href="https://cybersyndicates.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>6 Red Team Infrastructure Tips</title>
+      <link>https://cybersyndicates.com/2016/11/top-red-team-tips/</link>
+      <pubDate>Wed, 30 Nov 2016 16:08:28 -0500</pubDate>
+      
+      <guid>https://cybersyndicates.com/2016/11/top-red-team-tips/</guid>
+      <description>
+
+&lt;h2 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;CLI Logging of All Operator Terminal&lt;/li&gt;
+&lt;li&gt;Restricted Payload Delivery&lt;/li&gt;
+&lt;li&gt;Separate Servers / C2 Phases for all Stages of an Engagement&lt;/li&gt;
+&lt;li&gt;Always Use Redirectors in Front of Core C2&lt;/li&gt;
+&lt;li&gt;Full Session / Metadata Network Capture on Redirectors and C2&lt;/li&gt;
+&lt;li&gt;Never Share C2 IOC’s&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;As some of you may know I made a huge transition recently from my former team ATD (Adaptive Threat Division) at Veris Group to Sony’s internal Red Team. This was of course a major move, but the opportunity to help develop and stand up that capability was hard to pass up. This was a dream for me and to do it with some extremely dedicated and talented coworkers is always a bonus.&lt;/p&gt;
+
+&lt;p&gt;This brings me to our subject, recently I had put a ton of time into thinking out red team architecture and wanted to share. This will cover security and tips for a successful engagement. While some of this may seem “excessive”, you have to take this type of work very serious as you will be holding the keys to kingdom of your company or target! With data dumps like shadow brokers apparently owning the equation group (Not here to say that’s true or valid data) nothing is safe and we must reduce our risk and only expose limited attack surface just as we help our clients.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;1. CLI Logging of All Operator Terminals:&lt;/strong&gt;
+You may be thinking why in world would I need this level of fidelity and data? Well a really good buddy of mine &lt;a href=&#34;https://www.sixdub.net/&#34;&gt;@sixdub&lt;/a&gt; let me on to this a year or so ago for a potential integrity and data preservation method for potential discrepancies or de-conflictions. I’m taking this opportunity to push this forward on some of our first OP’s. Bellow is a tool built for just the right solution:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Find the setup here:&lt;/em&gt;
+&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/lterm&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Here is a small example of global terminal logging:&lt;/em&gt;
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/3rbCTW_IBrk&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Restricted Payload Delivery :&lt;/strong&gt;
+This is something I have not done in a bit and generally only required during specific circumstances. I’m here to tell you that we may be doing it all wrong, after an incident where a payload was spread via a secondary source and made its way out of scope you will want to take this advice. Ensure that not only are there clearly defined scoping and external IP space, but take the time to setup your C2 to only allow communication to your payload stagger to trusted sources. A couple ways you can go about this which is some really cool work from @bluescreenofjeff is using Apache mod_rewrite rules. In combination of the mod rewrite edits you can raise the sophistication level of uncovering your C2.   &lt;a href=&#34;https://bluescreenofjeff.com/tags#mod_rewrite&#34;&gt;bluescreenofjeff mod_rewrite series&lt;/a&gt; has some great ways we can get supper paranoid during setup. Using rules for OS, mobile hits (how you want to handle these), browser based (using a HTA like this for IE:  &lt;a href=&#34;https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/ProxyAware-ps-Stager.hta&#34;&gt;HTA-Example&lt;/a&gt;) and even handling user redirection not matching our C2 Profile we use. One of the main concerns is we want to ensure that our payload just does not stage to external IP space that me out of scope or even a IR toolset, this will increase the duration and sophistication to a long living C2 architecture.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Separate Servers / C2 Phases for all Stages of an Engagement:&lt;/strong&gt;
+This tip is crucial during the construction of your engagements infrastructure. Splitting up your C2 will provide you flexibility, stealth and ability to roll C2 on the unfortunate day you get burnt. So, what do I mean by “splitting” up the Infrastructure? Well in some cases you may be conducting a OP with one team server, but during a red team all phases of the OP should be separated.
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/4w7krkqxRck&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+This is a bit of safeguard against burning all of your C2 at one time as well as providing redundancy, and a separate team server for coworkers. I have found splitting this up into three core components as seems to be quite effective! Bellow is a basic layout and beginig of what our team arch should look like:
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/seprate_vps.jpg&#34; alt=&#34;seprate vps red team&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Always Use Redirectors in Front of Core C2:&lt;/strong&gt;
+This is not always enforced depending on engagement and type of operation you are conducting. Heck I have broken this rule in all types of scenarios, for phishing or other quick testing. The reality of the matter your core C2 servers or “Team Servers” if you are a CS user are HVA (High Value Assets) and need to be secured like one. This mean full scale firewall to only allow the ports used for an engagement (80,443,8080) and IPTable rules for allowed IP space for ssh and inbound connections from our redirectors. While our redirectors will come and go we need to trust our core C2 servers, and if they are exposed at any given time all it takes is a patient attacker to gain access. Lastly never re-use a redirector. NEVER CROSS STREAMS!
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/vps_redirectors.jpg&#34; alt=&#34;red team redirctors&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;5. Full Session / Metadata Network Capture on Redirectors and C2:&lt;/strong&gt;
+I know you going to question this! Well its necessary after recent events with cobalt strike and metasploit our tools are being targeted! I know asking for full PCAP on our redirectors will not be possible for most, while ill be shooting for a certain retention time on core architecture we need at least PCAP metadata (IP SRC/DST, PORT SRC/DST). This can be a simple text file, but this will give you something to go back over god forbid you have multiple redirectors and need to find a originating point of a callback. Somthing as simple as this can give you a ton of insight if a incident dies happen. But in todays age maybe we should be shooting for full pcap? What do you think? It could be as simple as this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo tcpdump -n &amp;gt; test.txt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;6. Never Share C2 IOC’s!&lt;/strong&gt; Let’s be honest we have gone far out of our way to stand up and build solid and secure architecture, let’s not get its all burnt with one mistake. When we hear IOC we think malware etc, in this case we mean IOC’s that would link or unravel our C2 easily without a full blown investigation.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Do not share domain names by using sub-domains across any part of the seprate core C2 servers.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Register all domain with different POCs or only use private registration. With new tools like Whoisology.com doing reverse register name lookups takes seconds. Within minutes the blue team will be able to use hard indicators to destroy your foot hold.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;We setup three servers for Phishing, Active OP’s, and Long Term and we put them all in the same geographical region and /24 ip-space. Well that was easy win for the blue team! Please use separate geographical regions and IP-space for redirectors and core C2 servers.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;I have seen this done often and its generally not a issue, but if you use the same C2 transport for all three separate servers you may have just burnt it all. Let’s say I use CS-HTTP stagers and the blue team catches my phishing server. That team is going to write custom signatures to ID that sort of traffic. Take the time use DNS/HTTP/HTTPS at all stages to give them a treat&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Following the last recommendation CS supports malleable C2 profiles, use them they work trust me! With that you need to be careful, if your target is Government related think twice with using streaming services. Use this in good taste or write custom ones that your target will most likely use, and think about what they may block.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Going to host a payload? Take the time and stand up a custom droplet and web server to host payloads that will be used for phishing or lateral movement. This way your not opening your core C2 to more potential attack surface. Go ahead and look at my baseline apache server, you’re not going to get far.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
+        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
+            &lt;p&gt;
+                &lt;img src=&#34;https://cybersyndicates.com/image/vps_full_setup.jpg&#34; alt=&#34;red team redirctors&#34;/&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+
+
+&lt;hr /&gt;
+
+&lt;p&gt;Any questions or concerns do not hastate to ask, as always hope I was able to share some basic tips for your next engagement.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>SimplyEmail</title>
@@ -18,10 +219,7 @@
       <guid>https://cybersyndicates.com/project/SimplyEmail/</guid>
       <description>
 
-&lt;p&gt;&lt;a href=&#34;https://travis-ci.org/killswitch-GUI/SimplyEmail&#34;&gt;&lt;img src=&#34;https://travis-ci.org/killswitch-GUI/SimplyEmail.svg?branch=master&#34; alt=&#34;Build Status&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://landscape.io/github/killswitch-GUI/SimplyEmail/master&#34;&gt;&lt;img src=&#34;https://landscape.io/github/killswitch-GUI/SimplyEmail/master/landscape.svg?style=flat&#34; alt=&#34;Code Health&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://www.codacy.com/app/iamfree2009/SimplyEmail&#34;&gt;&lt;img src=&#34;https://api.codacy.com/project/badge/grade/3b8a338b659e425e9b4e1db9eace61d7&#34; alt=&#34;Codacy Badge&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://coveralls.io/github/killswitch-GUI/SimplyEmail?branch=Version-1.4&#34;&gt;&lt;img src=&#34;https://coveralls.io/repos/github/killswitch-GUI/SimplyEmail/badge.svg?branch=Version-1.4&#34; alt=&#34;Coverage Status&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://simplyemail.org/img/se-logo-2.png&#34; alt=&#34;alt text&#34; title=&#34;Logo Title Text 1&#34; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;simplyemail&#34;&gt;SimplyEmail&lt;/h1&gt;
 
@@ -412,6 +610,257 @@ Current Issues:
 ( ) Verify Emails function and only one name list raises errors
 
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://travis-ci.org/killswitch-GUI/SimplyEmail&#34;&gt;&lt;img src=&#34;https://travis-ci.org/killswitch-GUI/SimplyEmail.svg?branch=master&#34; alt=&#34;Build Status&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://landscape.io/github/killswitch-GUI/SimplyEmail/master&#34;&gt;&lt;img src=&#34;https://landscape.io/github/killswitch-GUI/SimplyEmail/master/landscape.svg?style=flat&#34; alt=&#34;Code Health&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://www.codacy.com/app/iamfree2009/SimplyEmail&#34;&gt;&lt;img src=&#34;https://api.codacy.com/project/badge/grade/3b8a338b659e425e9b4e1db9eace61d7&#34; alt=&#34;Codacy Badge&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://coveralls.io/github/killswitch-GUI/SimplyEmail?branch=Version-1.4&#34;&gt;&lt;img src=&#34;https://coveralls.io/repos/github/killswitch-GUI/SimplyEmail/badge.svg?branch=Version-1.4&#34; alt=&#34;Coverage Status&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>SimplyTemplate</title>
+      <link>https://cybersyndicates.com/project/SimplyTemplate/</link>
+      <pubDate>Tue, 01 Nov 2016 02:13:50 +0000</pubDate>
+      
+      <guid>https://cybersyndicates.com/project/SimplyTemplate/</guid>
+      <description>
+
+&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/SimplyTemplate&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;simplytemplate&#34;&gt;SimplyTemplate&lt;/h1&gt;
+
+&lt;p&gt;Phishing Template Generation Made Easy. The goal of this project was to hopefully speed up Phishing
+Template Gen as well as an easy way to ensure accuracy of your templates. Currently my standard Method
+of delivering emails is the Spear Phish in Cobalt strike so you will see proper settings for that by default.&lt;/p&gt;
+
+&lt;p&gt;Current Platforms Supported:
+* Kali Linux 2.0
+* Kali Linux 1.0
+* Debian (deb8u3)&lt;/p&gt;
+
+&lt;h2 id=&#34;work-conducted-by&#34;&gt;Work Conducted by:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Alexander Rymdeko-Harvey [Twitter] @Killswitch-GUI &amp;ndash; [Web] &lt;a href=&#34;http://cybersyndicates.com&#34;&gt;CyberSydicates.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;major-call-outs&#34;&gt;Major Call Outs!:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Chris Ross [@xorrior]&lt;/li&gt;
+&lt;li&gt;Steve Borosh [@rvrsh3ll] &amp;ndash; [web] &lt;a href=&#34;http://www.rvrsh3ll.net/blog/&#34;&gt;www.rvrsh3ll.net&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A few small benefits:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Easy for you to write modules (All you need is 1 required Class option and you&amp;rsquo;re up and running)&lt;/li&gt;
+&lt;li&gt;Simple integration of Email Templates&lt;/li&gt;
+&lt;li&gt;Also the ability to change major settings fast without diving into the code (Coming)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;understanding-module-types&#34;&gt;Understanding Module Types&lt;/h2&gt;
+
+&lt;p&gt;All templates will provide you with a small meta tag. This tag will help you quickly identify the
+capabilities of the module, also what the &amp;ldquo;content&amp;rdquo; supports.&lt;/p&gt;
+
+&lt;p&gt;Sophistication Levels:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- High   ==  Requires proper OSINT / SE to build and effectively deploy the template. These are generally internal based templates with specific themes.
+- Medium ==  Requires a decent amount of modifications or settings, and are more general of a template external based template.
+- Low    ==  Requires little to no modifications of the template and are generally not effective.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Core Options:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- Text == Text based option or output.
+- Html == Rich Html Supported for output (generally multipart Email Html/Text).
+- Link == Template supports a major link for stats or potential web download of document/Drive-by.
+- Attachment == Can support text that tells users to open or use the supplied attachment.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Email Rendering:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- Html == This was used by some to view the HTML markup but CSS does not render correctly (Basic Templates)
+- eml == Files can be outputed via .EML to open them directly in Icedove or Outlook
+- mht == MHTML is the Mail Html Markup used and can directly rendered in Word/IE or Iceweasel via plugin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;tips-tricks-notes&#34;&gt;Tips, Tricks, Notes&lt;/h1&gt;
+
+&lt;p&gt;The following is a collection trips and tricks to get your email in!&lt;/p&gt;
+
+&lt;h2 id=&#34;get-started&#34;&gt;Get Started&lt;/h2&gt;
+
+&lt;p&gt;Please RUN the simple Setup Bash script!!!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;root@kali:~/Desktop/SimplyTemplate# sh Setup.sh
+or
+root@kali:~/Desktop/Simplytemplate# ./Setup.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;standard-commands&#34;&gt;Standard Commands&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt; [&amp;gt;] help
+	Availiable Commands:
+	-----------------------------------------
+	[use]		Select a template for use
+	[list]		List loaded Templates
+	[info]		Display metadata about a module
+	[search]		Search by Core Options / Sophistication
+	[update]	Update SimplyTemplate from Github
+	[help]		Display this menu
+	[exit]		Exit SimplyTemplate
+
+	Availiable Template Commands:
+	-----------------------------------------
+	[set]		Set a option for the Template
+	[info]		Info about loaded Templates
+	[gen]		Generate Template
+	[view]		View Sample Template
+	[render]		Render Html of Email
+	[back]		Go back to main Menu
+	[exit]		Exit SimplyTemplate
+ [&amp;gt;] 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;standard-startup&#34;&gt;Standard Startup&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt; ============================================================
+ Current: v0.1 | SimplyTemplate | [Web]: CyberSyndicates.com
+ ============================================================
+   [Twitter]: @real_slacker007 | [Twitter]: @Killswitch_gui
+ ============================================================
+ Main Selection Menu
+
+	6 Email Templates Loaded
+
+ Commands:
+
+	[use]		Select a template for use
+	[list]		List loaded Templates
+	[info]		Display metadata about a module
+	[search]	Search by Core Options / Sophistication
+	[update]	Update SimplyTemplate from Github
+	[help]		Display this menu
+	[exit]		Exit SimplyTemplate
+ [&amp;gt;] 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;list-modules&#34;&gt;List Modules&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt; ============================================================
+ Current: v0.1 | SimplyTemplate | [Web]: CyberSyndicates.com
+ ============================================================
+   [Twitter]: @real_slacker007 | [Twitter]: @Killswitch_gui
+ ============================================================
+
+  [*] Available Modules are:				 Core Options:			Sophistication:
+  -------------------------				 -------------			---------------
+  1)   Modules/Internal/Leadership/AppleEncryptionFBI.py [Text, Html, Link]              [Low]
+  2)   Modules/Internal/Leadership/CFOBonusStructure.py  [Html, Attachment]              [High]
+  3)   Modules/Internal/IT/NoticeofMonitoring.py         [Html, Link]                    [Low]
+  4)   Modules/Internal/IT/BlockedWebsite.py             [Html, Link]                    [Medium]
+  5)   Modules/Internal/IT/WebsiteDevelopmentTest.py     [Html, Link]                    [Low]
+  6)   Modules/Internal/IT/PhishingAlert.py              [Html, Link]                    [Low]
+  7)   Modules/Internal/IT/Office365Migration.py         [Text, Html, Link]              [High]
+  8)   Modules/Internal/Facilities/BuildingInspection.py [Html, Link]                    [Low]
+  9)   Modules/Internal/Agency/GovBudgetReduction.py     [Html, Link]                    [Medium]
+  10)  Modules/Internal/Hr/TelecommuteOpportunities.py   [Text, Html, Link]              [High]
+  11)  Modules/Internal/Hr/SocialMediaPolicy.py          [Text, Html, Attachment]        [Medium]
+  12)  Modules/Internal/Hr/PayScaleBonusGuideline.py     [Text, Html, Link]              [Medium]
+  13)  Modules/Internal/Hr/HRTaxCorectionW2.py           [Text, Html, Link]              [Medium]
+  14)  Modules/Internal/Hr/WellnessProgram.py            [Html, Link]                    [Low]
+  15)  Modules/Internal/Hr/HRNewsArticle.py              [Text, Html, Link]              [Medium]
+  16)  Modules/Internal/Marketing/CyberNews.py           [Text, Html, Link]              [High]
+  17)  Modules/External/Social/LinkedinGroup.py          [Text, Html, Link]              [Medium]
+  18)  Modules/External/News/BasicFoxNews.py             [Text, Link]                    [Low]
+  19)  Modules/External/Agency/OPMSalaryGuidelines.py    [Html, Link]                    [Medium]
+  20)  Modules/External/Agency/IRS-CorrectedW2.py        [Text, Html, Link]              [Low]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;use-a-module&#34;&gt;Use a module&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt; ============================================================
+ Current: v0.1 | SimplyTemplate | [Web]: CyberSyndicates.com
+ ============================================================
+   [Twitter]: @real_slacker007 | [Twitter]: @Killswitch_gui
+ ============================================================
+
+ Template Loaded: CFO Policy update to bonus.
+
+
+
+ Template Required Options:
+
+ Setting		Value Set			Description of Setting
+ -------		---------			----------------------
+ FromCFOName            Alex Jason                      The Target CFO Full Name
+ FromEmail              noreply@agency.com              From Email
+ FromRealEmail          alex@target.com                 The Target CFO real email
+ FromTitle              Chief Financial Officer         Set the OSINT name gathered title
+ TargetAddress          123 Street Las Vegas, NV, 12345 Set the Target Company Addr
+ TargetCompany          Cyber Power                     Set the Target Company Full Name
+ TargetLogo             http://Target.com/logo.png      Set the Target Logo
+ TargetPhone            1-800-CD-FOUR                   Set the Target Toll Free line
+ TargetWebLink          Target.com                      Set the real target web link
+
+ Availiable Template Commands:
+
+	Command		Description
+	-------		-----------
+	[set]           Set a option for the Template
+	[info]          Info about loaded Templates
+	[gen]           Generate Template
+	[view]          View Sample Template
+	[render]        Render Html of Email
+	[back]          Go back to main Menu
+	[exit]          Exit SimplyTemplate
+ [&amp;gt;] 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;simply-use-set-and-gen&#34;&gt;Simply Use Set and Gen&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt; ============================================================
+ Current: v0.1 | SimplyTemplate | [Web]: CyberSyndicates.com
+ ============================================================
+   [Twitter]: @real_slacker007 | [Twitter]: @Killswitch_gui
+ ============================================================
+
+ Template Information:
+
+	Name:			Cyber News Letter
+	Author			Killswitch-GUI
+	Type:			HTML/Text
+	Sophistication:		Medium
+	SampleImage:		Modules/Sample/CyberNewsLetter.png
+	Info:                   Using a custom news letter is common by HR and
+	                        other depts.                    By setting up a
+	                        proper and common HTML email you can easily
+	                        get clicks and less likely to be reported.
+
+ Template Required Options:
+
+ Setting		Value Set			Description of Setting
+ -------		---------			----------------------
+ FromFirstName          Jim                             Contacts First Name
+ FromFullName           Jim Bob                         Contacts Full Name
+ FromOrg                MOM, LLC                        Contacts Company
+ FromProfileUrl         http://k.com                    Linkedin Full Profile URL
+ FromTitle              CEO, ATD                        Contacts Full Title
+ GroupName              Cyber Cyber Cyber               Requested Group to Join
+ GroupUrl               %URL%                           Custom GroupURL or CS URL
+ ProfilePic             http://tinyurl.com/oewvyo7      Custom GroupURL or CS URL
+
+ [&amp;gt;] set FromOrg James Brown, LLC
+ [&amp;gt;] gen
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://travis-ci.org/killswitch-GUI/SimplyTemplate&#34;&gt;&lt;img src=&#34;https://travis-ci.org/killswitch-GUI/SimplyTemplate.svg?branch=master&#34; alt=&#34;Build Status&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://landscape.io/github/killswitch-GUI/SimplyTemplate/master&#34;&gt;&lt;img src=&#34;https://landscape.io/github/killswitch-GUI/SimplyTemplate/master/landscape.svg?style=flat&#34; alt=&#34;Code Health&#34; /&gt;&lt;/a&gt;
+&lt;a href=&#34;https://coveralls.io/github/killswitch-GUI/SimplyTemplate?branch=master&#34;&gt;&lt;img src=&#34;https://coveralls.io/repos/github/killswitch-GUI/SimplyTemplate/badge.svg?branch=master&#34; alt=&#34;Coverage Status&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -2108,384 +2557,6 @@ gpupdatep /force
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.22.37-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.22.37-PM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.22.37 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Email Harvesting with SimplyEmail</title>
-      <link>https://cybersyndicates.com/2015/11/email-harvesting-with-simplyemail/</link>
-      <pubDate>Sat, 21 Nov 2015 14:58:47 +0000</pubDate>
-      
-      <guid>https://cybersyndicates.com/2015/11/email-harvesting-with-simplyemail/</guid>
-      <description>
-
-&lt;h2 id=&#34;email-recon-made-easy&#34;&gt;Email Recon Made Easy&lt;/h2&gt;
-
-&lt;p&gt;More often than not email enumeration is hit or miss, depending on the sources used throttle limits are in place or they just plain don’t index everything. As you may know from my past blog write-up I wrote a HTML scrapper to integrate into theHarvester. After that experience I knew there was for some improvement on 3 major key areas:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Speed - It needed to be able to handle way more locations to search&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Framework – People needed to be able to easily contribute to the project&lt;/li&gt;
-&lt;li&gt;Reporting – I wanted it to be elegant and easy to discover the sources&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;With these requirements in hand I started my build on SimplyEmail!&lt;/p&gt;
-
-&lt;h3 id=&#34;benefits-of-simplyemail&#34;&gt;Benefits of SimplyEmail&lt;/h3&gt;
-
-&lt;p&gt;In the underlying code I built the program to dynamically load the all modules that where placed in the modules folder. The question is why? Well after using other tools and methods, I found that searching just about anywhere you can get your hands on can be beneficial to the results you obtain (Even if duplicates). In certain cases, Google Captcha block would engage and Yahoo Search would come to save the day! The key here was the ability to run multiple modules at the same time, this proved to be quite an improvement for web intense modules. Here is a small snippet of the code that makes this happen:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;All modules are dynamicaly loaded into a list&lt;/li&gt;
-&lt;li&gt;Modules are placed into a Multiprocessing queue&lt;/li&gt;
-&lt;li&gt;Execution takes place in a standardized format so that all processing takes place on child process rather than parent&lt;/li&gt;
-&lt;li&gt;Results are Parsed with a custom parser that handles about all the raw html and text based parsing you could need.&lt;/li&gt;
-&lt;li&gt;These results are placed into a Dictionary with a Key of the source and email address&lt;/li&gt;
-&lt;li&gt;Html results are generated on the fly, and raw results are appended to a running list with time stamps.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;strong&gt;Multiprocessing Controller:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-9.36.26-AM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-9.36.26-AM.png&#34; alt=&#34;Screen Shot 2015-11-17 at 9.36.26 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;How the modules are instantiated:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-9.38.55-AM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-9.38.55-AM.png&#34; alt=&#34;Screen Shot 2015-11-17 at 9.38.55 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;simple-cli-interface&#34;&gt;Simple CLI Interface:&lt;/h3&gt;
-
-&lt;p&gt;To get started always run the Setup script first:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@kali:~/Desktop/SimplyEmail# sh Setup.sh
-or
-root@kali:~/Desktop/SimplyEmail# ./Setup.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Next take a look at the help menu:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -h
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-9.50.39-AM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-9.50.39-AM.png&#34; alt=&#34;Screen Shot 2015-11-17 at 9.50.39 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Running the tool can be accomplished by either running all modules or one specific module for testing:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -all -e enron.com
-
-root@kali:~/Desktop/SimplyEmail# ./SimplyEmail -t Google -e enron.com
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-10.03.13-AM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-17-at-10.03.13-AM.png&#34; alt=&#34;Screen Shot 2015-11-17 at 10.03.13 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;understanding-reporting-options&#34;&gt;Understanding Reporting Options:&lt;/h2&gt;
-
-&lt;p&gt;One of the most frustrating aspects of Pen-testing is the tools&amp;rsquo; ability to report the findings and make those easily readable. This may be for the data provided to a customer or just the ability to report on source of the data.&lt;/p&gt;
-
-&lt;p&gt;So I&amp;rsquo;m making it my goal for my tools to take that work off your back and make it as simple as possible! Let&amp;rsquo;s cover the two different reports generated.&lt;/p&gt;
-
-&lt;h3 id=&#34;text-output&#34;&gt;Text Output:&lt;/h3&gt;
-
-&lt;p&gt;With this option results are generated and appended to a running text file called Email_List.txt. this makes it easy to find past searches or export to tool of choice. Example:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-21-at-10.01.52-AM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-21-at-10.01.52-AM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 10.01.52 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;html-output&#34;&gt;HTML Output:&lt;/h3&gt;
-
-&lt;p&gt;As I mentioned before a powerful function that I wanted to integrate was the ability to produce a visually appealing and rich report for the user and potentially something that could be part of data provided to a client. Please let me know with suggestions!&lt;/p&gt;
-
-&lt;h4 id=&#34;email-source&#34;&gt;Email Source:&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-11-at-5.27.15-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-11-at-5.27.15-PM.png&#34; alt=&#34;Screen Shot 2015-11-11 at 5.27.15 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;email-section&#34;&gt;Email Section:&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Html report now shows Alerts for Canary Search Results&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-11-at-5.27.31-PM.png&#34; alt=&#34;![Screen Shot 2015-11-11 at 5.27.31 PM](/wp-content/Screen-Shot-2015-11-11-at-5.27.31-PM-1024x528.png)&#34; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>A No Bull Guide to Malicious Windows Trouble Shooting Packs and Application whitelist Bypass</title>
-      <link>https://cybersyndicates.com/2015/10/a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</link>
-      <pubDate>Fri, 16 Oct 2015 13:36:50 +0000</pubDate>
-      
-      <guid>https://cybersyndicates.com/2015/10/a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</guid>
-      <description>
-
-&lt;h3 id=&#34;malicious-windows-trouble-shooting-package&#34;&gt;Malicious Windows Trouble Shooting Package&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;Using Nicholas Berthaume Recent work on WTP:&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;&lt;a href=&#34;https://twitter.com/nberthaume&#34;&gt;@nberthaume&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Just some background on this before we deep dive into setup and construction of the package. I was let onto this a few months back from a coworker. I know this was a pretty cool concept and could see the real world benefit of using something like this on a Red Team in a high security environment. Especially on the phishing side of the house, which I have been doing way more of lately!&lt;/p&gt;
-
-&lt;p&gt;But at the time I only knew that this could be done for malicious use, it does turn out that their was a talk explaining just about everything we are going to cover except a few things. The key here is all the information I gathered and the step-by-step execution was done by research on my own and just trial and error to see how things worked. This is an import aspect of anything in the Red Team space, it requires the knowledge of what you are throwing into a customers environment as well as understanding what type effects its has on the endpoint to truly own your tradecraft. Upon entry into this space everyone is challenged at some point, questions like what command are you running; why?; do you know what that does?; what process will be spawned vs injecting.&lt;/p&gt;
-
-&lt;p&gt;Thats why I took the approach to doing all the research before reaching out to the team for info on where the idea was generated. It seemed to pay off :)&lt;/p&gt;
-
-&lt;h3 id=&#34;ligt-functionality-windows-feature&#34;&gt;Ligt Functionality  (Windows &amp;ldquo;Feature&amp;rdquo;)&lt;/h3&gt;
-
-&lt;p&gt;So what are WTP (Windows Trouble Shooting Packs)? The question is simple to answer: its a simple package software developers can check issues, that could be causing issues with their software. This WTP is mainly used by Microsoft and most of us have used them and maybe just didn&amp;rsquo;t think about it (Troubleshooting Network Issues). I&amp;rsquo;m sure we all have seen this before:&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-09-at-2.36.47-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-09-at-2.36.47-PM.png&#34; alt=&#34;Screen Shot 2015-10-09 at 2.36.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Microsofts &lt;em&gt;Signed&lt;/em&gt; Binary Involved (Note this):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;msdt &amp;lt;/id &amp;lt;name&amp;gt; | /path &amp;lt;name&amp;gt; | /cab &amp;lt; name&amp;gt;&amp;gt; &amp;lt;&amp;lt;/parameter&amp;gt; [options] … &amp;lt;parameter&amp;gt; [options]&amp;gt;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Some really cool features of msdt:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Is a standard windows signed binary and standard with all deployments&lt;/li&gt;
-&lt;li&gt;Allows you to specify paths of the package and even use UNC paths!!!&lt;/li&gt;
-&lt;li&gt;Allows for you to use the flag &amp;ldquo;/af&amp;rdquo; to produce a Answers file built in XML to automate the WTP and can also run from a UNC path &amp;ldquo;Potential Lateral Movement&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;Answer files can be easily built in Power-shell&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;what-does-the-package-consist-of&#34;&gt;What does the Package consist of?&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/IC306717.jpg&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/IC306717.jpg&#34; alt=&#34;IC306717&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;So I stole this image from MSDN and its a great image to understand the basics of a WTP. A few things we need to understand about the package it self. The WTP structure consist of:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Id Metadata&lt;/li&gt;
-&lt;li&gt;Detection scripts&lt;/li&gt;
-&lt;li&gt;Resolution scripts&lt;/li&gt;
-&lt;li&gt;Verification scripts&lt;/li&gt;
-&lt;li&gt;Localized scripts&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This format is what builds the &amp;ldquo;Windows Troubleshooting Pack&amp;rdquo; itself , this is what is given to the Runtime Engine and runs through these and display to the user the results of the package. The bottom line is we really don&amp;rsquo;t need all of these scripts unless you will be weaponizing these for a specific phishing campaign that is unique the environment you will be targeting. The cool part is you can basically use this package to deploy just about any code you can dream of, as long as you can some how deploy it with powershell of course.&lt;/p&gt;
-
-&lt;h3 id=&#34;how-to-setup-to-build-your-first-wtp&#34;&gt;How to setup to build your first WTP&lt;/h3&gt;
-
-&lt;p&gt;Lets now cover what we will need to build your first WTP. This can be tricky so follow this to the exact step so you won&amp;rsquo;t encounter any crazy errors as this wasn&amp;rsquo;t easy to figure out. I did use VMware and a clean windows 7 pro VM, so I can&amp;rsquo;t speak for any other platform. But the trick here is that you can build this packages manually which will take FOREVER or use windows SDK package manger to build them.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Step 1:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Build your VM that is fully patched and latest SP&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Step 2:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;We need to install windows specific visual studio and C++ distribution&lt;/p&gt;
-
-&lt;p&gt;YOU MUST USE 2010 Visual Studio&lt;/p&gt;
-
-&lt;p&gt;Download: &lt;a href=&#34;http://microsoft-visual-cpp-express.soft32.com/free-download/&#34;&gt;Link&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Step 3:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Use the following selections&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-14-at-9.56.18-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-14-at-9.56.18-PM.png&#34; alt=&#34;Screen Shot 2015-10-14 at 9.56.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;(Important packages you will be installing so we can install the SDK)&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-14-at-9.56.57-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-14-at-9.56.57-PM.png&#34; alt=&#34;Screen Shot 2015-10-14 at 9.56.57 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Step 4:&lt;/strong&gt;
-So no matter how hard I tired I couldn&amp;rsquo;t get the latest SDK to work so I jumped back to 7.0&lt;/p&gt;
-
-&lt;p&gt;Download: &lt;a href=&#34;http://www.microsoft.com/en-us/download/details.aspx?id=3138&#34;&gt;link&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Step 5:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Check the following boxes so you ensure you install the complete package even though it installs .NET 3.5!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-14-at-10.06.00-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-14-at-10.06.00-PM.png&#34; alt=&#34;Screen Shot 2015-10-14 at 10.06.00 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Building your first WTP&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;At this point you should be set up to use the TSPDesigner package that comes with windows SDK.  While this isn&amp;rsquo;t currently easily automated, Nicholas Berthaume talked about releasing a toolkit for linux to build these packages. We will cover some of the tradecraft concerns and case use&amp;rsquo;s in this post in a bit.&lt;/p&gt;
-
-&lt;p&gt;Lets get started by starting up the designer and build out with the wizzard for a quick start.&lt;/p&gt;
-
-&lt;blockquote&gt;Goto All Programs -&gt; Microsoft windows SDK v7.0 -&gt; Tools -&gt; Windows Troubleshooting Pack Designer&lt;/blockquote&gt;
-
-&lt;p&gt;Click on create pack  -&amp;gt; name it &amp;ldquo;Really Bad Here&amp;rdquo; and click on create:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-6.34.40-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-6.34.40-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 6.34.40 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Go right ahead and fill out the package fields (*set URL it won&amp;rsquo;t have to match your code signing cert):&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-6.36.59-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-6.36.59-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 6.36.59 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Before we move forward lets take a quick look at an actually trouble shooting pack, so we have it fresh in our minds of how execution takes place. This structure can give us a great amount of information about where you may want inject your payload of choice. Head over to your kali and download this Microsoft signed Troubleshooting package, we will be unarchiving it in Kali 2.0:&lt;/p&gt;
-
-&lt;p&gt;Download: &lt;a href=&#34;http://download.microsoft.com/download/F/2/2/F22D5FDB-59CD-4275-8C95-1BE17BF70B21/wushowhide.diagcab&#34;&gt;Link&lt;/a&gt; or &lt;a href=&#34;http://download.microsoft.com/download/F/2/2/F22D5FDB-59CD-4275-8C95-1BE17BF70B21/wushowhide.diagcab&#34;&gt;http://download.microsoft.com/download/F/2/2/F22D5FDB-59CD-4275-8C95-1BE17BF70B21/wushowhide.diagcab&lt;/a&gt; if you don&amp;rsquo;t trust me ;)&lt;/p&gt;
-
-&lt;p&gt;Lets take a look at this package of what a potential victim would see if they unpacked it and compared, as you move forward with any tool or technique its important that you understand what right looks like and what your victim could possibly see if they had the right tools.&lt;/p&gt;
-
-&lt;blockquote&gt;Right click on the .diagcab and select Open With Archive Manager, you should see:&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-7.09.07-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-7.09.07-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 7.09.07 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;You can simply open any package you build with a achieve manager, and see all the unique parts of the package that will be built with the WTP designer. The important concept here is to take a look around at the structure and get an idea of how you would like you package to be built. So as you can see we can easily pull out the unique PS scripts, we may want to obfuscated using some simple power-shell techniques (ex. Encoded base64).&lt;/p&gt;
-
-&lt;p&gt;Lets move onto finishing the setup, and fill in the following. This data will be displayed when the user checks the advanced results  within the package, so make it interesting:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.26.15-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.26.15-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.26.15 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Next we will setup what will happen if we discover the root cause. A interesting discovery is the ability to run the package at a elevated level. This could be interesting, so lets select to run this at a elevated context! (This can Bypass UAC)&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.29.49-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.29.49-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.29.49 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Set up the Resolver which won&amp;rsquo;t really do anything in our case so don&amp;rsquo;t set elevated privileges:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.31.48-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.31.48-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.31.48 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Using a verifier we can use some simple logic to insure the root cause is fixed.. (Endless possibilities to deploy your initial attack vector.).To keep it simple we won&amp;rsquo;t need to add a Verifier but you will see the logic as we move on:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.39.37-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.39.37-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.39.37 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Now lets start by editing your Root Cause PS script to start up notepad.exe as an example. Select &amp;ldquo;Edit TroubleShooter Script&amp;rdquo;:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.40.12-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.40.12-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.40.12 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;At this point your built in Power-shell IDE will be launched for simple editing of your logic:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.53.55-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-8.53.55-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 8.53.55 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;If you want to test out a payload its very simple to use CobaltStrikes Payload Generator to build a Staged PS script and just place that code in the logic section to gain code execution (Please note that this section does get executed twice for some reason). If you want to use CobaltStrikes DNS Hybrid listener you can build a fully Staged DNS beacon and export it as a PS script and place that code in the logic area as well.&lt;/p&gt;
-
-&lt;p&gt;Go ahead and hit the save button, and your package is ready to be tested out. We will be starting out using a self signed package for testing and will sign the package in a bit. Remember that a self signed package won&amp;rsquo;t run on any computer other than the one you built it on. SO don&amp;rsquo;t try sending a self signed one out to a target!&lt;/p&gt;
-
-&lt;blockquote&gt;Build -&gt; Build Pack -&gt; Ok -&gt; Yes -&gt; Launch Trouble Shooting Pack&lt;/blockquote&gt;
-
-&lt;p&gt;You should imeidently have Notepad pop and you have code execution!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.04.14-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.04.14-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.04.14 PM&#34; /&gt;&lt;/a&gt;Now lets explore the detailed info that our target may see when they View Detailed information:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.05.30-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.05.30-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.05.30 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;setup-for-code-signing&#34;&gt;Setup for Code Signing&lt;/h3&gt;
-
-&lt;p&gt;Get a code signing cert: &lt;a href=&#34;https://www.digicert.com/code-signing/&#34;&gt;Here&lt;/a&gt;  ($179 but you can find way cheaper)&lt;/p&gt;
-
-&lt;p&gt;In my case I had a DigiCert Code Signing Cert, that was in a .P7B format which cannot be used with the WTP (Must have the secret key re-Attached to the cert to build a .PFX Cert. This can be a tricky step so I will cover how I generated my .PFX cert before we go into signing the package.&lt;/p&gt;
-
-&lt;p&gt;Using Kali 2.0 built in OpenSSL package we can convert it to the correct format:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;openssl pkcs7 -print_certs -in MyCodeSigningCert.p7b -out certificate.cer
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Using this new built .Cer we will now generate our .PFX using our privatekey.key.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;blockquote&gt;Return back to windows package designer -&gt; Project -&gt; Options -&gt; Specify a Certificate&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.21.46-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.21.46-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.21.46 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;You should now be able to Build your package and now have a fully signed package for deployment. In the next image the publisher has been obfuscated so I don&amp;rsquo;t share the world with my cert. At this point its  time to move into testing of our new WTP!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.24.35-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.24.35-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.24.35 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;application-whitelisting-and-script-bypass-testing&#34;&gt;Application Whitelisting and Script Bypass Testing&lt;/h3&gt;
-
-&lt;p&gt;Lets now setup a hardened environment on our fresh Windows 7 &lt;em&gt;Pro&lt;/em&gt; VM. Using windows Applocker we can easily setup a simulated environment that we can test against.&lt;/p&gt;
-
-&lt;p&gt;Using windows Group Policy editor we can make the correct changes needed ( run Gpcedit.msc ):&lt;/p&gt;
-
-&lt;p&gt;Navigate to: Computer Configuration \ Windows Settings \ Security Settings \ Application Control Policies \ AppLocker&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.37.47-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.37.47-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.37.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Now we need click on &amp;ldquo;Configure rule enforcement&amp;rdquo; and enable Execution Rules and Script Rules:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.39.32-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.39.32-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.39.32 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Next right click Executable Rules -&amp;gt; Create New Rule:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.42.25-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.42.25-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.42.25 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.43.02-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.43.02-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.43.02 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.43.38-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.43.38-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.43.38 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;Click Create -&gt; Yes to Default rules&lt;/blockquote&gt;
-
-&lt;p&gt;At this point go ahead delete the Admin rule that allows and admin to execute any executable, your rules should match this:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.47.01-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.47.01-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.47.01 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Go ahead and setup the Script Rules and block out the temp dir:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.49.18-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.49.18-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.49.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Lets start up the required services needed for Applocker to enforce rules properly:
-    sc config appIDSvc start= auto
-    sc start appIDSvc&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.55.18-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-9.55.18-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 9.55.18 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Lastly we need to update our Group Policies. Reboot your box and run this (you may have to reboot first, if its domain auth you must have the DC on in your VM environment):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Gpupdatep /force
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So lets test out our new setup in Applocker, first I will attempt to run beacon.exe in my restricted environment:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-10.29.07-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-10.29.07-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 10.29.07 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Great this is exactly what we needed to see, now PS in this location:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-10.36.39-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-10.36.39-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 10.36.39 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Now lets test out our new package:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-10.38.10-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-10-15-at-10.38.10-PM.png&#34; alt=&#34;Screen Shot 2015-10-15 at 10.38.10 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Boom! Now we have our payload and the ability to bypass AppLocker using some of the most restrictive settings. Now Nicholas Berthaume didn&amp;rsquo;t talk about this Applocker bypass (maybe I just missed this but this is a pretty sweet technique and all props go out to him)!&lt;/p&gt;
-
-&lt;p&gt;By why does this work? Well we are actually using MSDT.exe to execute our .diagcab package. This is a Microsoft Signed binary which is inherently trusted by Windows! So we can now use this binary to gain code execution just like other App Bypasses using instal-util etc..&lt;/p&gt;
-
-&lt;p&gt;If you don&amp;rsquo;t know much about application whitelist bypasses here is a great list of the current ones that SubTee put out:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/subTee/ApplicationWhitelistBypassTechniques/blob/master/TheList.txt&#34;&gt;https://github.com/subTee/ApplicationWhitelistBypassTechniques/blob/master/TheList.txt&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;1. IEExec -This technique may work in certain envirionments. Its relies on the fact that many organizations trust executables signed by Microsoft. We can misuse this trust by launching a specially crafted .NET application. Example Here: http://www.room362.com/blog/2014/01/16/application-whitelist-bypass-using-ieexec-dot-exe/
-2. Rundll32.exe
-3. ClickOnce Applications dfsvc.exe dfshim.dll
-4. XBAP - XML Browser Applications WPF PresentationHost.exe    
-5. MD5 Hash Collision
- http://www.mathstat.dal.ca/~selinger/md5collision/
-6. PowerShell
- Specifically Reflective Execution
- http://clymb3r.wordpress.com/2013/04/06/reflective-dll-injection-with-powershell/
- https://www.defcon.org/images/defcon-21/dc-21-presentations/Bialek/DEFCON-21-Bialek-PowerPwning-Post-Exploiting-by-Overpowering-Powershell.pdf
-7. .HTA Application Invoke PowerShell Scripts
- Launched by mshta.exe, bypasses IE security settings as well.
-8. bat, vbs, ps1
- 1. cmd.exe /k &amp;lt; script.txt
- 2. cscript.exe //E:vbscript script.txt
- 3. Get-Content script.txt | iex
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;Tradecraft Concerns:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Phishing should work great, the .diagcab probably won&amp;rsquo;t be inspected by boarder protections? (let me know ppl)&lt;/li&gt;
-&lt;li&gt;Code signing cert will need to look legit to the target (so keep that in mind)&lt;/li&gt;
-&lt;li&gt;Powershell script can easily be pulled from the package, so use something encrypted for stager&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;I really hope you got something out of this! Let me know on twitter @Killswitch_gui what you think or ideas that you have, I love to learn from my peers so let me know what you think or are using this for. All credit for this goes out to:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=-E-JTYjk8_Q&#34;&gt;https://www.youtube.com/watch?v=-E-JTYjk8_Q&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Resources:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://technet.microsoft.com/en-us/library/ee424379.aspx&#34;&gt;https://technet.microsoft.com/en-us/library/ee424379.aspx&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Code Signing Help: &lt;a href=&#34;https://support.globalsign.com/customer/portal/articles/1353601-converting-certificates---openssl&#34;&gt;https://support.globalsign.com/customer/portal/articles/1353601-converting-certificates---openssl&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/dd776530.aspxb&#34;&gt;https://msdn.microsoft.com/en-us/library/dd776530.aspxb&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Simple AppLocker Setup: &lt;a href=&#34;http://www.howtogeek.com/howto/6317/block-users-from-using-certain-applications-with-applocker/&#34;&gt;http://www.howtogeek.com/howto/6317/block-users-from-using-certain-applications-with-applocker/&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
