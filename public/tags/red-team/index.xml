@@ -37,7 +37,7 @@
 &lt;hr /&gt;
 
 &lt;p&gt;&lt;strong&gt;1. CLI Logging of All Operator Terminals:&lt;/strong&gt;
-You may be thinking why in world would I need this level of fidelity and data? Well, a really good buddy of mine &lt;a href=&#34;https://www.sixdub.net/&#34;&gt;@sixdub&lt;/a&gt; let me on to this a year or so ago for a potential integrity and data preservation method for potential discrepancies or de-conflictions. I’m taking this opportunity to push this forward on some of our first OP’s. Bellow is a tool built for just the right solution:&lt;/p&gt;
+You may be thinking why in world would I need this level of fidelity and data? Well, a really good buddy of mine &lt;a href=&#34;https://www.sixdub.net/&#34;&gt;@sixdub&lt;/a&gt; let me on to this a year or so ago for a potential integrity and data preservation method for potential discrepancies or de-conflictions. I’m taking this opportunity to push this forward on some of our first OP’s. Below is a tool built for just the right solution:&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Find the setup here:&lt;/p&gt;
@@ -187,7 +187,7 @@ This is not always enforced depending on engagement and type of operation you ar
     
 &lt;/p&gt;
 
-&lt;p&gt;If you have the time I highly suggest looking at CobaltStikes video on setting up redirectors as this will most likely apply to multiple situations or tools. In most cases, i have found during my setup that Socat was reliable and solid as a brick. I even started asking around and it seems it&amp;rsquo;s the go too. Here is the Socat example from CobaltStrike, the video bellow is a great walk through of this process:&lt;/p&gt;
+&lt;p&gt;If you have the time I highly suggest looking at CobaltStikes video on setting up redirectors as this will most likely apply to multiple situations or tools. In most cases, i have found during my setup that Socat was reliable and solid as a brick. I even started asking around and it seems it&amp;rsquo;s the go too. Here is the Socat example from CobaltStrike, the video below is a great walk through of this process:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;socat TCP4-LISTEN:80,fork TCP4:54.197.3.16:80
 &lt;/code&gt;&lt;/pre&gt;

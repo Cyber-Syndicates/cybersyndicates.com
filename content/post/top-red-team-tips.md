@@ -20,7 +20,7 @@ As some of you may know I made a huge transition recently from my former team AT
 This brings me to our subject, recently I had put a ton of time into thinking out red team architecture and wanted to share. This will cover security and tips for a successful engagement. While some of this may seem “excessive”, you have to take this type of work very serious as you will be holding the keys to the kingdom of your company or target! With data dumps like shadow brokers apparently owning the equation group (Not here to say that’s true or valid data) nothing is safe and we must reduce our risk and only expose limited attack surface just as we help our clients.  
 ****
 **1. CLI Logging of All Operator Terminals:**
-You may be thinking why in world would I need this level of fidelity and data? Well, a really good buddy of mine [@sixdub](https://www.sixdub.net/) let me on to this a year or so ago for a potential integrity and data preservation method for potential discrepancies or de-conflictions. I’m taking this opportunity to push this forward on some of our first OP’s. Bellow is a tool built for just the right solution:  
+You may be thinking why in world would I need this level of fidelity and data? Well, a really good buddy of mine [@sixdub](https://www.sixdub.net/) let me on to this a year or so ago for a potential integrity and data preservation method for potential discrepancies or de-conflictions. I’m taking this opportunity to push this forward on some of our first OP’s. Below is a tool built for just the right solution:  
 
 > Find the setup here:
 
@@ -50,7 +50,7 @@ This is a bit of safeguard against burning all of your C2 at one time as well as
 This is not always enforced depending on engagement and type of operation you are conducting. Heck, I have broken this rule in all types of scenarios, for phishing or another quick testing. The reality of the matter your core C2 servers or “Team Servers” if you are a CS user are HVA (High-Value Assets) and need to be secured like one. This mean full-scale firewall to only allow the ports used for an engagement (80,443,8080) and IPTable rules for allowed IP space for ssh and inbound connections from our redirectors. While our redirectors will come and go we need to trust our core C2 servers, and if they are exposed at any given time all it takes is a patient attacker to gain access. Lastly, never re-use a redirector. NEVER CROSS STREAMS! 
 {{< img-post path="/image" file="vps_redirectors.jpg" alt="red team redirctors" type="center" percent="100">}}
 
-If you have the time I highly suggest looking at CobaltStikes video on setting up redirectors as this will most likely apply to multiple situations or tools. In most cases, i have found during my setup that Socat was reliable and solid as a brick. I even started asking around and it seems it's the go too. Here is the Socat example from CobaltStrike, the video bellow is a great walk through of this process:
+If you have the time I highly suggest looking at CobaltStikes video on setting up redirectors as this will most likely apply to multiple situations or tools. In most cases, i have found during my setup that Socat was reliable and solid as a brick. I even started asking around and it seems it's the go too. Here is the Socat example from CobaltStrike, the video below is a great walk through of this process:
  
 ```
 socat TCP4-LISTEN:80,fork TCP4:54.197.3.16:80
