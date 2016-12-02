@@ -22,13 +22,17 @@ This brings me to our subject, recently I had put a ton of time into thinking ou
 **1. CLI Logging of All Operator Terminals:**
 You may be thinking why in world would I need this level of fidelity and data? Well, a really good buddy of mine [@sixdub](https://www.sixdub.net/) let me on to this a year or so ago for a potential integrity and data preservation method for potential discrepancies or de-conflictions. I’m taking this opportunity to push this forward on some of our first OP’s. Bellow is a tool built for just the right solution:  
 
-*Find the setup here:*
+> Find the setup here:
+
 <div class="github-card" data-github="killswitch-gui/lterm" data-width="400" data-height="153" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
-*Here is a small example of global terminal logging:*
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3rbCTW_IBrk" frameborder="0" allowfullscreen></iframe>
+> Here is a small example of global terminal logging:
+
+<iframe src="https://player.vimeo.com/video/194050322?autoplay=1&loop=1" width="640" height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 ****
+
 **2. Restricted Payload Delivery :**
 This is something I have not done in a bit and generally only required during specific circumstances. I’m here to tell you that we may be doing it all wrong, after an incident where a payload was spread via a secondary source and made its way out of scope you will want to take this advice. Ensure that not only are there clearly defined scoping and external IP space but take the time to setup your C2 to only allow communication to your payload stagger to trusted sources. A couple ways you can go about this which is some really cool work from @bluescreenofjeff is using Apache mod_rewrite rules. In a combination of the mod rewrite edits you can raise the sophistication level of uncovering your C2.   [bluescreenofjeff mod_rewrite series]( https://bluescreenofjeff.com/tags#mod_rewrite) has some great ways we can get supper paranoid during setup. Using rules for OS, mobile hits (how you want to handle these), browser based (using an HTA like this for IE:  [HTA-Example]( https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/ProxyAware-ps-Stager.hta)) and even handling user redirection not matching our C2 Profile we use. One of the main concerns is we want to ensure that our payload just does not stage to external IP space that me out of scope or even an IR toolset, this will increase the duration and sophistication to a long living C2 architecture.
 {{< img-post path="/image" file="apache_mod_overview.png" alt="VPS with apache mod_rewrite" type="center" percent="100">}}
@@ -64,7 +68,8 @@ $ sudo tcpdump -n > test.txt
 
   1. Do not share domain names by using sub-domains across any part of the separate core C2 servers. 
 
-  2. Register all domain with different POCs or only use private registration. With new tools like Whoisology.com doing reverse register name lookups takes seconds. Within minutes the blue team will be able to use hard indicators to destroy your foothold.
+  2. Register all domain with different POCs or only use private registration. With new tools like Whoisology.com doing reverse register name lookups takes seconds. Within minutes the blue team will be able to use hard indicators to destroy your foothold. Take a look at the ease of finding connected domains:
+  <iframe src="https://player.vimeo.com/video/194049240?autoplay=1&loop=1" width="640" height="372" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   * We setup three servers for Phishing, Active OP’s, and Long Term and we put them all in the same geographical region and /24 IP-space. Well, that was an easy win for the blue team! Please use separate geographical regions and IP-space for redirectors and core C2 servers. 
   * I have seen this done often and it's generally not an issue, but if you use the same C2 transport for all three separate servers you may have just burnt it all. Let’s say I use CS-HTTP stagers and the blue team catches my phishing server. That team is going to write custom signatures to ID that sort of traffic. Take the time use DNS/HTTP/HTTPS at all stages to give them a treat 
   * Following the last recommendation CS supports malleable C2 profiles, use them they work trust me! With that, you need to be careful if your target is Government related think twice with using streaming services. Use this in good taste or write custom ones that your target will most likely use, and think about what they may block. 

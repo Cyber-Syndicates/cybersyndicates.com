@@ -40,12 +40,18 @@
 &lt;p&gt;&lt;strong&gt;1. CLI Logging of All Operator Terminals:&lt;/strong&gt;
 You may be thinking why in world would I need this level of fidelity and data? Well, a really good buddy of mine &lt;a href=&#34;https://www.sixdub.net/&#34;&gt;@sixdub&lt;/a&gt; let me on to this a year or so ago for a potential integrity and data preservation method for potential discrepancies or de-conflictions. I’m taking this opportunity to push this forward on some of our first OP’s. Bellow is a tool built for just the right solution:&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Find the setup here:&lt;/em&gt;
-&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/lterm&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Find the setup here:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/lterm&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
 &lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Here is a small example of global terminal logging:&lt;/em&gt;
-&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/3rbCTW_IBrk&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Here is a small example of global terminal logging:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;iframe src=&#34;https://player.vimeo.com/video/194050322?autoplay=1&amp;loop=1&#34; width=&#34;640&#34; height=&#34;400&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;hr /&gt;
 
@@ -204,7 +210,8 @@ I know you going to question this! Well, its necessary after recent events with 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Do not share domain names by using sub-domains across any part of the separate core C2 servers.&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Register all domain with different POCs or only use private registration. With new tools like Whoisology.com doing reverse register name lookups takes seconds. Within minutes the blue team will be able to use hard indicators to destroy your foothold.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Register all domain with different POCs or only use private registration. With new tools like Whoisology.com doing reverse register name lookups takes seconds. Within minutes the blue team will be able to use hard indicators to destroy your foothold. Take a look at the ease of finding connected domains:
+&lt;iframe src=&#34;https://player.vimeo.com/video/194049240?autoplay=1&amp;loop=1&#34; width=&#34;640&#34; height=&#34;372&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;We setup three servers for Phishing, Active OP’s, and Long Term and we put them all in the same geographical region and /24 IP-space. Well, that was an easy win for the blue team! Please use separate geographical regions and IP-space for redirectors and core C2 servers.&lt;/p&gt;&lt;/li&gt;
 
