@@ -43,7 +43,7 @@ This is something I have not done in a bit and generally only required during sp
 **3. Separate Servers / C2 Phases for all Stages of an Engagement:**
 This tip is crucial during the construction of your engagements infrastructure. Splitting up your C2 will provide you flexibility, stealth and ability to roll C2 on the unfortunate day you get burnt. So, what do I mean by “splitting” up the Infrastructure? Well in some cases you may be conducting a OP with one team server, but during a red team, all phases of the OP should be separated. 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4w7krkqxRck" frameborder="0" allowfullscreen></iframe>
-This is a bit of safeguard against burning all of your C2 at one time as well as providing redundancy, and a separate team server for coworkers. I have found splitting this up into three core components as seems to be quite effective! Bellow is a basic layout and beginning of what our team arch should look like:  
+This is a bit of safeguard against burning all of your C2 at one time as well as providing redundancy, and a separate team server for coworkers. I have found splitting this up into three core components as seems to be quite effective! Below is a basic layout and beginning of what our team arch should look like:  
 {{< img-post path="/image" file="seprate_vps.jpg" alt="seprate vps red team" type="center" percent="100">}}
 ****
 **4. Always Use Redirectors in Front of Core C2:**
