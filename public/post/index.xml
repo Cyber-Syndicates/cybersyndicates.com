@@ -7,8 +7,177 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <lastBuildDate>Wed, 30 Nov 2016 16:08:28 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 04 Dec 2016 21:39:41 -0500</lastBuildDate>
     <atom:link href="https://cybersyndicates.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Egressing Bluecoat with CobaltStike &amp; Let&#39;s Encrypt</title>
+      <link>https://cybersyndicates.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/</link>
+      <pubDate>Sun, 04 Dec 2016 21:39:41 -0500</pubDate>
+      
+      <guid>https://cybersyndicates.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/</guid>
+      <description>
+
+&lt;p&gt;&lt;iframe width=&#34;640&#34; height=&#34;360&#34; src=&#34;https://www.youtube.com/embed/cgwfjCmKQwM?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+This post is a bit different than other posts I have done in the past, the material I will talking about directly helped me overcome an extremely challenging engagement. When it comes to egress protections I personally am not often met with an environment that I can&amp;rsquo;t get out of. It&amp;rsquo;s not about the skill level of the operator, just the techniques, and processes that we employee as a team and we stick to ensure successful engagements.&lt;/p&gt;
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;During a recent engagement, we followed many of the tips I mentioned in my last post: &lt;a href=&#34;https://cybersyndicates.com/2016/11/top-red-team-tips/&#34;&gt;https://cybersyndicates.com/2016/11/top-red-team-tips/&lt;/a&gt; including using separate C2 transports for each stage of the engagement. Unfortunately, during initial access we were able to obtain DNS callbacks, but never able to transition to our active OP&amp;rsquo;s team server via HTTP or HTTP(S).&lt;/p&gt;
+
+&lt;h3 id=&#34;identifying-a-proxy&#34;&gt;Identifying a Proxy&lt;/h3&gt;
+
+&lt;p&gt;Once you identified issues with obtaining a callback via HTTP or HTTP(S) you should immediately start thinking:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Proxy (web proxy)&lt;/li&gt;
+&lt;li&gt;HTTP(S) interception&lt;/li&gt;
+&lt;li&gt;Domain Categorization&lt;/li&gt;
+&lt;li&gt;Domain life / Rating&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While you could have other issues like HIPS stopping injection, process with no token context. I have also seen people use elevated (SYSTEM) context and attempting to spawn with no way to authenticate to the proxy.&lt;/p&gt;
+
+&lt;p&gt;The first step it to troubleshoot and see if that user can even authenticate to the proxy. I often use PowerShell to easily check to see if I can reach common sites, here is an example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;powershell.exe -w hidden -command $wc = New-Object System.Net.Webclient; $wc.Headers.Add(&#39;User-Agent&#39;,&#39;Mozilla/5.0 (Windows NT 6.1; WOW64;Trident/7.0; AS; rv:11.0) Like Gecko&#39;); $wc.proxy= [System.Net.WebRequest]::DefaultWebProxy; $wc.proxy.credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials; $wc.downloadstring(&#39;http://google.com/&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once you have confirmed that the token context or process that your currently in has the ability to authenticate you can move forward. If not try the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Target a user process and inject into that to operate within.&lt;/li&gt;
+&lt;li&gt;Target specific process: exporer.exe, chrome.exe, ie.exe&lt;/li&gt;
+&lt;li&gt;Move to a different beacon, often proxies will expire connections. I have been in situations where the beacon would go stale every 30 or so mins.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;egress-constraints&#34;&gt;Egress Constraints&lt;/h3&gt;
+
+&lt;p&gt;Once you have confirmed that you are dealing with a proxy, you will have to start troubleshooting the issues. The three things we will cover: Domain Age, Domain Categorization, HTTPS Certs.&lt;/p&gt;
+
+&lt;h4 id=&#34;domain-age&#34;&gt;Domain Age&lt;/h4&gt;
+
+&lt;p&gt;In most cases domain age does not come into play. While it’s very rare we see an environment with that level of egress protections, its totally reasonable to be doing. Websense can perform this, bluecoat uses WebFilter and domain age of 14 days or less are often blocked by these devices.&lt;/p&gt;
+
+&lt;p&gt;To test for this I often take an older domain that I know is blog personally owned site. These are often only a few years old and they will help you potentially rule out the domain age. You could follow many of the steps and may have to retool to a domain maybe you owned for a good bit. I know I hold about 5 domains myself for testing so domain age &lt;em&gt;should&lt;/em&gt; not be a major issue.&lt;/p&gt;
+
+&lt;h4 id=&#34;domain-categorization&#34;&gt;Domain Categorization&lt;/h4&gt;
+
+&lt;p&gt;We often out of habit attempt to get our domain categorized before we start and engagement. This process is scary easy and we often only go to a few different locations. Some safe bets to target:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Government&lt;/li&gt;
+&lt;li&gt;IT Tech&lt;/li&gt;
+&lt;li&gt;Finance&lt;/li&gt;
+&lt;li&gt;News&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Try to avoid personal tags, streaming service etc, those can often be blocked to prevent bandwidth use or they don&amp;rsquo;t want their employees spending all day on Hulu. You can easily clone a site with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget –mk www.example.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I suggest taking the time and finding something close with the keywords that you are trying to target for domain categorization. Once you have the website setup submit it to the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://sitereview.bluecoat.com/sitereview.jsp&#34;&gt;https://sitereview.bluecoat.com/sitereview.jsp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://community.opendns.com/domaintagging/&#34;&gt;https://community.opendns.com/domaintagging/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.brightcloud.com/tools/change-request-url-categorization.php&#34;&gt;https://www.brightcloud.com/tools/change-request-url-categorization.php&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://archive.lightspeedsystems.com&#34;&gt;https://archive.lightspeedsystems.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.forcepoint.com/KBArticle?id=How-To-Submit-Uncategorized-Sites&#34;&gt;https://support.forcepoint.com/KBArticle?id=How-To-Submit-Uncategorized-Sites&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;domain-certification&#34;&gt;Domain Certification&lt;/h4&gt;
+
+&lt;p&gt;The last thing that plays into the domain overall score is if it contains a proper SSL cert. For a long time, up till recently to obtain an SSL cert you had to go through a register that would properly issue you a cert and prove you owned the domain etc. Many levels of authenticity exist for SSL certs. So this added a small level of complexity for most testers due to the monetary investment as well as the time it generally took to be issued the cert.&lt;/p&gt;
+
+&lt;p&gt;Three types of certs we will see; Wildcard, Multi-Domain, and EV (Extended Validation)/SAN certs. While different proxies likely filter and block on the type of cert, I would imagine most environments will allow properly signed certs through. In my case, I was using the self-signed certificate from CobaltStrike and being blocked. Using a self-signed cert not only looks highly suspicious but also could be easily blocked. We will be using Let&amp;rsquo;s Encrypt next to help build that domain ranking, score and hopefully find a path out.&lt;/p&gt;
+
+&lt;p&gt;Its general worth just using the PowerShell one liner to request your C2 HTTPS site. Letting you see a returned a status code or HTML that fingerprint the Proxy you are being blocked by. In my case I was able to see the Bluecoat ProxySG page displayed for “blocked content”.&lt;/p&gt;
+
+&lt;p&gt;The last thing we will test is the ability to reach a “sample” site that would match your parameters. Using PowerShell once again we will attempt to find a site that has the correct domain categorization and contains a Let&amp;rsquo;s Encrypt Cert. In my case I used Cybersyndicates.com since I host my site with a LetsEncypt cert and I have IT / Computer Security Rating with Bluecoat.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;powershell.exe -w hidden -command $wc = New-Object System.Net.Webclient; $wc.Headers.Add(&#39;User-Agent&#39;,&#39;Mozilla/5.0 (Windows NT 6.1; WOW64;Trident/7.0; AS; rv:11.0) Like Gecko&#39;); $wc.proxy= [System.Net.WebRequest]::DefaultWebProxy; $wc.proxy.credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials; $wc.downloadstring(&#39;https://cybersyndicates.com/&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This worked since Bluecoat trusted the root chain of the cert which is signed by DST. We now know a bit of intel of what is stopping us and how we can circumvent this.&lt;/p&gt;
+
+&lt;h2 id=&#34;cobaltstrike-integration-with-let-s-encypt-process&#34;&gt;CobaltStrike Integration with Let&amp;rsquo;s Encypt Process&lt;/h2&gt;
+
+&lt;p&gt;Once you have found a combination that works its time move forward with setting up your C2 Server. The process is a bit long manually, so follow along and at the end, I will provide an easy to use setup script for this entire process.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Install the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Sudo apt-get install keytool openssl git apache2 -y
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Start Apache2&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;service apache2 start
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Check to ensure Apache2 is listening on 80, and the return value should 1. *note: this is important as Let&amp;rsquo;s Encrypt will use this to verify you own the domain.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lsof -nPi | grep -i apache | grep -c &amp;quot;:80 (LISTEN)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;In my case with Ubuntu images allow port 80,443 through the firewall:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ufw allow 80/tcp
+ufw allow 443/tcp
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install Let&amp;rsquo;s Encrypt:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/certbot/certbot /opt/Let&#39;s Encrypt
+cd /opt/Let&#39;s Encrypt
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Run Let&amp;rsquo;s Encrypt ($domain is you domain name): *note: I found the &amp;ndash;register-unsafely-without-email flag hidden in the documentation, which will allow you easily run this script without any prompts from Let&amp;rsquo;s Encrypt&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./Let&#39;s Encrypt-auto --apache -d $domain -n --register-unsafely-without-email --agree-tos
+cat /etc/Let&#39;s Encrypt/live/$domain/fullchain.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Following some documentation from CobaltStrike (&lt;a href=&#34;https://www.cobaltstrike.com/help-malleable-c2&#34;&gt;https://www.cobaltstrike.com/help-malleable-c2&lt;/a&gt;) we find we will need a Java KeyStore, to do this will first need make our PKCS12 certs.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /etc/Let&#39;s Encrypt/live/$domain
+openssl pkcs12 -export -in fullchain.pem -inkey privkey.pem -out $domainPkcs -name $domain -passout pass:$password
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Building java keystore via keytool:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;keytool -importkeystore -deststorepass $password -destkeypass $password -destkeystore $domainStore -srckeystore $domainPkcs -srcstoretype PKCS12 -srcstorepass $password -alias $domain
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Make a directory for https in CS dir, and copy the new store:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir ~/CobaltStrike/https
+cp $domainStore ~/CobaltStrike/https/
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Setup CobaltStrike Malleable C2 Profile to use SSL cert:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://raw.githubusercontent.com/rsmudge/Malleable-C2-Profiles/master/normal/amazon.profile --no-check-certificate -O amazon.profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add the following lines to the new amazon profile with the settings you built the keystore with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;https-certificate {
+set keystore &amp;quot;domain.store&amp;quot;;
+set password &amp;quot;mypassword&amp;quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;cobaltstrike-integration-with-let-s-encypt-automated&#34;&gt;CobaltStrike Integration with Let&amp;rsquo;s Encypt Automated&lt;/h2&gt;
+
+&lt;p&gt;Of course, I had to do this on MANY domains so I automated the process so you don’t make mistakes and this whole process takes less that 2 mins top!&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/killswitch-GUI/bdf00b3bc7035abf7d42c516933d0cac.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
     
     <item>
       <title>6 Red Team Infrastructure Tips</title>
@@ -2791,115 +2960,6 @@ Each of the lines above is in the main.conf file by default. There are a few cha
 &lt;p&gt;Get additional information from:&lt;/p&gt;
 
 &lt;p&gt;**OSSEC. &lt;strong&gt;[&lt;/strong&gt;&lt;a href=&#34;http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html**](http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html&#34;&gt;http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html**](http://ossec-docs.readthedocs.org/en/latest/manual/rules-decoders/create-custom.html&lt;/a&gt;)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Email Harvesting with HTML Scraping Module: theHarvester</title>
-      <link>https://cybersyndicates.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</link>
-      <pubDate>Sun, 14 Jun 2015 01:26:31 +0000</pubDate>
-      
-      <guid>https://cybersyndicates.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</guid>
-      <description>
-
-&lt;p&gt;After a recent Red Team training , I was faced with a issue where I had to conduct a Email phishing campaign to gain initial access using Email Harvesting. This isn&amp;rsquo;t anything necessarily new or a subject that has been touched on a million times. But my goal wasn&amp;rsquo;t to recreate the wheel or create a entirely new tool. I knew from past engagements that there are some great tools like &lt;a href=&#34;http://www.edge-security.com/theharvester.php&#34;&gt;theHarvester&lt;/a&gt; project out there:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-9.32.34-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-9.32.34-PM.png&#34; alt=&#34;Screen Shot 2015-06-11 at 9.32.34 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;But I came across a ridiculous issue; I had no access to external net. Only internal web servers for the cyber range we where conducting the training in. This scenario isn&amp;rsquo;t as unrealistic as you may think, you could be on an internal network assessment and may have to gain secondary access through different means if phishing is in scope. In this case with the limited network ability the target surface was limited and quite small, but yet we didn&amp;rsquo;t have access to the normal means of recon. Using the extended set of options of the harvester can yield some great results, but all of its current modules are online dependent. With search options using Google and Bing you can gather tons of data, but these functions wouldn&amp;rsquo;t help me a bit.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-10.51.51-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-11-at-10.51.51-PM.png&#34; alt=&#34;Screen Shot 2015-06-11 at 10.51.51 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h5 id=&#34;current-search-options-for-theharvester&#34;&gt;(Current Search Options for TheHarvester)&lt;/h5&gt;
-
-&lt;p&gt;So I knew I wasn&amp;rsquo;t going to search a page head-to-toe when time counts. The obvious email address&amp;rsquo;s on the home page is a start, but I needed something fast and that would yield a 100 percent insurance that I had all the emails required to conduct the lab. Of course it was time for some simple command line kung-fu!&lt;/p&gt;
-
-&lt;h3 id=&#34;step-by-step-execution&#34;&gt;Step-By-Step Execution&lt;/h3&gt;
-
-&lt;p&gt;Here are the preliminary steps I took to begin searching a domain for Email addresses:**_&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;First I started off knowing that I needed to clone the website for the ability to search and browse the site for other info I may need down the road. I knew theHarvester had no offline ability so I moved to Wget. This command bellow will allow you to reclusively mirror a site:&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code&gt;wget --directory-prefix=/root/Desktop/ --domains target.com --recursive --no-clobber --page-requisites --html-extension --convert-links --restrict-file-names=windows www.target.com
-
-
-
---directory-prefix=/root/Desktop/   ==  Allows you to specify the output location of the cloned site (wget outputs a dir)
-
---recursive == Follows links and directory structure, by default has a depth of 5
-
---level=1500 == The depth (directory structure) you want the recursive search to go. **You may want to add this**
-
---wait=5 == Sets the time to wait between request, helps to not get blocked by pesky admins **You may want to add this**
-
---limit-rate=10K == sets max bandwidth for wget to consume, helps to not get blocked by pesky admins **May want to add this**
-
---read-timeout=15 == Sets max time spent attempting to download file before it moves on **You may want to add this**
-
---no-clobber == Incase you have to restart it won&#39;t overwrite what has been saved
-
---page-requisites == Download all the files that are necessary to properly display a given HTML page
-
---html-extension == download CSS files as well
-
---convert-links  == Convert the links in the document to make them suitable for local viewing
-
---domains target.com == Sets you scope so you don&#39;t follow links outside the target domain
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The next step is to parse this data and grep for any email addresses within the HTML source code. This is relativity easy to accomplish when recessively searching for the data.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    grep -r &amp;quot;@&amp;quot; | grep -i -o &#39;[A-Z0-9._%+-]\+@[A-Z0-9.-]\+\.[A-Z]\{2,4\}&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code&gt;-r &amp;quot;@&amp;quot; == Using the -r will recursively search the directory
--i == Perform case insensitive matching sources
--o == Show only the part of a matching line that matches PATTERN.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-12-at-2.05.03-PM.png&#34; alt=&#34;Screen Shot 2015-06-12 at 2.05.03 PM&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;At this point I was able to simply output line by line the email address&amp;rsquo;s I gathered and still had a mirrored site for further recon if needed.&lt;/p&gt;
-
-&lt;h3 id=&#34;automation&#34;&gt;Automation&lt;/h3&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;I knew at this point that I wanted a easy way to do this and at the same time I knew that making some simple script wouldn&amp;rsquo;t help anyone. So I set off to add this function into the harvester so other could use this simple way of gathering email addresses.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-9.10.24-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-9.10.24-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 9.10.24 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;After looking at the code for roughly a few hours I knew that adapting this particular function wasn&amp;rsquo;t going to be hard, but I knew I had to match the coding style of Christian Martorella otherwise it would never get added. So I set off and built a simple way of automating this. I did run into a few problems when it came to recursive mirroring in pythons current modules. With documented issues with proxies and VPN support in Urlib, this was really a turn off for me as I may be using a VPN to conduct work. Well nothing seemed to do it near as good as Wget implemented it. So using pythons &lt;em&gt;sub.process&lt;/em&gt; module was going to be the most effective way of implementation and was supported on almost any nix system.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.43.00-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.43.00-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.43.00 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Some other major issues were using default values in the current command line parser. Currently theHarvester doesn&amp;rsquo;t use &lt;em&gt;argparse&lt;/em&gt; so I had in a few nasty if statements (If anyone knows a better way please let me know bellow!).&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.47.00-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.47.00-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.47.00 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;lastly a simple demo:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.50.04-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.50.04 PM&#34; /&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;python theHarvester.py -d www.puttargethere.com -b html-source
-or more advance options:
-python theHarvester.py -d www.puttargethere.com -b html-source -j 10 -w 3 -r 200k -i 3 -o /foo/bar/
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can see the output format hasn&amp;rsquo;t changed and would simple be another option to add:
-&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-06-13-at-8.50.30-PM.png&#34; alt=&#34;Screen Shot 2015-06-13 at 8.50.30 PM&#34; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;note&#34;&gt;NOTE:&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;As of today I will be forking, and creating a branch for a pull request. Hopefully he would add in the module I built! If not it won&amp;rsquo;t hurt my feelings.. You can always come download &lt;a href=&#34;https://github.com/killswitch-GUI/theHarvester/tree/Html_source&#34;&gt;my forked version on Git&lt;/a&gt;.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Sources:&lt;/p&gt;
-
-&lt;p&gt;[*] &lt;a href=&#34;http://www.linuxjournal.com/content/downloading-entire-web-site-wget&#34;&gt;http://www.linuxjournal.com/content/downloading-entire-web-site-wget&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;[*] &lt;a href=&#34;https://github.com/laramies/theHarvester&#34;&gt;https://github.com/laramies/theHarvester&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

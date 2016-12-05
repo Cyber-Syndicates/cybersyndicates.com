@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Egressing Bluecoat with CobaltStike &amp; Let&#39;s Encrypt &middot; Red Team | Hacking | Infosec | TTPs</title>
+        <meta name="description" content="Circumvent Bluecoat proxy with Let&#39;s Encrypt">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.17" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+        <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
+        <meta name="application-name" content="&nbsp;"/>
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+        <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+        <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+        <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+        <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+        <meta property="og:image" content="/image/cybersyndicates_homepage.png">
+
+        <meta property="og:title" content="Egressing Bluecoat with CobaltStike &amp; Let&#39;s Encrypt">
+<meta property="og:description" content="Circumvent Bluecoat proxy with Let&#39;s Encrypt">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cybersyndicates.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/">
+        <link rel="stylesheet" href="https://cybersyndicates.com/css/normalize.css">
+        <link rel="stylesheet" href="https://cybersyndicates.com/css/highlight.css">
+        <link rel="stylesheet" href="https://cybersyndicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="https://cybersyndicates.com/">
+                            <img src="/logo.png" alt="The Team" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="https://cybersyndicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://cybersyndicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/cybersyndicates">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="YouTube" title="YouTube" href="https://www.youtube.com/user/Rymdeko">
+                                <i class="fa fa-youtube"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Presentations" href="/presentations/">Presentations</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Egressing Bluecoat with CobaltStike &amp; Let&#39;s Encrypt</h1>
+    
+        <p class="post-description" itemprop="description">Circumvent Bluecoat proxy with Let&#39;s Encrypt</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2016-12-04" itemprop="datePublished">Sun, Dec 4, 2016</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://google.com/&#43;XXX" itemprop="url" rel="author">Alexander Rymdeko-Harvey</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<p><iframe width="640" height="360" src="https://www.youtube.com/embed/cgwfjCmKQwM?rel=0" frameborder="0" allowfullscreen></iframe>
+This post is a bit different than other posts I have done in the past, the material I will talking about directly helped me overcome an extremely challenging engagement. When it comes to egress protections I personally am not often met with an environment that I can&rsquo;t get out of. It&rsquo;s not about the skill level of the operator, just the techniques, and processes that we employee as a team and we stick to ensure successful engagements.</p>
+
+<h2 id="background">Background</h2>
+
+<p>During a recent engagement, we followed many of the tips I mentioned in my last post: <a href="https://cybersyndicates.com/2016/11/top-red-team-tips/">https://cybersyndicates.com/2016/11/top-red-team-tips/</a> including using separate C2 transports for each stage of the engagement. Unfortunately, during initial access we were able to obtain DNS callbacks, but never able to transition to our active OP&rsquo;s team server via HTTP or HTTP(S).</p>
+
+<h3 id="identifying-a-proxy">Identifying a Proxy</h3>
+
+<p>Once you identified issues with obtaining a callback via HTTP or HTTP(S) you should immediately start thinking:</p>
+
+<ul>
+<li>Proxy (web proxy)</li>
+<li>HTTP(S) interception</li>
+<li>Domain Categorization</li>
+<li>Domain life / Rating</li>
+</ul>
+
+<p>While you could have other issues like HIPS stopping injection, process with no token context. I have also seen people use elevated (SYSTEM) context and attempting to spawn with no way to authenticate to the proxy.</p>
+
+<p>The first step it to troubleshoot and see if that user can even authenticate to the proxy. I often use PowerShell to easily check to see if I can reach common sites, here is an example:</p>
+
+<pre><code>powershell.exe -w hidden -command $wc = New-Object System.Net.Webclient; $wc.Headers.Add('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64;Trident/7.0; AS; rv:11.0) Like Gecko'); $wc.proxy= [System.Net.WebRequest]::DefaultWebProxy; $wc.proxy.credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials; $wc.downloadstring('http://google.com/')
+</code></pre>
+
+<p>Once you have confirmed that the token context or process that your currently in has the ability to authenticate you can move forward. If not try the following:</p>
+
+<ol>
+<li>Target a user process and inject into that to operate within.</li>
+<li>Target specific process: exporer.exe, chrome.exe, ie.exe</li>
+<li>Move to a different beacon, often proxies will expire connections. I have been in situations where the beacon would go stale every 30 or so mins.</li>
+</ol>
+
+<h3 id="egress-constraints">Egress Constraints</h3>
+
+<p>Once you have confirmed that you are dealing with a proxy, you will have to start troubleshooting the issues. The three things we will cover: Domain Age, Domain Categorization, HTTPS Certs.</p>
+
+<h4 id="domain-age">Domain Age</h4>
+
+<p>In most cases domain age does not come into play. While it’s very rare we see an environment with that level of egress protections, its totally reasonable to be doing. Websense can perform this, bluecoat uses WebFilter and domain age of 14 days or less are often blocked by these devices.</p>
+
+<p>To test for this I often take an older domain that I know is blog personally owned site. These are often only a few years old and they will help you potentially rule out the domain age. You could follow many of the steps and may have to retool to a domain maybe you owned for a good bit. I know I hold about 5 domains myself for testing so domain age <em>should</em> not be a major issue.</p>
+
+<h4 id="domain-categorization">Domain Categorization</h4>
+
+<p>We often out of habit attempt to get our domain categorized before we start and engagement. This process is scary easy and we often only go to a few different locations. Some safe bets to target:</p>
+
+<ul>
+<li>Government</li>
+<li>IT Tech</li>
+<li>Finance</li>
+<li>News</li>
+</ul>
+
+<p>Try to avoid personal tags, streaming service etc, those can often be blocked to prevent bandwidth use or they don&rsquo;t want their employees spending all day on Hulu. You can easily clone a site with:</p>
+
+<pre><code>wget –mk www.example.com
+</code></pre>
+
+<p>I suggest taking the time and finding something close with the keywords that you are trying to target for domain categorization. Once you have the website setup submit it to the following:</p>
+
+<ul>
+<li><a href="https://sitereview.bluecoat.com/sitereview.jsp">https://sitereview.bluecoat.com/sitereview.jsp</a></li>
+<li><a href="https://community.opendns.com/domaintagging/">https://community.opendns.com/domaintagging/</a></li>
+<li><a href="https://www.brightcloud.com/tools/change-request-url-categorization.php">https://www.brightcloud.com/tools/change-request-url-categorization.php</a></li>
+<li><a href="https://archive.lightspeedsystems.com">https://archive.lightspeedsystems.com</a></li>
+<li><a href="https://support.forcepoint.com/KBArticle?id=How-To-Submit-Uncategorized-Sites">https://support.forcepoint.com/KBArticle?id=How-To-Submit-Uncategorized-Sites</a></li>
+</ul>
+
+<h4 id="domain-certification">Domain Certification</h4>
+
+<p>The last thing that plays into the domain overall score is if it contains a proper SSL cert. For a long time, up till recently to obtain an SSL cert you had to go through a register that would properly issue you a cert and prove you owned the domain etc. Many levels of authenticity exist for SSL certs. So this added a small level of complexity for most testers due to the monetary investment as well as the time it generally took to be issued the cert.</p>
+
+<p>Three types of certs we will see; Wildcard, Multi-Domain, and EV (Extended Validation)/SAN certs. While different proxies likely filter and block on the type of cert, I would imagine most environments will allow properly signed certs through. In my case, I was using the self-signed certificate from CobaltStrike and being blocked. Using a self-signed cert not only looks highly suspicious but also could be easily blocked. We will be using Let&rsquo;s Encrypt next to help build that domain ranking, score and hopefully find a path out.</p>
+
+<p>Its general worth just using the PowerShell one liner to request your C2 HTTPS site. Letting you see a returned a status code or HTML that fingerprint the Proxy you are being blocked by. In my case I was able to see the Bluecoat ProxySG page displayed for “blocked content”.</p>
+
+<p>The last thing we will test is the ability to reach a “sample” site that would match your parameters. Using PowerShell once again we will attempt to find a site that has the correct domain categorization and contains a Let&rsquo;s Encrypt Cert. In my case I used Cybersyndicates.com since I host my site with a LetsEncypt cert and I have IT / Computer Security Rating with Bluecoat.</p>
+
+<pre><code>powershell.exe -w hidden -command $wc = New-Object System.Net.Webclient; $wc.Headers.Add('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64;Trident/7.0; AS; rv:11.0) Like Gecko'); $wc.proxy= [System.Net.WebRequest]::DefaultWebProxy; $wc.proxy.credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials; $wc.downloadstring('https://cybersyndicates.com/')
+</code></pre>
+
+<p>This worked since Bluecoat trusted the root chain of the cert which is signed by DST. We now know a bit of intel of what is stopping us and how we can circumvent this.</p>
+
+<h2 id="cobaltstrike-integration-with-let-s-encypt-process">CobaltStrike Integration with Let&rsquo;s Encypt Process</h2>
+
+<p>Once you have found a combination that works its time move forward with setting up your C2 Server. The process is a bit long manually, so follow along and at the end, I will provide an easy to use setup script for this entire process.</p>
+
+<ol>
+<li><p>Install the following:</p>
+
+<pre><code>Sudo apt-get install keytool openssl git apache2 -y
+</code></pre></li>
+
+<li><p>Start Apache2</p>
+
+<pre><code>service apache2 start
+</code></pre></li>
+
+<li><p>Check to ensure Apache2 is listening on 80, and the return value should 1. *note: this is important as Let&rsquo;s Encrypt will use this to verify you own the domain.</p>
+
+<pre><code>lsof -nPi | grep -i apache | grep -c &quot;:80 (LISTEN)&quot;
+</code></pre></li>
+
+<li><p>In my case with Ubuntu images allow port 80,443 through the firewall:</p>
+
+<pre><code>ufw allow 80/tcp
+ufw allow 443/tcp
+</code></pre></li>
+
+<li><p>Install Let&rsquo;s Encrypt:</p>
+
+<pre><code>git clone https://github.com/certbot/certbot /opt/Let's Encrypt
+cd /opt/Let's Encrypt
+</code></pre></li>
+
+<li><p>Run Let&rsquo;s Encrypt ($domain is you domain name): *note: I found the &ndash;register-unsafely-without-email flag hidden in the documentation, which will allow you easily run this script without any prompts from Let&rsquo;s Encrypt</p>
+
+<pre><code>./Let's Encrypt-auto --apache -d $domain -n --register-unsafely-without-email --agree-tos
+cat /etc/Let's Encrypt/live/$domain/fullchain.pem
+</code></pre></li>
+
+<li><p>Following some documentation from CobaltStrike (<a href="https://www.cobaltstrike.com/help-malleable-c2">https://www.cobaltstrike.com/help-malleable-c2</a>) we find we will need a Java KeyStore, to do this will first need make our PKCS12 certs.</p>
+
+<pre><code>cd /etc/Let's Encrypt/live/$domain
+openssl pkcs12 -export -in fullchain.pem -inkey privkey.pem -out $domainPkcs -name $domain -passout pass:$password
+</code></pre></li>
+
+<li><p>Building java keystore via keytool:</p>
+
+<pre><code>keytool -importkeystore -deststorepass $password -destkeypass $password -destkeystore $domainStore -srckeystore $domainPkcs -srcstoretype PKCS12 -srcstorepass $password -alias $domain
+</code></pre></li>
+
+<li><p>Make a directory for https in CS dir, and copy the new store:</p>
+
+<pre><code>mkdir ~/CobaltStrike/https
+cp $domainStore ~/CobaltStrike/https/
+</code></pre></li>
+
+<li><p>Setup CobaltStrike Malleable C2 Profile to use SSL cert:</p>
+
+<pre><code>wget https://raw.githubusercontent.com/rsmudge/Malleable-C2-Profiles/master/normal/amazon.profile --no-check-certificate -O amazon.profile
+</code></pre></li>
+
+<li><p>Add the following lines to the new amazon profile with the settings you built the keystore with:</p>
+
+<pre><code>https-certificate {
+set keystore &quot;domain.store&quot;;
+set password &quot;mypassword&quot;;
+}
+</code></pre></li>
+</ol>
+
+<h2 id="cobaltstrike-integration-with-let-s-encypt-automated">CobaltStrike Integration with Let&rsquo;s Encypt Automated</h2>
+
+<p>Of course, I had to do this on MANY domains so I automated the process so you don’t make mistakes and this whole process takes less that 2 mins top!</p>
+
+<script src="https://gist.github.com/killswitch-GUI/bdf00b3bc7035abf7d42c516933d0cac.js"></script>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=Egressing%20Bluecoat%20with%20CobaltStike%20%26%20Let%27s%20Encrypt&url=https%3a%2f%2fcybersyndicates.com%2f2016%2f12%2fegressing-bluecoat-with-cobaltstike-letsencrypt%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcybersyndicates.com%2f2016%2f12%2fegressing-bluecoat-with-cobaltstike-letsencrypt%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fcybersyndicates.com%2f2016%2f12%2fegressing-bluecoat-with-cobaltstike-letsencrypt%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'cybersyndicates-com';
+    var disqus_identifier = 'https:\/\/cybersyndicates.com\/2016\/12\/egressing-bluecoat-with-cobaltstike-letsencrypt\/';
+    var disqus_title = 'Egressing Bluecoat with CobaltStike \x26 Let\x27s Encrypt';
+    var disqus_url = 'https:\/\/cybersyndicates.com\/2016\/12\/egressing-bluecoat-with-cobaltstike-letsencrypt\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="https://cybersyndicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://cybersyndicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="https://cybersyndicates.com/js/jquery.fitvids.js"></script>
+        <script src="https://cybersyndicates.com/js/scripts.js"></script>
+    </body>
+</html>
+

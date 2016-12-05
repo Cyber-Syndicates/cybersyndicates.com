@@ -7,8 +7,177 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <lastBuildDate>Wed, 30 Nov 2016 16:08:28 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 04 Dec 2016 21:39:41 -0500</lastBuildDate>
     <atom:link href="https://cybersyndicates.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Egressing Bluecoat with CobaltStike &amp; Let&#39;s Encrypt</title>
+      <link>https://cybersyndicates.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/</link>
+      <pubDate>Sun, 04 Dec 2016 21:39:41 -0500</pubDate>
+      
+      <guid>https://cybersyndicates.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/</guid>
+      <description>
+
+&lt;p&gt;&lt;iframe width=&#34;640&#34; height=&#34;360&#34; src=&#34;https://www.youtube.com/embed/cgwfjCmKQwM?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+This post is a bit different than other posts I have done in the past, the material I will talking about directly helped me overcome an extremely challenging engagement. When it comes to egress protections I personally am not often met with an environment that I can&amp;rsquo;t get out of. It&amp;rsquo;s not about the skill level of the operator, just the techniques, and processes that we employee as a team and we stick to ensure successful engagements.&lt;/p&gt;
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;During a recent engagement, we followed many of the tips I mentioned in my last post: &lt;a href=&#34;https://cybersyndicates.com/2016/11/top-red-team-tips/&#34;&gt;https://cybersyndicates.com/2016/11/top-red-team-tips/&lt;/a&gt; including using separate C2 transports for each stage of the engagement. Unfortunately, during initial access we were able to obtain DNS callbacks, but never able to transition to our active OP&amp;rsquo;s team server via HTTP or HTTP(S).&lt;/p&gt;
+
+&lt;h3 id=&#34;identifying-a-proxy&#34;&gt;Identifying a Proxy&lt;/h3&gt;
+
+&lt;p&gt;Once you identified issues with obtaining a callback via HTTP or HTTP(S) you should immediately start thinking:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Proxy (web proxy)&lt;/li&gt;
+&lt;li&gt;HTTP(S) interception&lt;/li&gt;
+&lt;li&gt;Domain Categorization&lt;/li&gt;
+&lt;li&gt;Domain life / Rating&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While you could have other issues like HIPS stopping injection, process with no token context. I have also seen people use elevated (SYSTEM) context and attempting to spawn with no way to authenticate to the proxy.&lt;/p&gt;
+
+&lt;p&gt;The first step it to troubleshoot and see if that user can even authenticate to the proxy. I often use PowerShell to easily check to see if I can reach common sites, here is an example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;powershell.exe -w hidden -command $wc = New-Object System.Net.Webclient; $wc.Headers.Add(&#39;User-Agent&#39;,&#39;Mozilla/5.0 (Windows NT 6.1; WOW64;Trident/7.0; AS; rv:11.0) Like Gecko&#39;); $wc.proxy= [System.Net.WebRequest]::DefaultWebProxy; $wc.proxy.credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials; $wc.downloadstring(&#39;http://google.com/&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once you have confirmed that the token context or process that your currently in has the ability to authenticate you can move forward. If not try the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Target a user process and inject into that to operate within.&lt;/li&gt;
+&lt;li&gt;Target specific process: exporer.exe, chrome.exe, ie.exe&lt;/li&gt;
+&lt;li&gt;Move to a different beacon, often proxies will expire connections. I have been in situations where the beacon would go stale every 30 or so mins.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;egress-constraints&#34;&gt;Egress Constraints&lt;/h3&gt;
+
+&lt;p&gt;Once you have confirmed that you are dealing with a proxy, you will have to start troubleshooting the issues. The three things we will cover: Domain Age, Domain Categorization, HTTPS Certs.&lt;/p&gt;
+
+&lt;h4 id=&#34;domain-age&#34;&gt;Domain Age&lt;/h4&gt;
+
+&lt;p&gt;In most cases domain age does not come into play. While it’s very rare we see an environment with that level of egress protections, its totally reasonable to be doing. Websense can perform this, bluecoat uses WebFilter and domain age of 14 days or less are often blocked by these devices.&lt;/p&gt;
+
+&lt;p&gt;To test for this I often take an older domain that I know is blog personally owned site. These are often only a few years old and they will help you potentially rule out the domain age. You could follow many of the steps and may have to retool to a domain maybe you owned for a good bit. I know I hold about 5 domains myself for testing so domain age &lt;em&gt;should&lt;/em&gt; not be a major issue.&lt;/p&gt;
+
+&lt;h4 id=&#34;domain-categorization&#34;&gt;Domain Categorization&lt;/h4&gt;
+
+&lt;p&gt;We often out of habit attempt to get our domain categorized before we start and engagement. This process is scary easy and we often only go to a few different locations. Some safe bets to target:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Government&lt;/li&gt;
+&lt;li&gt;IT Tech&lt;/li&gt;
+&lt;li&gt;Finance&lt;/li&gt;
+&lt;li&gt;News&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Try to avoid personal tags, streaming service etc, those can often be blocked to prevent bandwidth use or they don&amp;rsquo;t want their employees spending all day on Hulu. You can easily clone a site with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget –mk www.example.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I suggest taking the time and finding something close with the keywords that you are trying to target for domain categorization. Once you have the website setup submit it to the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://sitereview.bluecoat.com/sitereview.jsp&#34;&gt;https://sitereview.bluecoat.com/sitereview.jsp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://community.opendns.com/domaintagging/&#34;&gt;https://community.opendns.com/domaintagging/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.brightcloud.com/tools/change-request-url-categorization.php&#34;&gt;https://www.brightcloud.com/tools/change-request-url-categorization.php&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://archive.lightspeedsystems.com&#34;&gt;https://archive.lightspeedsystems.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.forcepoint.com/KBArticle?id=How-To-Submit-Uncategorized-Sites&#34;&gt;https://support.forcepoint.com/KBArticle?id=How-To-Submit-Uncategorized-Sites&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;domain-certification&#34;&gt;Domain Certification&lt;/h4&gt;
+
+&lt;p&gt;The last thing that plays into the domain overall score is if it contains a proper SSL cert. For a long time, up till recently to obtain an SSL cert you had to go through a register that would properly issue you a cert and prove you owned the domain etc. Many levels of authenticity exist for SSL certs. So this added a small level of complexity for most testers due to the monetary investment as well as the time it generally took to be issued the cert.&lt;/p&gt;
+
+&lt;p&gt;Three types of certs we will see; Wildcard, Multi-Domain, and EV (Extended Validation)/SAN certs. While different proxies likely filter and block on the type of cert, I would imagine most environments will allow properly signed certs through. In my case, I was using the self-signed certificate from CobaltStrike and being blocked. Using a self-signed cert not only looks highly suspicious but also could be easily blocked. We will be using Let&amp;rsquo;s Encrypt next to help build that domain ranking, score and hopefully find a path out.&lt;/p&gt;
+
+&lt;p&gt;Its general worth just using the PowerShell one liner to request your C2 HTTPS site. Letting you see a returned a status code or HTML that fingerprint the Proxy you are being blocked by. In my case I was able to see the Bluecoat ProxySG page displayed for “blocked content”.&lt;/p&gt;
+
+&lt;p&gt;The last thing we will test is the ability to reach a “sample” site that would match your parameters. Using PowerShell once again we will attempt to find a site that has the correct domain categorization and contains a Let&amp;rsquo;s Encrypt Cert. In my case I used Cybersyndicates.com since I host my site with a LetsEncypt cert and I have IT / Computer Security Rating with Bluecoat.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;powershell.exe -w hidden -command $wc = New-Object System.Net.Webclient; $wc.Headers.Add(&#39;User-Agent&#39;,&#39;Mozilla/5.0 (Windows NT 6.1; WOW64;Trident/7.0; AS; rv:11.0) Like Gecko&#39;); $wc.proxy= [System.Net.WebRequest]::DefaultWebProxy; $wc.proxy.credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials; $wc.downloadstring(&#39;https://cybersyndicates.com/&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This worked since Bluecoat trusted the root chain of the cert which is signed by DST. We now know a bit of intel of what is stopping us and how we can circumvent this.&lt;/p&gt;
+
+&lt;h2 id=&#34;cobaltstrike-integration-with-let-s-encypt-process&#34;&gt;CobaltStrike Integration with Let&amp;rsquo;s Encypt Process&lt;/h2&gt;
+
+&lt;p&gt;Once you have found a combination that works its time move forward with setting up your C2 Server. The process is a bit long manually, so follow along and at the end, I will provide an easy to use setup script for this entire process.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Install the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Sudo apt-get install keytool openssl git apache2 -y
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Start Apache2&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;service apache2 start
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Check to ensure Apache2 is listening on 80, and the return value should 1. *note: this is important as Let&amp;rsquo;s Encrypt will use this to verify you own the domain.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lsof -nPi | grep -i apache | grep -c &amp;quot;:80 (LISTEN)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;In my case with Ubuntu images allow port 80,443 through the firewall:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ufw allow 80/tcp
+ufw allow 443/tcp
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install Let&amp;rsquo;s Encrypt:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/certbot/certbot /opt/Let&#39;s Encrypt
+cd /opt/Let&#39;s Encrypt
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Run Let&amp;rsquo;s Encrypt ($domain is you domain name): *note: I found the &amp;ndash;register-unsafely-without-email flag hidden in the documentation, which will allow you easily run this script without any prompts from Let&amp;rsquo;s Encrypt&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;./Let&#39;s Encrypt-auto --apache -d $domain -n --register-unsafely-without-email --agree-tos
+cat /etc/Let&#39;s Encrypt/live/$domain/fullchain.pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Following some documentation from CobaltStrike (&lt;a href=&#34;https://www.cobaltstrike.com/help-malleable-c2&#34;&gt;https://www.cobaltstrike.com/help-malleable-c2&lt;/a&gt;) we find we will need a Java KeyStore, to do this will first need make our PKCS12 certs.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /etc/Let&#39;s Encrypt/live/$domain
+openssl pkcs12 -export -in fullchain.pem -inkey privkey.pem -out $domainPkcs -name $domain -passout pass:$password
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Building java keystore via keytool:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;keytool -importkeystore -deststorepass $password -destkeypass $password -destkeystore $domainStore -srckeystore $domainPkcs -srcstoretype PKCS12 -srcstorepass $password -alias $domain
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Make a directory for https in CS dir, and copy the new store:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir ~/CobaltStrike/https
+cp $domainStore ~/CobaltStrike/https/
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Setup CobaltStrike Malleable C2 Profile to use SSL cert:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://raw.githubusercontent.com/rsmudge/Malleable-C2-Profiles/master/normal/amazon.profile --no-check-certificate -O amazon.profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Add the following lines to the new amazon profile with the settings you built the keystore with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;https-certificate {
+set keystore &amp;quot;domain.store&amp;quot;;
+set password &amp;quot;mypassword&amp;quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;cobaltstrike-integration-with-let-s-encypt-automated&#34;&gt;CobaltStrike Integration with Let&amp;rsquo;s Encypt Automated&lt;/h2&gt;
+
+&lt;p&gt;Of course, I had to do this on MANY domains so I automated the process so you don’t make mistakes and this whole process takes less that 2 mins top!&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/killswitch-GUI/bdf00b3bc7035abf7d42c516933d0cac.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
     
     <item>
       <title>6 Red Team Infrastructure Tips</title>
@@ -2556,63 +2725,6 @@ gpupdatep /force
      except SystemExit:
      os._exit(0)
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>SimplyEmail v0.5: PDFMiner!</title>
-      <link>https://cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/</link>
-      <pubDate>Sat, 21 Nov 2015 18:32:48 +0000</pubDate>
-      
-      <guid>https://cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/</guid>
-      <description>
-
-&lt;h2 id=&#34;major-addition-to-simplyemail-core&#34;&gt;Major addition to SimplyEmail Core&lt;/h2&gt;
-
-&lt;p&gt;When I first started this project I published a pretty in-depth “path” of progression. I told my self I would be following this to help build a tool that would actually enhance and build off what is already open source. I knew I had to have unique methods and content. One thing that I use quite often is google dorking for multiple Intel gathering techniques for a OP, so I knew this had to be added!&lt;/p&gt;
-
-&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;en&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;SimplyEmail v0.5: PDFMiner just added! Email recon with PDF scraping. &lt;a href=&#34;https://t.co/awX3eoRGNK&#34;&gt;https://t.co/awX3eoRGNK&lt;/a&gt; (or on GitHub) &lt;a href=&#34;https://t.co/JVsc7yrflE&#34;&gt;https://t.co/JVsc7yrflE&lt;/a&gt;&lt;/p&gt;&amp;mdash; Alex Rymdeko-harvey (@Killswitch_GUI) &lt;a href=&#34;https://twitter.com/Killswitch_GUI/status/668137062055452673&#34;&gt;November 21, 2015&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;intel-gathering-stage&#34;&gt;Intel Gathering Stage&lt;/h3&gt;
-
-&lt;p&gt;During my tests I weigh heavy on open source information  to help me paint a picture of the culture and potential target rich opportunities once internal. During this stage we are often tasked to Phish external for statistics or payloads to simulate and external threat.&lt;/p&gt;
-
-&lt;p&gt;This generally encompasses the ability to generate a custom phishing template that is somewhat unique to the target. I can sometimes locate sensitive information using the &lt;strong&gt;(site:target.com file:pdf) &lt;/strong&gt;method to gather documents they may have published. We generally gather the following information:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;CEO and main leadership&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Current issues or press releases that are related to the target&lt;/li&gt;
-&lt;li&gt;What the company sells&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I take all the above into account when developing potential targeted emails. Funny enough these documents are a great source for emails as well. As they generally have contact information outside the standard &lt;a href=&#34;mailto:info@company.com&#34;&gt;info@company.com&lt;/a&gt;. This source however can be hard to gather from the HTML scrapping modules already in place. One the documents can take a good amount of time to gather, and for the sake of speed I have always found using googles indexed files always seemed to speed things up.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.13.55-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-11-21-at-1.13.55-PM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.13.55 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;pdfminer&#34;&gt;PDFMiner&lt;/h3&gt;
-
-&lt;p&gt;With some basic requirements in hand I knew I could use the previous built module to handle most of the google search requirements. I just need a few small tweaks and I could start parsing the raw HTML of google for PDF files. Using PDFMiner I was able to convert a bulk of them to Text for parsing.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.14.06-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.14.06-PM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.14.06 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Suppersingly enough this wasn’t as hard as I thought it was going to be! Mainly since the method I use to handle all the background work has been handled for me!&lt;/p&gt;
-
-&lt;p&gt;Expect to see upcoming this month:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Excel Parsing&lt;/li&gt;
-&lt;li&gt;Doc / Docx Parsing&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As always you can check out the code here: &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Modules/GooglePDFSearch.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Modules/GooglePDFSearch.py&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Sample Output and test using the new Verbose options:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    root@vapt-kali:~/Desktop/SimplyEmail# ./SimplyEmail.py -t GooglePDF -e mandiant.com -v
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.22.37-PM.png&#34;&gt;&lt;img src=&#34;http://cybersyndicates.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-21-at-1.22.37-PM.png&#34; alt=&#34;Screen Shot 2015-11-21 at 1.22.37 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
