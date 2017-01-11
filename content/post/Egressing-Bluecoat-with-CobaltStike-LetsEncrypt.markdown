@@ -10,6 +10,12 @@ date = "2016-12-04T21:39:41-05:00"
 <iframe width="640" height="360" src="https://www.youtube.com/embed/cgwfjCmKQwM?rel=0" frameborder="0" allowfullscreen></iframe>
 This post is a bit different than other posts I have done in the past, the material I will talking about directly helped me overcome an extremely challenging engagement. When it comes to egress protections I personally am not often met with an environment that I can't get out of. It's not about the skill level of the operator, just the techniques, and processes that we employee as a team and we stick to ensure successful engagements.
 
+### Contact
+-   Author: Daniel West
+-   Twitter: @reaperb0t
+-   E-mail: admin@homelandofthings.org
+-   Website: https://homelandofthings.org
+
 ## Background 
 During a recent engagement, we followed many of the tips I mentioned in my last post: https://cybersyndicates.com/2016/11/top-red-team-tips/ including using separate C2 transports for each stage of the engagement. Unfortunately, during initial access we were able to obtain DNS callbacks, but never able to transition to our active OP's team server via HTTP or HTTP(S).
 
