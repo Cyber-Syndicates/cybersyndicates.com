@@ -1,10 +1,10 @@
 +++
-author: "Daniel West"
+author = "Daniel West"
 tags = [
 ]
-title: Homeland of Things (HoT) Framework Launch
+title = Homeland of Things (HoT) Framework Launch
 description = "The Homeland of Things (HoT) Framework Launch"
-date = "2017-01-10T21:39:41-05:00"
+date = "2017-01-10T22:15:41-05:00"
 
 +++
 
