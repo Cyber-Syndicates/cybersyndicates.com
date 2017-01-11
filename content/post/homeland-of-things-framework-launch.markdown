@@ -27,13 +27,13 @@ Total Pages 43 with Images
 5.   Vulnerabilities in the IoT
 6.   Threats to the IoT
 7.   Risks to Homeland Security
-     *Cybersecurity and Homeland Security Doctrine Review
-	 *Homeland Cybersecurity Risk Assessment
+     -Cybersecurity and Homeland Security Doctrine Review
+	 -Homeland Cybersecurity Risk Assessment
 8.   The Homeland of Things Framework
-     *Reconnaissance and Interrogation to Detect Vulnerabilities and Adversary Presence within the Physical Network Layer
-	 *Reconnaissance and Interrogation to Detect Vulnerabilities and Adversary Presence within the Logical Network Layer
-     *Reconnaissance and Interrogation to Detect Vulnerabilities and Adversary Presence within the Cyber-Persona Layer
-     *Mitigating Vulnerabilities and Protecting Against Adversary Attacks within the Physical Network Layer
-     *Mitigating Vulnerabilities and Protecting Against Adversary Attacks within the Logical Network Layer
-     *Mitigating Vulnerabilities and Protecting Against Adversary Attacks within the Cyber-Persona Layer
+     -Reconnaissance and Interrogation to Detect Vulnerabilities and Adversary Presence within the Physical Network Layer
+	 -Reconnaissance and Interrogation to Detect Vulnerabilities and Adversary Presence within the Logical Network Layer
+     -Reconnaissance and Interrogation to Detect Vulnerabilities and Adversary Presence within the Cyber-Persona Layer
+     -Mitigating Vulnerabilities and Protecting Against Adversary Attacks within the Physical Network Layer
+     -Mitigating Vulnerabilities and Protecting Against Adversary Attacks within the Logical Network Layer
+     -  Mitigating Vulnerabilities and Protecting Against Adversary Attacks within the Cyber-Persona Layer
 9.   References	 
