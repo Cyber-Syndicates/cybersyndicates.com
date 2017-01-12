@@ -15,7 +15,7 @@ description = "Who actually blogs here?"
 <div class="github-card" data-github="slacker007" data-width="400" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
-## West
+## Daniel West
 
 <div class="github-card" data-github="reaperb0t" data-width="400" data-height="150" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
