@@ -7,8 +7,67 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <lastBuildDate>Sun, 04 Dec 2016 21:39:41 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 10 Jan 2017 22:15:41 -0500</lastBuildDate>
     <atom:link href="https://cybersyndicates.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Homeland of Things (HoT) Framework Launch</title>
+      <link>https://cybersyndicates.com/2017/01/homeland-of-things-framework-launch/</link>
+      <pubDate>Tue, 10 Jan 2017 22:15:41 -0500</pubDate>
+      
+      <guid>https://cybersyndicates.com/2017/01/homeland-of-things-framework-launch/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://homelandofthings.org&#34;&gt;&lt;img src=&#34;https://homelandofthings.org/wp-content/uploads/2016/12/HoT_Cover-232x300.jpg&#34; alt=&#34;alt text&#34; title=&#34;Read the HoT Framework&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;contact&#34;&gt;Contact&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Author: Daniel West&lt;/li&gt;
+&lt;li&gt;Twitter: @reaperb0t&lt;/li&gt;
+&lt;li&gt;E-mail: admin@homelandofthings.org&lt;/li&gt;
+&lt;li&gt;Website: &lt;a href=&#34;https://homelandofthings.org&#34;&gt;https://homelandofthings.org&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;Vulnerabilities, threats, and subsequent risks are inherent with Internet of Things (IoT) devices, which typically reside at the meeting place of critical infrastructure and cyberspace. We present the HoT Framework to promote best practices for all Federal and State, Local, Tribal, and Territorial (SLTT) governments, non-government organizations (NGOs), and the private sector to use as a foundation for the reconnaissance, interrogation, and hardening of IoT nodes that are characterized as existing within both critical and non-critical infrastructure throughout the physical network layer, logical network layer, and cyber-persona layer of cyberspace terrain. In addition, we propose solutions for, public awareness of, and information sharing regarding the vulnerabilities, threats, risks, mitigations, and countermeasures associated with the IoT. The HoT Framework serves to assist Federal and SLTT governments, NGOs, and the private sector in thwarting attacks against their IoT devices and preventing their IoT devices from being used as an attack platform. For the framework to be effective, we need direct support from the DHS, DoD, DOJ, and other Federal agencies. We will also need to establish partnerships with SLTT, NGO, and the private sector (academia and industry) to further enrich and develop the framework using real-world data. We will continue to enrich the framework with technical modules and videos that demonstrate how to conduct the steps within the framework.&lt;/p&gt;
+
+&lt;h3 id=&#34;homelandofthings-org&#34;&gt;HomelandofThings.org&lt;/h3&gt;
+
+&lt;p&gt;Visit &lt;a href=&#34;https://homelandofthings.org&#34;&gt;https://homelandofthings.org&lt;/a&gt; to read the full PDF created using GitBook. We also welcome feedback at admin@homelandofthings.org.&lt;/p&gt;
+
+&lt;h3 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h3&gt;
+
+&lt;p&gt;Total Pages: 43 with Images&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Acknowledgements&lt;/li&gt;
+&lt;li&gt;Preface&lt;/li&gt;
+&lt;li&gt;The Internet of Things (IoT)&lt;/li&gt;
+&lt;li&gt;The IoT in Cyberspace and Cyber-Electromagnetic Activities&lt;/li&gt;
+&lt;li&gt;Vulnerabilities in the IoT&lt;/li&gt;
+&lt;li&gt;Threats to the IoT&lt;/li&gt;
+&lt;li&gt;Risks to Homeland Security
+
+&lt;ul&gt;
+&lt;li&gt;Cybersecurity and Homeland Security Doctrine Review&lt;/li&gt;
+&lt;li&gt;Homeland Cybersecurity Risk Assessment&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;The Homeland of Things Framework
+
+&lt;ul&gt;
+&lt;li&gt;Reconnaissance and Interrogation to Detect Vulnerabilities and Adversary Presence within the Physical Network Layer&lt;/li&gt;
+&lt;li&gt;Reconnaissance and Interrogation to Detect Vulnerabilities and Adversary Presence within the Logical Network Layer&lt;/li&gt;
+&lt;li&gt;Reconnaissance and Interrogation to Detect Vulnerabilities and Adversary Presence within the Cyber-Persona Layer&lt;/li&gt;
+&lt;li&gt;Mitigating Vulnerabilities and Protecting Against Adversary Attacks within the Physical Network Layer&lt;/li&gt;
+&lt;li&gt;Mitigating Vulnerabilities and Protecting Against Adversary Attacks within the Logical Network Layer&lt;/li&gt;
+&lt;li&gt;Mitigating Vulnerabilities and Protecting Against Adversary Attacks within the Cyber-Persona Layer&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;References&lt;br /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>Egressing Bluecoat with CobaltStike &amp; Let&#39;s Encrypt</title>
@@ -2298,7 +2357,7 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
 &lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;slacker007&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
 &lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;west&#34;&gt;West&lt;/h2&gt;
+&lt;h2 id=&#34;daniel-west&#34;&gt;Daniel West&lt;/h2&gt;
 
 &lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;reaperb0t&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
 &lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
@@ -2547,184 +2606,6 @@ gpupdatep /force
 &lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-11.25.47-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-01-24-at-11.25.47-PM.png&#34; alt=&#34;Screen Shot 2016-01-24 at 11.25.47 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;To wrap up this seems like a great SYSTEM level call back and the cool part is you can add in parameters for custom payloads. Ex. if you wanted to only start at certain time you could pass the time or date that would like to restrict or even extend. This method seems extremely strong and has proved to be reliable method. Soon to come is the CS aggressor script and PS script to automate this.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Scanning Effectively Through a SOCKS Pivot with Nmap and Proxychains</title>
-      <link>https://cybersyndicates.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</link>
-      <pubDate>Sun, 13 Dec 2015 19:14:20 +0000</pubDate>
-      
-      <guid>https://cybersyndicates.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</guid>
-      <description>
-
-&lt;p&gt;When ever I am on a pen-test and I come across a major problem (Every OP) that requires some creative solution and I love to share it. Not only that I could help someone else one day, but it really helps me retain the knowledge for future use.&lt;/p&gt;
-
-&lt;p&gt;This past engagement we where on a very unique network dealing with ICS devices and a ton of Unix backend servers, while still handling our normal pen test methodology on the side (No Time to play). While I feel comfortable operating in most network environments, *NIX based environments generally pose to elevate the difficulty of lateral movement and achieving final end state goals of the OP. In this environment most of the critical assets we where targeting where properly VLAN’ed off and proper network segmentation was in place.&lt;/p&gt;
-
-&lt;p&gt;After initial host discovery, we noticed our active host count was low and we figured we needed to gain a foothold on a dual homed box. Gaining a foothold didn’t take long on a lovely Unix jump box. After confirming we could hit multiple VLANs and a known target, it was time to re-scan for our initial host discovery.&lt;/p&gt;
-
-&lt;p&gt;In the past I have played around with getting Nmap to scan through Tor, and there are plenty of those tutorials on the web. But this time I had to perform a larger scan of multiple IP’s (/16) for an initial host discovery. I knew I could use the Unix jump box as a SOCKS4/5 proxy to funnel all my scan data through using SSH without dropping anything to disk.&lt;/p&gt;
-
-&lt;p&gt;Here is the idea:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-5.42.29-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-5.42.29-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 5.42.29 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The first step is to setup your SSH SOCKS Proxy:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ssh -DnF 8080 user@jump-box
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After that was setup I had to configure ProxyChains:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.47.24-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.47.24-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 6.47.24 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Turn on Quite mode for ProxyChains&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.48.36-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.48.36-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 6.48.36 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;As we move forward we will discover the timeouts section will have to be tinkered with. This is key to optimizing your performance with Nmap.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.55.59-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.55.59-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 6.55.59 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Lastly set up the strike chain.&lt;/p&gt;
-
-&lt;h3 id=&#34;heart-aches-with-nmap&#34;&gt;Heart Aches with Nmap&lt;/h3&gt;
-
-&lt;p&gt;So now we are at the main point of even writing this blog. Before when test scanning through Proxy tunnels I only did one or two address at a time. But in this case I needed to scan a large amount of IP space in a reasonable time table. In the past few months I have greatly optimized my scanning techniques to get the most out of my discovery scans. Working with a team of 3-5 can be tough with coordination and when conducting a internal pen-test I may need to get through generally entire /8 or a few /16’s. In this case I had a potential /16 behind my jump box.&lt;/p&gt;
-
-&lt;p&gt;So after following my SOP’s I noticed just firing off Nmap into this SOCKS proxy tunnel wasn’t going to cut it. We experienced large drops in performance and Nmap’s performance and timing parameters weren’t working correctly. Here is my standard Nmap String (Internal scan):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Nmap -Pn -n -sS –p 21-23,25,53,111,137,139,445,80,443,3389,5900,8080,8443 --min-hostgroup 255 --min-rtt-timeout 1ms --max-rtt-timeout 70ms --max-retries 0 --max-scan-delay 0 --min-rate 2000 -oA &amp;lt;customer-#&amp;gt; -vvv --open -iL &amp;lt;IPLIST&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;But after 2 minutes of scanning with this I noticed a few things:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Parallel scans weren’t taking place&lt;/li&gt;
-&lt;li&gt;Timing and performance aspects don’t work&lt;/li&gt;
-&lt;li&gt;Nmap cant perform &amp;ndash;defeat-rst-ratelimit with full TCP Connect scans –sT&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;It would wait the full 1500ms for a port to time-out (Rmbr the Proxy config)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A ton of these problems stem from the fact that we are using a SOCKS proxy, and the nature of the connect scan. When you scan from your Kali system you perform the following Nmap -&amp;gt; Proxy-chains -&amp;gt; SOCKS (Jump Box) -&amp;gt; Target System. I discovered that even though you have all the timing settings setup Nmap is going to interpret that the Half Open connection with the SOCKS proxy as open and will let it hang till ProxyChains literally kills the connection due to a (TCP-Read-Timeout). At first I thought I could solve this issue using the &amp;ldquo;&amp;ndash;host-timeout 80ms&amp;rdquo; flag. But I discovered once that host-timeout was reached it will completely kill the connection (NMAP ADD IN A PORT TIMEOUT!).&lt;/p&gt;
-
-&lt;p&gt;Instantly I knew I had to build out a quick script to help reduce the time it would take get through this scan. So I quickly hacked together a multi processed Python script to launch separate Proxychain / Nmap instances. This script sped up the time dramatically, and incase one process was hung the others could continue on rather than coming to a dead stop. I’m sure this could be done way better, but I thought I could atleast post what I did on the fly to speed up my scans. Also my Jump box couldn&amp;rsquo;t handle (Popen and shell=True) for the sub process call, It was going a bit too fast. Right now I used call_check and just escaped that returned data for the moment. In the coming weeks I do plan to clean up the code a bit. All in all it took some time to trouble shoot the problem and thought I would share.&lt;/p&gt;
-
-&lt;p&gt;The script can be found here: &lt;a href=&#34;https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/Proxychains-Nmap.py&#34;&gt;https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/Proxychains-Nmap.py&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    import multiprocessing
-    import argparse
-    import Queue
-    import threading
-    import os
-    import sys
-    import subprocess
-    from random import randint
-
-
-
-
-    
-    def cli_parser():
-     parser = argparse.ArgumentParser(add_help=False, description=&#39;&#39;&#39;This script Simply routes your nmap scan in a &amp;quot;sort-of&amp;quot; fast way 
-     through a ProcyChain that has been setup.
-     \n\t(1) You will find out that when routing nmap through a Proxychain connection that Timing performace is out the window.
-     \n\t(2) This is do to the nature of a SOCKS proxy and SYN-&amp;gt;SYN/ACK connection is already established in NMAPS Eyes.
-     \n\t(3) It out puts random (#) of .gnmap file for each IP for parsing. (MAKE A FOLDER) :)
-     &#39;&#39;&#39;)
-     parser.add_argument(&amp;quot;-i&amp;quot;, metavar=&amp;quot;iplist.txt&amp;quot;, help=&amp;quot;Set Ip List of IPs Delimited by line&amp;quot;)
-     parser.add_argument(&#39;-h&#39;, &#39;-?&#39;, &#39;--h&#39;, &#39;-help&#39;, &#39;--help&#39;, action=&amp;quot;store_true&amp;quot;, help=argparse.SUPPRESS)
-     args = parser.parse_args()
-     if args.h: 
-     parser.print_help()
-     sys.exit()
-     if not args.i:
-     print &amp;quot;[!] I need a list IP&#39;s!&amp;quot;
-     sys.exit()
-     return args.i
-
-
-
-
-    
-    def Execution(Task_queue):
-     while True:
-     Ip = Task_queue.get()
-     # If the queue is emepty exit this proc
-     # Setup a simple output in the folder, For gnmap Parser
-     IpName = str(Ip).replace(&#39;.&#39;,&amp;quot;-&amp;quot;) + str(&amp;quot;.gnmap&amp;quot;)
-     if Ip is None:
-     break
-     try:
-     print &amp;quot;[*] On Ip: &amp;quot; + Ip
-     test = subprocess.check_output([&amp;quot;proxychains&amp;quot;, &amp;quot;nmap&amp;quot;, &amp;quot;-Pn&amp;quot;, &amp;quot;-n&amp;quot;, &amp;quot;-sT&amp;quot;, &amp;quot;--max-scan-delay&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;-p111,445,139,21-23,80,443&amp;quot;, &amp;quot;-oG&amp;quot;, IpName, &amp;quot;--open&amp;quot;, Ip])
-     test = &amp;quot;&amp;quot;
-     except:
-     pass
-
-
-
-
-    
-    def TaskSelector(Task_queue, verbose=False):
-     total_proc = int(8)
-     for i in xrange(total_proc):
-     Task_queue.put(None)
-     procs = []
-     for thread in range(total_proc):
-     procs.append(multiprocessing.Process(target=Execution, args=(Task_queue,)))
-     for p in procs:
-     p.daemon = True
-     p.start()
-     for p in procs:
-     p.join()
-     Task_queue.close()
-
-
-
-
-    
-    def Ip_List(Task_queue, cli_IpList):
-     items = []
-     cli_IpList = str(cli_IpList)
-     try:
-     with open(cli_IpList, &amp;quot;r&amp;quot;) as myfile:
-     lines = myfile.readlines()
-     for line in lines:
-     line = line.rstrip(&#39;\n&#39;)
-     items.append(line)
-     for item in items:
-     Task_queue.put(item)
-     return Task_queue
-     except Exception as e:
-     print &amp;quot;[!] Please check your Ip List: &amp;quot; + str(e)
-     sys.exit(0)
-
-
-
-
-    
-    def main():
-     cli_IpList = cli_parser()
-     Task_queue = multiprocessing.Queue()
-     Task_queue = Ip_List(Task_queue, cli_IpList)
-     TaskSelector(Task_queue)
-
-
-
-
-    
-    if __name__ == &amp;quot;__main__&amp;quot;:
-     try: 
-     main()
-     except KeyboardInterrupt:
-     print &#39;Interrupted&#39;
-     try:
-     sys.exit(0)
-     except SystemExit:
-     os._exit(0)
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
