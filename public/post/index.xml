@@ -7,8 +7,339 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <lastBuildDate>Tue, 10 Jan 2017 22:15:41 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 12 Feb 2017 21:39:41 -0500</lastBuildDate>
     <atom:link href="https://cybersyndicates.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>OS X Packet Capture &amp; Empire</title>
+      <link>https://cybersyndicates.com/2017/02/os-x-packet-capture--empire/</link>
+      <pubDate>Sun, 12 Feb 2017 21:39:41 -0500</pubDate>
+      
+      <guid>https://cybersyndicates.com/2017/02/os-x-packet-capture--empire/</guid>
+      <description>
+
+&lt;p&gt;Recently I have been preparing for some additional support for Empire and the Python agent. With that comes some new modules cooking, finally getting to porting the Linux sniffer over to OS X. While some of you know it’s easy with raw sockets on the Linux side. OS X does not natively support this, and you often see question that relate to how to get this to work on the OS X side.&lt;/p&gt;
+
+&lt;h2 id=&#34;empire&#34;&gt;Empire&lt;/h2&gt;
+
+&lt;p&gt;Empire will be seeing a major release here in the coming months, moving from a single-track windows agent to a platform for OS X, Linux and Windows. Making it extremely agile.&lt;/p&gt;
+
+&lt;p&gt;TL;DR: The following video is the new OS X sniffer module in action&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;https://player.vimeo.com/video/203695405?autoplay=1&amp;loop=1&amp;color=ffffff&#34; width=&#34;640&#34; height=&#34;400&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&#34;https://vimeo.com/203695405&#34;&gt;Empire OS X Sniffer Module&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user52367620&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;native-support&#34;&gt;Native Support&lt;/h2&gt;
+
+&lt;p&gt;Native code capability is crucial due the constraints we have, while we do have Python package imports now from memory there is always limitations.  The Empire dev team often focuses on making all modules as cross capable and native.&lt;/p&gt;
+
+&lt;h2 id=&#34;extend-python-with-ctypes-and-dylib&#34;&gt;Extend Python with cTypes and Dylib!&lt;/h2&gt;
+
+&lt;p&gt;One of the major benefits to python is its low-level support, and with cTypes we have those bindings! We can call the standard C library and much more dynamically. Let’s take a look at some the library’s shipped with OS X:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ls /usr/lib/ | grep “lib”
+...
+libpq.5.dylib
+libpq.dylib
+libprequelite.dylib
+libproc.dylib
+libpthread.dylib
+libpython.dylib
+libpython2.6.dylib
+libpython2.7.dylib
+libquit.dylib
+libreadline.dylib
+libresolv.9.dylib
+libresolv.dylib
+librpcsvc.dylib
+...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next we can inspect our .dyblib using &lt;code&gt;nm&lt;/code&gt;  and dumping the export functions in the dynamic library:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ nm -gU /lib/usr/libpcap.dylib 
+...
+0000000000018c93 T _pcap_dump
+000000000001b28c T _pcap_ng_get_simple_packet_fields
+000000000001e15a T _pcap_ng_init_section_info
+0000000000014088 T _pcap_ng_offline_read
+0000000000013e90 T _pcap_ng_open_offline
+0000000000011a4c T _pcap_not_initialized
+0000000000012f69 T _pcap_offline_filter
+0000000000013f7c T _pcap_offline_read
+0000000000011b1a T _pcap_oneshot
+0000000000012ec6 T _pcap_open_dead
+0000000000012e0c T _pcap_open_dead_with_tstamp_precision
+00000000000122e3 T _pcap_open_live
+0000000000013c13 T _pcap_open_offline
+000000000001249b T _pcap_open_offline_common
+...
+0000000000011ed3 T _pcap_set_snaplen
+0000000000011fc1 T _pcap_set_timeout
+00000000000120f7 T _pcap_set_tstamp_precision
+0000000000011fff T _pcap_set_tstamp_type
+0000000000010c9f T _pcap_set_want_pktap
+0000000000012c37 T _pcap_setdirection
+0000000000012c29 T _pcap_setfilter
+0000000000012b2f T _pcap_setnonblock
+0000000000012b78 T _pcap_setnonblock_fd
+000000000001ca05 T _pcap_setup_pktap_interface
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now comes the ability to extend Python with cTypes and C convention calling. according to Python docs: &amp;ldquo;cdll loads libraries which export functions using the standard cdecl calling convention&amp;rdquo;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class ctypes.CDLL(name, mode=DEFAULT_MODE, handle=None, use_errno=False, use_last_error=False)
+
+Instances of this class represent loaded shared libraries. Functions in these
+libraries use the standard C calling convention, and are assumed to return int.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the code I also setup the standard C lib for future use or other functions you may need such as &lt;code&gt;mmap&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;OSX_PCAP_DYLIB = &#39;/usr/lib/libpcap.A.dylib&#39;
+OSX_LIBC_DYLIB = &#39;/usr/lib/libSystem.B.dylib&#39;
+...
+libc = ctypes.CDLL(OSX_LIBC_DYLIB, use_errno=True)
+...
+pcap = ctypes.CDLL(OSX_PCAP_DYLIB, use_errno=True)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;libpcap-standard-c-program&#34;&gt;libpcap - Standard C Program&lt;/h2&gt;
+
+&lt;p&gt;using &lt;a href=&#34;http://www.devdungeon.com/content/using-libpcap-c&#34;&gt;http://www.devdungeon.com/content/using-libpcap-c&lt;/a&gt; guide on libcap is a great starting point for most. Here is what is impended in Python:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;time.h&amp;gt;
+#include &amp;lt;pcap.h&amp;gt;
+#include &amp;lt;netinet/in.h&amp;gt;
+#include &amp;lt;netinet/if_ether.h&amp;gt;
+
+void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header);
+
+int main(int argc, char *argv[]) {
+    char *device;
+    char error_buffer[PCAP_ERRBUF_SIZE];
+    pcap_t *handle;
+    const u_char *packet;
+     struct pcap_pkthdr packet_header;
+    int packet_count_limit = 1;
+    int timeout_limit = 10000; /* In milliseconds */
+
+    device = pcap_lookupdev(error_buffer);
+    if (device == NULL) {
+        printf(&amp;quot;Error finding device: %s\n&amp;quot;, error_buffer);
+        return 1;
+    }
+
+    /* Open device for live capture */
+    handle = pcap_open_live(
+            device,
+            BUFSIZ,
+            packet_count_limit,
+            timeout_limit,
+            error_buffer
+        );
+
+     /* Attempt to capture one packet. If there is no network traffic
+      and the timeout is reached, it will return NULL */
+     packet = pcap_next(handle, &amp;amp;packet_header);
+     if (packet == NULL) {
+        printf(&amp;quot;No packet found.\n&amp;quot;);
+        return 2;
+    }
+
+    /* Our function to output some info */
+    print_packet_info(packet, packet_header);
+
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;libpcap-python-implementation&#34;&gt;libpcap - Python Implementation&lt;/h2&gt;
+
+&lt;p&gt;Follow along for the explanation and breakdown or skip to the end for code:&lt;/p&gt;
+
+&lt;h3 id=&#34;interface-device-selection&#34;&gt;Interface Device Selection&lt;/h3&gt;
+
+&lt;p&gt;The next step is to obtain a handle to the interface of choice, as you will see libpcap follows a standard calling convention for setup. We will be using:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pcap_lookupdev(): finds the default device on which to capture
+
+Returns a pointer  to a string giving the name of a
+network device suitable for use with pcap_create() and pcap_activate(),
+or with  pcap_open_live(),  and with pcap_lookupnet()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To set this up in Python we need to create a pcap_lookupdev() object and set the res type, this is because by default functions are assumed to return the C int type.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# pcap is our pointer to the dylib function
+pcap_lookupdev = pcap.pcap_lookupdev
+# set the return type to a C char pointer (string)
+pcap_lookupdev.restype = ctypes.c_char_p
+# now get our device device to capture on
+dev = pcap.pcap_lookupdev()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;interface-device-info&#34;&gt;Interface Device Info&lt;/h3&gt;
+
+&lt;p&gt;We have an option to get some data on the device of choice. Using the pcap_lookupnet function we can get some debug data if necessary.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pcap_lookupnet(): find the IPv4 network number and netmask for a device  
+
+int pcap_lookupnet(const char *device, bpf_u_int32 *netp, 
+    bpf_u_int32 *maskp, char *errbuf);
+
+Is used to determine the IPv4 network number and mask associated with the
+network device. Both netp and maskp are bpf_u_int32 pointers
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We will need to use the proper cTypes unsigned int for the return pointers. We can do this by using cTypes primitive C compatible data types.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;net = ctypes.c_uint()
+mask = ctypes.c_uint()
+pcap.pcap_lookupnet(dev,ctypes.byref(net),ctypes.byref(mask),err_buf)
+if DEBUG:
+    print &amp;quot;* Device IP to bind: %s&amp;quot; % net
+    print &amp;quot;* Device net mask: %s&amp;quot; % mask
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;packet-capture-handle&#34;&gt;Packet Capture Handle&lt;/h3&gt;
+
+&lt;p&gt;Once we have a interface device we need to obtain a capture handle to use with various libpcap capture types. For this we will use the pcap_open_live function.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pcap_open_live(): open a device for capturing  
+
+pcap_t *pcap_open_live(const char *device, int snaplen,
+        int promisc, int to_ms, char *errbuf);
+Is used to obtain a packet capture handle to look at packets on the network.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We will need to provide the following to the function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;device = string that specifies the network device to open
+snaplen = specifies the snapshot length to be set on the handle
+promisc = specifies if the interface is to be put into promiscuous mode
+to_ms = specifies the packet buffer timeout in milliseconds
+errbuf = if provided 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once again we will need to setup the return type, the only difference here is that the return type is pcap_t * structure on success. To do this we will use the ctypes.POINTER() function, which we will provide the type as well:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ctypes.POINTER(type)
+
+This factory function creates and returns a new ctypes pointer type.
+Pointer types are cached and reused internally, so calling this function
+repeatedly is cheap. type must be a ctypes type.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now implemented in Python:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# static values 
+PCAP_ERRBUF_SIZE = 256
+PCAP_CAPTURE_COUNT = 1000
+promisc = ctypes.c_int(1)
+# setup the return pointer 
+pcap_open_live = pcap.pcap_open_live
+pcap_open_live.restype = ctypes.POINTER(ctypes.c_void_p)
+# get pcap_handle pointer
+pcap_handle = pcap.pcap_open_live(dev, 1024, promisc, timeout_limit, err_buf)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;check-our-handle&#34;&gt;Check Our Handle&lt;/h3&gt;
+
+&lt;p&gt;As all good programing practices say we should check our handle, this will insure we have a handle/interface that can go into monitor mode. To do this we will use pcap_can_set_rfmon.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pcap_can_set_rfmon(): checks whether monitor mode could be set on a capture
+handle when the handle is activated
+
+pcap_set_rfmon() returns 0 if monitor mode could not be set, 
+1 if monitor mode could be se
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Impmentation:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pcap_can_set_rfmon = pcap.pcap_can_set_rfmon
+pcap_can_set_rfmon.argtypes = [ctypes.c_void_p]
+if (pcap_can_set_rfmon(pcap_handle) == 1):
+    if DEBUG:
+        print &amp;quot;* Can set interface in monitor mode&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;setup-dump-file&#34;&gt;Setup Dump File&lt;/h3&gt;
+
+&lt;p&gt;If you take a look at the raw socket sniffer in Empire &lt;a href=&#34;https://github.com/killswitch-GUI/NIX-Sniffer-Examples/blob/master/linux-socket-sniffer.py#L40&#34;&gt;https://github.com/killswitch-GUI/NIX-Sniffer-Examples/blob/master/linux-socket-sniffer.py#L40&lt;/a&gt; it creates the pcap header and file header manually. Using the libpcap lib we can use pcap_dump_open() to handle this for us. Using the pcap_dump() function we can call this pointer for the packet handling.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pcap_dump_open(): open a file to which to write packets  
+
+pcap_dumper_t *pcap_dump_open(pcap_t *p, const char *fname);
+    is called to open a ``savefile&#39;&#39; for writing. fname specifies the name of
+    the file to open. The file will have the same format as those used by
+    tcpdump(1) and tcpslice(1). The name &amp;quot;-&amp;quot; is a synonym for stdout.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;implementation:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PCAP_FILENAME = &#39;test.pcap&#39;
+# setup pointer
+pcap_dump_open = pcap.pcap_dump_open
+pcap_dump_open.restype = ctypes.POINTER(ctypes.c_void_p)
+# get pointer 
+pcap_dumper_t = pcap.pcap_dump_open(pcap_handle,PCAP_FILENAME)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;pcap-capture&#34;&gt;Pcap Capture&lt;/h3&gt;
+
+&lt;p&gt;All the prior functionality is setup; we will need to setup a loop for packet capture. We can do this a few ways within libpcap, the first is using pcap_next_ex() or pcap_loop(). Using pcap_loop requires a callback to be setup, which I was unable to do properly and have must of it commented out. So, if you know how to do that, some help would be great. For the mean time, we will use pcap_next_ex in a loop since its blocking.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pcap_next_ex():read the next packet from a pcap_t  
+
+int pcap_next_ex(pcap_t *p, struct pcap_pkthdr **pkt_header,
+    const u_char **pkt_data);
+
+reads the next packet and returns a success/failure indication. If the packet
+was read without problems, the pointer pointed to by the pkt_header argument
+is set to point to the pcap_pkthdr struct for the packet, and the pointer
+pointed to by the pkt_data argument is set to point to the data in the packet.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this implementation we will also use custom cTypes structures, just like you would see in a C struc. Using this method we will setup a pcap_pkthdr() structure to populate, we than get a cTypes pointer to feed to pcap_next_ex().&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class pcap_pkthdr(ctypes.Structure):
+    _fields_ = [(&amp;quot;tv_sec&amp;quot;, ctypes.c_long), (&amp;quot;tv_usec&amp;quot;, ctypes.c_long),
+    (&amp;quot;caplen&amp;quot;, ctypes.c_uint), (&amp;quot;len&amp;quot;, ctypes.c_uint)]
+
+pcap_pkthdr_p = ctypes.POINTER(pcap_pkthdr)()
+packetdata = ctypes.POINTER(ctypes.c_ubyte*65536)()
+
+c = 0
+while True:
+    if (pcap.pcap_next_ex(pcap_handle, ctypes.byref(pcap_pkthdr_p), ctypes.byref(packetdata)) == 1):
+        # our output function pcap_dump()
+        pcap.pcap_dump(pcap_dumper_t,pcap_pkthdr_p,packetdata)
+        #pkthandler(pcap_pkthdr_p,packetdata)
+        c += 1
+    if c &amp;gt; PCAP_CAPTURE_COUNT:
+        if DEBUG:
+            print &amp;quot;* Max packet count reached!&amp;quot;
+        break
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The full repo can be found here:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/NIX-Sniffer-Examples&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The full script:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&#34;https://gist.github.com/killswitch-GUI/ce347f79f5cdb90bd8056100c90e9be2.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
     
     <item>
       <title>Homeland of Things (HoT) Framework Launch</title>
@@ -2649,78 +2980,6 @@ t.join
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;@real_slacker007&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Quick and Dirty NMAP Commandline Menu</title>
-      <link>https://cybersyndicates.com/2015/09/quick-and-dirty-nmap-commandline-menu/</link>
-      <pubDate>Sat, 12 Sep 2015 02:34:47 +0000</pubDate>
-      
-      <guid>https://cybersyndicates.com/2015/09/quick-and-dirty-nmap-commandline-menu/</guid>
-      <description>&lt;p&gt;Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network.  Works against individual IP&amp;rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs.  Outputs into separate files in the local directory.  Can be adjusted and scaled.  Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post.  Check out the code on GIT.   &lt;a href=&#34;https://github.com/slacker007/simpleNMAP&#34;&gt;https://github.com/slacker007/simpleNMAP&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;********************************* Code Below *******************************&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import os
-import sys
-import subprocess
-chances = 4
-end_prog = 0
-
-def menu2(): 
-    cidr = raw_input(&amp;quot;Please enter the network cider or IP to be scanned EX:192.168.1.0/16 or 10.10.1.4 &amp;quot;)
-    return cidr
-def menu1(chances): 
-    print &amp;quot;\n(1) Host Discovery: &amp;quot;
-    print &amp;quot;(2) Port &amp;amp; Service Discovery (top ports only): &amp;quot;
-    print &amp;quot;(3) Port &amp;amp; Service Discovery (All 65536): &amp;quot; 
-    print &amp;quot;(4) OS Discovery: &amp;quot;
-    print &amp;quot;(5) RUN ALL \n&amp;quot;
-    choice1 = raw_input(&amp;quot;What type of scan would you like to run? &amp;quot;)
-if choice1 == &#39;3&#39;:
-        print &amp;quot;\n******* If you are running this against a network range it will take a while! Best if used agaist a single IP or small range of addresses *******\n&amp;quot;
-    if choice1 not in (&amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;):
-        if chances &amp;lt;= 1: 
-            exit()
-        chances = chances - 1
-        print &amp;quot;Error, Please check your answer choice and try again: %d tries remaining: &amp;quot; % (chances)
-        menu1(chances)
-    else:
-        print &amp;quot;Choice Successful&amp;quot; 
-        return choice1
-def menu3(chances, end_prog):
-    if chances &amp;gt; 1:
-        choice3 = raw_input(&amp;quot;would you like to run another scan? (y or n) &amp;quot;)
-        choice3 = choice3.lower()
-        if choice3 not in (&#39;y&#39;, &#39;n&#39;):
-            print &amp;quot;*** INPUT ERROR, Please enter either y or n ***&amp;quot;
-            chances = chances - 1
-            menu3(chances, end_prog)
-    if str(choice3) == &#39;n&#39;:
-        exit()
-def scanner(cidr, choice1, chances):
-    if choice1 == &#39;1&#39;:
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sn&#39;, &#39;-PE&#39;, &#39;-PP&#39;, &#39;-T4&#39;, &#39;-ohostlist.UP&#39;, cidr])
-    elif choice1 == &#39;2&#39;: 
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sV&#39;,&#39;-oservices2&#39;,cidr])  
-
-    elif choice1 == &#39;3&#39;:
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sV&#39;, &#39;-p 1-65535&#39;, &#39;-oservices3&#39;, cidr])
-    elif choice1 == &#39;4&#39;:
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-Pn&#39;, &#39;-O&#39;, &#39;-oosversions&#39;, cidr])
-    elif choice1 == &#39;5&#39;: 
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sn&#39;, &#39;-PE&#39;, &#39;-PP&#39;, &#39;-T4&#39;, &#39;-ohostlist.UP&#39;, cidr])
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sV&#39;, &#39;-p 1-65535&#39;, &#39;-oservices3&#39;, cidr])
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-Pn&#39;, &#39;-O&#39;, &#39;-oosversions&#39;, cidr])
-    else:
-        return
-while (1):
-    choice1 = menu1(chances)
-    cidr = menu2()
-    scanner(cidr, choice1, chances)
-    menu3(chances, end_prog)
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
