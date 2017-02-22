@@ -24,6 +24,10 @@ More often than not email enumeration is hit or miss, depending on the sources u
 
 With these requirements in hand I started my build on SimplyEmail!
 
+TL;DR:
+<div class="github-card" data-github="killswitch-gui/SimplyEmail" data-width="400" data-height="153" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+
 ### Benefits of SimplyEmail
 
 In the underlying code I built the program to dynamically load the all modules that where placed in the modules folder. The question is why? Well after using other tools and methods, I found that searching just about anywhere you can get your hands on can be beneficial to the results you obtain (Even if duplicates). In certain cases, Google Captcha block would engage and Yahoo Search would come to save the day! The key here was the ability to run multiple modules at the same time, this proved to be quite an improvement for web intense modules. Here is a small snippet of the code that makes this happen:
@@ -34,6 +38,10 @@ In the underlying code I built the program to dynamically load the all modules t
   4. Results are Parsed with a custom parser that handles about all the raw html and text based parsing you could need.
   5. These results are placed into a Dictionary with a Key of the source and email address
   6. Html results are generated on the fly, and raw results are appended to a running list with time stamps.
+
+TL;DR:
+<div class="github-card" data-github="killswitch-gui/SimplyEmail" data-width="400" data-height="153" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
 **Multiprocessing Controller:**
 

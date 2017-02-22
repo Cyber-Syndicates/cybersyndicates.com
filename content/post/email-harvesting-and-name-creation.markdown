@@ -13,11 +13,11 @@ tags:
 
 Over the past few months we have been rapidly expanding the capability of SimplyEmail. While it is a very simple tool, it has been extremely successful on a few live engagements I have been on. I feel like it is ready for recommendation to say the least. I did however notice a few key features that some of the guys on the team mentioned that would be nice to have integrated. Thanks to [@_wald0](https://twitter.com/_wald0) and his suggestions I have implemented a email verification option. Also I learned a trick or so a few months back from [@harmj0y](https://twitter.com/harmj0y) on sick site called "Connect6", which seems to populate a large name DB of employees for each company. Also a fellow tester and friend ([Joshua Crumbaugh](https://twitter.com/nagasecurity)) let me on to a sick tool for grabbing Linkedin names from bing called [PhishBait](https://github.com/pan0pt1c0n/PhishBait). With all this I set out to build some new capabilities for SimplyEmail and learn some new tricks :)
 
-
+TL;DR:
+<div class="github-card" data-github="killswitch-gui/SimplyEmail" data-width="400" data-height="153" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
 #### SMTP Email Verification
-
-
 
 This process is actually relatively easy to accomplish. Its a simple heuristic of SMTP return codes when attempting to send a email on the target SMTP server. The process takes place by first Identifying the proper MX record to point to. In many cases larger corporations will have more than one SMTP server with multiple MX records. These are for redundancy of course and are ordered by priority, here is a small snip of the code I built fast:
 

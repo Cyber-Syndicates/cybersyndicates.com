@@ -27,9 +27,11 @@ First a big thanks to the entire ATD (Adaptive Threat Divsion) team which contri
 
 #### Email Reconnaissance and Phishing Template Generation Made Simple
 
-
-
 As a red-teamer or pen-tester, the need for tools that speed up the process is absolutely critical. While tools are not everything, they sure do help when it comes to performing an engagement within a short timeframe that a threat actor would have months to execute. With limited time and the need for effective methodologies, phishing can be a tester’s worst nightmare but also the best path to success. I found that proper reconnaissance and preparation are extremely important when it comes to phishing. I set out to speed up the process while still employing effective methodologies for upcoming and future engagements.
+
+TL;DR:
+<div class="github-card" data-github="killswitch-gui/SimplyEmail" data-width="400" data-height="153" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
 **Email Recon Methodology and name creation:**
 

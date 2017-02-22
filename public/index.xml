@@ -2204,6 +2204,10 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
 
 &lt;p&gt;As a red-teamer or pen-tester, the need for tools that speed up the process is absolutely critical. While tools are not everything, they sure do help when it comes to performing an engagement within a short timeframe that a threat actor would have months to execute. With limited time and the need for effective methodologies, phishing can be a tester’s worst nightmare but also the best path to success. I found that proper reconnaissance and preparation are extremely important when it comes to phishing. I set out to speed up the process while still employing effective methodologies for upcoming and future engagements.&lt;/p&gt;
 
+&lt;p&gt;TL;DR:
+&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/SimplyEmail&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;strong&gt;Email Recon Methodology and name creation:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Over the past few months, I put quite a bit of time into research and current methods that are being used to perform email harvesting. While every tester has a few different methods to get the most out of their recon, most rely upon search indexing and searching for documents. Using this methodology is generally slow and takes up valuable time. One of the major concerns was the ability to cover as much content as possible, with so many documents and locations to search I often missed email data I should have caught.  I knew right away there was room for improvement.&lt;/p&gt;
@@ -2704,6 +2708,10 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
       <description>
 
 &lt;p&gt;Over the past few months we have been rapidly expanding the capability of SimplyEmail. While it is a very simple tool, it has been extremely successful on a few live engagements I have been on. I feel like it is ready for recommendation to say the least. I did however notice a few key features that some of the guys on the team mentioned that would be nice to have integrated. Thanks to &lt;a href=&#34;https://twitter.com/_wald0&#34;&gt;@_wald0&lt;/a&gt; and his suggestions I have implemented a email verification option. Also I learned a trick or so a few months back from &lt;a href=&#34;https://twitter.com/harmj0y&#34;&gt;@harmj0y&lt;/a&gt; on sick site called &amp;ldquo;Connect6&amp;rdquo;, which seems to populate a large name DB of employees for each company. Also a fellow tester and friend (&lt;a href=&#34;https://twitter.com/nagasecurity&#34;&gt;Joshua Crumbaugh&lt;/a&gt;) let me on to a sick tool for grabbing Linkedin names from bing called &lt;a href=&#34;https://github.com/pan0pt1c0n/PhishBait&#34;&gt;PhishBait&lt;/a&gt;. With all this I set out to build some new capabilities for SimplyEmail and learn some new tricks :)&lt;/p&gt;
+
+&lt;p&gt;TL;DR:
+&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/SimplyEmail&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;smtp-email-verification&#34;&gt;SMTP Email Verification&lt;/h4&gt;
 

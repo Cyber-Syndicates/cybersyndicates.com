@@ -19,7 +19,9 @@ But I came across a ridiculous issue; I had no access to external net. Only inte
 
 [![Screen Shot 2015-06-11 at 10.51.51 PM](/wp-content/Screen-Shot-2015-06-11-at-10.51.51-PM.png)](/wp-content/Screen-Shot-2015-06-11-at-10.51.51-PM.png)
 
-
+TL;DR:
+<div class="github-card" data-github="killswitch-gui/SimplyEmail" data-width="400" data-height="153" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
 ##### (Current Search Options for TheHarvester)
 
