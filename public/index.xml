@@ -7,8 +7,232 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <lastBuildDate>Sun, 12 Feb 2017 21:39:41 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 21 Apr 2017 21:39:41 -0500</lastBuildDate>
     <atom:link href="https://cybersyndicates.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Expand Your Horizon Red Team – Modern SaaS C2</title>
+      <link>https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/</link>
+      <pubDate>Fri, 21 Apr 2017 21:39:41 -0500</pubDate>
+      
+      <guid>https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/</guid>
+      <description>
+
+&lt;p&gt;Well to say that the past month or so for C2 infrastructure has been impactful, would be an understatement. Domain fronting has added yet another card to the deck of tricks the Red Team can deploy. Before this all took place, I was putting in some time to broaden the horizon of how the Red Team could deploy easy, yet effective C2. During this research, I found an interesting solution to this problem. Deploy our C2 redirectors on platforms that often are not intended to have console access. Hopefully to open the horizon of providers and IP space to operate / host from.&lt;/p&gt;
+
+&lt;p&gt;Using Python Flask applications and providers that support WSGI, I was able to put together three new projects to demonstrate this TTP.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;TL;DR&lt;/em&gt; Source code and projects are at the end of the post. The following video shows from nothing to fully functional redirector in one minute flat:&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;https://player.vimeo.com/video/213955360?autoplay=1&amp;loop=1&#34; width=&#34;640&#34; height=&#34;368&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&#34;https://vimeo.com/213955360&#34;&gt;One Minute C2 Redirector&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user52367620&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;For reference we will be covering the following flask redirectors:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/flask_heroku_redirector&#34;&gt;https://github.com/killswitch-GUI/flask_heroku_redirector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/flask_pythonanywhere_redirector&#34;&gt;https://github.com/killswitch-GUI/flask_pythonanywhere_redirector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/flask_appengine_redirector&#34;&gt;https://github.com/killswitch-GUI/flask_appengine_redirector&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;native-expansion&#34;&gt;Native Expansion&lt;/h2&gt;
+
+&lt;p&gt;Extensive work has been done by @bluscreenofjeff to filter HTTP traffic via apache mod_rewrite, working off this research I knew Python would also be able to handle this. Using a Python based platform the possibilities are nearly endless in conjunction with providers like Heroku. Sporting the CLI interface, Heroku commands can be used to update system environment variables remotely. This allows for extremely agile manipulation of the redirectors, without the need of multiple stages to filter requests.&lt;/p&gt;
+
+&lt;h2 id=&#34;providers&#34;&gt;Providers&lt;/h2&gt;
+
+&lt;p&gt;limited VPS provides has been an area of concern for myself in the past. Many of the big-name core VPS providers have gotten a bad reputation when it comes to IP blacklisting. Also, one single point of failure to discover all your C2 to pivot off could take place. Adding a few more options to the mix is a great way to throw off defenders, or help spread out your offensive end points. Plus, who is going guess you’re running you C2 from PythonAnywhere.&lt;/p&gt;
+
+&lt;h2 id=&#34;deployment&#34;&gt;Deployment&lt;/h2&gt;
+
+&lt;p&gt;Time is often limited and spending more time than necessary on C2 often means more time off target. A really cool benefit of using SaaS C2 is the ease of code deployments; often we see conventional use cases ranging from quickly standing up a file server to expanding existing infrastructure. This concept makes deploying code a cinch on many platforms, Heroku is a great example of this. If you walk through the setup process of the flask_heroku_redirector, you will notice simple environmental variables to push the configs (Ex. heroku config:set FORWARD_DOMAIN=cybersyndicates.com). This proves to be very powerful to quickly block, change or even pull down payloads you don’t want the Blue Team to hit.&lt;/p&gt;
+
+&lt;h2 id=&#34;ip-space&#34;&gt;IP Space&lt;/h2&gt;
+
+&lt;p&gt;A simple WHOIS query can say a ton about a domain, it will expose potential owner, address and corporation. We can setup WHOIS guard, but that is only half the picture; we need to also look at the IP space we originate from as well. An analyst determining if the traffic is malicious will be asking (Who owns this? Why is this client talking to it? What type of resource?). When we start talking about our operational footprint, considerations like where I host from is a big deal. Take for example third party C2, its near undetectable and will easily circumvent most analytics. The return on investment to blend in and pass the sniff test can be invaluable to sustaining a foot hold. The flask_appengine_redirector project is still dependent on other factors such as a domain name to match the ploy, but provides this initial top cover from operating in Google IP space, without the extent of third party C2.&lt;/p&gt;
+
+&lt;h2 id=&#34;technical-overview&#34;&gt;Technical Overview&lt;/h2&gt;
+
+&lt;p&gt;While each project has its own specifics from the platform dependent configuration files, the core code base is nearly identical across multiple platforms. The first thing you will notice is the common use of OS environment variables. This is common practice for encryption, secret and private keys on these platforms. We use them to allow us to quickly change and alter our C2  redirector, either through the web interface or provider CLI.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# STATIC VAR
+__DEBUG = bool(os.environ.get(&#39;DEBUG&#39;, True))
+__FORWARD_DOMAIN = str(os.environ.get(&#39;FORWARD_DOMAIN&#39;, &#39;cybersyndicates.com&#39;))
+__CURRENT_DOMAIN = str(os.environ.get(&#39;CURRENT_DOMAIN&#39;, &#39;test-1234555555.herokuapp.com&#39;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Flask is a great example and standard configuration looks as follows:&lt;/p&gt;
+
+&lt;p&gt;set port to forward on (Defaults to 80):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;heroku config:set PORT=80&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;set debug output to the log outlet (Defaults to True):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;heroku config:set DEBUG=True&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;set forward C2 domain (Where to redirect to):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;heroku config:set FORWARD_DOMAIN=cybersyndicates.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;set redirector domain (Incoming domain name):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;heroku config:set CURRENT_DOMAIN=tranquil-dawn-50102.herokuapp.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once you move on to the core code components you will notice that I also added in a “debug” class to feed your request to. This is very helpful to see the data being received by your C2 since you will not have tools like tcpdump available.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class debug_request():
+    &amp;quot;&amp;quot;&amp;quot;
+    debug printing of request object.
+    &amp;quot;&amp;quot;&amp;quot;
+    def __init__(self):
+        # setup DB connection
+        # TODO: add db support
+        # self.conn = sql
+        pass
+
+    def log_request(self, request_obj):
+        &amp;quot;&amp;quot;&amp;quot;
+        used to log full request to db or other logging outlet
+        &amp;quot;&amp;quot;&amp;quot;
+        # TODO: build full logic for request
+        req = self.build_json(request_obj)
+        pass
+    
+    def print_request(self, request_obj):
+        &amp;quot;&amp;quot;&amp;quot;
+        print the entire request in json pprint
+        &amp;quot;&amp;quot;&amp;quot;
+        print self.build_json(request_obj)
+
+    def build_json(self, request_obj):
+        &amp;quot;&amp;quot;&amp;quot;
+        build the json obj
+        &amp;quot;&amp;quot;&amp;quot;
+        json_dict = {}
+        json_dict[&#39;url&#39;] = request_obj.url
+        json_dict[&#39;method&#39;] = request_obj.method
+        json_dict[&#39;headers&#39;] = {key: value for (key, value) in request.headers if key != &#39;Host&#39;}
+        json_dict[&#39;method&#39;] = request_obj.cookies
+        json_dict[&#39;data&#39;] = request_obj.data
+        return json.dumps(json_dict, ensure_ascii=False, indent=4, sort_keys=True)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;you should expect to see some verbose logging until you set your debug to false; here is an example of that logging console:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;2017-04-21T22:05:50.027323+00:00 app[web.1]: proxy response: &amp;lt;Response 14718 bytes [200 OK]&amp;gt;
+2017-04-21T22:05:50.098293+00:00 app[web.1]: {
+2017-04-21T22:05:50.098295+00:00 app[web.1]:     &amp;quot;data&amp;quot;: &amp;quot;&amp;quot;,
+2017-04-21T22:05:50.098296+00:00 app[web.1]:     &amp;quot;headers&amp;quot;: {
+2017-04-21T22:05:50.098297+00:00 app[web.1]:         &amp;quot;Accept&amp;quot;: &amp;quot;image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5&amp;quot;,
+2017-04-21T22:05:50.098298+00:00 app[web.1]:         &amp;quot;Accept-Encoding&amp;quot;: &amp;quot;gzip, deflate&amp;quot;,
+2017-04-21T22:05:50.098299+00:00 app[web.1]:         &amp;quot;Accept-Language&amp;quot;: &amp;quot;en-us&amp;quot;,
+2017-04-21T22:05:50.098299+00:00 app[web.1]:         &amp;quot;Connect-Time&amp;quot;: &amp;quot;0&amp;quot;,
+2017-04-21T22:05:50.098300+00:00 app[web.1]:         &amp;quot;Connection&amp;quot;: &amp;quot;close&amp;quot;,
+2017-04-21T22:05:50.098301+00:00 app[web.1]:         &amp;quot;Cookie&amp;quot;: &amp;quot;_ga=GA1.3.1533808371.1492657513; __atuvc=1%7C16&amp;quot;,
+2017-04-21T22:05:50.098301+00:00 app[web.1]:         &amp;quot;Referer&amp;quot;: &amp;quot;https://vast-meadow-71019.herokuapp.com/&amp;quot;,
+2017-04-21T22:05:50.098302+00:00 app[web.1]:         &amp;quot;Total-Route-Time&amp;quot;: &amp;quot;0&amp;quot;,
+2017-04-21T22:05:50.098303+00:00 app[web.1]:         &amp;quot;User-Agent&amp;quot;: &amp;quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.1 Safari/603.1.30&amp;quot;,
+2017-04-21T22:05:50.098303+00:00 app[web.1]:         &amp;quot;Via&amp;quot;: &amp;quot;1.1 vegur&amp;quot;,
+2017-04-21T22:05:50.098304+00:00 app[web.1]:         &amp;quot;X-Forwarded-For&amp;quot;: &amp;quot;108.44.160.205&amp;quot;,
+2017-04-21T22:05:50.098305+00:00 app[web.1]:         &amp;quot;X-Forwarded-Port&amp;quot;: &amp;quot;443&amp;quot;,
+2017-04-21T22:05:50.098305+00:00 app[web.1]:         &amp;quot;X-Forwarded-Proto&amp;quot;: &amp;quot;https&amp;quot;,
+2017-04-21T22:05:50.098306+00:00 app[web.1]:         &amp;quot;X-Request-Id&amp;quot;: &amp;quot;514fade7-8222-494f-92f0-388100a01a0f&amp;quot;,
+2017-04-21T22:05:50.098307+00:00 app[web.1]:         &amp;quot;X-Request-Start&amp;quot;: &amp;quot;1492812350097&amp;quot;
+2017-04-21T22:05:50.098307+00:00 app[web.1]:     },
+2017-04-21T22:05:50.098308+00:00 app[web.1]:     &amp;quot;method&amp;quot;: {
+2017-04-21T22:05:50.098308+00:00 app[web.1]:         &amp;quot;__atuvc&amp;quot;: &amp;quot;1%7C16&amp;quot;,
+2017-04-21T22:05:50.098309+00:00 app[web.1]:         &amp;quot;_ga&amp;quot;: &amp;quot;GA1.3.1533808371.1492657513&amp;quot;
+2017-04-21T22:05:50.098310+00:00 app[web.1]:     },
+2017-04-21T22:05:50.098310+00:00 app[web.1]:     &amp;quot;url&amp;quot;: &amp;quot;https://vast-meadow-71019.herokuapp.com/logo.png&amp;quot;
+2017-04-21T22:05:50.098311+00:00 app[web.1]: }
+2017-04-21T22:05:50.098316+00:00 app[web.1]: https://cybersyndicates.com/logo.png
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;One of the powerful aspects of Flask is the ability to use “Custom Decorators” with your Flask app routes. We will be intercepting a “request” object before it hits a flask route. Using a custom decorator we are able to achieve this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@app.before_request
+@proxy_required
+def log_request():
+    &amp;quot;&amp;quot;&amp;quot;
+    log request and force proxy
+    &amp;quot;&amp;quot;&amp;quot;
+    try:
+        log_outlet = {&#39;address&#39; : request.remote_addr, &#39;url&#39; : request.base_url}
+        print log_outlet
+    except:
+        return make_response(jsonify({&#39;error&#39;: &#39;somthing went wrong (contact admin)&#39;}), 400)
+
+@app.route(&#39;/&amp;lt;string:request_path&amp;gt;&#39;, methods=[&#39;GET&#39;])
+def request_forward(request_path):
+    return &amp;quot;works/n&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you look at the above code we have a custom decorator declared as “@app.before_request”, this tells flask to run this code route before sending to the standard route views. Using a custom decorator we “wrap” this function with “@proxy_required”, to intercept the request and manipulate the data:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def proxy_required(func):
+    &amp;quot;&amp;quot;&amp;quot;
+    proxy http requests to forward domain (our real C2).
+    &amp;quot;&amp;quot;&amp;quot;
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        &amp;quot;&amp;quot;&amp;quot;
+        wrapper function with decorator
+        &amp;quot;&amp;quot;&amp;quot;
+        try:
+            if __DEBUG:
+                debug_req.print_request(request)
+                print request.url.replace(__CURRENT_DOMAIN, __FORWARD_DOMAIN)
+            # setup our proxy for C2
+            resp = requests.request(
+                method=request.method,
+                url=request.url.replace(__CURRENT_DOMAIN, __FORWARD_DOMAIN),
+                headers={key: value for (key, value) in request.headers if key != &#39;Host&#39;},
+                data=request.get_data(),
+                cookies=request.cookies,
+                allow_redirects=True)
+            excluded_headers = [&#39;content-encoding&#39;, &#39;content-length&#39;, &#39;transfer-encoding&#39;, &#39;connection&#39;]
+            headers = [(name, value) for (name, value) in resp.raw.headers.items()
+                       if name.lower() not in excluded_headers]
+            response = Response(resp.content, resp.status_code, headers)
+            print &amp;quot;proxy response: %s&amp;quot; % (response)
+            return response
+            if not response:
+                # FORWARD RESPONSE TO SERVER
+                return func(*args, **kwargs)
+        except:
+            return make_response(jsonify({&#39;error&#39;: &#39;somthing went wrong (contact admin)&#39;}), 400)
+    return wrapper
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The code will replace the requested URL with the forwarded domain or IP, fix up the request object by pulling the header values and data within the request to build a new request object. Using this object we send it to designated server with all the data and proper headers. This acts as a proxy and returns this entire response object to the original requester.&lt;/p&gt;
+
+&lt;p&gt;Here is a great video of it in action with CobaltStrike:&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;https://player.vimeo.com/video/214249797?autoplay=1&amp;loop=1&#34; width=&#34;640&#34; height=&#34;368&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&#34;https://vimeo.com/214249797&#34;&gt;Flask Proxy C2 Redirector&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user52367620&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;Flask PythonAnywhere C2 redirector template:
+&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/flask_pythonanywhere_redirector&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Google App Engine Flask C2 redirector:
+&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/flask_appengine_redirector&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;flask heroku C2 redirector template:
+&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/flask_heroku_redirector&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>OS X Packet Capture &amp; Empire</title>
@@ -2696,162 +2920,6 @@ Once setup we can easily force the App of choice to prompt a dialog box requesti
 
 &lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;reaperb0t&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
 &lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Email Verification and Email Name Creation</title>
-      <link>https://cybersyndicates.com/2016/02/email-harvesting-and-name-creation/</link>
-      <pubDate>Sun, 14 Feb 2016 14:23:45 +0000</pubDate>
-      
-      <guid>https://cybersyndicates.com/2016/02/email-harvesting-and-name-creation/</guid>
-      <description>
-
-&lt;p&gt;Over the past few months we have been rapidly expanding the capability of SimplyEmail. While it is a very simple tool, it has been extremely successful on a few live engagements I have been on. I feel like it is ready for recommendation to say the least. I did however notice a few key features that some of the guys on the team mentioned that would be nice to have integrated. Thanks to &lt;a href=&#34;https://twitter.com/_wald0&#34;&gt;@_wald0&lt;/a&gt; and his suggestions I have implemented a email verification option. Also I learned a trick or so a few months back from &lt;a href=&#34;https://twitter.com/harmj0y&#34;&gt;@harmj0y&lt;/a&gt; on sick site called &amp;ldquo;Connect6&amp;rdquo;, which seems to populate a large name DB of employees for each company. Also a fellow tester and friend (&lt;a href=&#34;https://twitter.com/nagasecurity&#34;&gt;Joshua Crumbaugh&lt;/a&gt;) let me on to a sick tool for grabbing Linkedin names from bing called &lt;a href=&#34;https://github.com/pan0pt1c0n/PhishBait&#34;&gt;PhishBait&lt;/a&gt;. With all this I set out to build some new capabilities for SimplyEmail and learn some new tricks :)&lt;/p&gt;
-
-&lt;p&gt;TL;DR:
-&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/SimplyEmail&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;smtp-email-verification&#34;&gt;SMTP Email Verification&lt;/h4&gt;
-
-&lt;p&gt;This process is actually relatively easy to accomplish. Its a simple heuristic of SMTP return codes when attempting to send a email on the target SMTP server. The process takes place by first Identifying the proper MX record to point to. In many cases larger corporations will have more than one SMTP server with multiple MX records. These are for redundancy of course and are ordered by priority, here is a small snip of the code I built fast:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    def GetMX(self):
-      MXRecord = [] 
-      try:
-        if self.verbose:
-          print helpers.color(&#39; [*] Attempting to resolve MX records!&#39;, firewall=True)
-        answers = dns.resolver.query(self.domain, &#39;MX&#39;)
-        for rdata in answers:
-          data = {
-            &amp;quot;Host&amp;quot;: str(rdata.exchange),
-            &amp;quot;Pref&amp;quot;: int(rdata.preference),
-          }
-          MXRecord.append(data)
-        # Now find the lowest value in the pref
-        Newlist = sorted(MXRecord, key=lambda k: k[&#39;Pref&#39;]) 
-        # Set the MX record
-        self.mxhost = Newlist[0]
-        if self.verbose:
-          val = &#39; [*] MX Host: &#39; + str(self.mxhost[&#39;Host&#39;])
-          print helpers.color(val, firewall=True)
-      except Exception as e:
-        error = &#39; [!] Failed to get MX record: &#39; + str(e)
-        print helpers.color(error, warning=True)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After obtaining all the MX records we can easily sort, pick the lowest value and feed it to the next function needed. So here is the meat of the verification checks. Before we go ahead and send the SMTP server all of the gathered emails we need to check if this SMTP server supports this. We do this via providing the STMP server a known &amp;ldquo;invalid&amp;rdquo; address, and we test for the a return code other than 250 (250 is a valid email code). If we get anything except a 250, we know that the SMTP server isn&amp;rsquo;t just returning a 250 for each address supplied. we can test this pretty simply:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; def VerifySMTPServer(self):
-      &#39;&#39;&#39;
-      Checks for code other than 250 for crap email.
-      &#39;&#39;&#39;
-      # Idea from:
-      # https://www.scottbrady91.com/Email-Verification/Python-Email-Verification-Script
-      hostname = socket.gethostname()
-      socket.setdefaulttimeout(10)
-      server = smtplib.SMTP(timeout=10)
-      server.set_debuglevel(0)
-      addressToVerify = &amp;quot;There.Is.Knowwaythiswillwork1234567@&amp;quot; + str(self.domain)
-      try:
-        server.connect(self.mxhost[&#39;Host&#39;])
-        server.helo(hostname)
-        server.mail(&#39;email@gmail.com&#39;)
-        code, message = server.rcpt(str(addressToVerify))
-        server.quit()
-        if code == 250:
-          return False
-        else: 
-          return True
-      except Exception as e:
-        print e
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;So lets say our SMTP server supports this type of check, we can simply build a function to perform the check for our gathered emails. Here is a small small output of it in action:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.10.11-AM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.10.11-AM.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.10.11 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Obviously I needed to wrap this in a simple helper class for SimplyEmail, the full code (Class) can be found here:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/VerifyEmails.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/VerifyEmails.py&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;connect6-name-creation&#34;&gt;Connect6 Name Creation&lt;/h4&gt;
-
-&lt;p&gt;Im always extreamly nervous to add in functionality to SimpleEmail.. hence the name! In some cases name creation can be a pivotal and vital addition to your phishing campaigns. Some times SimplyEmail will only find the standard email addresses or just a few emails. In this case email creation may be your saving grace. On my assessments I with out doubt found Connect6.com is a reliable source to gather names associated with companies.&lt;/p&gt;
-
-&lt;p&gt;Too start I throughly attempted to find  way to get the Connect6 URL using their search engine, with no anvil. This may be do to how they want you to pay for their service / API. So I did build a simple Google Dork function to attempt to resolve the correct URL:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    def Connect6AutoUrl(self):
-      # Using startpage to attempt to get the URL
-      # https://www.google.com/search?q=site:connect6.com+domain.com
-      try:
-        # This returns a JSON object
-        urllist = []
-        url = &amp;quot;https://www.google.com/search?q=site:connect6.com+%22&amp;quot; + self.domain + &#39;%22&#39;
-        r = requests.get(url, headers=self.UserAgent)
-      except Exception as e:
-        error = &amp;quot;[!] Major issue with Google Search: for Connect6 URL&amp;quot; + str(e)
-        print helpers.color(error, warning=True)
-      try:
-        RawHtml = r.content
-        soup = BeautifulSoup(RawHtml)
-        for a in soup.findAll(&#39;a&#39;, href=True):
-          try:
-            l = urlparse.parse_qs(urlparse.urlparse(a[&#39;href&#39;]).query)[&#39;q&#39;]
-            if &#39;site:connect6.com&#39; not in l[0]:
-              l = l[0].split(&amp;quot;:&amp;quot;)
-              urllist.append(l[2])
-          except:
-            pass
-        return urllist
-      except Exception as e:
-        print e
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Full code can be found here: &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/Connect6.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/Connect6.py&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Here is a quick sample of the output that you will given if it cant detect the correct URL:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.20.14-AM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2016-02-14-at-11.20.14-AM.png&#34; alt=&#34;Screen Shot 2016-02-14 at 11.20.14 AM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;linkedin-name-creation&#34;&gt;LinkedIn Name Creation&lt;/h4&gt;
-
-&lt;p&gt;Linkedin is and has been know as a great source for social engineering, and recently I first hand got to see how effective it is to build a email campaign of it. Using the PhishBait tool mention earlier I was able to add in additional functionality and build in LinkedIn name scraping into SimplyEmail. Here is the really simple code I adapted:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def LinkedInNames(self):
-      &#39;&#39;&#39;
-      This function simply uses
-      Bing to scrape for names and
-      returns a list of list names.
-      &#39;&#39;&#39;
-      try:
-        br = mechanize.Browser()
-        br.set_handle_robots(False)
-        self.domain = self.domain.split(&#39;.&#39;)
-        self.domain = self.domain[0]
-        r = br.open(&#39;http://www.bing.com/search?q=(site%3A%22www.linkedin.com%2Fin%2F%22%20OR%20site%3A%22www.linkedin.com%2Fpub%2F%22)%20%26%26%20(NOT%20site%3A%22www.linkedin.com%2Fpub%2Fdir%2F%22)%20%26%26%20%22&#39;+self.domain+&#39;%22&amp;amp;qs=n&amp;amp;form=QBRE&amp;amp;pq=(site%3A%22www.linkedin.com%2Fin%2F%22%20or%20site%3A%22www.linkedin.com%2Fpub%2F%22)%20%26%26%20(not%20site%3A%22www.linkedin.com%2Fpub%2Fdir%2F%22)%20%26%26%20%22&#39;+self.domain+&#39;%22&#39;)
-        soup = BeautifulSoup(r)
-        if soup:
-          link_list = []
-          NameList = []
-          more_records = True
-          Round = False
-          while more_records:
-            if Round:
-              response = br.follow_link(text=&amp;quot;Next&amp;quot;)
-              soup = BeautifulSoup(response)
-            # enter this loop to parse all results
-            # also follow any seondary links
-            for definition in soup.findAll(&#39;h2&#39;):
-              definition = definition.renderContents()
-              if &amp;quot;LinkedIn&amp;quot; in definition:
-                name = (((((definition.replace(&#39;&amp;lt;strong&amp;gt;&#39;,&#39;&#39;)).replace(&#39;&amp;lt;/strong&amp;gt;&#39;,&#39;&#39;)).split(&#39;&amp;gt;&#39;)[1]).split(&#39;|&#39;)[0]).rstrip()).split(&#39;,&#39;)[0]
-                name = name.split(&#39; &#39;)
-                if self.verbose:
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Finally the full code can found here: &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/LinkedinNames.py&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/blob/master/Helpers/LinkedinNames.py&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

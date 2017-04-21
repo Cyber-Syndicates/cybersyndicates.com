@@ -1,14 +1,238 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Post-rsses on Cyber Syndicates</title>
+    <title>Posts on Cyber Syndicates</title>
     <link>https://cybersyndicates.com/post/index.xml</link>
-    <description>Recent content in Post-rsses on Cyber Syndicates</description>
+    <description>Recent content in Posts on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <lastBuildDate>Sun, 12 Feb 2017 21:39:41 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 21 Apr 2017 21:39:41 -0500</lastBuildDate>
     <atom:link href="https://cybersyndicates.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Expand Your Horizon Red Team – Modern SaaS C2</title>
+      <link>https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/</link>
+      <pubDate>Fri, 21 Apr 2017 21:39:41 -0500</pubDate>
+      
+      <guid>https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/</guid>
+      <description>
+
+&lt;p&gt;Well to say that the past month or so for C2 infrastructure has been impactful, would be an understatement. Domain fronting has added yet another card to the deck of tricks the Red Team can deploy. Before this all took place, I was putting in some time to broaden the horizon of how the Red Team could deploy easy, yet effective C2. During this research, I found an interesting solution to this problem. Deploy our C2 redirectors on platforms that often are not intended to have console access. Hopefully to open the horizon of providers and IP space to operate / host from.&lt;/p&gt;
+
+&lt;p&gt;Using Python Flask applications and providers that support WSGI, I was able to put together three new projects to demonstrate this TTP.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;TL;DR&lt;/em&gt; Source code and projects are at the end of the post. The following video shows from nothing to fully functional redirector in one minute flat:&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;https://player.vimeo.com/video/213955360?autoplay=1&amp;loop=1&#34; width=&#34;640&#34; height=&#34;368&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&#34;https://vimeo.com/213955360&#34;&gt;One Minute C2 Redirector&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user52367620&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;For reference we will be covering the following flask redirectors:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/flask_heroku_redirector&#34;&gt;https://github.com/killswitch-GUI/flask_heroku_redirector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/flask_pythonanywhere_redirector&#34;&gt;https://github.com/killswitch-GUI/flask_pythonanywhere_redirector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/flask_appengine_redirector&#34;&gt;https://github.com/killswitch-GUI/flask_appengine_redirector&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;native-expansion&#34;&gt;Native Expansion&lt;/h2&gt;
+
+&lt;p&gt;Extensive work has been done by @bluscreenofjeff to filter HTTP traffic via apache mod_rewrite, working off this research I knew Python would also be able to handle this. Using a Python based platform the possibilities are nearly endless in conjunction with providers like Heroku. Sporting the CLI interface, Heroku commands can be used to update system environment variables remotely. This allows for extremely agile manipulation of the redirectors, without the need of multiple stages to filter requests.&lt;/p&gt;
+
+&lt;h2 id=&#34;providers&#34;&gt;Providers&lt;/h2&gt;
+
+&lt;p&gt;limited VPS provides has been an area of concern for myself in the past. Many of the big-name core VPS providers have gotten a bad reputation when it comes to IP blacklisting. Also, one single point of failure to discover all your C2 to pivot off could take place. Adding a few more options to the mix is a great way to throw off defenders, or help spread out your offensive end points. Plus, who is going guess you’re running you C2 from PythonAnywhere.&lt;/p&gt;
+
+&lt;h2 id=&#34;deployment&#34;&gt;Deployment&lt;/h2&gt;
+
+&lt;p&gt;Time is often limited and spending more time than necessary on C2 often means more time off target. A really cool benefit of using SaaS C2 is the ease of code deployments; often we see conventional use cases ranging from quickly standing up a file server to expanding existing infrastructure. This concept makes deploying code a cinch on many platforms, Heroku is a great example of this. If you walk through the setup process of the flask_heroku_redirector, you will notice simple environmental variables to push the configs (Ex. heroku config:set FORWARD_DOMAIN=cybersyndicates.com). This proves to be very powerful to quickly block, change or even pull down payloads you don’t want the Blue Team to hit.&lt;/p&gt;
+
+&lt;h2 id=&#34;ip-space&#34;&gt;IP Space&lt;/h2&gt;
+
+&lt;p&gt;A simple WHOIS query can say a ton about a domain, it will expose potential owner, address and corporation. We can setup WHOIS guard, but that is only half the picture; we need to also look at the IP space we originate from as well. An analyst determining if the traffic is malicious will be asking (Who owns this? Why is this client talking to it? What type of resource?). When we start talking about our operational footprint, considerations like where I host from is a big deal. Take for example third party C2, its near undetectable and will easily circumvent most analytics. The return on investment to blend in and pass the sniff test can be invaluable to sustaining a foot hold. The flask_appengine_redirector project is still dependent on other factors such as a domain name to match the ploy, but provides this initial top cover from operating in Google IP space, without the extent of third party C2.&lt;/p&gt;
+
+&lt;h2 id=&#34;technical-overview&#34;&gt;Technical Overview&lt;/h2&gt;
+
+&lt;p&gt;While each project has its own specifics from the platform dependent configuration files, the core code base is nearly identical across multiple platforms. The first thing you will notice is the common use of OS environment variables. This is common practice for encryption, secret and private keys on these platforms. We use them to allow us to quickly change and alter our C2  redirector, either through the web interface or provider CLI.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# STATIC VAR
+__DEBUG = bool(os.environ.get(&#39;DEBUG&#39;, True))
+__FORWARD_DOMAIN = str(os.environ.get(&#39;FORWARD_DOMAIN&#39;, &#39;cybersyndicates.com&#39;))
+__CURRENT_DOMAIN = str(os.environ.get(&#39;CURRENT_DOMAIN&#39;, &#39;test-1234555555.herokuapp.com&#39;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Flask is a great example and standard configuration looks as follows:&lt;/p&gt;
+
+&lt;p&gt;set port to forward on (Defaults to 80):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;heroku config:set PORT=80&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;set debug output to the log outlet (Defaults to True):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;heroku config:set DEBUG=True&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;set forward C2 domain (Where to redirect to):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;heroku config:set FORWARD_DOMAIN=cybersyndicates.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;set redirector domain (Incoming domain name):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;heroku config:set CURRENT_DOMAIN=tranquil-dawn-50102.herokuapp.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once you move on to the core code components you will notice that I also added in a “debug” class to feed your request to. This is very helpful to see the data being received by your C2 since you will not have tools like tcpdump available.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class debug_request():
+    &amp;quot;&amp;quot;&amp;quot;
+    debug printing of request object.
+    &amp;quot;&amp;quot;&amp;quot;
+    def __init__(self):
+        # setup DB connection
+        # TODO: add db support
+        # self.conn = sql
+        pass
+
+    def log_request(self, request_obj):
+        &amp;quot;&amp;quot;&amp;quot;
+        used to log full request to db or other logging outlet
+        &amp;quot;&amp;quot;&amp;quot;
+        # TODO: build full logic for request
+        req = self.build_json(request_obj)
+        pass
+    
+    def print_request(self, request_obj):
+        &amp;quot;&amp;quot;&amp;quot;
+        print the entire request in json pprint
+        &amp;quot;&amp;quot;&amp;quot;
+        print self.build_json(request_obj)
+
+    def build_json(self, request_obj):
+        &amp;quot;&amp;quot;&amp;quot;
+        build the json obj
+        &amp;quot;&amp;quot;&amp;quot;
+        json_dict = {}
+        json_dict[&#39;url&#39;] = request_obj.url
+        json_dict[&#39;method&#39;] = request_obj.method
+        json_dict[&#39;headers&#39;] = {key: value for (key, value) in request.headers if key != &#39;Host&#39;}
+        json_dict[&#39;method&#39;] = request_obj.cookies
+        json_dict[&#39;data&#39;] = request_obj.data
+        return json.dumps(json_dict, ensure_ascii=False, indent=4, sort_keys=True)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;you should expect to see some verbose logging until you set your debug to false; here is an example of that logging console:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;2017-04-21T22:05:50.027323+00:00 app[web.1]: proxy response: &amp;lt;Response 14718 bytes [200 OK]&amp;gt;
+2017-04-21T22:05:50.098293+00:00 app[web.1]: {
+2017-04-21T22:05:50.098295+00:00 app[web.1]:     &amp;quot;data&amp;quot;: &amp;quot;&amp;quot;,
+2017-04-21T22:05:50.098296+00:00 app[web.1]:     &amp;quot;headers&amp;quot;: {
+2017-04-21T22:05:50.098297+00:00 app[web.1]:         &amp;quot;Accept&amp;quot;: &amp;quot;image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5&amp;quot;,
+2017-04-21T22:05:50.098298+00:00 app[web.1]:         &amp;quot;Accept-Encoding&amp;quot;: &amp;quot;gzip, deflate&amp;quot;,
+2017-04-21T22:05:50.098299+00:00 app[web.1]:         &amp;quot;Accept-Language&amp;quot;: &amp;quot;en-us&amp;quot;,
+2017-04-21T22:05:50.098299+00:00 app[web.1]:         &amp;quot;Connect-Time&amp;quot;: &amp;quot;0&amp;quot;,
+2017-04-21T22:05:50.098300+00:00 app[web.1]:         &amp;quot;Connection&amp;quot;: &amp;quot;close&amp;quot;,
+2017-04-21T22:05:50.098301+00:00 app[web.1]:         &amp;quot;Cookie&amp;quot;: &amp;quot;_ga=GA1.3.1533808371.1492657513; __atuvc=1%7C16&amp;quot;,
+2017-04-21T22:05:50.098301+00:00 app[web.1]:         &amp;quot;Referer&amp;quot;: &amp;quot;https://vast-meadow-71019.herokuapp.com/&amp;quot;,
+2017-04-21T22:05:50.098302+00:00 app[web.1]:         &amp;quot;Total-Route-Time&amp;quot;: &amp;quot;0&amp;quot;,
+2017-04-21T22:05:50.098303+00:00 app[web.1]:         &amp;quot;User-Agent&amp;quot;: &amp;quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.1 Safari/603.1.30&amp;quot;,
+2017-04-21T22:05:50.098303+00:00 app[web.1]:         &amp;quot;Via&amp;quot;: &amp;quot;1.1 vegur&amp;quot;,
+2017-04-21T22:05:50.098304+00:00 app[web.1]:         &amp;quot;X-Forwarded-For&amp;quot;: &amp;quot;108.44.160.205&amp;quot;,
+2017-04-21T22:05:50.098305+00:00 app[web.1]:         &amp;quot;X-Forwarded-Port&amp;quot;: &amp;quot;443&amp;quot;,
+2017-04-21T22:05:50.098305+00:00 app[web.1]:         &amp;quot;X-Forwarded-Proto&amp;quot;: &amp;quot;https&amp;quot;,
+2017-04-21T22:05:50.098306+00:00 app[web.1]:         &amp;quot;X-Request-Id&amp;quot;: &amp;quot;514fade7-8222-494f-92f0-388100a01a0f&amp;quot;,
+2017-04-21T22:05:50.098307+00:00 app[web.1]:         &amp;quot;X-Request-Start&amp;quot;: &amp;quot;1492812350097&amp;quot;
+2017-04-21T22:05:50.098307+00:00 app[web.1]:     },
+2017-04-21T22:05:50.098308+00:00 app[web.1]:     &amp;quot;method&amp;quot;: {
+2017-04-21T22:05:50.098308+00:00 app[web.1]:         &amp;quot;__atuvc&amp;quot;: &amp;quot;1%7C16&amp;quot;,
+2017-04-21T22:05:50.098309+00:00 app[web.1]:         &amp;quot;_ga&amp;quot;: &amp;quot;GA1.3.1533808371.1492657513&amp;quot;
+2017-04-21T22:05:50.098310+00:00 app[web.1]:     },
+2017-04-21T22:05:50.098310+00:00 app[web.1]:     &amp;quot;url&amp;quot;: &amp;quot;https://vast-meadow-71019.herokuapp.com/logo.png&amp;quot;
+2017-04-21T22:05:50.098311+00:00 app[web.1]: }
+2017-04-21T22:05:50.098316+00:00 app[web.1]: https://cybersyndicates.com/logo.png
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;One of the powerful aspects of Flask is the ability to use “Custom Decorators” with your Flask app routes. We will be intercepting a “request” object before it hits a flask route. Using a custom decorator we are able to achieve this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@app.before_request
+@proxy_required
+def log_request():
+    &amp;quot;&amp;quot;&amp;quot;
+    log request and force proxy
+    &amp;quot;&amp;quot;&amp;quot;
+    try:
+        log_outlet = {&#39;address&#39; : request.remote_addr, &#39;url&#39; : request.base_url}
+        print log_outlet
+    except:
+        return make_response(jsonify({&#39;error&#39;: &#39;somthing went wrong (contact admin)&#39;}), 400)
+
+@app.route(&#39;/&amp;lt;string:request_path&amp;gt;&#39;, methods=[&#39;GET&#39;])
+def request_forward(request_path):
+    return &amp;quot;works/n&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you look at the above code we have a custom decorator declared as “@app.before_request”, this tells flask to run this code route before sending to the standard route views. Using a custom decorator we “wrap” this function with “@proxy_required”, to intercept the request and manipulate the data:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def proxy_required(func):
+    &amp;quot;&amp;quot;&amp;quot;
+    proxy http requests to forward domain (our real C2).
+    &amp;quot;&amp;quot;&amp;quot;
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        &amp;quot;&amp;quot;&amp;quot;
+        wrapper function with decorator
+        &amp;quot;&amp;quot;&amp;quot;
+        try:
+            if __DEBUG:
+                debug_req.print_request(request)
+                print request.url.replace(__CURRENT_DOMAIN, __FORWARD_DOMAIN)
+            # setup our proxy for C2
+            resp = requests.request(
+                method=request.method,
+                url=request.url.replace(__CURRENT_DOMAIN, __FORWARD_DOMAIN),
+                headers={key: value for (key, value) in request.headers if key != &#39;Host&#39;},
+                data=request.get_data(),
+                cookies=request.cookies,
+                allow_redirects=True)
+            excluded_headers = [&#39;content-encoding&#39;, &#39;content-length&#39;, &#39;transfer-encoding&#39;, &#39;connection&#39;]
+            headers = [(name, value) for (name, value) in resp.raw.headers.items()
+                       if name.lower() not in excluded_headers]
+            response = Response(resp.content, resp.status_code, headers)
+            print &amp;quot;proxy response: %s&amp;quot; % (response)
+            return response
+            if not response:
+                # FORWARD RESPONSE TO SERVER
+                return func(*args, **kwargs)
+        except:
+            return make_response(jsonify({&#39;error&#39;: &#39;somthing went wrong (contact admin)&#39;}), 400)
+    return wrapper
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The code will replace the requested URL with the forwarded domain or IP, fix up the request object by pulling the header values and data within the request to build a new request object. Using this object we send it to designated server with all the data and proper headers. This acts as a proxy and returns this entire response object to the original requester.&lt;/p&gt;
+
+&lt;p&gt;Here is a great video of it in action with CobaltStrike:&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe src=&#34;https://player.vimeo.com/video/214249797?autoplay=1&amp;loop=1&#34; width=&#34;640&#34; height=&#34;368&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href=&#34;https://vimeo.com/214249797&#34;&gt;Flask Proxy C2 Redirector&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user52367620&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;Flask PythonAnywhere C2 redirector template:
+&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/flask_pythonanywhere_redirector&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Google App Engine Flask C2 redirector:
+&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/flask_appengine_redirector&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;flask heroku C2 redirector template:
+&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/flask_heroku_redirector&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
+&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>OS X Packet Capture &amp; Empire</title>
@@ -2864,138 +3088,6 @@ So no matter how hard I tired I couldn&amp;rsquo;t get the latest SDK to work so
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt; At this point you should be up and running for the use of burp and your API you fuzz.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Windows Driver and Service enumeration with Python</title>
-      <link>https://cybersyndicates.com/2015/09/windows-driver-and-service-enumeration-with-python/</link>
-      <pubDate>Thu, 17 Sep 2015 20:13:43 +0000</pubDate>
-      
-      <guid>https://cybersyndicates.com/2015/09/windows-driver-and-service-enumeration-with-python/</guid>
-      <description>&lt;p&gt;With malware becoming more and more sophisticated, it is becoming extremely difficult to identify malware on infected systems.  DLL hijacking, reflected DLL&amp;rsquo;s, and exploiting vulnerable kernel drivers has become extremely popular.  As it turns out Windows makes communication between user mode programs and kernel driver -1 this fairly easy for attackers:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;CreateFile() to initialize access to device through its symbolic ling
-
-Communication w/ : DeviceloControl() // IOCTL call
-
-WriteFile()            // pass &amp;quot;stream&amp;quot; data
-
-ReadFile()            // recieve &amp;quot;stream&amp;quot; data
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Recent vulnerabilities such as OpenType Font Driver Vulnerability(CVE-2015-2426) are still making use of the ability to exploint DLL&amp;rsquo;s.  This particular vulnerability makes it possible for remote code execution by taking advantage of Window&amp;rsquo;s Adobe Type Manager Library improperly handling specially crafted OpenType fonts.  You can see why it is important to monitor and examine your Drivers, Services, and DLL&amp;rsquo;s.  I wrote a python module for our upcoming OFF-Toolkit (Offensive Forensics Toolkit) that facilitates that analyzing of Drivers and Services.  Some tidbits of information: Service Types are (&lt;strong&gt;normally&lt;/strong&gt;) 0x10, 0x20, 0x100: Start is 2, 3, or 4 ONLY.  Driver Type is 0x01 or 0x02; Start is 0 or 1 only..   Services w/o &amp;ldquo;ObjectName&amp;rdquo; that is set to LocalSystem, NT AUTHORITY\LocalService, or NT AUTHORITY\NetworkService&amp;hellip;. Services starting under the Svchost process must have an entry in SOFTWARE\Microsoft\Windows NT\CurrentVersion\svchost&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;These are just a few things to keep in mind when analyzing data retrieved with this module.  For more information and for the source code, check it out at &lt;a href=&#34;https://github.com/slacker007/Registry_Enumerator/blob/master/DriversAndServices.py&#34;&gt;https://github.com/slacker007/Registry_Enumerator/blob/master/DriversAndServices.py&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;##############################################################################################################################
-#                               				 OFFENSIVE FORENSIC FRAMEWORK   								   			 #
-#											 (WINDOWS DRIVERS AND SERVICES FORENSICS MODULE)											 #
-#											Compatible w/ Win 7,8,10 (x86 &amp;amp; 64)												 #
-#												(MODIFIED ORIGINAL SEPT 2015)												   			 #
-#															 BY 												   			 #
-#					                           (slacker007) 					   			 				     #
-##############################################################################################################################
-
-
-######################################### Function &amp;amp; Variable Formatting Guide ###############################################
-# Global Variables are all uppercase EX: GLOBAL_VARIABLE = 0
-# local Variables are in all lowercase EX: local_variable = 0
-# Function Names are written by capitalizing the first letter of each word EX: def FunctionName(): or def Function_Name():
-
-
-import _winreg
-import threading
-import Queue
-import time
-from xml.dom import minidom
-from pprint import pprint
-
-#***********************************************************************************
-# Global Variables
-#***********************************************************************************
-
-########################	Static Registry Keys	################################
-
-SERVICES = r&#39;SYSTEM\\CurrentControlSet\\services&#39;
-
-# List of Static Registry Keys: To add more keys just create a Variable up top with the same syntax and add the variable in this list.. And RUN!!
-L_O_K = [SERVICES]
-
-xml_file = open(&amp;quot;driversandservices.xml&amp;quot;, &amp;quot;w&amp;quot;)
-xml_file.write(&amp;quot;&amp;lt;group name=\&amp;quot;DriversAndServices,\&amp;quot;&amp;gt;\n&amp;quot;)
-q = Queue.Queue()
-
-def get_MF_info(q, r):
-	Iterate_Reg_Keys(_winreg.HKEY_LOCAL_MACHINE, r)
-
-def doc_handler(x):
-	xml_file.write(&amp;quot;&amp;lt;/group&amp;gt;&amp;quot;)
-	xml_file.close()	
-
-def Read_Subkeys (key): #(FUNCTION THAT READS OPENED HIVE KEY DATA INTO A //GENERATOR OBJECT//  TO REDUCE MEMORY FOOTPRINT!)
-	counter = 0
-	while True:
-		try:
-			subkey = _winreg.EnumKey(key, counter)
-			yield subkey
-			counter += 1
-		except WindowsError as e:
-			break
-def Read_Key_Values (key): #(FUNCTION THAT READS THE VALUES OF AN OPENED SUBKEY USING A //GENERATOR OBJECT// TO REDUCE MEMORY FOOTPRINT!)
-	counter = 0
-	while True:
-		try:
-			keyvalue = _winreg.EnumValue(key, counter)
-			yield keyvalue
-			counter += 1
-		except WindowsError as e:
-			break
-def Iterate_Reg_Keys(hkey, key_path, tabs=0): #(FUNCTION THAT CONTROLS THE ITERATION THROUGH SUBKEY &amp;amp; VALUES)
-	key = _winreg.OpenKey(hkey, key_path, 0, _winreg.KEY_READ)
-	for subkey_name in Read_Subkeys(key): #(LOOP THROUGH THE REGISTRY KEY AND OPEN EACH SUBKEY)
-		xml_file.write(&amp;quot;\t&amp;lt;subkey name=\&amp;quot;&amp;quot;)
-		xml_file.write(str(subkey_name))
-		xml_file.write(&amp;quot;\&amp;quot;&amp;gt;\n&amp;quot;)
-		subkey_path = &amp;quot;%s\\%s&amp;quot; % (key_path, subkey_name)
-		Iterate_Reg_Keys(hkey, subkey_path, tabs+1)
-		subkey_value_path = _winreg.OpenKey(hkey, subkey_path, 0, _winreg.KEY_READ)
-		data_found = False
-		for subkey_value in Read_Key_Values(subkey_value_path): #(LOOP THROUGTH THE SUBKEY TO PULL VALUES FROM SUBKEY)
-			data_found = True
-			if isinstance(subkey_value[1], str):
-				try:
-					converted_from_ascii = &amp;quot;:&amp;quot;.join(&amp;quot;{:02x}&amp;quot;.format(ord(c)) for c in subkey_value[1])
-					value_data2 = str(converted_from_ascii)
-				except UnicodeEncodeError:
-					pass
-			elif not isinstance(subkey_value[1], str):
-				try:
-					value_data2 = str(subkey_value[1])
-				except UnicodeEncodeError:
-					pass
-			value_data1 = str(subkey_value[0])
-			xml_file.write(&amp;quot;\t\t&amp;lt;id name=\&amp;quot;&amp;quot;)
-			xml_file.write(str(value_data1))
-			xml_file.write(&amp;quot;\&amp;quot;&amp;gt;&amp;quot;)
-			xml_file.write(str(value_data2))
-			xml_file.write(&amp;quot;&amp;lt;/id&amp;gt;\n&amp;quot;)
-		xml_file.write(&amp;quot;	&amp;lt;/subkey&amp;gt;\n&amp;quot;)
-	_winreg.CloseKey(key)
-
-# Execution Control...................................................
-
-for each in L_O_K:
-	t = threading.Thread(target=get_MF_info, args = (q, each))
-	t.start()
-	t.join()
-t = threading.Thread(doc_handler(xml_file))
-t.start()
-t.join
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;@real_slacker007&lt;/p&gt;
 </description>
     </item>
     

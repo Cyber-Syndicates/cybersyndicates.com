@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Expand Your Horizon Red Team – Modern SaaS C2 &middot; Red Team | Hacking | Infosec | TTPs</title>
+        <meta name="description" content="Python WSGI C2">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.19" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+        <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+        <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
+        <meta name="application-name" content="&nbsp;"/>
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+        <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+        <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+        <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+        <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+        <meta property="og:image" content="/image/cybersyndicates_homepage.png">
+
+        <meta property="og:title" content="Expand Your Horizon Red Team – Modern SaaS C2">
+<meta property="og:description" content="Python WSGI C2">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cybersyndicates.com/1/01/expand-your-horizon-red-team/">
+        <link rel="stylesheet" href="https://cybersyndicates.com/css/normalize.css">
+        <link rel="stylesheet" href="https://cybersyndicates.com/css/highlight.css">
+        <link rel="stylesheet" href="https://cybersyndicates.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title="Cyber Syndicates" href="https://cybersyndicates.com/">
+                            <img src="/logo.png" alt="The Team" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="https://cybersyndicates.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="https://cybersyndicates.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/cybersyndicates">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="YouTube" title="YouTube" href="https://www.youtube.com/user/Rymdeko">
+                                <i class="fa fa-youtube"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Presentations" href="/presentations/">Presentations</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Expand Your Horizon Red Team – Modern SaaS C2</h1>
+    
+        <p class="post-description" itemprop="description">Python WSGI C2</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="0001-01-01" itemprop="datePublished">Mon, Jan 1, 0001</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://google.com/&#43;XXX" itemprop="url" rel="author">Alexander Rymdeko-Harvey</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<p>Well to say that the past month or so for C2 infrastructure has been impactful, would be an understatement. Domain fronting has added yet another card to the deck of tricks the Red Team can deploy. Before this all took place, I was putting in some time to broaden the horizon of how the Red Team could deploy easy, yet effective C2. During this research, I found an interesting solution to this problem. Deploy our C2 redirectors on platforms that often are not intended to have console access. Hopefully to open the horizon of providers and IP space to operate / host from.</p>
+
+<p>Using Python Flask applications and providers that support WSGI, I was able to put together three new projects to demonstrate this TTP.</p>
+
+<p><em>TL;DR</em> Source code and projects are at the end of the post. The following video shows from nothing to fully functional redirector in one minute flat:</p>
+
+<p><iframe src="https://player.vimeo.com/video/213955360?autoplay=1&loop=1" width="640" height="368" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/213955360">One Minute C2 Redirector</a> from <a href="https://vimeo.com/user52367620">Alexander Rymdeko-Harvey</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
+
+<p>For reference we will be covering the following flask redirectors:</p>
+
+<ul>
+<li><a href="https://github.com/killswitch-GUI/flask_heroku_redirector">https://github.com/killswitch-GUI/flask_heroku_redirector</a></li>
+<li><a href="https://github.com/killswitch-GUI/flask_pythonanywhere_redirector">https://github.com/killswitch-GUI/flask_pythonanywhere_redirector</a></li>
+<li><a href="https://github.com/killswitch-GUI/flask_appengine_redirector">https://github.com/killswitch-GUI/flask_appengine_redirector</a></li>
+</ul>
+
+<h2 id="native-expansion">Native Expansion</h2>
+
+<p>Extensive work has been done by @bluscreenofjeff to filter HTTP traffic via apache mod_rewrite, working off this research I knew Python would also be able to handle this. Using a Python based platform the possibilities are nearly endless in conjunction with providers like Heroku. Sporting the CLI interface, Heroku commands can be used to update system environment variables remotely. This allows for extremely agile manipulation of the redirectors, without the need of multiple stages to filter requests.</p>
+
+<h2 id="providers">Providers</h2>
+
+<p>limited VPS provides has been an area of concern for myself in the past. Many of the big-name core VPS providers have gotten a bad reputation when it comes to IP blacklisting. Also, one single point of failure to discover all your C2 to pivot off could take place. Adding a few more options to the mix is a great way to throw off defenders, or help spread out your offensive end points. Plus, who is going guess you’re running you C2 from PythonAnywhere.</p>
+
+<h2 id="deployment">Deployment</h2>
+
+<p>Time is often limited and spending more time than necessary on C2 often means more time off target. A really cool benefit of using SaaS C2 is the ease of code deployments; often we see conventional use cases ranging from quickly standing up a file server to expanding existing infrastructure. This concept makes deploying code a cinch on many platforms, Heroku is a great example of this. If you walk through the setup process of the flask_heroku_redirector, you will notice simple environmental variables to push the configs (Ex. heroku config:set FORWARD_DOMAIN=cybersyndicates.com). This proves to be very powerful to quickly block, change or even pull down payloads you don’t want the Blue Team to hit.</p>
+
+<h2 id="ip-space">IP Space</h2>
+
+<p>A simple WHOIS query can say a ton about a domain, it will expose potential owner, address and corporation. We can setup WHOIS guard, but that is only half the picture; we need to also look at the IP space we originate from as well. An analyst determining if the traffic is malicious will be asking (Who owns this? Why is this client talking to it? What type of resource?). When we start talking about our operational footprint, considerations like where I host from is a big deal. Take for example third party C2, its near undetectable and will easily circumvent most analytics. The return on investment to blend in and pass the sniff test can be invaluable to sustaining a foot hold. The flask_appengine_redirector project is still dependent on other factors such as a domain name to match the ploy, but provides this initial top cover from operating in Google IP space, without the extent of third party C2.</p>
+
+<h2 id="technical-overview">Technical Overview</h2>
+
+<p>While each project has its own specifics from the platform dependent configuration files, the core code base is nearly identical across multiple platforms. The first thing you will notice is the common use of OS environment variables. This is common practice for encryption, secret and private keys on these platforms. We use them to allow us to quickly change and alter our C2  redirector, either through the web interface or provider CLI.</p>
+
+<pre><code># STATIC VAR
+__DEBUG = bool(os.environ.get('DEBUG', True))
+__FORWARD_DOMAIN = str(os.environ.get('FORWARD_DOMAIN', 'cybersyndicates.com'))
+__CURRENT_DOMAIN = str(os.environ.get('CURRENT_DOMAIN', 'test-1234555555.herokuapp.com'))
+</code></pre>
+
+<p>Flask is a great example and standard configuration looks as follows:</p>
+
+<p>set port to forward on (Defaults to 80):</p>
+
+<ul>
+<li><code>heroku config:set PORT=80</code></li>
+</ul>
+
+<p>set debug output to the log outlet (Defaults to True):</p>
+
+<ul>
+<li><code>heroku config:set DEBUG=True</code></li>
+</ul>
+
+<p>set forward C2 domain (Where to redirect to):</p>
+
+<ul>
+<li><code>heroku config:set FORWARD_DOMAIN=cybersyndicates.com</code></li>
+</ul>
+
+<p>set redirector domain (Incoming domain name):</p>
+
+<ul>
+<li><code>heroku config:set CURRENT_DOMAIN=tranquil-dawn-50102.herokuapp.com</code></li>
+</ul>
+
+<p>Once you move on to the core code components you will notice that I also added in a “debug” class to feed your request to. This is very helpful to see the data being received by your C2 since you will not have tools like tcpdump available.</p>
+
+<pre><code>class debug_request():
+    &quot;&quot;&quot;
+    debug printing of request object.
+    &quot;&quot;&quot;
+    def __init__(self):
+        # setup DB connection
+        # TODO: add db support
+        # self.conn = sql
+        pass
+
+    def log_request(self, request_obj):
+        &quot;&quot;&quot;
+        used to log full request to db or other logging outlet
+        &quot;&quot;&quot;
+        # TODO: build full logic for request
+        req = self.build_json(request_obj)
+        pass
+    
+    def print_request(self, request_obj):
+        &quot;&quot;&quot;
+        print the entire request in json pprint
+        &quot;&quot;&quot;
+        print self.build_json(request_obj)
+
+    def build_json(self, request_obj):
+        &quot;&quot;&quot;
+        build the json obj
+        &quot;&quot;&quot;
+        json_dict = {}
+        json_dict['url'] = request_obj.url
+        json_dict['method'] = request_obj.method
+        json_dict['headers'] = {key: value for (key, value) in request.headers if key != 'Host'}
+        json_dict['method'] = request_obj.cookies
+        json_dict['data'] = request_obj.data
+        return json.dumps(json_dict, ensure_ascii=False, indent=4, sort_keys=True)
+</code></pre>
+
+<p>you should expect to see some verbose logging until you set your debug to false; here is an example of that logging console:</p>
+
+<pre><code>2017-04-21T22:05:50.027323+00:00 app[web.1]: proxy response: &lt;Response 14718 bytes [200 OK]&gt;
+2017-04-21T22:05:50.098293+00:00 app[web.1]: {
+2017-04-21T22:05:50.098295+00:00 app[web.1]:     &quot;data&quot;: &quot;&quot;,
+2017-04-21T22:05:50.098296+00:00 app[web.1]:     &quot;headers&quot;: {
+2017-04-21T22:05:50.098297+00:00 app[web.1]:         &quot;Accept&quot;: &quot;image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5&quot;,
+2017-04-21T22:05:50.098298+00:00 app[web.1]:         &quot;Accept-Encoding&quot;: &quot;gzip, deflate&quot;,
+2017-04-21T22:05:50.098299+00:00 app[web.1]:         &quot;Accept-Language&quot;: &quot;en-us&quot;,
+2017-04-21T22:05:50.098299+00:00 app[web.1]:         &quot;Connect-Time&quot;: &quot;0&quot;,
+2017-04-21T22:05:50.098300+00:00 app[web.1]:         &quot;Connection&quot;: &quot;close&quot;,
+2017-04-21T22:05:50.098301+00:00 app[web.1]:         &quot;Cookie&quot;: &quot;_ga=GA1.3.1533808371.1492657513; __atuvc=1%7C16&quot;,
+2017-04-21T22:05:50.098301+00:00 app[web.1]:         &quot;Referer&quot;: &quot;https://vast-meadow-71019.herokuapp.com/&quot;,
+2017-04-21T22:05:50.098302+00:00 app[web.1]:         &quot;Total-Route-Time&quot;: &quot;0&quot;,
+2017-04-21T22:05:50.098303+00:00 app[web.1]:         &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.1 Safari/603.1.30&quot;,
+2017-04-21T22:05:50.098303+00:00 app[web.1]:         &quot;Via&quot;: &quot;1.1 vegur&quot;,
+2017-04-21T22:05:50.098304+00:00 app[web.1]:         &quot;X-Forwarded-For&quot;: &quot;108.44.160.205&quot;,
+2017-04-21T22:05:50.098305+00:00 app[web.1]:         &quot;X-Forwarded-Port&quot;: &quot;443&quot;,
+2017-04-21T22:05:50.098305+00:00 app[web.1]:         &quot;X-Forwarded-Proto&quot;: &quot;https&quot;,
+2017-04-21T22:05:50.098306+00:00 app[web.1]:         &quot;X-Request-Id&quot;: &quot;514fade7-8222-494f-92f0-388100a01a0f&quot;,
+2017-04-21T22:05:50.098307+00:00 app[web.1]:         &quot;X-Request-Start&quot;: &quot;1492812350097&quot;
+2017-04-21T22:05:50.098307+00:00 app[web.1]:     },
+2017-04-21T22:05:50.098308+00:00 app[web.1]:     &quot;method&quot;: {
+2017-04-21T22:05:50.098308+00:00 app[web.1]:         &quot;__atuvc&quot;: &quot;1%7C16&quot;,
+2017-04-21T22:05:50.098309+00:00 app[web.1]:         &quot;_ga&quot;: &quot;GA1.3.1533808371.1492657513&quot;
+2017-04-21T22:05:50.098310+00:00 app[web.1]:     },
+2017-04-21T22:05:50.098310+00:00 app[web.1]:     &quot;url&quot;: &quot;https://vast-meadow-71019.herokuapp.com/logo.png&quot;
+2017-04-21T22:05:50.098311+00:00 app[web.1]: }
+2017-04-21T22:05:50.098316+00:00 app[web.1]: https://cybersyndicates.com/logo.png
+</code></pre>
+
+<p>One of the powerful aspects of Flask is the ability to use “Custom Decorators” with your Flask app routes. What we are trying to achieve is to intercept a “request” object before it hits a flask route. Using a custom decorator we are able to achieve this:</p>
+
+<pre><code>@app.before_request
+@proxy_required
+def log_request():
+    &quot;&quot;&quot;
+    log request and force proxy
+    &quot;&quot;&quot;
+    try:
+        log_outlet = {'address' : request.remote_addr, 'url' : request.base_url}
+        print log_outlet
+    except:
+        return make_response(jsonify({'error': 'somthing went wrong (contact admin)'}), 400)
+
+@app.route('/&lt;string:request_path&gt;', methods=['GET'])
+def request_forward(request_path):
+    return &quot;works/n&quot;
+</code></pre>
+
+<p>If you look at the above code we have a custom decorator declared as “@app.before_request”, this tells flask to run this code route before sending to the standard views. Using a custom decorator we “wrap” this function with “@proxy_required”, to intercept the request and manipulate the data:</p>
+
+<pre><code>def proxy_required(func):
+    &quot;&quot;&quot;
+    proxy http requests to forward domain (our real C2).
+    &quot;&quot;&quot;
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        &quot;&quot;&quot;
+        wrapper function with decorator
+        &quot;&quot;&quot;
+        try:
+            if __DEBUG:
+                debug_req.print_request(request)
+                print request.url.replace(__CURRENT_DOMAIN, __FORWARD_DOMAIN)
+            # setup our proxy for C2
+            resp = requests.request(
+                method=request.method,
+                url=request.url.replace(__CURRENT_DOMAIN, __FORWARD_DOMAIN),
+                headers={key: value for (key, value) in request.headers if key != 'Host'},
+                data=request.get_data(),
+                cookies=request.cookies,
+                allow_redirects=True)
+            excluded_headers = ['content-encoding', 'content-length', 'transfer-encoding', 'connection']
+            headers = [(name, value) for (name, value) in resp.raw.headers.items()
+                       if name.lower() not in excluded_headers]
+            response = Response(resp.content, resp.status_code, headers)
+            print &quot;proxy response: %s&quot; % (response)
+            return response
+            if not response:
+                # FORWARD RESPONSE TO SERVER
+                return func(*args, **kwargs)
+        except:
+            return make_response(jsonify({'error': 'somthing went wrong (contact admin)'}), 400)
+    return wrapper
+</code></pre>
+
+<p>The code will replace the requested URL with the forwarded domain or IP, fix up the request object by pulling the header values and data within the request to build a new request object. Using this object we send it to designated server with all the data and proper headers. This acts as a proxy and returns this entire response object to the original requester.</p>
+
+<p>Here is a great video of it in action with CobaltStrike:</p>
+
+<p><iframe src="https://player.vimeo.com/video/214249797?autoplay=1&loop=1" width="640" height="368" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/214249797">Flask Proxy C2 Redirector</a> from <a href="https://vimeo.com/user52367620">Alexander Rymdeko-Harvey</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
+
+<p>Flask PythonAnywhere C2 redirector template:
+<div class="github-card" data-github="killswitch-gui/flask_pythonanywhere_redirector" data-width="400" data-height="153" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script></p>
+
+<p>Google App Engine Flask C2 redirector:
+<div class="github-card" data-github="killswitch-gui/flask_appengine_redirector" data-width="400" data-height="153" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script></p>
+
+<p>flask heroku C2 redirector template:
+<div class="github-card" data-github="killswitch-gui/flask_heroku_redirector" data-width="400" data-height="153" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script></p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=Expand%20Your%20Horizon%20Red%20Team%20%e2%80%93%20Modern%20SaaS%20C2&url=https%3a%2f%2fcybersyndicates.com%2f1%2f01%2fexpand-your-horizon-red-team%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcybersyndicates.com%2f1%2f01%2fexpand-your-horizon-red-team%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fcybersyndicates.com%2f1%2f01%2fexpand-your-horizon-red-team%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'cybersyndicates-com';
+    var disqus_identifier = 'https:\/\/cybersyndicates.com\/1\/01\/expand-your-horizon-red-team\/';
+    var disqus_title = 'Expand Your Horizon Red Team – Modern SaaS C2';
+    var disqus_url = 'https:\/\/cybersyndicates.com\/1\/01\/expand-your-horizon-red-team\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="https://cybersyndicates.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2017 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://cybersyndicates.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="https://cybersyndicates.com/js/jquery.fitvids.js"></script>
+        <script src="https://cybersyndicates.com/js/scripts.js"></script>
+    </body>
+</html>
+
