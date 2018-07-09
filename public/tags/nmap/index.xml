@@ -2,261 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nmap on Cyber Syndicates</title>
-    <link>https://cybersyndicates.com/tags/nmap/index.xml</link>
+    <link>http://cybersyndicates.obscuritylabs.com/tags/nmap/</link>
     <description>Recent content in Nmap on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <atom:link href="https://cybersyndicates.com/tags/nmap/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Dec 2015 19:14:20 +0000</lastBuildDate>
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/tags/nmap/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Scanning Effectively Through a SOCKS Pivot with Nmap and Proxychains</title>
-      <link>https://cybersyndicates.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</link>
       <pubDate>Sun, 13 Dec 2015 19:14:20 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</guid>
-      <description>
-
-&lt;p&gt;When ever I am on a pen-test and I come across a major problem (Every OP) that requires some creative solution and I love to share it. Not only that I could help someone else one day, but it really helps me retain the knowledge for future use.&lt;/p&gt;
-
-&lt;p&gt;This past engagement we where on a very unique network dealing with ICS devices and a ton of Unix backend servers, while still handling our normal pen test methodology on the side (No Time to play). While I feel comfortable operating in most network environments, *NIX based environments generally pose to elevate the difficulty of lateral movement and achieving final end state goals of the OP. In this environment most of the critical assets we where targeting where properly VLAN’ed off and proper network segmentation was in place.&lt;/p&gt;
-
-&lt;p&gt;After initial host discovery, we noticed our active host count was low and we figured we needed to gain a foothold on a dual homed box. Gaining a foothold didn’t take long on a lovely Unix jump box. After confirming we could hit multiple VLANs and a known target, it was time to re-scan for our initial host discovery.&lt;/p&gt;
-
-&lt;p&gt;In the past I have played around with getting Nmap to scan through Tor, and there are plenty of those tutorials on the web. But this time I had to perform a larger scan of multiple IP’s (/16) for an initial host discovery. I knew I could use the Unix jump box as a SOCKS4/5 proxy to funnel all my scan data through using SSH without dropping anything to disk.&lt;/p&gt;
-
-&lt;p&gt;Here is the idea:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-5.42.29-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-5.42.29-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 5.42.29 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The first step is to setup your SSH SOCKS Proxy:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ssh -DnF 8080 user@jump-box
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;After that was setup I had to configure ProxyChains:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.47.24-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.47.24-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 6.47.24 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Turn on Quite mode for ProxyChains&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.48.36-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.48.36-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 6.48.36 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;As we move forward we will discover the timeouts section will have to be tinkered with. This is key to optimizing your performance with Nmap.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.55.59-PM.png&#34;&gt;&lt;img src=&#34;https://cybersyndicates.com/wp-content/Screen-Shot-2015-12-11-at-6.55.59-PM.png&#34; alt=&#34;Screen Shot 2015-12-11 at 6.55.59 PM&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Lastly set up the strike chain.&lt;/p&gt;
-
-&lt;h3 id=&#34;heart-aches-with-nmap&#34;&gt;Heart Aches with Nmap&lt;/h3&gt;
-
-&lt;p&gt;So now we are at the main point of even writing this blog. Before when test scanning through Proxy tunnels I only did one or two address at a time. But in this case I needed to scan a large amount of IP space in a reasonable time table. In the past few months I have greatly optimized my scanning techniques to get the most out of my discovery scans. Working with a team of 3-5 can be tough with coordination and when conducting a internal pen-test I may need to get through generally entire /8 or a few /16’s. In this case I had a potential /16 behind my jump box.&lt;/p&gt;
-
-&lt;p&gt;So after following my SOP’s I noticed just firing off Nmap into this SOCKS proxy tunnel wasn’t going to cut it. We experienced large drops in performance and Nmap’s performance and timing parameters weren’t working correctly. Here is my standard Nmap String (Internal scan):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Nmap -Pn -n -sS –p 21-23,25,53,111,137,139,445,80,443,3389,5900,8080,8443 --min-hostgroup 255 --min-rtt-timeout 1ms --max-rtt-timeout 70ms --max-retries 0 --max-scan-delay 0 --min-rate 2000 -oA &amp;lt;customer-#&amp;gt; -vvv --open -iL &amp;lt;IPLIST&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;But after 2 minutes of scanning with this I noticed a few things:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Parallel scans weren’t taking place&lt;/li&gt;
-&lt;li&gt;Timing and performance aspects don’t work&lt;/li&gt;
-&lt;li&gt;Nmap cant perform &amp;ndash;defeat-rst-ratelimit with full TCP Connect scans –sT&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;It would wait the full 1500ms for a port to time-out (Rmbr the Proxy config)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A ton of these problems stem from the fact that we are using a SOCKS proxy, and the nature of the connect scan. When you scan from your Kali system you perform the following Nmap -&amp;gt; Proxy-chains -&amp;gt; SOCKS (Jump Box) -&amp;gt; Target System. I discovered that even though you have all the timing settings setup Nmap is going to interpret that the Half Open connection with the SOCKS proxy as open and will let it hang till ProxyChains literally kills the connection due to a (TCP-Read-Timeout). At first I thought I could solve this issue using the &amp;ldquo;&amp;ndash;host-timeout 80ms&amp;rdquo; flag. But I discovered once that host-timeout was reached it will completely kill the connection (NMAP ADD IN A PORT TIMEOUT!).&lt;/p&gt;
-
-&lt;p&gt;Instantly I knew I had to build out a quick script to help reduce the time it would take get through this scan. So I quickly hacked together a multi processed Python script to launch separate Proxychain / Nmap instances. This script sped up the time dramatically, and incase one process was hung the others could continue on rather than coming to a dead stop. I’m sure this could be done way better, but I thought I could atleast post what I did on the fly to speed up my scans. Also my Jump box couldn&amp;rsquo;t handle (Popen and shell=True) for the sub process call, It was going a bit too fast. Right now I used call_check and just escaped that returned data for the moment. In the coming weeks I do plan to clean up the code a bit. All in all it took some time to trouble shoot the problem and thought I would share.&lt;/p&gt;
-
-&lt;p&gt;The script can be found here: &lt;a href=&#34;https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/Proxychains-Nmap.py&#34;&gt;https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/Proxychains-Nmap.py&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;    import multiprocessing
-    import argparse
-    import Queue
-    import threading
-    import os
-    import sys
-    import subprocess
-    from random import randint
-
-
-
-
-    
-    def cli_parser():
-     parser = argparse.ArgumentParser(add_help=False, description=&#39;&#39;&#39;This script Simply routes your nmap scan in a &amp;quot;sort-of&amp;quot; fast way 
-     through a ProcyChain that has been setup.
-     \n\t(1) You will find out that when routing nmap through a Proxychain connection that Timing performace is out the window.
-     \n\t(2) This is do to the nature of a SOCKS proxy and SYN-&amp;gt;SYN/ACK connection is already established in NMAPS Eyes.
-     \n\t(3) It out puts random (#) of .gnmap file for each IP for parsing. (MAKE A FOLDER) :)
-     &#39;&#39;&#39;)
-     parser.add_argument(&amp;quot;-i&amp;quot;, metavar=&amp;quot;iplist.txt&amp;quot;, help=&amp;quot;Set Ip List of IPs Delimited by line&amp;quot;)
-     parser.add_argument(&#39;-h&#39;, &#39;-?&#39;, &#39;--h&#39;, &#39;-help&#39;, &#39;--help&#39;, action=&amp;quot;store_true&amp;quot;, help=argparse.SUPPRESS)
-     args = parser.parse_args()
-     if args.h: 
-     parser.print_help()
-     sys.exit()
-     if not args.i:
-     print &amp;quot;[!] I need a list IP&#39;s!&amp;quot;
-     sys.exit()
-     return args.i
-
-
-
-
-    
-    def Execution(Task_queue):
-     while True:
-     Ip = Task_queue.get()
-     # If the queue is emepty exit this proc
-     # Setup a simple output in the folder, For gnmap Parser
-     IpName = str(Ip).replace(&#39;.&#39;,&amp;quot;-&amp;quot;) + str(&amp;quot;.gnmap&amp;quot;)
-     if Ip is None:
-     break
-     try:
-     print &amp;quot;[*] On Ip: &amp;quot; + Ip
-     test = subprocess.check_output([&amp;quot;proxychains&amp;quot;, &amp;quot;nmap&amp;quot;, &amp;quot;-Pn&amp;quot;, &amp;quot;-n&amp;quot;, &amp;quot;-sT&amp;quot;, &amp;quot;--max-scan-delay&amp;quot;, &amp;quot;0&amp;quot;, &amp;quot;-p111,445,139,21-23,80,443&amp;quot;, &amp;quot;-oG&amp;quot;, IpName, &amp;quot;--open&amp;quot;, Ip])
-     test = &amp;quot;&amp;quot;
-     except:
-     pass
-
-
-
-
-    
-    def TaskSelector(Task_queue, verbose=False):
-     total_proc = int(8)
-     for i in xrange(total_proc):
-     Task_queue.put(None)
-     procs = []
-     for thread in range(total_proc):
-     procs.append(multiprocessing.Process(target=Execution, args=(Task_queue,)))
-     for p in procs:
-     p.daemon = True
-     p.start()
-     for p in procs:
-     p.join()
-     Task_queue.close()
-
-
-
-
-    
-    def Ip_List(Task_queue, cli_IpList):
-     items = []
-     cli_IpList = str(cli_IpList)
-     try:
-     with open(cli_IpList, &amp;quot;r&amp;quot;) as myfile:
-     lines = myfile.readlines()
-     for line in lines:
-     line = line.rstrip(&#39;\n&#39;)
-     items.append(line)
-     for item in items:
-     Task_queue.put(item)
-     return Task_queue
-     except Exception as e:
-     print &amp;quot;[!] Please check your Ip List: &amp;quot; + str(e)
-     sys.exit(0)
-
-
-
-
-    
-    def main():
-     cli_IpList = cli_parser()
-     Task_queue = multiprocessing.Queue()
-     Task_queue = Ip_List(Task_queue, cli_IpList)
-     TaskSelector(Task_queue)
-
-
-
-
-    
-    if __name__ == &amp;quot;__main__&amp;quot;:
-     try: 
-     main()
-     except KeyboardInterrupt:
-     print &#39;Interrupted&#39;
-     try:
-     sys.exit(0)
-     except SystemExit:
-     os._exit(0)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</guid>
+      <description>When ever I am on a pen-test and I come across a major problem (Every OP) that requires some creative solution and I love to share it. Not only that I could help someone else one day, but it really helps me retain the knowledge for future use.
+This past engagement we where on a very unique network dealing with ICS devices and a ton of Unix backend servers, while still handling our normal pen test methodology on the side (No Time to play).</description>
     </item>
     
     <item>
       <title>Quick and Dirty NMAP Commandline Menu</title>
-      <link>https://cybersyndicates.com/2015/09/quick-and-dirty-nmap-commandline-menu/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/09/quick-and-dirty-nmap-commandline-menu/</link>
       <pubDate>Sat, 12 Sep 2015 02:34:47 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/2015/09/quick-and-dirty-nmap-commandline-menu/</guid>
-      <description>&lt;p&gt;Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network.  Works against individual IP&amp;rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs.  Outputs into separate files in the local directory.  Can be adjusted and scaled.  Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post.  Check out the code on GIT.   &lt;a href=&#34;https://github.com/slacker007/simpleNMAP&#34;&gt;https://github.com/slacker007/simpleNMAP&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;********************************* Code Below *******************************&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import os
-import sys
-import subprocess
-chances = 4
-end_prog = 0
-
-def menu2(): 
-    cidr = raw_input(&amp;quot;Please enter the network cider or IP to be scanned EX:192.168.1.0/16 or 10.10.1.4 &amp;quot;)
-    return cidr
-def menu1(chances): 
-    print &amp;quot;\n(1) Host Discovery: &amp;quot;
-    print &amp;quot;(2) Port &amp;amp; Service Discovery (top ports only): &amp;quot;
-    print &amp;quot;(3) Port &amp;amp; Service Discovery (All 65536): &amp;quot; 
-    print &amp;quot;(4) OS Discovery: &amp;quot;
-    print &amp;quot;(5) RUN ALL \n&amp;quot;
-    choice1 = raw_input(&amp;quot;What type of scan would you like to run? &amp;quot;)
-if choice1 == &#39;3&#39;:
-        print &amp;quot;\n******* If you are running this against a network range it will take a while! Best if used agaist a single IP or small range of addresses *******\n&amp;quot;
-    if choice1 not in (&amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;):
-        if chances &amp;lt;= 1: 
-            exit()
-        chances = chances - 1
-        print &amp;quot;Error, Please check your answer choice and try again: %d tries remaining: &amp;quot; % (chances)
-        menu1(chances)
-    else:
-        print &amp;quot;Choice Successful&amp;quot; 
-        return choice1
-def menu3(chances, end_prog):
-    if chances &amp;gt; 1:
-        choice3 = raw_input(&amp;quot;would you like to run another scan? (y or n) &amp;quot;)
-        choice3 = choice3.lower()
-        if choice3 not in (&#39;y&#39;, &#39;n&#39;):
-            print &amp;quot;*** INPUT ERROR, Please enter either y or n ***&amp;quot;
-            chances = chances - 1
-            menu3(chances, end_prog)
-    if str(choice3) == &#39;n&#39;:
-        exit()
-def scanner(cidr, choice1, chances):
-    if choice1 == &#39;1&#39;:
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sn&#39;, &#39;-PE&#39;, &#39;-PP&#39;, &#39;-T4&#39;, &#39;-ohostlist.UP&#39;, cidr])
-    elif choice1 == &#39;2&#39;: 
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sV&#39;,&#39;-oservices2&#39;,cidr])  
-
-    elif choice1 == &#39;3&#39;:
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sV&#39;, &#39;-p 1-65535&#39;, &#39;-oservices3&#39;, cidr])
-    elif choice1 == &#39;4&#39;:
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-Pn&#39;, &#39;-O&#39;, &#39;-oosversions&#39;, cidr])
-    elif choice1 == &#39;5&#39;: 
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sn&#39;, &#39;-PE&#39;, &#39;-PP&#39;, &#39;-T4&#39;, &#39;-ohostlist.UP&#39;, cidr])
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sV&#39;, &#39;-p 1-65535&#39;, &#39;-oservices3&#39;, cidr])
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-Pn&#39;, &#39;-O&#39;, &#39;-oosversions&#39;, cidr])
-    else:
-        return
-while (1):
-    choice1 = menu1(chances)
-    cidr = menu2()
-    scanner(cidr, choice1, chances)
-    menu3(chances, end_prog)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/09/quick-and-dirty-nmap-commandline-menu/</guid>
+      <description>Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network. Works against individual IP&amp;rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs. Outputs into separate files in the local directory. Can be adjusted and scaled. Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post. Check out the code on GIT. https://github.com/slacker007/simpleNMAP
+********************************* Code Below *******************************
+import os import sys import subprocess chances = 4 end_prog = 0 def menu2(): cidr = raw_input(&amp;quot;Please enter the network cider or IP to be scanned EX:192.</description>
     </item>
     
   </channel>

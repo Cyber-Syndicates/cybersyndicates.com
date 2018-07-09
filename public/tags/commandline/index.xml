@@ -2,83 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Commandline on Cyber Syndicates</title>
-    <link>https://cybersyndicates.com/tags/commandline/index.xml</link>
+    <link>http://cybersyndicates.obscuritylabs.com/tags/commandline/</link>
     <description>Recent content in Commandline on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
-    <atom:link href="https://cybersyndicates.com/tags/commandline/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Sep 2015 02:34:47 +0000</lastBuildDate>
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/tags/commandline/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Quick and Dirty NMAP Commandline Menu</title>
-      <link>https://cybersyndicates.com/2015/09/quick-and-dirty-nmap-commandline-menu/</link>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/09/quick-and-dirty-nmap-commandline-menu/</link>
       <pubDate>Sat, 12 Sep 2015 02:34:47 +0000</pubDate>
       
-      <guid>https://cybersyndicates.com/2015/09/quick-and-dirty-nmap-commandline-menu/</guid>
-      <description>&lt;p&gt;Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network.  Works against individual IP&amp;rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs.  Outputs into separate files in the local directory.  Can be adjusted and scaled.  Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post.  Check out the code on GIT.   &lt;a href=&#34;https://github.com/slacker007/simpleNMAP&#34;&gt;https://github.com/slacker007/simpleNMAP&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;********************************* Code Below *******************************&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;import os
-import sys
-import subprocess
-chances = 4
-end_prog = 0
-
-def menu2(): 
-    cidr = raw_input(&amp;quot;Please enter the network cider or IP to be scanned EX:192.168.1.0/16 or 10.10.1.4 &amp;quot;)
-    return cidr
-def menu1(chances): 
-    print &amp;quot;\n(1) Host Discovery: &amp;quot;
-    print &amp;quot;(2) Port &amp;amp; Service Discovery (top ports only): &amp;quot;
-    print &amp;quot;(3) Port &amp;amp; Service Discovery (All 65536): &amp;quot; 
-    print &amp;quot;(4) OS Discovery: &amp;quot;
-    print &amp;quot;(5) RUN ALL \n&amp;quot;
-    choice1 = raw_input(&amp;quot;What type of scan would you like to run? &amp;quot;)
-if choice1 == &#39;3&#39;:
-        print &amp;quot;\n******* If you are running this against a network range it will take a while! Best if used agaist a single IP or small range of addresses *******\n&amp;quot;
-    if choice1 not in (&amp;quot;1&amp;quot;, &amp;quot;2&amp;quot;, &amp;quot;3&amp;quot;, &amp;quot;4&amp;quot;, &amp;quot;5&amp;quot;):
-        if chances &amp;lt;= 1: 
-            exit()
-        chances = chances - 1
-        print &amp;quot;Error, Please check your answer choice and try again: %d tries remaining: &amp;quot; % (chances)
-        menu1(chances)
-    else:
-        print &amp;quot;Choice Successful&amp;quot; 
-        return choice1
-def menu3(chances, end_prog):
-    if chances &amp;gt; 1:
-        choice3 = raw_input(&amp;quot;would you like to run another scan? (y or n) &amp;quot;)
-        choice3 = choice3.lower()
-        if choice3 not in (&#39;y&#39;, &#39;n&#39;):
-            print &amp;quot;*** INPUT ERROR, Please enter either y or n ***&amp;quot;
-            chances = chances - 1
-            menu3(chances, end_prog)
-    if str(choice3) == &#39;n&#39;:
-        exit()
-def scanner(cidr, choice1, chances):
-    if choice1 == &#39;1&#39;:
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sn&#39;, &#39;-PE&#39;, &#39;-PP&#39;, &#39;-T4&#39;, &#39;-ohostlist.UP&#39;, cidr])
-    elif choice1 == &#39;2&#39;: 
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sV&#39;,&#39;-oservices2&#39;,cidr])  
-
-    elif choice1 == &#39;3&#39;:
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sV&#39;, &#39;-p 1-65535&#39;, &#39;-oservices3&#39;, cidr])
-    elif choice1 == &#39;4&#39;:
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-Pn&#39;, &#39;-O&#39;, &#39;-oosversions&#39;, cidr])
-    elif choice1 == &#39;5&#39;: 
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sn&#39;, &#39;-PE&#39;, &#39;-PP&#39;, &#39;-T4&#39;, &#39;-ohostlist.UP&#39;, cidr])
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-PN&#39;, &#39;-sV&#39;, &#39;-p 1-65535&#39;, &#39;-oservices3&#39;, cidr])
-        subprocess.check_call([&#39;nmap&#39;, &#39;-n&#39;, &#39;-v&#39;, &#39;-Pn&#39;, &#39;-O&#39;, &#39;-oosversions&#39;, cidr])
-    else:
-        return
-while (1):
-    choice1 = menu1(chances)
-    cidr = menu2()
-    scanner(cidr, choice1, chances)
-    menu3(chances, end_prog)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/09/quick-and-dirty-nmap-commandline-menu/</guid>
+      <description>Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network. Works against individual IP&amp;rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs. Outputs into separate files in the local directory. Can be adjusted and scaled. Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post. Check out the code on GIT. https://github.com/slacker007/simpleNMAP
+********************************* Code Below *******************************
+import os import sys import subprocess chances = 4 end_prog = 0 def menu2(): cidr = raw_input(&amp;quot;Please enter the network cider or IP to be scanned EX:192.</description>
     </item>
     
   </channel>
