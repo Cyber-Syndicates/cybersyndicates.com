@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>6 Red Team Infrastructure Tips &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="Top tips you need to implement on your next engagement">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.31.1" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="6 Red Team Infrastructure Tips">
+<meta property="og:description" content="Top tips you need to implement on your next engagement">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://cybersyndicates.obscuritylabs.com/2016/11/top-red-team-tips/">
+        <link rel="stylesheet" href="http://cybersyndicates.obscuritylabs.com/css/normalize.css">
+        <link rel="stylesheet" href="http://cybersyndicates.obscuritylabs.com/css/highlight.css">
+        <link rel="stylesheet" href="http://cybersyndicates.obscuritylabs.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title=".Site.Title" href="http://cybersyndicates.obscuritylabs.com/}">
+                            <img src="/logo.png" alt="The Team" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="http://cybersyndicates.obscuritylabs.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="http://cybersyndicates.obscuritylabs.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/cybersyndicates">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="YouTube" title="YouTube" href="https://www.youtube.com/user/Rymdeko">
+                                <i class="fa fa-youtube"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Presentations" href="/presentations/">Presentations</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">6 Red Team Infrastructure Tips</h1>
+    
+        <p class="post-description" itemprop="description">Top tips you need to implement on your next engagement</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2016-11-30" itemprop="datePublished">Wed, Nov 30, 2016</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://google.com/&#43;XXX" itemprop="url" rel="author">Alexander Rymdeko-Harvey</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h2 id="tl-dr">TL;DR</h2>
+
+<ol>
+<li>CLI Logging of All Operator Terminal</li>
+<li>Restricted Payload Delivery</li>
+<li>Separate Servers / C2 Phases for all Stages of an Engagement</li>
+<li>Always Use Redirectors in Front of Core C2</li>
+<li>Full Session / Metadata Network Capture on Redirectors and C2</li>
+<li>Never Share C2 IOC’s</li>
+</ol>
+
+<hr />
+
+<p>As some of you may know I made a huge transition recently from my former team ATD (Adaptive Threat Division) at Veris Group to Sony’s internal Red Team. This was, of course, a major move, but the opportunity to help develop and stand up that capability was hard to pass up. This was a dream for me and to do it with some extremely dedicated and talented coworkers is always a bonus.</p>
+
+<p>This brings me to our subject, recently I had put a ton of time into thinking out red team architecture and wanted to share. This will cover security and tips for a successful engagement. While some of this may seem “excessive”, you have to take this type of work very serious as you will be holding the keys to the kingdom of your company or target! With data dumps like shadow brokers apparently owning the equation group (Not here to say that’s true or valid data) nothing is safe and we must reduce our risk and only expose limited attack surface just as we help our clients.</p>
+
+<hr />
+
+<p><strong>1. CLI Logging of All Operator Terminals:</strong>
+You may be thinking why in world would I need this level of fidelity and data? Well, a really good buddy of mine <a href="https://www.sixdub.net/">@sixdub</a> let me on to this a year or so ago for a potential integrity and data preservation method for potential discrepancies or de-conflictions. I’m taking this opportunity to push this forward on some of our first OP’s. Below is a tool built for just the right solution:</p>
+
+<blockquote>
+<p>Find the setup here:</p>
+</blockquote>
+
+<p><div class="github-card" data-github="killswitch-gui/lterm" data-width="400" data-height="153" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script></p>
+
+<blockquote>
+<p>Here is a small example of global terminal logging:</p>
+</blockquote>
+
+<iframe src="https://player.vimeo.com/video/194050322?autoplay=1&loop=1" width="640" height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<hr />
+
+<p><strong>2. Restricted Payload Delivery :</strong>
+This is something I have not done in a bit and generally only required during specific circumstances. I’m here to tell you that we may be doing it all wrong, after an incident where a payload was spread via a secondary source and made its way out of scope you will want to take this advice. Ensure that not only are there clearly defined scoping and external IP space but take the time to setup your C2 to only allow communication to your payload stagger to trusted sources. A couple ways you can go about this which is some really cool work from @bluescreenofjeff is using Apache mod_rewrite rules. In a combination of the mod rewrite edits you can raise the sophistication level of uncovering your C2.   <a href="https://bluescreenofjeff.com/tags#mod_rewrite">bluescreenofjeff mod_rewrite series</a> has some great ways we can get super paranoid during setup. Using rules for OS, mobile hits (how you want to handle these), browser based (using an HTA like this for IE:  <a href="https://github.com/killswitch-GUI/PenTesting-Scripts/blob/master/ProxyAware-ps-Stager.hta">HTA-Example</a>) and even handling user redirection not matching our C2 Profile we use. One of the main concerns is we want to ensure that our payload just does not stage to external IP space that may out of scope or even an IR toolset, this will increase the duration and sophistication to a long living C2 architecture.
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    <div style="display:flex;justify-content:center;align-items:center">
+        <div style="height: 100%; width: 100%">
+            <p>
+                <img src="/image/apache_mod_overview.png" alt="VPS with apache mod_rewrite"/>
+            </p>
+        </div>
+    </div>
+    
+</p>
+
+<blockquote>
+<p>Image Credit: <a href="https://bluescreenofjeff.com/2016-03-22-strengthen-your-phishing-with-apache-mod_rewrite-and-mobile-user-redirection/">https://bluescreenofjeff.com/2016-03-22-strengthen-your-phishing-with-apache-mod_rewrite-and-mobile-user-redirection/</a></p>
+</blockquote>
+
+<hr />
+
+<p><strong>3. Separate Servers / C2 Phases for all Stages of an Engagement:</strong>
+This tip is crucial during the construction of your engagements infrastructure. Splitting up your C2 will provide you flexibility, stealth and ability to roll C2 on the unfortunate day you get burnt. So, what do I mean by “splitting” up the Infrastructure? Well in some cases you may be conducting a OP with one team server, but during a red team, all phases of the OP should be separated.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4w7krkqxRck" frameborder="0" allowfullscreen></iframe>
+This is a bit of safeguard against burning all of your C2 at one time as well as providing redundancy, and a separate team server for coworkers. I have found splitting this up into three core components as seems to be quite effective! Below is a basic layout and beginning of what our team arch should look like:<br />
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    <div style="display:flex;justify-content:center;align-items:center">
+        <div style="height: 100%; width: 100%">
+            <p>
+                <img src="/image/seprate_vps.jpg" alt="seprate vps red team"/>
+            </p>
+        </div>
+    </div>
+    
+</p>
+
+<hr />
+
+<p><strong>4. Always Use Redirectors in Front of Core C2:</strong>
+This is not always enforced depending on engagement and type of operation you are conducting. Heck, I have broken this rule in all types of scenarios, for phishing or another quick testing. The reality of the matter your core C2 servers or “Team Servers” if you are a CS user are HVA (High-Value Assets) and need to be secured like one. This mean full-scale firewall to only allow the ports used for an engagement (80,443,8080) and IPTable rules for allowed IP space for ssh and inbound connections from our redirectors. While our redirectors will come and go we need to trust our core C2 servers, and if they are exposed at any given time all it takes is a patient attacker to gain access. Lastly, never re-use a redirector. NEVER CROSS STREAMS!
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    <div style="display:flex;justify-content:center;align-items:center">
+        <div style="height: 100%; width: 100%">
+            <p>
+                <img src="/image/vps_redirectors.jpg" alt="red team redirctors"/>
+            </p>
+        </div>
+    </div>
+    
+</p>
+
+<p>If you have the time I highly suggest looking at CobaltStikes video on setting up redirectors as this will most likely apply to multiple situations or tools. In most cases, i have found during my setup that Socat was reliable and solid as a brick. I even started asking around and it seems it&rsquo;s the go too. Here is the Socat example from CobaltStrike, the video below is a great walk through of this process:</p>
+
+<pre><code>socat TCP4-LISTEN:80,fork TCP4:54.197.3.16:80
+</code></pre>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PyJu_LYosts" frameborder="0" allowfullscreen></iframe>
+
+<hr />
+
+<p><strong>5. Full Session / Metadata Network Capture on Redirectors and C2:</strong>
+I know you going to question this! Well, its necessary after recent events with cobalt strike and Metasploit our tools are being targeted! I know asking for full PCAP on our redirectors will not be possible for most, while ill be shooting for a certain retention time on core architecture we need at least PCAP metadata (IP SRC/DST, PORT SRC/DST). This can be a simple text file, but this will give you something to go back to god forbid you have multiple redirectors and need to find an originating point of a callback. Something as simple as this can give you a ton of insight if an incident does happen. But in today&rsquo;s age maybe we should be shooting for full pcap? What do you think? It could be as simple as this:</p>
+
+<pre><code>$ sudo tcpdump -n &gt; test.txt
+</code></pre>
+
+<hr />
+
+<p><strong>6. Never Share C2 IOC’s!</strong> Let’s be honest we have gone far out of our way to stand up and build solid and secure architecture, let’s not get its all burnt with one mistake. When we hear IOC we think malware etc, in this case, we mean IOC’s that would link or unravel our C2 easily without a full blown investigation.</p>
+
+<ol>
+<li><p>Do not share domain names by using sub-domains across any part of the separate core C2 servers.</p></li>
+
+<li><p>Register all domain with different POCs or only use private registration. With new tools like Whoisology.com doing reverse register name lookups takes seconds. Within minutes the blue team will be able to use hard indicators to destroy your foothold. Take a look at the ease of finding connected domains:
+<iframe src="https://player.vimeo.com/video/194049240?autoplay=1&loop=1" width="640" height="372" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></p></li>
+
+<li><p>We setup three servers for Phishing, Active OP’s, and Long Term and we put them all in the same geographical region and /24 IP-space. Well, that was an easy win for the blue team! Please use separate geographical regions and IP-space for redirectors and core C2 servers.</p></li>
+
+<li><p>I have seen this done often and it&rsquo;s generally not an issue, but if you use the same C2 transport for all three separate servers you may have just burnt it all. Let’s say I use CS-HTTP stagers and the blue team catches my phishing server. That team is going to write custom signatures to ID that sort of traffic. Take the time use DNS/HTTP/HTTPS at all stages to give them a treat</p></li>
+
+<li><p>Following the last recommendation CS supports malleable C2 profiles, use them they work trust me! With that, you need to be careful if your target is Government related think twice with using streaming services. Use this in good taste or write custom ones that your target will most likely use, and think about what they may block.</p></li>
+
+<li><p>Going to host a payload? Take the time and stand up a custom droplet and web server to host payloads that will be used for phishing or lateral movement. This way you&rsquo;re not opening your core C2 to more potential attack surface. Go ahead and look at my baseline apache server, you’re not going to get far.</p></li>
+</ol>
+
+
+
+
+
+    
+    
+        
+        
+        
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+
+    
+    
+        
+    
+    
+
+
+
+    
+    <div style="display:flex;justify-content:center;align-items:center">
+        <div style="height: 100%; width: 100%">
+            <p>
+                <img src="/image/vps_full_setup.jpg" alt="red team redirctors"/>
+            </p>
+        </div>
+    </div>
+    
+
+
+<hr />
+
+<p>Any questions or concerns do not hastate to ask, as always hope I was able to share some basic tips for your next engagement.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+                 <a href="/tags/red-team/">red-team</a>
+            
+        </p>
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=6%20Red%20Team%20Infrastructure%20Tips&url=http%3a%2f%2fcybersyndicates.obscuritylabs.com%2f2016%2f11%2ftop-red-team-tips%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fcybersyndicates.obscuritylabs.com%2f2016%2f11%2ftop-red-team-tips%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http%3a%2f%2fcybersyndicates.obscuritylabs.com%2f2016%2f11%2ftop-red-team-tips%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "cybersyndicates-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="http://cybersyndicates.obscuritylabs.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2017 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="http://cybersyndicates.obscuritylabs.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="http://cybersyndicates.obscuritylabs.com/js/jquery.fitvids.js"></script>
+        <script src="http://cybersyndicates.obscuritylabs.com/js/scripts.js"></script>
+    </body>
+</html>
+

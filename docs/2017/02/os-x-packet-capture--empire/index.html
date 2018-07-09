@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>OS X Packet Capture &amp; Empire &middot; Alexander Rymdeko-Harvey</title>
+        <meta name="description" content="Libpcap.dylib &amp; Python">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="generator" content="Hugo 0.31.1" />
+        <meta name="robots" content="index,follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="OS X Packet Capture &amp; Empire">
+<meta property="og:description" content="Libpcap.dylib &amp; Python">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://cybersyndicates.obscuritylabs.com/2017/02/os-x-packet-capture--empire/">
+        <link rel="stylesheet" href="http://cybersyndicates.obscuritylabs.com/css/normalize.css">
+        <link rel="stylesheet" href="http://cybersyndicates.obscuritylabs.com/css/highlight.css">
+        <link rel="stylesheet" href="http://cybersyndicates.obscuritylabs.com/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    </head>
+    <body>
+        
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-64026800-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-583cd7d5c481901f"></script>
+        <div style="display:flex;justify-content:center;align-items:center;padding-top: 1cm;">
+                    <div>
+                        <a class="site-logo" title=".Site.Title" href="http://cybersyndicates.obscuritylabs.com/}">
+                            <img src="/logo.png" alt="The Team" align="middle"/>
+                        </a>
+                    </div>
+                </div>
+
+        <div id="wrapper">
+            <header class="site-header">
+                <div class="container">
+                    <div class="site-title-wrapper">
+                        
+                            <h1 class="site-title">
+                                <a title="Cyber Syndicates" href="http://cybersyndicates.obscuritylabs.com/">Cyber Syndicates</a>
+                            </h1>
+                        
+                        <a class="button-square" href="http://cybersyndicates.obscuritylabs.com/index.xml"><i class="fa fa-rss"></i></a>
+                        
+                            <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="https://twitter.com/cybersyndicates">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Gitlab" title="Gitlab" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-gitlab"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/Cyber-Syndicates">
+                                <i class="fa fa-github-alt"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/">
+                                <i class="fa fa-stack-overflow"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="Google+" title="Google+" href="https://google.com/">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        
+                        
+                            <a class="button-square button-social hint--top" data-hint="YouTube" title="YouTube" href="https://www.youtube.com/user/Rymdeko">
+                                <i class="fa fa-youtube"></i>
+                            </a>
+                        
+                    </div>
+
+                    <ul class="site-nav">
+                        
+    <li class="site-nav-item">
+        <a title="Blog" href="/">Blog</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Presentations" href="/presentations/">Presentations</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Projects" href="/project/">Projects</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="Contact" href="/page/contact/">Contact</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="About" href="/page/about/">About</a>
+    </li>
+
+    <li class="site-nav-item">
+        <a title="The Team" href="/page/team/">The Team</a>
+    </li>
+
+                    </ul>
+                </div>
+            </header>
+
+            <div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">OS X Packet Capture &amp; Empire</h1>
+    
+        <p class="post-description" itemprop="description">Libpcap.dylib &amp; Python</p>
+    
+    <p class="post-date">
+        <span>Published <time datetime="2017-02-12" itemprop="datePublished">Sun, Feb 12, 2017</time></span>
+        <span>by</span>
+        <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://google.com/&#43;XXX" itemprop="url" rel="author">Alexander Rymdeko-Harvey</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<p>Recently I have been preparing for some additional support for Empire and the Python agent. With that comes some new modules cooking, finally getting to porting the Linux sniffer over to OS X. While some of you know it’s easy with raw sockets on the Linux side. OS X does not natively support this, and you often see question that relate to how to get this to work on the OS X side.</p>
+
+<h2 id="empire">Empire</h2>
+
+<p>Empire will be seeing a major release here in the coming months, moving from a single-track windows agent to a platform for OS X, Linux and Windows. Making it extremely agile.</p>
+
+<p>TL;DR: The following video is the new OS X sniffer module in action</p>
+
+<p><iframe src="https://player.vimeo.com/video/203695405?autoplay=1&loop=1&color=ffffff" width="640" height="400" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/203695405">Empire OS X Sniffer Module</a> from <a href="https://vimeo.com/user52367620">Alexander Rymdeko-Harvey</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
+
+<h2 id="native-support">Native Support</h2>
+
+<p>Native code capability is crucial due the constraints we have, while we do have Python package imports now from memory there is always limitations.  The Empire dev team often focuses on making all modules as cross capable and native.</p>
+
+<h2 id="extend-python-with-ctypes-and-dylib">Extend Python with cTypes and Dylib!</h2>
+
+<p>One of the major benefits to python is its low-level support, and with cTypes we have those bindings! We can call the standard C library and much more dynamically. Let’s take a look at some the library’s shipped with OS X:</p>
+
+<pre><code>$ ls /usr/lib/ | grep “lib”
+...
+libpq.5.dylib
+libpq.dylib
+libprequelite.dylib
+libproc.dylib
+libpthread.dylib
+libpython.dylib
+libpython2.6.dylib
+libpython2.7.dylib
+libquit.dylib
+libreadline.dylib
+libresolv.9.dylib
+libresolv.dylib
+librpcsvc.dylib
+...
+</code></pre>
+
+<p>Next we can inspect our .dyblib using <code>nm</code>  and dumping the export functions in the dynamic library:</p>
+
+<pre><code>$ nm -gU /lib/usr/libpcap.dylib 
+...
+0000000000018c93 T _pcap_dump
+000000000001b28c T _pcap_ng_get_simple_packet_fields
+000000000001e15a T _pcap_ng_init_section_info
+0000000000014088 T _pcap_ng_offline_read
+0000000000013e90 T _pcap_ng_open_offline
+0000000000011a4c T _pcap_not_initialized
+0000000000012f69 T _pcap_offline_filter
+0000000000013f7c T _pcap_offline_read
+0000000000011b1a T _pcap_oneshot
+0000000000012ec6 T _pcap_open_dead
+0000000000012e0c T _pcap_open_dead_with_tstamp_precision
+00000000000122e3 T _pcap_open_live
+0000000000013c13 T _pcap_open_offline
+000000000001249b T _pcap_open_offline_common
+...
+0000000000011ed3 T _pcap_set_snaplen
+0000000000011fc1 T _pcap_set_timeout
+00000000000120f7 T _pcap_set_tstamp_precision
+0000000000011fff T _pcap_set_tstamp_type
+0000000000010c9f T _pcap_set_want_pktap
+0000000000012c37 T _pcap_setdirection
+0000000000012c29 T _pcap_setfilter
+0000000000012b2f T _pcap_setnonblock
+0000000000012b78 T _pcap_setnonblock_fd
+000000000001ca05 T _pcap_setup_pktap_interface
+</code></pre>
+
+<p>Now comes the ability to extend Python with cTypes and C convention calling. according to Python docs: &ldquo;cdll loads libraries which export functions using the standard cdecl calling convention&rdquo;</p>
+
+<pre><code>class ctypes.CDLL(name, mode=DEFAULT_MODE, handle=None, use_errno=False, use_last_error=False)
+
+Instances of this class represent loaded shared libraries. Functions in these
+libraries use the standard C calling convention, and are assumed to return int.
+</code></pre>
+
+<p>In the code I also setup the standard C lib for future use or other functions you may need such as <code>mmap</code></p>
+
+<pre><code>OSX_PCAP_DYLIB = '/usr/lib/libpcap.A.dylib'
+OSX_LIBC_DYLIB = '/usr/lib/libSystem.B.dylib'
+...
+libc = ctypes.CDLL(OSX_LIBC_DYLIB, use_errno=True)
+...
+pcap = ctypes.CDLL(OSX_PCAP_DYLIB, use_errno=True)
+</code></pre>
+
+<h2 id="libpcap-standard-c-program">libpcap - Standard C Program</h2>
+
+<p>using <a href="http://www.devdungeon.com/content/using-libpcap-c">http://www.devdungeon.com/content/using-libpcap-c</a> guide on libcap is a great starting point for most. Here is what is impended in Python:</p>
+
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+#include &lt;pcap.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;netinet/if_ether.h&gt;
+
+void print_packet_info(const u_char *packet, struct pcap_pkthdr packet_header);
+
+int main(int argc, char *argv[]) {
+    char *device;
+    char error_buffer[PCAP_ERRBUF_SIZE];
+    pcap_t *handle;
+    const u_char *packet;
+     struct pcap_pkthdr packet_header;
+    int packet_count_limit = 1;
+    int timeout_limit = 10000; /* In milliseconds */
+
+    device = pcap_lookupdev(error_buffer);
+    if (device == NULL) {
+        printf(&quot;Error finding device: %s\n&quot;, error_buffer);
+        return 1;
+    }
+
+    /* Open device for live capture */
+    handle = pcap_open_live(
+            device,
+            BUFSIZ,
+            packet_count_limit,
+            timeout_limit,
+            error_buffer
+        );
+
+     /* Attempt to capture one packet. If there is no network traffic
+      and the timeout is reached, it will return NULL */
+     packet = pcap_next(handle, &amp;packet_header);
+     if (packet == NULL) {
+        printf(&quot;No packet found.\n&quot;);
+        return 2;
+    }
+
+    /* Our function to output some info */
+    print_packet_info(packet, packet_header);
+
+    return 0;
+}
+</code></pre>
+
+<h2 id="libpcap-python-implementation">libpcap - Python Implementation</h2>
+
+<p>Follow along for the explanation and breakdown or skip to the end for code:</p>
+
+<h3 id="interface-device-selection">Interface Device Selection</h3>
+
+<p>The next step is to obtain a handle to the interface of choice, as you will see libpcap follows a standard calling convention for setup. We will be using:</p>
+
+<pre><code>pcap_lookupdev(): finds the default device on which to capture
+
+Returns a pointer  to a string giving the name of a
+network device suitable for use with pcap_create() and pcap_activate(),
+or with  pcap_open_live(),  and with pcap_lookupnet()
+</code></pre>
+
+<p>To set this up in Python we need to create a pcap_lookupdev() object and set the res type, this is because by default functions are assumed to return the C int type.</p>
+
+<pre><code># pcap is our pointer to the dylib function
+pcap_lookupdev = pcap.pcap_lookupdev
+# set the return type to a C char pointer (string)
+pcap_lookupdev.restype = ctypes.c_char_p
+# now get our device device to capture on
+dev = pcap.pcap_lookupdev()
+</code></pre>
+
+<h3 id="interface-device-info">Interface Device Info</h3>
+
+<p>We have an option to get some data on the device of choice. Using the pcap_lookupnet function we can get some debug data if necessary.</p>
+
+<pre><code>pcap_lookupnet(): find the IPv4 network number and netmask for a device  
+
+int pcap_lookupnet(const char *device, bpf_u_int32 *netp, 
+    bpf_u_int32 *maskp, char *errbuf);
+
+Is used to determine the IPv4 network number and mask associated with the
+network device. Both netp and maskp are bpf_u_int32 pointers
+</code></pre>
+
+<p>We will need to use the proper cTypes unsigned int for the return pointers. We can do this by using cTypes primitive C compatible data types.</p>
+
+<pre><code>net = ctypes.c_uint()
+mask = ctypes.c_uint()
+pcap.pcap_lookupnet(dev,ctypes.byref(net),ctypes.byref(mask),err_buf)
+if DEBUG:
+    print &quot;* Device IP to bind: %s&quot; % net
+    print &quot;* Device net mask: %s&quot; % mask
+</code></pre>
+
+<h3 id="packet-capture-handle">Packet Capture Handle</h3>
+
+<p>Once we have a interface device we need to obtain a capture handle to use with various libpcap capture types. For this we will use the pcap_open_live function.</p>
+
+<pre><code>pcap_open_live(): open a device for capturing  
+
+pcap_t *pcap_open_live(const char *device, int snaplen,
+        int promisc, int to_ms, char *errbuf);
+Is used to obtain a packet capture handle to look at packets on the network.
+</code></pre>
+
+<p>We will need to provide the following to the function:</p>
+
+<pre><code>device = string that specifies the network device to open
+snaplen = specifies the snapshot length to be set on the handle
+promisc = specifies if the interface is to be put into promiscuous mode
+to_ms = specifies the packet buffer timeout in milliseconds
+errbuf = if provided 
+</code></pre>
+
+<p>Once again we will need to setup the return type, the only difference here is that the return type is pcap_t * structure on success. To do this we will use the ctypes.POINTER() function, which we will provide the type as well:</p>
+
+<pre><code>ctypes.POINTER(type)
+
+This factory function creates and returns a new ctypes pointer type.
+Pointer types are cached and reused internally, so calling this function
+repeatedly is cheap. type must be a ctypes type.
+</code></pre>
+
+<p>Now implemented in Python:</p>
+
+<pre><code># static values 
+PCAP_ERRBUF_SIZE = 256
+PCAP_CAPTURE_COUNT = 1000
+promisc = ctypes.c_int(1)
+# setup the return pointer 
+pcap_open_live = pcap.pcap_open_live
+pcap_open_live.restype = ctypes.POINTER(ctypes.c_void_p)
+# get pcap_handle pointer
+pcap_handle = pcap.pcap_open_live(dev, 1024, promisc, timeout_limit, err_buf)
+</code></pre>
+
+<h3 id="check-our-handle">Check Our Handle</h3>
+
+<p>As all good programing practices say we should check our handle, this will insure we have a handle/interface that can go into monitor mode. To do this we will use pcap_can_set_rfmon.</p>
+
+<pre><code>pcap_can_set_rfmon(): checks whether monitor mode could be set on a capture
+handle when the handle is activated
+
+pcap_set_rfmon() returns 0 if monitor mode could not be set, 
+1 if monitor mode could be se
+</code></pre>
+
+<p>Impmentation:</p>
+
+<pre><code>pcap_can_set_rfmon = pcap.pcap_can_set_rfmon
+pcap_can_set_rfmon.argtypes = [ctypes.c_void_p]
+if (pcap_can_set_rfmon(pcap_handle) == 1):
+    if DEBUG:
+        print &quot;* Can set interface in monitor mode&quot;
+</code></pre>
+
+<h3 id="setup-dump-file">Setup Dump File</h3>
+
+<p>If you take a look at the raw socket sniffer in Empire <a href="https://github.com/killswitch-GUI/NIX-Sniffer-Examples/blob/master/linux-socket-sniffer.py#L40">https://github.com/killswitch-GUI/NIX-Sniffer-Examples/blob/master/linux-socket-sniffer.py#L40</a> it creates the pcap header and file header manually. Using the libpcap lib we can use pcap_dump_open() to handle this for us. Using the pcap_dump() function we can call this pointer for the packet handling.</p>
+
+<pre><code>pcap_dump_open(): open a file to which to write packets  
+
+pcap_dumper_t *pcap_dump_open(pcap_t *p, const char *fname);
+    is called to open a ``savefile'' for writing. fname specifies the name of
+    the file to open. The file will have the same format as those used by
+    tcpdump(1) and tcpslice(1). The name &quot;-&quot; is a synonym for stdout.
+</code></pre>
+
+<p>implementation:</p>
+
+<pre><code>PCAP_FILENAME = 'test.pcap'
+# setup pointer
+pcap_dump_open = pcap.pcap_dump_open
+pcap_dump_open.restype = ctypes.POINTER(ctypes.c_void_p)
+# get pointer 
+pcap_dumper_t = pcap.pcap_dump_open(pcap_handle,PCAP_FILENAME)
+</code></pre>
+
+<h3 id="pcap-capture">Pcap Capture</h3>
+
+<p>All the prior functionality is setup; we will need to setup a loop for packet capture. We can do this a few ways within libpcap, the first is using pcap_next_ex() or pcap_loop(). Using pcap_loop requires a callback to be setup, which I was unable to do properly and have must of it commented out. So, if you know how to do that, some help would be great. For the mean time, we will use pcap_next_ex in a loop since its blocking.</p>
+
+<pre><code>pcap_next_ex():read the next packet from a pcap_t  
+
+int pcap_next_ex(pcap_t *p, struct pcap_pkthdr **pkt_header,
+    const u_char **pkt_data);
+
+reads the next packet and returns a success/failure indication. If the packet
+was read without problems, the pointer pointed to by the pkt_header argument
+is set to point to the pcap_pkthdr struct for the packet, and the pointer
+pointed to by the pkt_data argument is set to point to the data in the packet.
+</code></pre>
+
+<p>In this implementation we will also use custom cTypes structures, just like you would see in a C struc. Using this method we will setup a pcap_pkthdr() structure to populate, we than get a cTypes pointer to feed to pcap_next_ex().</p>
+
+<pre><code>class pcap_pkthdr(ctypes.Structure):
+    _fields_ = [(&quot;tv_sec&quot;, ctypes.c_long), (&quot;tv_usec&quot;, ctypes.c_long),
+    (&quot;caplen&quot;, ctypes.c_uint), (&quot;len&quot;, ctypes.c_uint)]
+
+pcap_pkthdr_p = ctypes.POINTER(pcap_pkthdr)()
+packetdata = ctypes.POINTER(ctypes.c_ubyte*65536)()
+
+c = 0
+while True:
+    if (pcap.pcap_next_ex(pcap_handle, ctypes.byref(pcap_pkthdr_p), ctypes.byref(packetdata)) == 1):
+        # our output function pcap_dump()
+        pcap.pcap_dump(pcap_dumper_t,pcap_pkthdr_p,packetdata)
+        #pkthandler(pcap_pkthdr_p,packetdata)
+        c += 1
+    if c &gt; PCAP_CAPTURE_COUNT:
+        if DEBUG:
+            print &quot;* Max packet count reached!&quot;
+        break
+</code></pre>
+
+<hr />
+
+<blockquote>
+<p>The full repo can be found here:</p>
+</blockquote>
+
+<p><div class="github-card" data-github="killswitch-gui/NIX-Sniffer-Examples" data-width="400" data-height="153" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script></p>
+
+<blockquote>
+<p>The full script:</p>
+</blockquote>
+
+<script src="https://gist.github.com/killswitch-GUI/ce347f79f5cdb90bd8056100c90e9be2.js"></script>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="https://twitter.com/share?text=OS%20X%20Packet%20Capture%20%26%20Empire&url=http%3a%2f%2fcybersyndicates.obscuritylabs.com%2f2017%2f02%2fos-x-packet-capture--empire%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fcybersyndicates.obscuritylabs.com%2f2017%2f02%2fos-x-packet-capture--empire%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http%3a%2f%2fcybersyndicates.obscuritylabs.com%2f2017%2f02%2fos-x-packet-capture--empire%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "cybersyndicates-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Cyber Syndicates" href="http://cybersyndicates.obscuritylabs.com/">Cyber Syndicates</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2017 / Powered by <a href="https://gohugo.io/">Hugo</a></span>
+                </p>
+                <p class="footer-copyright">
+                    <span><a href="https://github.com/roryg/ghostwriter">Ghostwriter theme</a> By <a href="http://jollygoodthemes.com">JollyGoodThemes</a></span>
+                    <span>/ <a href="https://github.com/jbub/ghostwriter">Ported</a> to Hugo By <a href="https://github.com/jbub">jbub</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="http://cybersyndicates.obscuritylabs.com/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="http://cybersyndicates.obscuritylabs.com/js/jquery.fitvids.js"></script>
+        <script src="http://cybersyndicates.obscuritylabs.com/js/scripts.js"></script>
+    </body>
+</html>
+
