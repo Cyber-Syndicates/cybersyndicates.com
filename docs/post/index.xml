@@ -2,67 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Cyber Syndicates</title>
-    <link>http://cybersyndicates.obscuritylabs.com/post/</link>
+    <link>https://cyber-syndicates.github.io/cybersyndicates.com/post/</link>
     <description>Recent content in Posts on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
     <lastBuildDate>Fri, 21 Apr 2017 21:39:41 -0500</lastBuildDate>
     
-	<atom:link href="http://cybersyndicates.obscuritylabs.com/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cyber-syndicates.github.io/cybersyndicates.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Expand Your Horizon Red Team – Modern SaaS C2</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2017/04/expand-your-horizon-red-team/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2017/04/expand-your-horizon-red-team/</link>
       <pubDate>Fri, 21 Apr 2017 21:39:41 -0500</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2017/04/expand-your-horizon-red-team/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2017/04/expand-your-horizon-red-team/</guid>
       <description>Well to say that the past month or so for C2 infrastructure has been impactful, would be an understatement. Domain fronting has added yet another card to the deck of tricks the Red Team can deploy. Before this all took place, I was putting in some time to broaden the horizon of how the Red Team could deploy easy, yet effective C2. During this research, I found an interesting solution to this problem.</description>
     </item>
     
     <item>
       <title>OS X Packet Capture &amp; Empire</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2017/02/os-x-packet-capture--empire/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2017/02/os-x-packet-capture--empire/</link>
       <pubDate>Sun, 12 Feb 2017 21:39:41 -0500</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2017/02/os-x-packet-capture--empire/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2017/02/os-x-packet-capture--empire/</guid>
       <description>Recently I have been preparing for some additional support for Empire and the Python agent. With that comes some new modules cooking, finally getting to porting the Linux sniffer over to OS X. While some of you know it’s easy with raw sockets on the Linux side. OS X does not natively support this, and you often see question that relate to how to get this to work on the OS X side.</description>
     </item>
     
     <item>
       <title>Homeland of Things (HoT) Framework Launch</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2017/01/homeland-of-things-framework-launch/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2017/01/homeland-of-things-framework-launch/</link>
       <pubDate>Tue, 10 Jan 2017 22:15:41 -0500</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2017/01/homeland-of-things-framework-launch/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2017/01/homeland-of-things-framework-launch/</guid>
       <description>Contact  Author: Daniel West Twitter: @reaperb0t E-mail: admin@homelandofthings.org Website: https://homelandofthings.org  Background Vulnerabilities, threats, and subsequent risks are inherent with Internet of Things (IoT) devices, which typically reside at the meeting place of critical infrastructure and cyberspace. We present the HoT Framework to promote best practices for all Federal and State, Local, Tribal, and Territorial (SLTT) governments, non-government organizations (NGOs), and the private sector to use as a foundation for the reconnaissance, interrogation, and hardening of IoT nodes that are characterized as existing within both critical and non-critical infrastructure throughout the physical network layer, logical network layer, and cyber-persona layer of cyberspace terrain.</description>
     </item>
     
     <item>
       <title>Egressing Bluecoat with CobaltStike &amp; Let&#39;s Encrypt</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/</link>
       <pubDate>Sun, 04 Dec 2016 21:39:41 -0500</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2016/12/egressing-bluecoat-with-cobaltstike-letsencrypt/</guid>
       <description>This post is a bit different than other posts I have done in the past, the material I will talking about directly helped me overcome an extremely challenging engagement. When it comes to egress protections I personally am not often met with an environment that I can&amp;rsquo;t get out of. It&amp;rsquo;s not about the skill level of the operator, just the techniques, and processes that we employee as a team and we stick to ensure successful engagements.</description>
     </item>
     
     <item>
       <title>6 Red Team Infrastructure Tips</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2016/11/top-red-team-tips/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2016/11/top-red-team-tips/</link>
       <pubDate>Wed, 30 Nov 2016 16:08:28 -0500</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2016/11/top-red-team-tips/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2016/11/top-red-team-tips/</guid>
       <description>TL;DR  CLI Logging of All Operator Terminal Restricted Payload Delivery Separate Servers / C2 Phases for all Stages of an Engagement Always Use Redirectors in Front of Core C2 Full Session / Metadata Network Capture on Redirectors and C2 Never Share C2 IOC’s  As some of you may know I made a huge transition recently from my former team ATD (Adaptive Threat Division) at Veris Group to Sony’s internal Red Team.</description>
     </item>
     
     <item>
       <title>EmPyre Collection Operations</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2016/06/empyre-collection-opperations/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2016/06/empyre-collection-opperations/</link>
       <pubDate>Tue, 21 Jun 2016 20:14:14 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2016/06/empyre-collection-opperations/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2016/06/empyre-collection-opperations/</guid>
       <description>This post is number 4 of the EmPyre series. Thanks to the entire ATD family and dev team of EmPyre:
 @rvrsh3ll — @harmj0y — @xorrior — @CptJesus
 EmPyre can be found here: https://github.com/adaptivethreat/EmPyre
@@ -71,10 +71,10 @@ Master list of the seriers: Here  5/12/16 – Building an EmPyre with Python 5/1
     
     <item>
       <title>Email Reconnaissance and Phishing Template Generation Made Simple</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2016/05/email-reconnaissance-phishing-template-generation-made-simple/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2016/05/email-reconnaissance-phishing-template-generation-made-simple/</link>
       <pubDate>Thu, 26 May 2016 21:56:58 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2016/05/email-reconnaissance-phishing-template-generation-made-simple/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2016/05/email-reconnaissance-phishing-template-generation-made-simple/</guid>
       <description>Author: Alexander Rymdeko-Harvey, @Killswitch_GUI 
 First a big thanks to the entire ATD (Adaptive Threat Divsion) team which contributed ideas, support and templates! https://verisgroup.com/blog/category/adaptive-threat-division/ Follow @cptjesus Follow @sixdub Follow @xorrior Follow @424f424f Follow @enigma0x3 Follow @mattifestation Follow @_wald0 Follow @bluscreenofjeff
 Email Reconnaissance and Phishing Template Generation Made Simple As a red-teamer or pen-tester, the need for tools that speed up the process is absolutely critical. While tools are not everything, they sure do help when it comes to performing an engagement within a short timeframe that a threat actor would have months to execute.</description>
@@ -82,10 +82,10 @@ Email Reconnaissance and Phishing Template Generation Made Simple As a red-teame
     
     <item>
       <title>The Return of the EmPyre</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2016/05/return-empyre-series-3/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2016/05/return-empyre-series-3/</link>
       <pubDate>Tue, 24 May 2016 14:34:01 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2016/05/return-empyre-series-3/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2016/05/return-empyre-series-3/</guid>
       <description>This post is number 3 of the EmPyre series and cross post with a fellow friend and ATD co-worker @xorrior. Thanks to the entire ATD family and dev team of EmPyre:
 @rvrsh3ll &amp;ndash; @harmj0y &amp;ndash; @xorrior &amp;ndash; @CptJesus
 EmPyre can be found here: https://github.com/adaptivethreat/EmPyre
@@ -96,19 +96,19 @@ EmPyre can be found here: https://github.com/adaptivethreat/EmPyre
     
     <item>
       <title>Email Verification and Email Name Creation</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2016/02/email-harvesting-and-name-creation/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2016/02/email-harvesting-and-name-creation/</link>
       <pubDate>Sun, 14 Feb 2016 14:23:45 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2016/02/email-harvesting-and-name-creation/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2016/02/email-harvesting-and-name-creation/</guid>
       <description>Over the past few months we have been rapidly expanding the capability of SimplyEmail. While it is a very simple tool, it has been extremely successful on a few live engagements I have been on. I feel like it is ready for recommendation to say the least. I did however notice a few key features that some of the guys on the team mentioned that would be nice to have integrated.</description>
     </item>
     
     <item>
       <title>SYSTEM Context Persistence in GPO Startup Scripts</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2016/01/system-context-persistence-in-gpo-startup/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2016/01/system-context-persistence-in-gpo-startup/</link>
       <pubDate>Mon, 25 Jan 2016 04:32:51 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2016/01/system-context-persistence-in-gpo-startup/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2016/01/system-context-persistence-in-gpo-startup/</guid>
       <description>Interesting enough I was recently experimenting on GPO settings to configure my Applocker for testing and came by Scripts under the (Computer Configuration) settings for GPO. This defiantly caught my attention, since persistence is a cat and mouse game of stored locations / methods. This has been mentioned but I haven&amp;rsquo;t seen it talked about so hey why not share what I did
 
 I knew I wanted to weaponize it from a pure command line standpoint as the configuration utility is pretty much point and click.</description>
@@ -116,39 +116,39 @@ I knew I wanted to weaponize it from a pure command line standpoint as the confi
     
     <item>
       <title>Scanning Effectively Through a SOCKS Pivot with Nmap and Proxychains</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</link>
       <pubDate>Sun, 13 Dec 2015 19:14:20 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</guid>
       <description>When ever I am on a pen-test and I come across a major problem (Every OP) that requires some creative solution and I love to share it. Not only that I could help someone else one day, but it really helps me retain the knowledge for future use.
 This past engagement we where on a very unique network dealing with ICS devices and a ton of Unix backend servers, while still handling our normal pen test methodology on the side (No Time to play).</description>
     </item>
     
     <item>
       <title>SimplyEmail v0.5: PDFMiner!</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/11/simplyemail-v0-5-pdfminer/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/</link>
       <pubDate>Sat, 21 Nov 2015 18:32:48 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/11/simplyemail-v0-5-pdfminer/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/11/simplyemail-v0-5-pdfminer/</guid>
       <description>Major addition to SimplyEmail Core When I first started this project I published a pretty in-depth “path” of progression. I told my self I would be following this to help build a tool that would actually enhance and build off what is already open source. I knew I had to have unique methods and content. One thing that I use quite often is google dorking for multiple Intel gathering techniques for a OP, so I knew this had to be added!</description>
     </item>
     
     <item>
       <title>Email Harvesting with SimplyEmail</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/11/email-harvesting-with-simplyemail/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/11/email-harvesting-with-simplyemail/</link>
       <pubDate>Sat, 21 Nov 2015 14:58:47 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/11/email-harvesting-with-simplyemail/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/11/email-harvesting-with-simplyemail/</guid>
       <description>Email Recon Made Easy More often than not email enumeration is hit or miss, depending on the sources used throttle limits are in place or they just plain don’t index everything. As you may know from my past blog write-up I wrote a HTML scrapper to integrate into theHarvester. After that experience I knew there was for some improvement on 3 major key areas:
  Speed - It needed to be able to handle way more locations to search</description>
     </item>
     
     <item>
       <title>A No Bull Guide to Malicious Windows Trouble Shooting Packs and Application whitelist Bypass</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/10/a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/10/a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</link>
       <pubDate>Fri, 16 Oct 2015 13:36:50 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/10/a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/10/a-no-bull-guide-to-malicious-windows-trouble-shooting-packs-and-application-whitelist-bypass/</guid>
       <description>Malicious Windows Trouble Shooting Package Using Nicholas Berthaume Recent work on WTP:
 @nberthaume
 Just some background on this before we deep dive into setup and construction of the package. I was let onto this a few months back from a coworker. I know this was a pretty cool concept and could see the real world benefit of using something like this on a Red Team in a high security environment.</description>
@@ -156,29 +156,29 @@ Just some background on this before we deep dive into setup and construction of 
     
     <item>
       <title>Importing Burp Suite CA cert .der into Kali for API testing</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/10/importing-burp-suite-ca-cert-der-into-kali-for-api-testing/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/10/importing-burp-suite-ca-cert-der-into-kali-for-api-testing/</link>
       <pubDate>Thu, 01 Oct 2015 15:15:53 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/10/importing-burp-suite-ca-cert-der-into-kali-for-api-testing/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/10/importing-burp-suite-ca-cert-der-into-kali-for-api-testing/</guid>
       <description>Importing Burp Suite CA Just recently I had to test some API calls with a custom tool written to work with RestClient, unfortunately RestClient uses OpenSSL to check the SSL against the known root CA. This throws a nice error, like invalid certificate error when trying to point your bash shell at the HTTP proxy like Burp. With tons of headache I really couldn&amp;rsquo;t find any good info on importing the SSL certs to Kali from burps CA export function.</description>
     </item>
     
     <item>
       <title>Windows Driver and Service enumeration with Python</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/09/windows-driver-and-service-enumeration-with-python/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/09/windows-driver-and-service-enumeration-with-python/</link>
       <pubDate>Thu, 17 Sep 2015 20:13:43 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/09/windows-driver-and-service-enumeration-with-python/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/09/windows-driver-and-service-enumeration-with-python/</guid>
       <description>With malware becoming more and more sophisticated, it is becoming extremely difficult to identify malware on infected systems. DLL hijacking, reflected DLL&amp;rsquo;s, and exploiting vulnerable kernel drivers has become extremely popular. As it turns out Windows makes communication between user mode programs and kernel driver -1 this fairly easy for attackers:
 CreateFile() to initialize access to device through its symbolic ling Communication w/ : DeviceloControl() // IOCTL call WriteFile() // pass &amp;quot;stream&amp;quot; data ReadFile() // recieve &amp;quot;stream&amp;quot; data  Recent vulnerabilities such as OpenType Font Driver Vulnerability(CVE-2015-2426) are still making use of the ability to exploint DLL&amp;rsquo;s.</description>
     </item>
     
     <item>
       <title>Quick and Dirty NMAP Commandline Menu</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/09/quick-and-dirty-nmap-commandline-menu/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/09/quick-and-dirty-nmap-commandline-menu/</link>
       <pubDate>Sat, 12 Sep 2015 02:34:47 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/09/quick-and-dirty-nmap-commandline-menu/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/09/quick-and-dirty-nmap-commandline-menu/</guid>
       <description>Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network. Works against individual IP&amp;rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs. Outputs into separate files in the local directory. Can be adjusted and scaled. Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post. Check out the code on GIT. https://github.com/slacker007/simpleNMAP
 ********************************* Code Below *******************************
 import os import sys import subprocess chances = 4 end_prog = 0 def menu2(): cidr = raw_input(&amp;quot;Please enter the network cider or IP to be scanned EX:192.</description>
@@ -186,10 +186,10 @@ import os import sys import subprocess chances = 4 end_prog = 0 def menu2(): cid
     
     <item>
       <title>Advanced Active Monitoring with OSSEC</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/06/advance-active-monitoring-with-ossec/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/06/advance-active-monitoring-with-ossec/</link>
       <pubDate>Sat, 20 Jun 2015 01:57:53 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/advance-active-monitoring-with-ossec/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/06/advance-active-monitoring-with-ossec/</guid>
       <description>Tools Used For this tutorial.
 ##############################################################
 OSSEC 2.8.2 (http://www.ossec.net)
@@ -207,38 +207,38 @@ Step(3) Install OSSEC Software
     
     <item>
       <title>Email Harvesting with HTML Scraping Module: theHarvester</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</link>
       <pubDate>Sun, 14 Jun 2015 01:26:31 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</guid>
       <description>After a recent Red Team training , I was faced with a issue where I had to conduct a Email phishing campaign to gain initial access using Email Harvesting. This isn&amp;rsquo;t anything necessarily new or a subject that has been touched on a million times. But my goal wasn&amp;rsquo;t to recreate the wheel or create a entirely new tool. I knew from past engagements that there are some great tools like theHarvester project out there:</description>
     </item>
     
     <item>
       <title>SMS-LogAlert.py - Alerting TeamServer Infrastructure</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/06/sms-log-alert/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/06/sms-log-alert/</link>
       <pubDate>Wed, 10 Jun 2015 18:27:50 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/sms-log-alert/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/06/sms-log-alert/</guid>
       <description>Recently on a red team engagement we where faced with a major issue during our initial access attempts while email phishing. We kept getting our Cobalt Strike (CS) beacon call backs to our team server at weird hours of the night, inherently missing the beacon and we were out of luck. The worst part was this was just about all we had to work with and we needed initial access bad!</description>
     </item>
     
     <item>
       <title>OclHashcat - Tutorial</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/06/oclhashcat-tutorial/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/06/oclhashcat-tutorial/</link>
       <pubDate>Wed, 10 Jun 2015 18:04:20 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/oclhashcat-tutorial/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/06/oclhashcat-tutorial/</guid>
       <description>HashCat Quick Start / Advanced Cracking Methods After the overwhelming amount of views on this subject I wanted to put together something a bit more detailed for those wanting to take it to the next level. When that list doesn&amp;rsquo;t work and you need to crack that has some methods can be used to reduce cycles and greatly increase the chance of success.
 Understanding the basics of OclHashcat and what you need to know to get started Types of cracking that matter:</description>
     </item>
     
     <item>
       <title>Veil-Evasion AES Encrypted HTTPKEY Request: Sand-Box Evasion</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/</link>
       <pubDate>Wed, 10 Jun 2015 02:10:36 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/</guid>
       <description>My buddy @christruncer set me up on a task to build a module that could be integrated into veil, and I was more than happy to help and contribute to the growing Framework that has been developed. It is becoming apparent that even though binaries are a secondary choice with newer advanced techniques to stay off disk, it’s always great to have a backup in case dropping a binary to disk is the last choice.</description>
     </item>
     

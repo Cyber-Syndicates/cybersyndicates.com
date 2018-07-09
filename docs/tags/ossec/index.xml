@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ossec on Cyber Syndicates</title>
-    <link>http://cybersyndicates.obscuritylabs.com/tags/ossec/</link>
+    <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/ossec/</link>
     <description>Recent content in Ossec on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
     <lastBuildDate>Sat, 20 Jun 2015 01:57:53 +0000</lastBuildDate>
     
-	<atom:link href="http://cybersyndicates.obscuritylabs.com/tags/ossec/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cyber-syndicates.github.io/cybersyndicates.com/tags/ossec/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Advanced Active Monitoring with OSSEC</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2015/06/advance-active-monitoring-with-ossec/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2015/06/advance-active-monitoring-with-ossec/</link>
       <pubDate>Sat, 20 Jun 2015 01:57:53 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/advance-active-monitoring-with-ossec/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2015/06/advance-active-monitoring-with-ossec/</guid>
       <description>Tools Used For this tutorial.
 ##############################################################
 OSSEC 2.8.2 (http://www.ossec.net)

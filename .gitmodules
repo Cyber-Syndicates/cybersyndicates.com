@@ -1,0 +1,6 @@
+[submodule "ghostwriter"]
+	path = ghostwriter
+	url = https://github.com/killswitch-GUI/ghostwriter.git
+[submodule "themes/ghostwriter"]
+	path = themes/ghostwriter
+	url = https://github.com/killswitch-GUI/ghostwriter.git

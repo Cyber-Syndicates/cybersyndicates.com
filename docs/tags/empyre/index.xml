@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Empyre on Cyber Syndicates</title>
-    <link>http://cybersyndicates.obscuritylabs.com/tags/empyre/</link>
+    <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/empyre/</link>
     <description>Recent content in Empyre on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
     <lastBuildDate>Tue, 21 Jun 2016 20:14:14 +0000</lastBuildDate>
     
-	<atom:link href="http://cybersyndicates.obscuritylabs.com/tags/empyre/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cyber-syndicates.github.io/cybersyndicates.com/tags/empyre/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>EmPyre Collection Operations</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2016/06/empyre-collection-opperations/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2016/06/empyre-collection-opperations/</link>
       <pubDate>Tue, 21 Jun 2016 20:14:14 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2016/06/empyre-collection-opperations/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2016/06/empyre-collection-opperations/</guid>
       <description>This post is number 4 of the EmPyre series. Thanks to the entire ATD family and dev team of EmPyre:
 @rvrsh3ll — @harmj0y — @xorrior — @CptJesus
 EmPyre can be found here: https://github.com/adaptivethreat/EmPyre
@@ -26,10 +26,10 @@ Master list of the seriers: Here  5/12/16 – Building an EmPyre with Python 5/1
     
     <item>
       <title>The Return of the EmPyre</title>
-      <link>http://cybersyndicates.obscuritylabs.com/2016/05/return-empyre-series-3/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/2016/05/return-empyre-series-3/</link>
       <pubDate>Tue, 24 May 2016 14:34:01 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/2016/05/return-empyre-series-3/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/2016/05/return-empyre-series-3/</guid>
       <description>This post is number 3 of the EmPyre series and cross post with a fellow friend and ATD co-worker @xorrior. Thanks to the entire ATD family and dev team of EmPyre:
 @rvrsh3ll &amp;ndash; @harmj0y &amp;ndash; @xorrior &amp;ndash; @CptJesus
 EmPyre can be found here: https://github.com/adaptivethreat/EmPyre

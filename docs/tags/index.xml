@@ -2,148 +2,148 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Cyber Syndicates</title>
-    <link>http://cybersyndicates.obscuritylabs.com/tags/</link>
+    <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/</link>
     <description>Recent content in Tags on Cyber Syndicates</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>CyberSyndicates</copyright>
     <lastBuildDate>Sat, 20 Jun 2015 01:57:53 +0000</lastBuildDate>
     
-	<atom:link href="http://cybersyndicates.obscuritylabs.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cyber-syndicates.github.io/cybersyndicates.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Active Monitoring</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/active-monitoring/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/active-monitoring/</link>
       <pubDate>Sat, 20 Jun 2015 01:57:53 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/active-monitoring/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/active-monitoring/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cobaltstrike</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/cobaltstrike/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/cobaltstrike/</link>
       <pubDate>Mon, 25 Jan 2016 04:32:51 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/cobaltstrike/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/cobaltstrike/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Code</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/code/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/code/</link>
       <pubDate>Sat, 12 Sep 2015 02:34:47 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/code/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/code/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Commandline</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/commandline/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/commandline/</link>
       <pubDate>Sat, 12 Sep 2015 02:34:47 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/commandline/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/commandline/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cyber Defense</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/cyber-defense/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/cyber-defense/</link>
       <pubDate>Sat, 20 Jun 2015 01:57:53 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/cyber-defense/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/cyber-defense/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Empyre</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/empyre/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/empyre/</link>
       <pubDate>Tue, 21 Jun 2016 20:14:14 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/empyre/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/empyre/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Intrusion Detection</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/intrusion-detection/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/intrusion-detection/</link>
       <pubDate>Sat, 20 Jun 2015 01:57:53 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/intrusion-detection/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/intrusion-detection/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nmap</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/nmap/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/nmap/</link>
       <pubDate>Sun, 13 Dec 2015 19:14:20 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/nmap/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/nmap/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Open Source</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/open-source/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/open-source/</link>
       <pubDate>Sat, 12 Sep 2015 02:34:47 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/open-source/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/open-source/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ossec</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/ossec/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/ossec/</link>
       <pubDate>Sat, 20 Jun 2015 01:57:53 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/ossec/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/ossec/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/python/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/python/</link>
       <pubDate>Sat, 12 Sep 2015 02:34:47 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/python/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Red Team</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/red-team/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/red-team/</link>
       <pubDate>Wed, 30 Nov 2016 16:08:28 -0500</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/red-team/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/red-team/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Simplyemail</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/simplyemail/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/simplyemail/</link>
       <pubDate>Sun, 14 Feb 2016 14:23:45 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/simplyemail/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/simplyemail/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Veil</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/veil/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/veil/</link>
       <pubDate>Wed, 10 Jun 2015 02:10:36 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/veil/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/veil/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Veil Evasion</title>
-      <link>http://cybersyndicates.obscuritylabs.com/tags/veil-evasion/</link>
+      <link>https://cyber-syndicates.github.io/cybersyndicates.com/tags/veil-evasion/</link>
       <pubDate>Wed, 10 Jun 2015 02:10:36 +0000</pubDate>
       
-      <guid>http://cybersyndicates.obscuritylabs.com/tags/veil-evasion/</guid>
+      <guid>https://cyber-syndicates.github.io/cybersyndicates.com/tags/veil-evasion/</guid>
       <description></description>
     </item>
     
