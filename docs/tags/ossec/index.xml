@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ossec on Cyber Syndicates</title>
+    <link>http://cybersyndicates.obscuritylabs.com/tags/ossec/</link>
+    <description>Recent content in Ossec on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>CyberSyndicates</copyright>
+    <lastBuildDate>Sat, 20 Jun 2015 01:57:53 +0000</lastBuildDate>
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/tags/ossec/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Advanced Active Monitoring with OSSEC</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/06/advance-active-monitoring-with-ossec/</link>
+      <pubDate>Sat, 20 Jun 2015 01:57:53 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/advance-active-monitoring-with-ossec/</guid>
+      <description>Tools Used For this tutorial.
+##############################################################
+OSSEC 2.8.2 (http://www.ossec.net)
+Ubuntu 14.04 (http://www.ubuntu.com/download/desktop)
+Gmail Account (https://www.gmail.com)
+Postfix (www.postfix.org)
+mailutils (installed from bash )
+##############################################################
+Step (1) Download Ubuntu 14.04 (Update: apt-get update; apt-get upgrade)
+Step (2) Download OSSEC 2.8.2 Software
+Step(2b) OPTIONAL Download Web UI 0.8
+Step(3) Install OSSEC Software
+ Two primary methods for installing OSSEC includes using the default settings (install.sh) or by manually installing it. Manual installation is simply just creating the required directories and copying the files into the OSSEC directory.</description>
+    </item>
+    
+  </channel>
+</rss>

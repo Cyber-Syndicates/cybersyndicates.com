@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nmap on Cyber Syndicates</title>
+    <link>http://cybersyndicates.obscuritylabs.com/tags/nmap/</link>
+    <description>Recent content in Nmap on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>CyberSyndicates</copyright>
+    <lastBuildDate>Sun, 13 Dec 2015 19:14:20 +0000</lastBuildDate>
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/tags/nmap/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Scanning Effectively Through a SOCKS Pivot with Nmap and Proxychains</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</link>
+      <pubDate>Sun, 13 Dec 2015 19:14:20 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/12/nmap-and-proxychains-scanning-through-a-socks-piviot/</guid>
+      <description>When ever I am on a pen-test and I come across a major problem (Every OP) that requires some creative solution and I love to share it. Not only that I could help someone else one day, but it really helps me retain the knowledge for future use.
+This past engagement we where on a very unique network dealing with ICS devices and a ton of Unix backend servers, while still handling our normal pen test methodology on the side (No Time to play).</description>
+    </item>
+    
+    <item>
+      <title>Quick and Dirty NMAP Commandline Menu</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/09/quick-and-dirty-nmap-commandline-menu/</link>
+      <pubDate>Sat, 12 Sep 2015 02:34:47 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/09/quick-and-dirty-nmap-commandline-menu/</guid>
+      <description>Quick and Dirty NMAP CommandLine Menu for enumerating hosts, ports, and services on a network. Works against individual IP&amp;rsquo;s, IP ranges (x.x.x.0-50), and traditional CIDRs. Outputs into separate files in the local directory. Can be adjusted and scaled. Any questions or assistance, feel free to email slacker007.dev@gmail.com or reply to post. Check out the code on GIT. https://github.com/slacker007/simpleNMAP
+********************************* Code Below *******************************
+import os import sys import subprocess chances = 4 end_prog = 0 def menu2(): cidr = raw_input(&amp;quot;Please enter the network cider or IP to be scanned EX:192.</description>
+    </item>
+    
+  </channel>
+</rss>

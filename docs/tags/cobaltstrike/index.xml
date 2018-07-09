@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cobaltstrike on Cyber Syndicates</title>
+    <link>http://cybersyndicates.obscuritylabs.com/tags/cobaltstrike/</link>
+    <description>Recent content in Cobaltstrike on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>CyberSyndicates</copyright>
+    <lastBuildDate>Mon, 25 Jan 2016 04:32:51 +0000</lastBuildDate>
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/tags/cobaltstrike/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SYSTEM Context Persistence in GPO Startup Scripts</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2016/01/system-context-persistence-in-gpo-startup/</link>
+      <pubDate>Mon, 25 Jan 2016 04:32:51 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2016/01/system-context-persistence-in-gpo-startup/</guid>
+      <description>Interesting enough I was recently experimenting on GPO settings to configure my Applocker for testing and came by Scripts under the (Computer Configuration) settings for GPO. This defiantly caught my attention, since persistence is a cat and mouse game of stored locations / methods. This has been mentioned but I haven&amp;rsquo;t seen it talked about so hey why not share what I did
+
+I knew I wanted to weaponize it from a pure command line standpoint as the configuration utility is pretty much point and click.</description>
+    </item>
+    
+  </channel>
+</rss>

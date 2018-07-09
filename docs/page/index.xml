@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Cyber Syndicates</title>
+    <link>http://cybersyndicates.obscuritylabs.com/page/</link>
+    <description>Recent content in Pages on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>CyberSyndicates</copyright>
+    <lastBuildDate>Sun, 03 Apr 2016 02:13:50 +0000</lastBuildDate>
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/page/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Alexander Rymdeko-Harvey</title>
+      <link>http://cybersyndicates.obscuritylabs.com/page/alex-rymdeko-harvey/</link>
+      <pubDate>Sun, 03 Apr 2016 02:13:50 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/page/alex-rymdeko-harvey/</guid>
+      <description>RAT - Repurposing Adversarial Tradecraft   RAT - Repurposing Adversarial Tradecraft  from Alexander Rymdeko-Harvey</description>
+    </item>
+    
+    <item>
+      <title>The Team</title>
+      <link>http://cybersyndicates.obscuritylabs.com/page/team/</link>
+      <pubDate>Sun, 03 Apr 2016 02:13:50 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/page/team/</guid>
+      <description>Alexander Rymdeko-Harvey  
+Keelyn Roberts  
+Daniel West</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://cybersyndicates.obscuritylabs.com/page/about/</link>
+      <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/page/about/</guid>
+      <description>About Cyber Syndicates is a (Cyber Blog) group of guys who love to try the latest Red Team, Blue Team and Hunt TTPs. We blog and drink a few beers along the way. We love pythin, C, C++ :)</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>http://cybersyndicates.obscuritylabs.com/page/contact/</link>
+      <pubDate>Fri, 03 Apr 2015 02:13:50 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/page/contact/</guid>
+      <description> Contact: @Killswitch-GUI
+ https://twitter.com/killswitch_gui https://github.com/killswitch-GUI https://keybase.io/killswitchgui https://www.linkedin.com/in/alexrymdekoharvey  </description>
+    </item>
+    
+  </channel>
+</rss>

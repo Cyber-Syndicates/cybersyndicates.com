@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Simplyemail on Cyber Syndicates</title>
+    <link>http://cybersyndicates.obscuritylabs.com/tags/simplyemail/</link>
+    <description>Recent content in Simplyemail on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>CyberSyndicates</copyright>
+    <lastBuildDate>Sun, 14 Feb 2016 14:23:45 +0000</lastBuildDate>
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/tags/simplyemail/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Email Verification and Email Name Creation</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2016/02/email-harvesting-and-name-creation/</link>
+      <pubDate>Sun, 14 Feb 2016 14:23:45 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2016/02/email-harvesting-and-name-creation/</guid>
+      <description>Over the past few months we have been rapidly expanding the capability of SimplyEmail. While it is a very simple tool, it has been extremely successful on a few live engagements I have been on. I feel like it is ready for recommendation to say the least. I did however notice a few key features that some of the guys on the team mentioned that would be nice to have integrated.</description>
+    </item>
+    
+    <item>
+      <title>SimplyEmail v0.5: PDFMiner!</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/11/simplyemail-v0-5-pdfminer/</link>
+      <pubDate>Sat, 21 Nov 2015 18:32:48 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/11/simplyemail-v0-5-pdfminer/</guid>
+      <description>Major addition to SimplyEmail Core When I first started this project I published a pretty in-depth “path” of progression. I told my self I would be following this to help build a tool that would actually enhance and build off what is already open source. I knew I had to have unique methods and content. One thing that I use quite often is google dorking for multiple Intel gathering techniques for a OP, so I knew this had to be added!</description>
+    </item>
+    
+    <item>
+      <title>Email Harvesting with HTML Scraping Module: theHarvester</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</link>
+      <pubDate>Sun, 14 Jun 2015 01:26:31 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/email-harvesting-with-html-scraping-module-theharvester/</guid>
+      <description>After a recent Red Team training , I was faced with a issue where I had to conduct a Email phishing campaign to gain initial access using Email Harvesting. This isn&amp;rsquo;t anything necessarily new or a subject that has been touched on a million times. But my goal wasn&amp;rsquo;t to recreate the wheel or create a entirely new tool. I knew from past engagements that there are some great tools like theHarvester project out there:</description>
+    </item>
+    
+  </channel>
+</rss>

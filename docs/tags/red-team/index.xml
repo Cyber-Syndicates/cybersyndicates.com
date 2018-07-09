@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Red Team on Cyber Syndicates</title>
+    <link>http://cybersyndicates.obscuritylabs.com/tags/red-team/</link>
+    <description>Recent content in Red Team on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>CyberSyndicates</copyright>
+    <lastBuildDate>Wed, 30 Nov 2016 16:08:28 -0500</lastBuildDate>
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/tags/red-team/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>6 Red Team Infrastructure Tips</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2016/11/top-red-team-tips/</link>
+      <pubDate>Wed, 30 Nov 2016 16:08:28 -0500</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2016/11/top-red-team-tips/</guid>
+      <description>TL;DR  CLI Logging of All Operator Terminal Restricted Payload Delivery Separate Servers / C2 Phases for all Stages of an Engagement Always Use Redirectors in Front of Core C2 Full Session / Metadata Network Capture on Redirectors and C2 Never Share C2 IOC’s  As some of you may know I made a huge transition recently from my former team ATD (Adaptive Threat Division) at Veris Group to Sony’s internal Red Team.</description>
+    </item>
+    
+  </channel>
+</rss>

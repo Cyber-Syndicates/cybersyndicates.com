@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Presentations on Cyber Syndicates</title>
+    <link>http://cybersyndicates.obscuritylabs.com/presentations/</link>
+    <description>Recent content in Presentations on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>CyberSyndicates</copyright>
+    <lastBuildDate>Sun, 18 Sep 2016 02:13:50 +0000</lastBuildDate>
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/presentations/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>RAT - Repurposing Adversarial Tradecraft BSidesAugusta2015</title>
+      <link>http://cybersyndicates.obscuritylabs.com/presentations/rat/</link>
+      <pubDate>Sun, 18 Sep 2016 02:13:50 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/presentations/rat/</guid>
+      <description> RAT - Repurposing Adversarial Tradecraft   RAT - Repurposing Adversarial Tradecraft  from Alexander Rymdeko-Harvey 
+  </description>
+    </item>
+    
+    <item>
+      <title>Building an empyre with python BsidesLV2016</title>
+      <link>http://cybersyndicates.obscuritylabs.com/presentations/building_a_empyre/</link>
+      <pubDate>Sat, 13 Aug 2016 21:38:17 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/presentations/building_a_empyre/</guid>
+      <description>  Building an EmPyre with Python  from Will Schroeder 
+  </description>
+    </item>
+    
+    <item>
+      <title>Operating in an OSX Heavy Environment</title>
+      <link>http://cybersyndicates.obscuritylabs.com/presentations/osx-way/</link>
+      <pubDate>Mon, 18 Apr 2016 02:13:50 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/presentations/osx-way/</guid>
+      <description>Slide Share   External to DA, the OS X Way  from Stephan Borosh</description>
+    </item>
+    
+    <item>
+      <title>Malvertizing Like a Pro BSidesAugusta2015</title>
+      <link>http://cybersyndicates.obscuritylabs.com/presentations/malvertizing-like-a-pro/</link>
+      <pubDate>Sun, 13 Sep 2015 21:38:17 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/presentations/malvertizing-like-a-pro/</guid>
+      <description>A Jump Into The Newest Attack Vector Recently at @BSidesAugusta I had the privilege to present my talk on Malvertizing and how I set out to verify my hypothesis. After some heavy research, time gathering as much possible information I decided it was time to take matters into my hands and bring some light to this major issue. Really trying to get people to talk about something that you rarely hear about in the info sec community.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Veil on Cyber Syndicates</title>
+    <link>http://cybersyndicates.obscuritylabs.com/tags/veil/</link>
+    <description>Recent content in Veil on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>CyberSyndicates</copyright>
+    <lastBuildDate>Wed, 10 Jun 2015 02:10:36 +0000</lastBuildDate>
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/tags/veil/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Veil-Evasion AES Encrypted HTTPKEY Request: Sand-Box Evasion</title>
+      <link>http://cybersyndicates.obscuritylabs.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/</link>
+      <pubDate>Wed, 10 Jun 2015 02:10:36 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/2015/06/veil-evasion-aes-encrypted-httpkey-request-module/</guid>
+      <description>My buddy @christruncer set me up on a task to build a module that could be integrated into veil, and I was more than happy to help and contribute to the growing Framework that has been developed. It is becoming apparent that even though binaries are a secondary choice with newer advanced techniques to stay off disk, it’s always great to have a backup in case dropping a binary to disk is the last choice.</description>
+    </item>
+    
+  </channel>
+</rss>

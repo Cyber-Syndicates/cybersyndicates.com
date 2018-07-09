@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on Cyber Syndicates</title>
+    <link>http://cybersyndicates.obscuritylabs.com/project/</link>
+    <description>Recent content in Projects on Cyber Syndicates</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>CyberSyndicates</copyright>
+    <lastBuildDate>Fri, 18 Nov 2016 02:13:50 +0000</lastBuildDate>
+    
+	<atom:link href="http://cybersyndicates.obscuritylabs.com/project/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SimplyEmail</title>
+      <link>http://cybersyndicates.obscuritylabs.com/project/simplyemail/</link>
+      <pubDate>Fri, 18 Nov 2016 02:13:50 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/project/simplyemail/</guid>
+      <description>SimplyEmail What is the simple email recon tool? This tool was based off the work of theHarvester and kind of a port of the functionality. This was just an expansion of what was used to build theHarvester and will incorporate his work but allow users to easily build Modules for the Framework. Which I felt was desperately needed after building my first module for theHarvester.
+MAJOR CALLOUTS: - @laramies - Developer of theHarvester tool https://github.</description>
+    </item>
+    
+    <item>
+      <title>SimplyTemplate</title>
+      <link>http://cybersyndicates.obscuritylabs.com/project/simplytemplate/</link>
+      <pubDate>Tue, 01 Nov 2016 02:13:50 +0000</pubDate>
+      
+      <guid>http://cybersyndicates.obscuritylabs.com/project/simplytemplate/</guid>
+      <description>SimplyTemplate Phishing Template Generation Made Easy. The goal of this project was to hopefully speed up Phishing Template Gen as well as an easy way to ensure accuracy of your templates. Currently my standard Method of delivering emails is the Spear Phish in Cobalt strike so you will see proper settings for that by default.
+Current Platforms Supported: * Kali Linux 2.0 * Kali Linux 1.0 * Debian (deb8u3)</description>
+    </item>
+    
+  </channel>
+</rss>
