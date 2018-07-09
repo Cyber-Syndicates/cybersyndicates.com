@@ -1,5 +1,5 @@
 
-baseurl = "https://cybersyndicates.com/"
+baseurl = "http://cybersyndicates.obscuritylabs.com/"
 title = "Cyber Syndicates"
 theme = "ghostwriter"
 languageCode = "en-us"
