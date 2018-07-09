@@ -1,5 +1,5 @@
 
-baseurl = "http://cyber-syndicates.github.io/cybersyndicates.com/"
+baseurl = "https://cyber-syndicates.github.io/cybersyndicates.com/"
 title = "Cyber Syndicates"
 theme = "ghostwriter"
 languageCode = "en-us"
